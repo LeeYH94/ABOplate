@@ -30,19 +30,19 @@ public class MemberFrontController extends HttpServlet{
 		ActionForward forward = null;
 		Action action = null;
 		
-		if () {
-			
-		} else if () {
-			
-		} else if () {
-			
-		} else if () {
-			
-		} else {
-			forward = new ActionForward();
-			forward.setRedirect(false);
-			forward.setPath("app/error/404.jsp");
-		}
+//		if () {
+//			
+//		} else if () {
+//			
+//		} else if () {
+//			
+//		} else if () {
+//			
+//		} else {
+//			forward = new ActionForward();
+//			forward.setRedirect(false);
+//			forward.setPath("app/error/404.jsp");
+//		}
 		
 		
 	}
