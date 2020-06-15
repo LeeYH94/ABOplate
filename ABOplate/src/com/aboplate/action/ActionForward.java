@@ -1,9 +1,7 @@
 package com.aboplate.action;
 
 public class ActionForward {
-<<<<<<< HEAD
 
-=======
 	private boolean isRedirect;
 	private String path;
 
@@ -26,5 +24,5 @@ public class ActionForward {
 	}
 	
 	
->>>>>>> 3a4fed34f121997d9e97946248fc679da6120a5f
 }
+
