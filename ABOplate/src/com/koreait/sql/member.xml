@@ -7,7 +7,7 @@
 		bean객체로 받아서 각각 컬럼에 값 넣어줌
 		1이면 성공 0이면 실패
 	 -->
-	<insert id="join" parameterType="memberBean" resultType="_int">
+	<insert id="join" parameterType="memberBean" >
 	INSERT INTO MEMBER
 	(MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_NICKNAME, MEMBER_PREFERENCE_FOOD, MEMBER_REGION)
 	VALUES(
