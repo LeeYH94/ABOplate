@@ -24,25 +24,21 @@ public class MemberJoinOkAction implements Action{
 		member.setMember_email(request.getParameter("member_email"));
 		member.setMember_password(request.getParameter("member_password"));
 		member.setMember_nickname(request.getParameter("member_nickname"));
-		member.setMember_stamp(Integer.parseInt(request.getParameter("member_stamp")));
 		member.setMember_preference_food(request.getParameter("member_preference_food"));
 		member.setMember_region(request.getParameter("member_region"));
-		member.setMember_age_group(Integer.parseInt(request.getParameter("member_age_group")));
-		member.setMember_report(Integer.parseInt(request.getParameter("member_report")));
-		member.setMember_last_report(request.getParameter("member_last_report"));
 		
 		check=m_dao.join(member);
 		if(!check) {
 			PrintWriter out=response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
 			out.println("<script>");
-			out.println("alert('È¸¿ø°¡ÀÔ ½ÇÆÐ. Àá½Ã ÈÄ ´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä.');");
+			out.println("alert('È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.');");
 			out.println("</script>");
 			out.close();
 		}
 		
 		forward.setRedirect(true);
-		//È¸¿ø°¡ÀÔÈÄ ÀÌµ¿ÇÒ ÆäÀÌÁö ³Ö±â.
+		//È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½.
 		return forward;
 	}
 }

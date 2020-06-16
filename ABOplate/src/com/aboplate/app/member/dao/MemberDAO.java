@@ -56,6 +56,43 @@ public class MemberDAO {
 		}
 		return check;
 	}
+	
+	public boolean checkId(String id) {
+		boolean check = false;
+		
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("id", id);
+		
+		if((Integer)sqlsession.selectOne("Member.checkId", datas) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
+	public boolean checkEmail(String email) {
+		boolean check = false;
+		
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("email", email);
+		
+		if((Integer)sqlsession.selectOne("Member.checkId", datas) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
+	public boolean updateStamp(String id) {
+		boolean check = false;
+		HashMap<String, String> datas = new HashMap<>();
+		
+		if(checkId(id)) {
+			sqlsession.update("Member.updateStamp", datas);
+			check = 
+			true;
+			
+		}
+		return check;
+	}
 
 
 }
