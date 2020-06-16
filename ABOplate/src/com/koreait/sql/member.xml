@@ -2,18 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Member">
+	
 	<!--
 		bean객체로 받아서 각각 컬럼에 값 넣어줌
 		1이면 성공 0이면 실패
 	 -->
 	<insert id="join" parameterType="memberBean" >
 	INSERT INTO MEMBER
+	(MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_PASSWORD, MEMBER_NICKNAME, MEMBER_PREFERENCE_FOOD, MEMBER_REGION)
 	VALUES(
-	#{member_id},#{member_email},#{member_password},#{member_nickname},${member_stamp},#{member_preference_food},
-	#{member_region},${member_age_group},${member_report},#{member_last_report}, 1
+	#{member_id}, #{member_name}, #{member_email}, #{member_password}, #{member_nickname}, #{member_preference_food}, #{member_region}
 	)
 	</insert>
-	
+
 	<!--
 		map객체로 받아서 db에 있는지 확인 1이면 성공 0이면 실패 
 	 -->
@@ -36,6 +37,22 @@
 		UPDATE MEMBER SET
 		member_pw = #{new_pw}
 		WHERE member_id = #{id}
+	</update>
+	
+	<select id="checkId" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE member_id = #{id}
+	</select>
+	
+	<select id="checkEmail" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE member_email = #{email}
+	</select>
+	
+	<update id="updateStamp" paramType="map"">
+		UPDATE MEMBER
+		SET stamp = stamp + 10
+		WHERE m.member_id = #{id}
 	</update>
 	
 </mapper>

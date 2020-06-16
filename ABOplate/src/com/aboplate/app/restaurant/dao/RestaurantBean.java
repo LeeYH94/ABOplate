@@ -9,12 +9,11 @@ public class RestaurantBean {
 	private int restaurant_ration_total;
 	private int restaurant_hit;
 	private String restaurant_food_category;
-	private String restaurant_parking;
-	private String restaurant_day_off;
-	private String restaurant_menu_board;
+	private String restaurant_facility;
+	private String restaurant_disaster_grant;
 	private String restaurant_local_currency;
 	private int restaurant_age_group;
-	private String restaurant_business_day;
+	private String restaurant_link;
 
 	public RestaurantBean() {;}
 
@@ -82,28 +81,20 @@ public class RestaurantBean {
 		this.restaurant_food_category = restaurant_food_category;
 	}
 
-	public String getRestaurant_parking() {
-		return restaurant_parking;
+	public String getRestaurant_facility() {
+		return restaurant_facility;
 	}
 
-	public void setRestaurant_parking(String restaurant_parking) {
-		this.restaurant_parking = restaurant_parking;
+	public void setRestaurant_facility(String restaurant_facility) {
+		this.restaurant_facility = restaurant_facility;
 	}
 
-	public String getRestaurant_day_off() {
-		return restaurant_day_off;
+	public String getRestaurant_disaster_grant() {
+		return restaurant_disaster_grant;
 	}
 
-	public void setRestaurant_day_off(String restaurant_day_off) {
-		this.restaurant_day_off = restaurant_day_off;
-	}
-
-	public String getRestaurant_menu_board() {
-		return restaurant_menu_board;
-	}
-
-	public void setRestaurant_menu_board(String restaurant_menu_board) {
-		this.restaurant_menu_board = restaurant_menu_board;
+	public void setRestaurant_disaster_grant(String restaurant_disaster_grant) {
+		this.restaurant_disaster_grant = restaurant_disaster_grant;
 	}
 
 	public String getRestaurant_local_currency() {
@@ -122,13 +113,15 @@ public class RestaurantBean {
 		this.restaurant_age_group = restaurant_age_group;
 	}
 
-	public String getRestaurant_business_day() {
-		return restaurant_business_day;
+	public String getRestaurant_link() {
+		return restaurant_link;
 	}
 
-	public void setRestaurant_business_day(String restaurant_business_day) {
-		this.restaurant_business_day = restaurant_business_day;
+	public void setRestaurant_link(String restaurant_link) {
+		this.restaurant_link = restaurant_link;
 	}
+
+	
 
 		
 }
