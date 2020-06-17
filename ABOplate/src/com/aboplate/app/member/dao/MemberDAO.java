@@ -66,41 +66,37 @@ public class MemberDAO {
 		return check;
 	}
 
-	public boolean checkId(String id) {
-		boolean check = false;
-		if((Integer)sqlsession.selectOne("Member.checkid", id) == 1) {
-			check = true;
-		}
-		return check;
-	}
-
-
+	
+	
 	public boolean checkEmail(String email) {
 		boolean check = false;
-
-		HashMap<String, String> datas = new HashMap<>();
-		datas.put("email", email);
-
-		if((Integer)sqlsession.selectOne("Member.checkId", datas) == 1) {
+		
+		if((Integer)sqlsession.selectOne("Member.checkId", email) == 1) {
 			check = true;
 		}
 		return check;
 	}
-
+	
 	public boolean updateStamp(String id) {
 		boolean check = false;
-		HashMap<String, String> datas = new HashMap<>();
-
+		
 		if(checkId(id)) {
-			sqlsession.update("Member.updateStamp", datas);
-			check =
-			true;
-
+			sqlsession.update("Member.updateStamp", id);
+			check = true;
 		}
 		return check;
 	}
-
-	//�ӽú��й�ȣ ����
+	
+	public boolean checkId(String id) {
+		boolean check = false;
+		if((Integer)sqlsession.selectOne("Member.checkId", id) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
+	
+	//�ӽú�й�ȣ ����
 	public static String randomPw (int length) {
 		int index = 0;
 		char[] charSet = new char[] {
@@ -116,19 +112,19 @@ public class MemberDAO {
 		}
 		return sb.toString();
 		}
-
+	
 	// ���� �߼� �޼ҵ�
 		public void sendMail(String email, String newPw) throws AddressException, MessagingException {
 			String host = "smtp.naver.com";
 
-			// --- �ȿ� ������ ���� �̸��� �ּ�(@naver.com)����, ���й�ȣ
+			// --- �ȿ� ������ ��� �̸��� �ּ�(@naver.com)����, ��й�ȣ
 			final String id = "yhya0904";
 			final String pw = "leeheader7679!";
 			int port = 465;
 
 			String recipient = email;
 			String subject = "���� �߼� Ȯ��";
-
+			
 
 			Properties props = System.getProperties();
 
@@ -149,12 +145,22 @@ public class MemberDAO {
 			session.setDebug(true);
 
 			Message mimeMessage = new MimeMessage(session);
-			// --- �ȿ� ������ ���� �̸��� �ּ� �ֱ� (@naver.com) ����
+			// --- �ȿ� ������ ��� �̸��� �ּ� �ֱ� (@naver.com) ����
 			mimeMessage.setFrom(new InternetAddress("yhya0904@naver.com"));
 			mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 			mimeMessage.setSubject(subject);
 			mimeMessage.setText(newPw);
 			Transport.send(mimeMessage);
 		}
-
 	}
+
+
+
+
+
+
+
+
+
+
+

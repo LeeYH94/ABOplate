@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Restaurant">
+	
+	<select id="getNameList" resultType="string">
+		SELECT DISTINCT restaurant_name FROM RESTAURANT 
+	</select>
+	
+	<select id="getLocalCurrencyList" resultType="string">
+		SELECT DISTINCT restaurant_name FROM RESTAURANT 
+		WHERE restaurant_local_currency = 'O' 
+	</select>
+	
+	<select id="getFoodList" resultType="string">
+		SELECT DISTINCT restaurant_food_category FROM RESTAURANT
+	</select>
+	
+	<select id="getAddressList" resultType="string">
+		SELECT DISTINCT SUBSTR(restaurant_address, 1, INSTR(restaurant_address, ' ', 1, 1)) FROM RESTAURANT
+	</select>
+	
+	<select id="getBestRestaurantList" resultType="string">
+		SELECT DISTINCT restaurant_name FROM RESTAURANT WHERE restaurant_best = 'O'
+	</select>
+	
+	
+	
+
+</mapper>

@@ -5,6 +5,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.aboplate.app.member.dao.MemberBean" alias="memberBean"/>
+		<typeAlias type="com.aboplate.app.member.dao.RestaurantBean" alias="restaurantBean"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -21,5 +22,6 @@
 	
 	<mappers>
 		<mapper resource="com/aboplate/sql/member.xml"/>
+		<mapper resource="com/aboplate/sql/restaurant.xml"/>
 	</mappers>
 </configuration>
