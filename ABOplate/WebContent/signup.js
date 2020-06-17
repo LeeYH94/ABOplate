@@ -9,7 +9,7 @@ function formSubmit() {
 		alert('아이디를 확인해주세요.');
 		/**
 		 * Ajax 
-		 * 포커스X★
+//		 * 포커스X★ onmouseout  
 		*/
 		form.member_id.focus();
 		return false;
