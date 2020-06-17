@@ -3,4 +3,6 @@
 Server/
 Servers/
 .metadata/
-/.recommenders
+/.recommenders/
+Servers2/
+*.md
