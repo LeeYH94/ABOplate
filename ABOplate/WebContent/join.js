@@ -52,10 +52,10 @@ function formSubmit() {
 
 	form.submit();
 }
-
-	function check email(email) {
-		
-	}
+//
+//	function check email(email) {
+//		
+//	}
 	
 function checkid(id) {
 	check = false;
@@ -64,11 +64,11 @@ function checkid(id) {
 	} else {
 		$.ajax({
 			url : contextPath + "/member/MemberCheckIdOk.me?id=" + id,
-			// get방식
+			
 			type : 'get',
 			dataType : 'text',
 			success : function(data) {
-				// trim()-공백 없애기.
+				
 				if (data.trim() == 'ok') {
 					$("#idCheckText").text("사용할 수 있는 아이디입니다.");
 					check = true;
