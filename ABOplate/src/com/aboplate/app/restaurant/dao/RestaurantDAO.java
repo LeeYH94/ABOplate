@@ -20,6 +20,7 @@ public class RestaurantDAO {
 		sqlsession = sessionf.openSession(true);
 	}
 	
+	// 연관검색어 전용 리스트
 	public List<String> getName() {
 		
 		List<String> nameList = sqlsession.selectList("Restaurant.getNameList");
@@ -54,11 +55,13 @@ public class RestaurantDAO {
 		
 		return bestRestaurantList; 
 	}
+	// 여기까지 연관검색어
 	
+	// 회원 맞춤 맛집 추천
 	public List<RestaurantBean> getMemberChoiceList(String session_id) {
 		
 		HashMap<String, Object> datas = new HashMap<>();
-		 MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
+		MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
 		
 		datas.put("category", memberBean.getMember_preference_food());
 		datas.put("region", memberBean.getMember_region());
@@ -69,15 +72,15 @@ public class RestaurantDAO {
 		return memberChoicerestaurantList;
 	}
 		
-		public List<RestaurantBean> getPopularList(){
+	public List<RestaurantBean> getPopularList(){
 			
-			List<RestaurantBean> popularList = sqlsession.selectList("Restaurant.getPopularRestaurant");
+		List<RestaurantBean> popularList = sqlsession.selectList("Restaurant.getPopularRestaurant");
 			
-			return popularList;
-		}
-		
-		
-		
+		return popularList;
 	}
+		
+		
+		
+}
 
 
