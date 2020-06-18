@@ -3,47 +3,45 @@
  */
 var check = false;
 
+
 function formSubmit() {
-	var form = document.jonForm;
+	var form = document.signupForm;
+	
 	if ('' == form.memberId.value || !check) {
 		alert('아이디를 확인해주세요.');
-		form.memberName.focus();
+		form.memberId.focus();
 		return false;
 
 	} else if ('' == form.memberName.value) {
 		alert('이름을 입력해주세요.');
-		form.memberEmail.focus();
+		form.memberName.focus();
 		return false;
-	} else if ('' == form.memberEmail.value) {
-		alert('이메일을 입력해주세요.');
-//		if (onmouseout) {	
-//			
-//			}
-		
-		form.meberPassword.focus();
+	} else if ('' == form.memberEmail.value||!check) {
+		alert('이메일을 입력해주세요.');	
+				 form.memberEmail.focus();
 		return false;
  
 	} else if ('' == form.meberPassword.value) {
 		alert('비빌번호');
-		form.memberRePassword.focus();
+		 form.meberPassword.focus();
 		return false;
 	} else if ('' == form.memberRePassword.value) {
 		alert('비빌번호 확인');
-		form.meberNickname.focus();
+		form.memberRePassword.focus();
 		return false;
 
 	} else if ('' == form.meberNickname.value) {
 		alert('닉네임을 입력해주세요.');
-		form.member_name.focus();
+		form.meberNickname.focus();
 		return false;
 
 	} else if ('' == form.memberFavorite.value) {
 		alert('선호음식을 입력해주세요.');
-		form. memberRegion.focus();
+		form.memberFavorite.focus();
 		return false;
 	} else if ('' == form. memberRegion.value) {
 		alert('지역을 입력해주세요.');
-		form.member_pw.focus();
+		form. memberRegion.focus();
 		return false;
 
 	} else if ('' == form. memberRegion.value) {
@@ -52,10 +50,9 @@ function formSubmit() {
 
 	form.submit();
 }
-//
-//	function check email(email) {
-//		
-//	}
+
+	
+		
 	
 function checkid(id) {
 	check = false;
@@ -83,8 +80,47 @@ function checkid(id) {
 	}
 }
 
-// 키보드 눌렀을때 적히고 땠을때 실행됨. -> 검색할때 사용하기!!
-$("input[name='member_id']").keyup(function(event) {
-	var id = $("input[name='member_id']").val();
+
+$("input[name='memberId']").focusout(function(event) {
+	var id = $("input[name='memberId']").val();
+	checkid(id);
+})
+
+
+
+
+
+
+
+
+function checkemail(email) {
+	check = false;
+	if (email == "") {
+		$("#emailCheck_text").text("이메일 작성해주세요.");
+	} else {
+		$.ajax({
+			url : contextPath + "/member/MemberCheckEmailOk.me?email=" + email,
+			
+			type : 'get',
+			dataType : 'text',
+			success : function(data) {
+				
+				if (data.trim() == 'ok') {
+					$("#emailCheckText").text("사용할 수 있는 이메일입니다.");
+					check = true;
+				} else {
+					$("#emailCheckText").text("중복된이메일입니다.");
+				}
+			},
+			error : function() {
+				console.log("오류");
+			}
+		})
+	}
+}
+
+
+$("input[name='memberEmail']").focusout(function(event) {
+	var id = $("input[name='memberEmail']").val();
 	checkid(id);
 })
