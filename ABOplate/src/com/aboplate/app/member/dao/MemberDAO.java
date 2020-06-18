@@ -65,19 +65,18 @@ public class MemberDAO {
 		}
 		return check;
 	}
-
 	
 	
 	public boolean checkEmail(String email) {
 		boolean check = false;
 		
-		if((Integer)sqlsession.selectOne("Member.checkId", email) == 1) {
+		if((Integer)sqlsession.selectOne("Member.checkEmail", email) == 1) {
 			check = true;
 		}
 		return check;
 	}
 	
-	public boolean updateStamp(String id) {
+	public boolean recommendStamp(String id) {
 		boolean check = false;
 		
 		if(checkId(id)) {
@@ -94,6 +93,7 @@ public class MemberDAO {
 		}
 		return check;
 	}
+	
 	
 	
 	//�ӽú�й�ȣ ����
