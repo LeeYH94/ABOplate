@@ -6,3 +6,4 @@ Servers/
 /.recommenders/
 Servers2/
 *.md
+.dbeaver/
