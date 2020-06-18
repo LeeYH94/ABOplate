@@ -14,6 +14,7 @@ public class MemberJoinOkAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		MemberDAO m_dao=new MemberDAO();
 		MemberBean member=new MemberBean();
 		
@@ -32,13 +33,13 @@ public class MemberJoinOkAction implements Action{
 			PrintWriter out=response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
 			out.println("<script>");
-			out.println("alert('ȸ������ ����. ��� �� �ٽ� �õ����ּ���.');");
+			out.println("alert('회占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙. 占쏙옙占� 占쏙옙 占쌕쏙옙 占시듸옙占쏙옙占쌍쇽옙占쏙옙.');");
 			out.println("</script>");
 			out.close();
 		}
 		
 		forward.setRedirect(true);
-		//ȸ�������� �̵��� ������ �ֱ�.
+		//회占쏙옙占쏙옙占쏙옙占쏙옙 占싱듸옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍깍옙.
 		return forward;
 	}
 }
