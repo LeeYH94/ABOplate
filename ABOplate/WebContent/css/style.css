@@ -4,6 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ 
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -8038,7 +8039,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Nunito Sans", Arial, sans-serif;
+  font-family: "MaplestoryOTFBold";
   background: #fff;
   font-size: 16px;
   line-height: 1.8;
@@ -8105,7 +8106,8 @@ h1, h2, h3, h4, h5,
     font-weight: 400;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-      color: #ffcd3c; }
+      color: #fff; }
+      /* 상단바 네비게이션 호버색을바꾸고싶으면 이곳이다 */
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
         padding-left: 0;
@@ -8580,7 +8582,7 @@ h1, h2, h3, h4, h5,
   .btn:hover, .btn:active, .btn:focus {
     outline: none; }
   .btn.btn-primary {
-  	padding:48px;
+  	padding:36px;
     background: #ffcd3c !important;
     border: 1px solid #ffcd3c !important;
     color: #fff !important; }
@@ -9136,11 +9138,13 @@ textarea.form-control {
 
 #map {
   height: 500px;
-  width: 100%; }
+  width: 100%;
+  position: absolute;
+  right:200px;
+  width:400px;}
   @media (max-width: 991.98px) {
     #map {
       height: 300px; } }
-
 .mouse {
   position: absolute;
   left: 0;
@@ -10019,32 +10023,6 @@ textarea.form-control {
       } }
       
       
-/*   .container > #sort{
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  }
-  @media (min-width: 576px) {
-    .container > #sort{
-      width: 70%;
-      margin: 0 auto;
-      max-width: 540px; } }
-  @media (min-width: 768px) {
-    .container > #sort{
-      width: 70%;
-      margin: 0 auto;
-      max-width: 720px; } }
-  @media (min-width: 992px) {
-    .container > #sort{
-      width: 70%;
-      margin: 0 auto;
-      max-width: 960px; } }
-  @media (min-width: 1200px) {
-    .container > #sort{
-      width: 70%;
-      margin: 0 auto;
-      max-width: 1140px; } }  */
 /* 占쎈땾占쎌젟 */
 .overlay01 > #map {
   height: 500px;
@@ -10160,7 +10138,7 @@ textarea.form-control {
 				  text-decoration:none;
 				   }
 .star_rating > a:first-child {margin-left:0; }
-.star_rating > a.on{color: #777; }
+.star_rating > a.on{color: #ffcd3c; } 
 
 .img-fluid >#img_size{
   max-width: 100%;
@@ -10175,9 +10153,7 @@ textarea.form-control {
   width: 100%;
   height: 300px;
   position: inherit;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center; }
+  background-repeat: no-repeat;}
   .hero-wrap2 .overlay {
     position: absolute;
     top: 0;
@@ -10207,6 +10183,58 @@ textarea.form-control {
     .hero-wrap2.hero-wrap-2 .slider-text {
       height: 300px !important; }     
 
+/* 추가 부분 */
+@media (min-width: 576px) {
+    .btn {
+      max-width: 200px;} }
+  @media (min-width: 768px) {
+    .btn {
+      max-width: 200px;} }
+  @media (min-width: 992px) {
+    .btn {
+      max-width: 200px;} }
+  @media (min-width: 1200px) {
+    .btn {
+      max-width: 200px;} }
+      
+@media (min-width: 576px) {
+    .form-group >.btn {
+    max-width: 500px;
+      } }
+  @media (min-width: 768px) {
+    .form-group >.btn {
+    max-width: 500px;
+      } }
+  @media (min-width: 992px) {
+    .form-group > .btn{
+    max-width: 500px;
+      } }
+  @media (min-width: 1200px) {
+   .form-group > .btn {
+   max-width: 500px;
+      } }  
 
+@media (max-width: 1430.98px) {
+  #map {
+    position: static;
+    right:0px;
+    height: 300px;
+    width: 100%;} }
 
+@media (max-width: 450px) {
+  .p-5 {
+    padding: 1rem !important;} }
 
+@media (max-width: 450px) {
+  .sort {
+    width:100% !important;
+    margin-top:5px !important;
+    margin-right:0px !important;} }
+
+   
+@font-face { 
+	font-family: 'MaplestoryOTFBold'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+	font-weight: normal; 
+	font-style: normal; } 
+    
