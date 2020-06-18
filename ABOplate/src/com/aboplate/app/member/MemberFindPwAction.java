@@ -25,18 +25,16 @@ public class MemberFindPwAction implements Action{
 		String newPw = memberDao.randomPw(10);
 		PrintWriter out = response.getWriter();
 		if(memberDao.updatePw(newPw, id)) {
-			//»õ·Î¿î ºñ¹Ğ¹øÈ£ »ç¿ëÀÚ ÀÌ¸ŞÀÏ·Î Àü¼ÛÇÏ´Â ÄÚµåÀÛ¼ºÇÏ±â
+			//ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½Ğ¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Úµï¿½ï¿½Û¼ï¿½ï¿½Ï±ï¿½
 			memberDao.sendMail(email, newPw);
 		}else {
 			out.println("<script>");
-			out.println("alert('´Ù½Ã ½ÃµµÇØÁÖ¼¼¿ä');");
+			out.println("alert('ï¿½Ù½ï¿½ ï¿½Ãµï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½');");
 			out.println("</script>");
 			out.close();
 		}
 		forward.setRedirect(true);
-		//·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿
-		
-		
+		//ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™
 		return forward;
 	}
 }

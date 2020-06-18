@@ -17,14 +17,14 @@ public class MemberCheckIdOkAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		
 		MemberDAO memberDao = new MemberDAO();
-		//»ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ °ª.
+		
 		String id = request.getParameter("id");
 		PrintWriter out = response.getWriter();
 		if(memberDao.checkId(id)) {
-			//Áßº¹ -not ok
+			//ì¤‘ë³µëœ ì•„ì´ë””ì…ë‹ˆë‹¤.
 			out.println("not-ok");
 		}else {
-			//ok
+			//ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤.
 			out.println("ok");
 		}
 		out.close();

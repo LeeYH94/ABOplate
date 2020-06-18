@@ -32,13 +32,13 @@
       <div class="container">
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-8 mb-md-5">
-          	<a class="navbar-brand" href="main_1.html" style="font-size:56px;"><img src="images/ABO.png"/></a>
+          	<a class="navbar-brand" href="index.html" style="font-size:56px;"><img src="images/ABO.png"/></a>
             <form action="#" class="bg-light p-5 contact-form">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="ID">
               </div>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="PW">
+                <input type="password" class="form-control" placeholder="PW">
               </div>
               <div class="form-group">
               <div class="d-flex justify-content-center">
@@ -54,23 +54,27 @@
               	</div>
               	</div>
               </div>
-			
 			<div class="d-flex justify-content-center">	
-              <div class="form-group">
-                <input type="submit" value="카카오톡으로 로그인" class="btn btn-primary py-3 px-5">
-              </div>
+               <div class="form-group">
+                 <!-- <input type="submit" value="카카오톡으로 로그인" class="btn btn-primary py-3 px-5"> -->
+                 <!-- 추가부분 -->
+					<a id="kakao-login-btn"></a>
+					<a href="http://developers.kakao.com/logout"></a>
+               </div>
               </div>
               <div class="d-flex justify-content-center">
               <div class="form-group">
              	<input type="submit" value="구글로 로그인" class="btn btn-primary py-3 px-5">
             	</div>
               </div>
-          
+          	</form>
           </div>
         </div>
       </div>
     </section>
-
+    
+    
+    
     <footer class="ftco-footer ftco-section">
       <div class="container">
         <div class="row mb-5">
@@ -161,9 +165,40 @@
   <script src="js/bootstrap-datepicker.js"></script>
   <script src="js/jquery.timepicker.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+   
+   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+   <script type='text/javascript'>
+  	//<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('056b94bb5df03a78a04b2c7f67882c60');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
+    // 카카오 로그인 버튼을 생성합니다.
+     Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(response) {
+         console.log(response);
+         Kakao.API.request({
+            url: '/v2/user/me',
+            success: function(res) {
+            var mydata = (res);
+            console.log(mydata);
+            }, 
+            fail: function(error) {
+            alert(
+               'login success, but failed to request user information: ' +
+               JSON.stringify(error)
+            )
+            },
+         })
+      },
+      fail: function(error) {
+         console.log("ERROR")
+         console.log(error);
+      },
+      });
+	</script>
     
   </body>
 </html>

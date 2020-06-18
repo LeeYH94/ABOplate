@@ -26,17 +26,17 @@ public class MemberFindIdAction implements Action{
 		if(id!=null) {
 			response.setContentType("text/html; charset=UTF-8");
 			out.println("<script>");
-			out.println("alert('´ç½ÅÀÇ ¾ÆÀÌµğ´Â'+id+'ÀÔ´Ï´Ù.');");
+			out.println("alert('ë‹¹ì‹ ì˜ ì•„ì´ë””ëŠ”'"+id+"'ì…ë‹ˆë‹¤.');");
 			out.println("</script>");
 			out.close();
 		}else {
 			out.println("<script>");
-			out.println("alert('¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö¾Ê½À´Ï´Ù.');");
+			out.println("alert('ë“±ë¡ëœ ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.');");
 			out.println("</script>");
 			out.close();
 		}
 		forward.setRedirect(true);
-		//·Î±×ÀÎÆäÀÌÁö ³Ö±â.
+		//ë¡œê·¸ì¸ í˜ì´ì§€ë¡œ ì´ë™
 		return forward;
 	}
 }
