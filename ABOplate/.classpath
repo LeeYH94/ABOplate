@@ -12,6 +12,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javax.mail-1.6.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mybatis-3.5.4.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/tomcat-dbcp.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/tomcat-jdbc.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
