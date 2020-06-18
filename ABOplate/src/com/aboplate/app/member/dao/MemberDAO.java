@@ -67,7 +67,6 @@ public class MemberDAO {
 	}
 
 	
-	
 	public boolean checkEmail(String email) {
 		boolean check = false;
 		
@@ -96,7 +95,7 @@ public class MemberDAO {
 	}
 	
 	
-	//�ӽú�й�ȣ ����
+	//占쌈시븝옙橘占싫� 占쏙옙占쏙옙
 	public static String randomPw (int length) {
 		int index = 0;
 		char[] charSet = new char[] {
@@ -113,17 +112,17 @@ public class MemberDAO {
 		return sb.toString();
 		}
 	
-	// ���� �߼� �޼ҵ�
+	// 占쏙옙占쏙옙 占쌩쇽옙 占쌨소듸옙
 		public void sendMail(String email, String newPw) throws AddressException, MessagingException {
 			String host = "smtp.naver.com";
 
-			// --- �ȿ� ������ ��� �̸��� �ּ�(@naver.com)����, ��й�ȣ
+			// --- 占싫울옙 占쏙옙占쏙옙占쏙옙 占쏙옙占� 占싱몌옙占쏙옙 占쌍쇽옙(@naver.com)占쏙옙占쏙옙, 占쏙옙橘占싫�
 			final String id = "yhya0904";
 			final String pw = "leeheader7679!";
 			int port = 465;
 
 			String recipient = email;
-			String subject = "���� �߼� Ȯ��";
+			String subject = "占쏙옙占쏙옙 占쌩쇽옙 확占쏙옙";
 			
 
 			Properties props = System.getProperties();
@@ -145,7 +144,7 @@ public class MemberDAO {
 			session.setDebug(true);
 
 			Message mimeMessage = new MimeMessage(session);
-			// --- �ȿ� ������ ��� �̸��� �ּ� �ֱ� (@naver.com) ����
+			// --- 占싫울옙 占쏙옙占쏙옙占쏙옙 占쏙옙占� 占싱몌옙占쏙옙 占쌍쇽옙 占쌍깍옙 (@naver.com) 占쏙옙占쏙옙
 			mimeMessage.setFrom(new InternetAddress("yhya0904@naver.com"));
 			mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 			mimeMessage.setSubject(subject);
