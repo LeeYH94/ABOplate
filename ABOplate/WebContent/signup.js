@@ -39,17 +39,19 @@ function formSubmit() {
 		alert('선호음식을 입력해주세요.');
 		form.memberFavorite.focus();
 		return false;
+		
+	} else if ('' == form. memberRegion.value) {
+		alert('나이대를 입력해주세요.');
+		return false;
+		
+		
 	} else if ('' == form. memberRegion.value) {
 		alert('지역을 입력해주세요.');
 		form. memberRegion.focus();
 		return false;
 
-	} else if ('' == form. memberRegion.value) {
-		alert('나이대를 입력해주세요.');
-		return false;
-
-	form.submit();
-}
+		form.submit();
+	}
 
 	
 		
@@ -93,34 +95,34 @@ $("input[name='memberId']").focusout(function(event) {
 
 
 
-function checkemail(email) {
-	check = false;
-	if (email == "") {
-		$("#emailCheck_text").text("이메일 작성해주세요.");
-	} else {
-		$.ajax({
-			url : contextPath + "/member/MemberCheckEmailOk.me?email=" + email,
-			
-			type : 'get',
-			dataType : 'text',
-			success : function(data) {
-				
-				if (data.trim() == 'ok') {
-					$("#emailCheckText").text("사용할 수 있는 이메일입니다.");
-					check = true;
-				} else {
-					$("#emailCheckText").text("중복된이메일입니다.");
-				}
-			},
-			error : function() {
-				console.log("오류");
-			}
-		})
-	}
-}
-
-
-$("input[name='memberEmail']").focusout(function(event) {
-	var id = $("input[name='memberEmail']").val();
-	checkid(id);
-})
+//function checkemail(email) {
+//	check = false;
+//	if (email == "") {
+//		$("#emailCheck_text").text("이메일 작성해주세요.");
+//	} else {
+//		$.ajax({
+//			url : contextPath + "/member/MemberCheckEmailOk.me?email=" + email,
+//			
+//			type : 'get',
+//			dataType : 'text',
+//			success : function(data) {
+//				
+//				if (data.trim() == 'ok') {
+//					$("#emailCheckText").text("사용할 수 있는 이메일입니다.");
+//					check = true;
+//				} else {
+//					$("#emailCheckText").text("중복된이메일입니다.");
+//				}
+//			},
+//			error : function() {
+//				console.log("오류");
+//			}
+//		})
+//	}
+//}
+//
+//
+//$("input[name='memberEmail']").focusout(function(event) {
+//	var id = $("input[name='memberEmail']").val();
+//	checkid(id);
+//})
