@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-{"resources":{"Scripts/ABOplate.sql":{"sql-editor-data-source-id":"oracle_thin-17282de5f95-5f75cc9e7bc91c80","default-datasource":"oracle_thin-17282de5f95-5f75cc9e7bc91c80","default-schema":"HR"}}}
-=======
-{"resources":{"Scripts/ABOplate.sql":{"default-schema":"HR","sql-editor-data-source-id":"oracle_thin-17282de5f95-5f75cc9e7bc91c80","default-datasource":"oracle_thin-17282de5f95-5f75cc9e7bc91c80"}}}
->>>>>>> 3a4fed34f121997d9e97946248fc679da6120a5f
