@@ -1,5 +1,6 @@
 package com.aboplate.app.restaurant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,11 +19,12 @@ public class RestaurantRecommendAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		RestaurantDAO r_dao = new RestaurantDAO();
+		ActionForward forward = new ActionForward();
 		RestaurantBean r_bean;
 		
 		//�����ؾ���
 		List<RestaurantBean> restaurantBeanList = r_dao.getPopularList();
-		List<RestaurantBean> popularList = new List<>();
+		ArrayList<RestaurantBean> popularList = new ArrayList<>();
 		int popularListLength = restaurantBeanList.size();
 		
 		
@@ -35,11 +37,12 @@ public class RestaurantRecommendAction implements Action {
 				popularList.add(r_bean);
 			}
 		}
-		
-		
-	
-		
-		
-		return null;
+		if(popularList!=null) {
+			request.setAttribute("popularList",popularList);
+			forward.setPath(request.getContextPath()+"/app/index.jsp");
+			
+		}
+		forward.setRedirect(true);
+		return forward;
 	}
 }
