@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
-<title>리뷰 페이지</title>
+<title>리뷰 쓰기 페이지</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,63 +12,66 @@
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
 	rel="stylesheet">
 
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../css/animate.css">
 
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="../css/aos.css">
 
-<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="../css/ionicons.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/flaticon.css">
+<link rel="stylesheet" href="../css/icomoon.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
+<section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('../images/main.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          
+            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">리뷰 쓰기 페이지</p>
+
+        </div>
+      </div>
+    </section>
 <body>
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">Uptown</a>
+			<a class="navbar-brand" href="../index.jsp">ABO plate</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-	      
+			 <div class="collapse navbar-collapse" id="ftco-nav">
+
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="login.html" class="nav-link">로그인</a></li>
-	          <li class="nav-item"><a href="signup.html" class="nav-link">회원가입</a></li>
-	          <li class="nav-item"><a href="event.html" class="nav-link">이벤트</a></li>
+	          <li class="nav-item"><p class="nav-p">***님</p></li>
+	          <li class="nav-item"><p class="nav-p">★ 포인트</p></li>
+	          <li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
+	          <li class="nav-item"><a href="../index.jsp" class="nav-link">로그아웃</a></li>
+	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
+	          <li class="nav-item"><a href="../member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
 	          <li class="nav-item"><a href="javascript:goDetail('테스트');" class="nav-link">최근 본 맛집</a></li>
+	          
 	        </ul>
 	      </div>
 		</div>
 	</nav>
 	<!-- END nav -->
 
-	<section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/main.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          
-            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">리뷰페이지</p>
-
-        </div>
-      </div>
-    </section>
-
-	<div id="mask"></div>
+    <div id="mask"></div>
 		    <!--Popup Start -->
 		    <div id="layerbox" class="layerpop" style="width:700px; height:500px;">
 		        <article class="layerpop_area">
@@ -76,7 +81,7 @@
 					          <div class="col-md-4 d-flex ftco-animate">
 					          	<div class="blog-entry justify-content-end">
 					              <div class="text">
-					                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_1.jpg');">
+					                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_1.jpg');">
 						              </a>
 						              <p>맛있어보이는 돈까스!</p>
 					                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -86,7 +91,7 @@
 					          <div class="col-md-4 d-flex ftco-animate">
 					          	<div class="blog-entry justify-content-end">
 					              <div class="text">
-					                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_2.jpg');">
+					                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_2.jpg');">
 						              </a>
 						              <p>맛있어보이는 냉면!</p>
 					                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -96,7 +101,7 @@
 					          <div class="col-md-4 d-flex ftco-animate">
 					          	<div class="blog-entry justify-content-end">
 					              <div class="text">
-					                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_3.jpg');">
+					                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_3.jpg');">
 						              </a>
 						              <p>맛있어보이는 아이스크림!</p>
 					                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
@@ -141,7 +146,7 @@
 								<form action="#" class="bg-light p-5 contact-form ">
 									<div class="form-group">
 										<div>
-											<h8>이 가게의 별점</h8>
+											<h8>별점을 표시해주세요</h8>
 											<br>
 											<p class="star_rating">
 												<!-- a태그는 별점 jquery 적용해야함 -->
@@ -152,7 +157,7 @@
 									</div>
 
 									<div class="form-group">
-										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용" readonly></textarea>
+										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="000님 리뷰를 작성해주세요"></textarea>
 									</div>
 
 									<!-- 사진 올리기 용 -->
@@ -169,7 +174,7 @@
 													<div class="testimony-wrap py-4">
 														<div class="d-flex align-items-center">
 															<div class="text">
-																<p class="mb-4">사진부분1</p>
+																<p class="mb-4">파일추가1</p>
 																<div class="pl-3"></div>
 															</div>
 														</div>
@@ -178,7 +183,7 @@
 												<div class="item">
 													<div class="testimony-wrap py-4">
 														<div class="text">
-															<p class="mb-4 ">사진부분2</p>
+															<p class="mb-4 ">파일추가2</p>
 															<div class="d-flex align-items-center">
 																<div class="pl-3"></div>
 															</div>
@@ -189,7 +194,7 @@
 												<div class="item">
 													<div class="testimony-wrap py-4">
 														<div class="text">
-															<p class="mb-4 ">사진부분3</p>
+															<p class="mb-4 ">파일추가3</p>
 															<div class="d-flex align-items-center">
 																<div class="pl-3"></div>
 															</div>
@@ -199,7 +204,7 @@
 												<div class="item">
 													<div class="testimony-wrap py-4">
 														<div class="text">
-															<p class="mb-4 ">사진부분4</p>
+															<p class="mb-4 ">파일추가4</p>
 															<div class="d-flex align-items-center">
 																<div class="pl-3"></div>
 															</div>
@@ -209,7 +214,7 @@
 												<div class="item">
 													<div class="testimony-wrap py-4">
 														<div class="text">
-															<p class="mb-4 ">사진부분5</p>
+															<p class="mb-4 ">파일추가5</p>
 															<div class="d-flex align-items-center">
 																<div class="pl-3"></div>
 															</div>
@@ -218,6 +223,10 @@
 												</div>
 											</div>
 										</div>
+									</div>
+									<div class="form-group text-right">
+										<input type="submit" value="작성" class="btn btn-primary py-2 px-3">
+										<input type="submit" value="취소" class="btn btn-primary py-2 px-3">
 									</div>
 									<!-- form 태그 끝  -->
 								</form>
@@ -247,7 +256,7 @@
             <div class="ftco-footer-widget mb-4 ml-md-4">
               <h2 class="ftco-heading-2">Community</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search Properties</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search storeInfoBefore</a></li>
                 <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For Agents</a></li>
                 <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
                 <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>FAQs</a></li>
@@ -319,24 +328,24 @@
 	</div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.stellar.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/aos.js"></script>
+	<script src="../js/jquery.animateNumber.min.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/jquery.timepicker.min.js"></script>
+	<script src="../js/scrollax.min.js"></script>
+	<script src="../js/google-map.js"></script>
+	<script src="../js/main.js"></script>
 	
-	<script src="js/popup.js"></script>
+	<script src="../js/popup.js"></script>
   	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
  	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 

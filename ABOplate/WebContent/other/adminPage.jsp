@@ -1,33 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
 <title>관리자 페이지</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+<link rel="stylesheet" href="../css/animate.css">
 
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
+<link rel="stylesheet" href="../css/owl.carousel.min.css">
+<link rel="stylesheet" href="../css/owl.theme.default.min.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
 
-<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="../css/aos.css">
 
-<link rel="stylesheet" href="css/ionicons.min.css">
+<link rel="stylesheet" href="../css/ionicons.min.css">
 
-<link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="css/jquery.timepicker.css">
+<link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="../css/jquery.timepicker.css">
 
 
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/flaticon.css">
+<link rel="stylesheet" href="../css/icomoon.css">
+<link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
@@ -35,7 +35,7 @@
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="adminPage.html">ABO PLATE</a>
+			<a class="navbar-brand" href="../index.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -46,14 +46,14 @@
 
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><p class="nav-p">관리자님</p></li>
-					<li class="nav-item"><a href="agent.html" class="nav-link">로그아웃</a></li>
+					<li class="nav-item"><a href="../index.jsp" class="nav-link">로그아웃</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- END nav -->
 	
-	  <section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/main.jpg');" data-stellar-background-ratio="0.5">
+	  <section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('../images/main.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -63,28 +63,6 @@
         </div>
       </div>
     </section>
-
-	<!-- <div class="hero-wrap ftco-degree-bg"
-		style="background-image: url('images/main.jpg');"
-		data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div
-				class="row no-gutters slider-text justify-content-center align-items-center">
-				<div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-end"
-					style="margin: 0 auto;">
-					<div style="margin: 0 auto;">
-						<p style="font-size: 18px; visibility: hidden;">A small river
-							named Duden flows by their place and supplies it with the
-							necessary regelialia.</p>
-
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div> -->
-
 
 	<div class="container">
 		<div class="row">
@@ -117,12 +95,12 @@
 							<div class="col-md-3" style="background-color: #ffcd3c !important;">
 								<div class="agent">
 									<div class="img">
-										<img style="height: 200px; width: 100%;" src="images/1.jpg"
+										<img style="height: 200px; width: 100%;" src="../images/1.jpg"
 											class="img-fluid" alt="Colorlib Template">
 									</div>
 									<div class="desc">
 										<h3>
-											<a href="properties.html">음식점 이름</a>
+											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
 										</h3>
 										<p class="h-info">
 											<span class="location">위치</span> 
@@ -140,12 +118,12 @@
 							<div class="col-md-3" style="background-color: #ffcd3c !important;">
 								<div class="agent">
 									<div class="img">
-										<img style="height: 200px; width: 100%;" src="images/2.jpg"
+										<img style="height: 200px; width: 100%;" src="../images/2.jpg"
 											class="img-fluid" alt="Colorlib Template">
 									</div>
 									<div class="desc">
 										<h3>
-											<a href="properties.html">음식점 이름</a>
+											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
 										</h3>
 										<p class="h-info">
 											<span class="location">위치</span> 
@@ -163,12 +141,12 @@
 							<div class="col-md-3" style="background-color: #ffcd3c !important;">
 								<div class="agent">
 									<div class="img">
-										<img style="height: 200px; width: 100%;" src="images/3.jpg"
+										<img style="height: 200px; width: 100%;" src="../images/3.jpg"
 											class="img-fluid" alt="Colorlib Template">
 									</div>
 									<div class="desc">
 										<h3>
-											<a href="properties.html">음식점 이름</a>
+											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
 										</h3>
 										<p class="h-info">
 											<span class="location">위치</span> 
@@ -186,12 +164,12 @@
 							<div class="col-md-3" style="background-color: #ffcd3c !important;">
 								<div class="agent">
 									<div class="img">
-										<img style="height: 200px; width: 100%;" src="images/4.jpg"
+										<img style="height: 200px; width: 100%;" src="../images/4.jpg"
 											class="img-fluid" alt="Colorlib Template">
 									</div>
 									<div class="desc">
 										<h3>
-											<a href="properties.html">음식점 이름</a>
+											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
 										</h3>
 										<p class="h-info">
 											<span class="location">위치</span> 
@@ -209,12 +187,12 @@
 							<div class="col-md-3" style="background-color: #ffcd3c !important;">
 								<div class="agent">
 									<div class="img">
-										<img style="height: 200px; width: 100%;" src="images/5.jpg"
+										<img style="height: 200px; width: 100%;" src="../images/5.jpg"
 											class="img-fluid" alt="Colorlib Template">
 									</div>
 									<div class="desc">
 										<h3>
-											<a href="properties.html">음식점 이름</a>
+											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
 										</h3>
 										<p class="h-info">
 											<span class="location">위치</span> 
@@ -273,7 +251,7 @@
 						<h2 class="ftco-heading-2">Community</h2>
 						<ul class="list-unstyled">
 							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search
-									Properties</a></li>
+									storeInfoBefore</a></li>
 							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For
 									Agents</a></li>
 							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
@@ -352,33 +330,23 @@
 	</div>
 
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="../js/popper.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/jquery.easing.1.3.js"></script>
+	<script src="../js/jquery.waypoints.min.js"></script>
+	<script src="../js/jquery.stellar.min.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/jquery.magnific-popup.min.js"></script>
+	<script src="../js/aos.js"></script>
+	<script src="../js/jquery.animateNumber.min.js"></script>
+	<script src="../js/bootstrap-datepicker.js"></script>
+	<script src="../js/jquery.timepicker.min.js"></script>
+	<script src="../js/scrollax.min.js"></script>
 	<script
 		src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
-	<script src="js/google-map.js"></script>
-	<script src="js/main.js"></script>
-
-	<script>
-		function change() {
-			var obj = document.querySelectorAll(".num");
-			obj.forEach(function(element) {
-				element.style.borderColor = 'red';
-			});
-		}
-	</script>
-
+	<script src="../js/google-map.js"></script>
+	<script src="../js/main.js"></script>
 </body>
 </html>

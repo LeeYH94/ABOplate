@@ -1,70 +1,99 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
-    <title>이벤트 페이지</title>
+    <title>즐겨찾기</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="../css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
     
-	  <nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="main_1.html">ABO PLATE</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="oi oi-menu"></span> Menu
-			</button>
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="main2.jsp">ABO PLATE</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
-
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="login.html" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="signup.html" class="nav-link">회원가입</a></li>
-					<li class="nav-item"><a href="event.html" class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="javascript:goDetail('테스트');"
-						class="nav-link">최근 본 맛집</a></li>
+	      <div class="collapse navbar-collapse dropmenu" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto" id="dm_ul">
+	          <li class="nav-item"><p class="nav-p">***님</p></li>
+	          <li class="nav-item"><p class="nav-p">포인트</p></li>
+	          <li class="nav-item"><a href="mypage.jsp" class="nav-link">마이페이지</a></li>
+	          <li class="nav-item"><a href="../index.jsp" class="nav-link">로그아웃</a></li>
+	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
+	          <li class="nav-item"><a href="favorites.jsp" class="nav-link">즐겨찾기</a></li>
+	          <li class="nav-item"><a class="nav-link">최근본 맛집</a>
+						<ul>
+			            <li>
+			            	<div class="d-flex">
+			            		<a href="storeInfoBefore.jsp">
+			            			<img src="../images/image_1.jpg" style="width:100px;"></img>aaaa
+			            		</a>
+			            	</div>
+			            </li>
+			            <li>
+			            	<div class="d-flex">
+			            		<a href="storeInfoBefore.jsp">
+			            			<img src="../images/image_2.jpg" style="width:100px;"></img>bbbb
+			            		</a>
+			            	</div>
+			            </li>
+			            <li>
+			            	<div class="d-flex">
+			            		<a href="storeInfoBefore.jsp">
+			            			<img src="../images/image_3.jpg" style="width:100px;"></img>cccc
+			            		</a>
+			            	</div>
+			            </li>
+			            <li>
+			            	<div class="d-flex">
+			            		<a href="storeInfoBefore.jsp">
+			            			<img src="../images/image_4.jpg" style="width:100px;"></img>dddd
+			            		</a>
+			            	</div>
+			            </li>
+			          </ul>
+					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
     <!-- END nav -->
     
-	<section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('images/main.jpg');" data-stellar-background-ratio="0.5">
+  <section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('../images/main.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           
-            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">이벤트</p>
+            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">즐겨찾기</p>
 
         </div>
       </div>
     </section>
-    
-	<section class="ftco-section">
+
+		<section class="ftco-section">
       <div class="container">
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
@@ -74,10 +103,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_1.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_1.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>이벤트 1</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
               </div>
             </div>
           </div>
@@ -88,10 +117,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_2.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_2.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 9</a></div>
               </div>
             </div>
           </div>
@@ -102,10 +131,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_3.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_3.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 15</a></div>
               </div>
             </div>
           </div>
@@ -116,10 +145,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_4.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_4.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 23</a></div>
               </div>
             </div>
           </div>
@@ -131,10 +160,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_5.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_5.jpg');">
 	              </a>
-	             <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 1</a></div>
               </div>
             </div>
           </div>
@@ -145,10 +174,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_6.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_6.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
               </div>
             </div>
           </div>
@@ -159,10 +188,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_7.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_7.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 5</a></div>
               </div>
             </div>
           </div>
@@ -173,10 +202,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_8.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_8.jpg');">
 	              </a>
-	             <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 10</a></div>
               </div>
             </div>
           </div>
@@ -187,10 +216,10 @@
                 <div class="meta mb-3">
                   <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_1.jpg');">
+                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_1.jpg');">
 	              </a>
-	             <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <p>사진 설명</p>
+                  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 1</a></div>
               </div>
             </div>
           </div>
@@ -231,7 +260,7 @@
             <div class="ftco-footer-widget mb-4 ml-md-4">
               <h2 class="ftco-heading-2">Community</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search Properties</a></li>
+                <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search storeInfoBefore</a></li>
                 <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For Agents</a></li>
                 <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
                 <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>FAQs</a></li>
@@ -289,23 +318,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/jquery.waypoints.min.js"></script>
+  <script src="../js/jquery.stellar.min.js"></script>
+  <script src="../js/owl.carousel.min.js"></script>
+  <script src="../js/jquery.magnific-popup.min.js"></script>
+  <script src="../js/aos.js"></script>
+  <script src="../js/jquery.animateNumber.min.js"></script>
+  <script src="../js/bootstrap-datepicker.js"></script>
+  <script src="../js/jquery.timepicker.min.js"></script>
+  <script src="../js/scrollax.min.js"></script>
+  <script src="../https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+  <script src="../js/google-map.js"></script>
+  <script src="../js/main.js"></script>
     
   </body>
 </html>

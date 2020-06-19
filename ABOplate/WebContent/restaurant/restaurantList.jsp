@@ -1,30 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
   <head>
-    <title>Uptown - Free Bootstrap 4 Template by Colorlib</title>
+    <title>리스트 페이지</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
     
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="../css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="../css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
     
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -36,31 +38,16 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="agent.html" class="nav-link">Agent</a></li>
-	          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item active"><a href="properties.html" class="nav-link">Properties</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
+	          <li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
+	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
+	          <li class="nav-item"><a href="javascript:goDetail('테스트');" class="nav-link">최근 본 맛집</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
     
-    <!-- <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="height:300px;" data-stellar-background-ratio="0.5">
-    style="background-image: url('images/bg_1.jpg');"윗부분에서 삭제
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate pb-5 text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Properties <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-3 bread">Choose <br>Your Desired Home</h1>
-          </div>
-        </div>
-      </div>
-    </section> -->
 		<!-- 여기가 시작 -->
 		<section class="ftco-section">
     	<div class="container" style="margin-left:0;">
@@ -82,7 +69,7 @@
         <div class="row" id="sort">
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-1.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-1.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -100,7 +87,7 @@
         	</div>
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-2.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-2.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -118,62 +105,7 @@
         	</div>
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-3.jpg);"></a>
-        			<div class="text">
-        				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
-        				<ul class="property_list">
-        					<li><span class="flaticon-bed"></span>3</li>
-        					<li><span class="flaticon-bathtub"></span>2</li>
-        					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
-        				</ul>
-        				<h3><a href="properties-single.html">The Blue Sky Home</a></h3>
-        				<span class="location">Oakland</span>
-        				<a href="properties-single.html" class="d-flex align-items-center justify-content-center btn-custom">
-        					<span class="ion-ios-link"></span>
-        				</a>
-        			</div>
-        		</div>
-        	</div>
-
-        	<div class="col-md-6">
-        		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-4.jpg);"></a>
-        			<div class="text">
-        				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
-        				<ul class="property_list">
-        					<li><span class="flaticon-bed"></span>3</li>
-        					<li><span class="flaticon-bathtub"></span>2</li>
-        					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
-        				</ul>
-        				<h3><a href="properties-single.html">The Blue Sky Home</a></h3>
-        				<span class="location">Oakland</span>
-        				<a href="properties-single.html" class="d-flex align-items-center justify-content-center btn-custom">
-        					<span class="ion-ios-link"></span>
-        				</a>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-6">
-        		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-5.jpg);"></a>
-        			<div class="text">
-        				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
-        				<ul class="property_list">
-        					<li><span class="flaticon-bed"></span>3</li>
-        					<li><span class="flaticon-bathtub"></span>2</li>
-        					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
-        				</ul>
-        				<h3><a href="properties-single.html">The Blue Sky Home</a></h3>
-        				<span class="location">Oakland</span>
-        				<a href="properties-single.html" class="d-flex align-items-center justify-content-center btn-custom">
-        					<span class="ion-ios-link"></span>
-        				</a>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-md-6">
-        		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-6.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-3.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -192,7 +124,7 @@
 
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-4.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-4.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -210,7 +142,7 @@
         	</div>
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-5.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-5.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -228,7 +160,26 @@
         	</div>
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-6.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-6.jpg);"></a>
+        			<div class="text">
+        				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
+        				<ul class="property_list">
+        					<li><span class="flaticon-bed"></span>3</li>
+        					<li><span class="flaticon-bathtub"></span>2</li>
+        					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
+        				</ul>
+        				<h3><a href="properties-single.html">The Blue Sky Home</a></h3>
+        				<span class="location">Oakland</span>
+        				<a href="properties-single.html" class="d-flex align-items-center justify-content-center btn-custom">
+        					<span class="ion-ios-link"></span>
+        				</a>
+        			</div>
+        		</div>
+        	</div>
+
+        	<div class="col-md-6">
+        		<div class="property-wrap ftco-animate">
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-4.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -246,7 +197,43 @@
         	</div>
         	<div class="col-md-6">
         		<div class="property-wrap ftco-animate">
-        			<a href="properties-single.html" class="img" style="background-image: url(images/work-1.jpg);"></a>
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-5.jpg);"></a>
+        			<div class="text">
+        				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
+        				<ul class="property_list">
+        					<li><span class="flaticon-bed"></span>3</li>
+        					<li><span class="flaticon-bathtub"></span>2</li>
+        					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
+        				</ul>
+        				<h3><a href="properties-single.html">The Blue Sky Home</a></h3>
+        				<span class="location">Oakland</span>
+        				<a href="properties-single.html" class="d-flex align-items-center justify-content-center btn-custom">
+        					<span class="ion-ios-link"></span>
+        				</a>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="col-md-6">
+        		<div class="property-wrap ftco-animate">
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-6.jpg);"></a>
+        			<div class="text">
+        				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
+        				<ul class="property_list">
+        					<li><span class="flaticon-bed"></span>3</li>
+        					<li><span class="flaticon-bathtub"></span>2</li>
+        					<li><span class="flaticon-floor-plan"></span>1,878 sqft</li>
+        				</ul>
+        				<h3><a href="properties-single.html">The Blue Sky Home</a></h3>
+        				<span class="location">Oakland</span>
+        				<a href="properties-single.html" class="d-flex align-items-center justify-content-center btn-custom">
+        					<span class="ion-ios-link"></span>
+        				</a>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="col-md-6">
+        		<div class="property-wrap ftco-animate">
+        			<a href="properties-single.html" class="img" style="background-image: url(../images/work-1.jpg);"></a>
         			<div class="text">
         				<p class="price"><span class="old-price">800,000</span><span class="orig-price">$3,050<small>/mo</small></span></p>
         				<ul class="property_list">
@@ -358,23 +345,23 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/jquery.waypoints.min.js"></script>
+  <script src="../js/jquery.stellar.min.js"></script>
+  <script src="../js/owl.carousel.min.js"></script>
+  <script src="../js/jquery.magnific-popup.min.js"></script>
+  <script src="../js/aos.js"></script>
+  <script src="../js/jquery.animateNumber.min.js"></script>
+  <script src="../js/bootstrap-datepicker.js"></script>
+  <script src="../js/jquery.timepicker.min.js"></script>
+  <script src="../js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjRI247mxL30iZ8ytsKdCcQYo5c0AafFU&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+  <script src="../js/google-map.js"></script>
+  <script src="../js/main.js"></script>
   
   </body>
 </html>

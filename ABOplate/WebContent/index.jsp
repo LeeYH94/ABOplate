@@ -1,14 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kor">
 <head>
-<title>ABO_main1</title>
+<title>메인페이지</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
@@ -33,21 +33,59 @@
 
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="index.html">ABO PLATE</a>
+			<a class="navbar-brand" href="index.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
 
-			<div class="collapse navbar-collapse" id="ftco-nav">
+			<div class="collapse navbar-collapse dropmenu" id="ftco-nav">
 
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="login.html" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="signup.html" class="nav-link">회원가입</a></li>
-					<li class="nav-item"><a href="event.html" class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="javascript:goDetail();"
-						class="nav-link">최근 본 맛집</a></li>
+				<ul class="navbar-nav ml-auto" id="dm_ul">
+					<li class="nav-item"><a href="member/login.jsp" class="nav-link">로그인</a></li>
+					<li class="nav-item"><a href="member/signup.jsp" class="nav-link">회원가입</a></li>
+					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
+					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
+						<ul>
+			            <li>
+			            	<div class="flavor">
+				            	<div class="d-flex">
+				            		<a href="restaurant/storeInfoBefore.jsp">
+				            			<img src="images/image_1.jpg" style="width:100px;"></img>aaaa
+				            		</a>
+				            	</div>
+				            </div>
+			            </li>
+			            <li>
+			            	<div class="flavor">
+				            	<div class="d-flex">
+				            		<a href="restaurant/storeInfoBefore.jsp">
+				            			<img src="images/image_2.jpg" style="width:100px;"></img>bbbb
+				            		</a>
+				            	</div>
+				            </div>
+			            </li>
+			            <li>
+			            	<div class="flavor">
+				            	<div class="d-flex">
+				            		<a href="restaurant/storeInfoBefore.jsp">
+				            			<img src="images/image_3.jpg" style="width:100px;"></img>cccc
+				            		</a>
+				            	</div>
+				            </div>
+			            </li>
+			            <li>
+			            	<div class="flavor">
+				            	<div class="d-flex">
+				            		<a href="restaurant/storeInfoBefore.jsp">
+				            			<img src="images/image_4.jpg" style="width:100px;"></img>dddd
+				            		</a>
+				            	</div>
+				            </div>
+			            </li>
+			          </ul>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -107,7 +145,6 @@
 						</form>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</section>
@@ -117,9 +154,9 @@
 	<div id="mask"></div>
 	<!--Popup Start -->
 	<div class="container">
-		<div id="layerbox" class="layerpop" style="height: 300px;">
+		<div id="layerbox" class="layerpop" style="height: 300px; border-radius:5% !important;">
 			<article class="layerpop_area">
-				<div class="title" style="color:red;">경고 회원가입 금지</div>
+				<div class="title" style="color:red; border-radius:15% 15% 0% 0% !important;">경고 회원가입 금지</div>
 				<a href="javascript:popupClose();" class="layerpop_close"
 					id="layerbox_close">X</a><br>
 					<div class="content">
@@ -165,11 +202,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="location">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -182,11 +219,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="location">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -199,11 +236,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="location">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -216,11 +253,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="position">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -234,11 +271,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="location">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -251,11 +288,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="location">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -268,11 +305,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="location">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -285,11 +322,11 @@
 											</div>
 											<div class="desc">
 												<h3>
-													<a href="properties.html">James Stallon</a>
+													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
 												</h3>
 												<p class="h-info">
 													<span class="position">Listing</span> <span class="details">—
-														10 Properties</span>
+														10 restaurant</span>
 												</p>
 											</div>
 										</div>
@@ -304,8 +341,8 @@
 									<div style="margin: 0 auto;">
 										<h5 style="text-align:center;">로그인(회원가입)을 하시면 맞춤 맛집을 추천해드립니다</h5>
 										<div class="justify-content-center" style="text-align:center;">
-											<input type="button" style="margin-bottom:15px" value="로그인" class="btn btn-primary py-3" onClick="location.href='login.html'"> 
-											<input type="button" style="margin-bottom:15px" value="회원가입" 	class="btn btn-primary py-3" onClick="location.href='signup.html'">
+											<input type="button" style="margin-bottom:15px" value="로그인" class="btn btn-primary py-3" onClick="location.href='./member/login.jsp'"> 
+											<input type="button" style="margin-bottom:15px" value="회원가입" 	class="btn btn-primary py-3" onClick="location.href='./member/signup.jsp'">
 										</div>
 									</div>
 								</div>
@@ -318,16 +355,6 @@
 		</div>
 	</section>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
-
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">
@@ -351,7 +378,7 @@
 						<h2 class="ftco-heading-2">Community</h2>
 						<ul class="list-unstyled">
 							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Search
-									Properties</a></li>
+									restaurant</a></li>
 							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>For
 									Agents</a></li>
 							<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Reviews</a></li>
@@ -453,7 +480,5 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 	
-	
-
 </body>
 </html>
