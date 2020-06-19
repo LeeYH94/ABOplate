@@ -16,11 +16,11 @@
 	</insert>
 
 	<!--
-		map객체로 받아서 db에 있는지 확인 1이면 성공 0이면 실패
+		map객체로 받아서 db에 있는지 확인 map 객체 리턴
 	 -->
-	<select id="login" parameterType="map" resultType="_int">
-		SELECT COUNT(*) FROM MEMBER
-		WHERE MEMBER_ID = #{id} AND MEMBER_PW = #{pw}
+	<select id="login" parameterType="map" resultType="map">
+		SELECT member_id, member_type FROM MEMBER
+		WHERE member_id = #{id} AND member_password = #{pw}
 	</select>
 
 	<!--
