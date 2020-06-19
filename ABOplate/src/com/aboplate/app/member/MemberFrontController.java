@@ -34,7 +34,7 @@ public class MemberFrontController extends HttpServlet {
 		if (command.equals("/member/MemberJoin.me")) {
 			forward=new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/member/sigup.jsp");
+			forward.setPath("/member/signup.jsp");
 		} else if (command.equals("/member/MemberJoinOk.me")) {
 			action=new MemberJoinOkAction();
 			try {

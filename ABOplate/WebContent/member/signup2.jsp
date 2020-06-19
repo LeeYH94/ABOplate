@@ -133,7 +133,7 @@
 					</div>
                   </div>
                   <div class="form-group justify-content-center">
-                  	<input type="submit" style="width:100%;" value="가입" onclick="location.href='signup3.jsp'" class="btn py-3 btn-primary">
+                  	<input type="button" style="width:100%;" value="가입" onclick="javascript:formSubmit()" class="btn py-3 btn-primary">
                   </div>
                 </form>
                 
