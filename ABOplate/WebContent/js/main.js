@@ -318,8 +318,4 @@
 })(jQuery);
 
 
-//dropdown
-$(".dropmenu ul li").hover(function(){
-    $(this).find("ul").stop().fadeToggle(300);
-  });
 
