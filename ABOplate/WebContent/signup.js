@@ -7,6 +7,7 @@ var check = false;
 function formSubmit() {
 	var form = document.signupForm;
 	
+	
 	if ('' == form.memberId.value || !check) {
 		alert('아이디를 확인해주세요.');
 		form.memberId.focus();
@@ -16,12 +17,12 @@ function formSubmit() {
 		alert('이름을 입력해주세요.');
 		form.memberName.focus();
 		return false;
-	} else if ('' == form.memberEmail.value||!check) {
+	} else if ('' == form.memberEmail.value) {
 		alert('이메일을 입력해주세요.');	
 				 form.memberEmail.focus();
 		return false;
  
-	} else if ('' == form.meberPassword.value) {
+	} else if ('' == form.memberPassword.value) {
 		alert('비빌번호');
 		 form.meberPassword.focus();
 		return false;
@@ -30,7 +31,7 @@ function formSubmit() {
 		form.memberRePassword.focus();
 		return false;
 
-	} else if ('' == form.meberNickname.value) {
+	} else if ('' == form.meberNickname.value|| !check) {
 		alert('닉네임을 입력해주세요.');
 		form.meberNickname.focus();
 		return false;
@@ -54,12 +55,13 @@ function formSubmit() {
 	}
 
 	
-		
+}	
 	
 function checkid(id) {
 	check = false;
 	if (id == "") {
-		$("#idCheck_text").text("아이디를 작성해주세요.");
+		$("#idheck_text").text("아이디를 작성해주세요.");
+		$("#nicknameCheck_text").text("nickname 작성해주세요.");
 	} else {
 		$.ajax({
 			url : contextPath + "/member/MemberCheckIdOk.me?id=" + id,
@@ -70,9 +72,11 @@ function checkid(id) {
 				
 				if (data.trim() == 'ok') {
 					$("#idCheckText").text("사용할 수 있는 아이디입니다.");
-					check = true;
+					idCheck = true;
+				
 				} else {
 					$("#idCheckText").text("중복된 아이디입니다.");
+					
 				}
 			},
 			error : function() {
@@ -86,43 +90,7 @@ function checkid(id) {
 $("input[name='memberId']").focusout(function(event) {
 	var id = $("input[name='memberId']").val();
 	checkid(id);
+	
 })
 
 
-}
-
-
-
-
-
-//function checkemail(email) {
-//	check = false;
-//	if (email == "") {
-//		$("#emailCheck_text").text("이메일 작성해주세요.");
-//	} else {
-//		$.ajax({
-//			url : contextPath + "/member/MemberCheckEmailOk.me?email=" + email,
-//			
-//			type : 'get',
-//			dataType : 'text',
-//			success : function(data) {
-//				
-//				if (data.trim() == 'ok') {
-//					$("#emailCheckText").text("사용할 수 있는 이메일입니다.");
-//					check = true;
-//				} else {
-//					$("#emailCheckText").text("중복된이메일입니다.");
-//				}
-//			},
-//			error : function() {
-//				console.log("오류");
-//			}
-//		})
-//	}
-//}
-//
-//
-//$("input[name='memberEmail']").focusout(function(event) {
-//	var id = $("input[name='memberEmail']").val();
-//	checkid(id);
-//})
