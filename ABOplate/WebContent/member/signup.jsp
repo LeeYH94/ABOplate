@@ -32,34 +32,6 @@
 <body>
 
 
-<!-- 테스트 하기위함 test.js에 추가예정 -->
-<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-
-<!-- <script>
-$( document ).ready( function() {
-    $( '.check-all' ).click( function() {
-      $( '.check' ).prop( 'checked', this.checked );
-    } );
- } );
-
-$( document ).ready( function() {
-	$('.check').click( function() {
-		if(("input[name='check']:checked").length == 2){
-		 $('.check-all').prop('checked', this.checked);
-	 	}else{
-		 $('.check-all').prop('checked',this.checked);
-	 }
-});
-</script> -->
-
-<script>
-      $( document ).ready( function() {
-        $( '.check-all' ).click( function() {
-          $( '.check' ).prop( 'checked', this.checked );
-        } );
-      } );     
-</script>
-
 	<section class="ftco-section contact-section">
 	      <div class="container">
 	        <div class="row block-9 justify-content-center mb-5">
@@ -178,7 +150,7 @@ $( document ).ready( function() {
 					<div class="form-group" style="margin-top:15px;">
 						<div class="d-flex justify-content-center">
 							<input type="button" value="취소" style="margin-right:5px;"onclick="location.href='../index.jsp'" class="btn btn-primary py-3 p=x-5">
-							<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+							<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
 						</div>
 	              </div>
 			</div>
@@ -207,4 +179,6 @@ $( document ).ready( function() {
 <script src="../js/jquery.timepicker.min.js"></script>
 <script src="../js/scrollax.min.js"></script>
 <script src="../js/main.js"></script>
+<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/member/memberJs/test.js"></script>
 </html>
