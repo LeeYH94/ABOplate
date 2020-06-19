@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> --%>
 <!DOCTYPE html>
 <html lang="kor">
   <head>
@@ -27,14 +28,20 @@
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
   </head>
+  
   <body>
-
+  		<c:if test="${not empty param.login}">
+			<c:if test="${not param.login}">
+			<!-- 로그인 실패시에만 alert창 실행 -->
+				<script>alert("아이디 또는 비밀번호를 다시 확인해주세요.");</script>
+			</c:if>
+		</c:if>
 	<section class="ftco-section contact-section">
       <div class="container">
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-8 mb-md-5">
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
-            <form action="#" class="bg-light p-5 contact-form">
+            <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLoginOk.me" method="post" class="bg-light p-5 contact-form">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="ID">
               </div>
@@ -43,7 +50,7 @@
               </div>
               <div class="form-group">
               <div class="d-flex justify-content-center">
-              	<input  type="submit" value="로그인" class="btn btn-primary py-3 p=x-5">
+              	<input type="submit" value="로그인" class="btn btn-primary py-3 p=x-5">
               </div>
               </div>
               <div class="form-group">
