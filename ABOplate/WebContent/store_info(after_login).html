@@ -109,7 +109,7 @@
     	<div>
     		<div class="row justify-content-start mb-5">
     		
-          <div id="map"></div>
+					<!-- <div id="map"></div> -->
           <div class="col-md-6  heading-section heading-section-white ftco-animate">
           	<h1>사보텐 </h1><br>
           	<h3>강남 파이낸스센터점</h3>
@@ -186,12 +186,12 @@
 					</div>
 
 					<!-- 지도 영역 -->
-					<div class="overlay01" id="line04"></div>
+					<div class="kakaoMap" id="mapKakao" style="width:500px;height:400px; visibility: visible; "></div>
 				</div>
 		     
     		
-    		</div>
-    		</div>
+    	</div>
+    </div>
     		
     	<!-- 리뷰 부분 -->	
      <div class="ftco-section01  services-section" id="line02">
@@ -465,7 +465,41 @@
   <script src="js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=&sensor"></script>
   <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
-    
+	<script src="js/main.js"></script> 
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4497907ebef8e13ace97d082426f1445&libraries=services"></script>
+	<script>
+		var mapContainer = document.getElementById("mapKakao"),
+				mapOption = {
+					center : new kakao.maps.LatLng(33, 126),
+					level : 3
+				};
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+
+		var geocoder = new kakao.maps.services.Geocoder();
+
+		geocoder.addressSearch('서울 강남구 테헤란로 152 강남파이낸스센터', function(result, status) {
+
+	// 정상적으로 검색이 완료됐으면 
+	if (status === kakao.maps.services.Status.OK) {
+
+			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+			// 결과값으로 받은 위치를 마커로 표시합니다
+			var marker = new kakao.maps.Marker({
+					map: map,
+					position: coords
+			});
+
+			// 인포윈도우로 장소에 대한 설명을 표시합니다
+			var infowindow = new kakao.maps.InfoWindow({
+					content: '<div style="width:150px;text-align:center;padding:6px 0;">사보텐</div>'
+			});
+			infowindow.open(map, marker);
+
+			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			map.setCenter(coords);
+	} 
+	});  
+	</script>
   </body>
 </html>
