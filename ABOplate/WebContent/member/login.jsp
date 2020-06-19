@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- dslkfjlsk -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="kor">
   <head>
@@ -43,10 +43,10 @@
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
             <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLoginOk.me" method="post" class="bg-light p-5 contact-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="ID">
+                <input type="text" name="memberId" class="form-control" placeholder="ID">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="PW">
+                <input type="password" name="memberPassword" class="form-control" placeholder="PW">
               </div>
               <div class="form-group">
               <div class="d-flex justify-content-center">
@@ -173,7 +173,6 @@
   <script src="../js/bootstrap-datepicker.js"></script>
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
-  <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
    
    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>

@@ -49,8 +49,7 @@ function formSubmit() {
 		form.memberFavorite.style.color = "red";
 		return false;
 		
-	
-		
+
 	} else if ('' == form. memberAge.value) {
 		form. memberAge.focus();
 		form. memberAge.style.color = "red";

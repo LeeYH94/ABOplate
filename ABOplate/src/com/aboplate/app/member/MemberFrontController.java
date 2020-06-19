@@ -34,7 +34,7 @@ public class MemberFrontController extends HttpServlet {
 		if (command.equals("/member/MemberJoin.me")) {
 			forward=new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/app/member/joinForm.jsp");
+			forward.setPath("/member/sigup.jsp");
 		} else if (command.equals("/member/MemberJoinOk.me")) {
 			action=new MemberJoinOkAction();
 			try {
@@ -45,7 +45,7 @@ public class MemberFrontController extends HttpServlet {
 		} else if (command.equals("/member/MemberLogin.me")) {
 			forward=new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/app/member/loginForm.jsp");
+			forward.setPath("/member/login.jsp");
 			
 		} else if (command.equals("/member/MemberLoginOk.me")) {
 			action = new MemberLoginOkAction();
@@ -57,7 +57,7 @@ public class MemberFrontController extends HttpServlet {
 		} else {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("app/error/404.jsp");
+			forward.setPath("/error/404.jsp");
 		}
 		if(forward != null) {
 			if(forward.isRedirect()) {

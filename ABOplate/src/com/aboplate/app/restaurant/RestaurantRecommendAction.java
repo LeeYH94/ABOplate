@@ -35,10 +35,7 @@ public class RestaurantRecommendAction implements Action {
 				popularList.add(r_bean);
 			}
 		}
-		
-		
 	
-		
 		
 		return null;
 	}
