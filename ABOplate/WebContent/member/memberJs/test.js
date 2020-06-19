@@ -61,21 +61,23 @@ function formSubmit() {
 		form. memberRegion.style.color = "red";
 		return false;
 
-		form.submit();
+	}else if(form.memberPassword.value!=form.memberRePassword.value){
+		form.memberRePassword.focus();
+		form.memberRePassword.style.borderColor="red";
+		return false;
 	}
-
-	
+	//form.submit();	
 }	
 
 	
 function checkid(id) {
-	check = false;
+	idCheck = false;
 	if (id == "") {
 		$("#idCheckText").text("아이디를 작성해주세요.");
 		
 	} else {
 		$.ajax({
-			url : contextPath + "/member/MemverCheckIdOkAction.me?id=" + id,
+			url : contextPath + "/member/MemberCheckIdOk.me?id=" + id,
 			
 			type : 'get',
 			dataType : 'text',
@@ -96,20 +98,26 @@ function checkid(id) {
 		})
 	}
 }
-
-
 $("input[name='memberId']").focusout(function(event) {
 	var id = $("input[name='memberId']").val();
 	checkid(id);
 	
 })
-
+/*인증번호 받기를 누를때 checkemail해주기*/
+//function checkEmail(email){
+//	check=false;
+//	if(form.memberEmail.value.search('@') == -1){
+//		$("#emailCheckText").text("email을 다시 써주세요");
+//	}else{
+//		$()
+//	}
+//}
 
 function checknickname(nickname) {
-	check = false;
+	nicknameCheck = false;
 	if (nickname == "") {
 		
-		$("#nicknameCheck_text").p("nickname 작성해주세요.");
+		$("#nicknameCheckText").text("nickname을 작성해주세요.");
 	} else {
 		$.ajax({
 			url : contextPath + "/member/nicknameChecknicknameOk.me?nickname=" + nickname,
@@ -119,11 +127,11 @@ function checknickname(nickname) {
 			success : function(data) {
 				
 				if (data.trim() == 'ok') {
-					$("#nicknameCheckText").p("사용할 수 있는 아이디입니다.");
+					$("#nicknameCheckText").text("사용할 수 있는 아이디입니다.");
 					nicknameCheck = true;
 				
 				} else {
-					$("#nicknameCheckText").p("중복된 아이디입니다.");
+					$("#nicknameCheckText").text("중복된 아이디입니다.");
 					
 				}
 			},
@@ -133,19 +141,7 @@ function checknickname(nickname) {
 		})
 	}
 }
-
-$("input[name='memberId']").focusout(function(event) {
-	var id = $("input[name='memberId']").val();
-	checkid(id);
-})
-
-
-
-
 $("input[name='memberNickname']").focusout(function(event) {
-	var nickname = $("input[name='membernickname']").val();
+	var nickname = $("input[name='memberNickname']").val();
 	checknickname(nickname);
-	
 })
-
-
