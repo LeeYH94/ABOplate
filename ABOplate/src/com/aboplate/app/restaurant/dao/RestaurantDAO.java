@@ -62,7 +62,7 @@ public class RestaurantDAO {
 		
 		HashMap<String, Object> datas = new HashMap<>();
 		MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
-		
+		 
 		datas.put("category", memberBean.getMember_preference_food());
 		datas.put("region", memberBean.getMember_region());
 		datas.put("age_group", memberBean.getMember_age_group());
@@ -78,7 +78,25 @@ public class RestaurantDAO {
 			
 		return popularList;
 	}
+	
+	public List<RestaurantBean> search(String keyField, String keyWord) {
 		
+		HashMap<String, String> datas = new HashMap<>();
+		datas.put("keyField", keyField);
+		datas.put("keyWord", keyWord);
+		
+		List<RestaurantBean> searchList = sqlsession.selectList("Restaurant.searchRestaurant", datas);
+		
+		return searchList;
+	}
+		
+	
+	
+	
+	
+	
+	
+	
 		
 		
 }
