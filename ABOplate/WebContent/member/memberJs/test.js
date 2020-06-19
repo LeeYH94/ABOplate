@@ -6,8 +6,7 @@ var check = false;
 
 function formSubmit() {
 	var form = document.signupForm;
-	
-	
+
 	if ('' == form.memberId.value || !check) {
 		
 		form.memberId.focus();
@@ -65,6 +64,7 @@ function formSubmit() {
 		form.memberRePassword.focus();
 		form.memberRePassword.style.borderColor="red";
 		return false;
+	
 	}
 	//form.submit();	
 }	
