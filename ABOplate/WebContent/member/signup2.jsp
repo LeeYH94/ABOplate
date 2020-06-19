@@ -37,10 +37,11 @@
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-6 mb-md-5">
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
-            <form action="#" class="p-5 bg-light">
+            <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoinOkAction.me" class="p-5 bg-light"  method="post">
             	  <div class="form-group">
                     <label for="id">아이디 *</label>
                     <input type="text" class="form-control" id="id" name="memberId">
+                    <p id="idCheckText"></p>
                   </div>
                   <div class="form-group">
                     <label for="name">이름</label>
@@ -157,4 +158,5 @@
 <script src="../js/scrollax.min.js"></script>
 <script src="../js/google-map.js"></script>
 <script src="../js/main.js"></script>
+<script src="${pageContext.request.contextPath}/member/memberJs/test.js"></script>
 </html>

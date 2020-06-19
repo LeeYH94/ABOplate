@@ -28,7 +28,7 @@ public class RestaurantSearchAction implements Action{
 		
 		if(restaurantBeanList != null) {
 			request.setAttribute("restaurantBeanList", restaurantBeanList);
-			forward.setPath("/app/restauran/restauranList.jsp");
+			forward.setPath("/app/restaurant/restaurantList.jsp");
 		}		
 		
 		forward.setRedirect(true);

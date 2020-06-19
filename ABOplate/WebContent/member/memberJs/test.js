@@ -49,7 +49,8 @@ function formSubmit() {
 		form.memberFavorite.style.color = "red";
 		return false;
 		
-
+	
+		
 	} else if ('' == form. memberAge.value) {
 		form. memberAge.focus();
 		form. memberAge.style.color = "red";
@@ -70,22 +71,22 @@ function formSubmit() {
 function checkid(id) {
 	check = false;
 	if (id == "") {
-		$("#idheck_text").p("아이디를 작성해주세요.");
+		$("#idCheckText").text("아이디를 작성해주세요.");
 		
 	} else {
 		$.ajax({
-			url : contextPath + "/member/MemberCheckIdOk.me?id=" + id,
+			url : contextPath + "/member/MemverCheckIdOkAction.me?id=" + id,
 			
 			type : 'get',
 			dataType : 'text',
 			success : function(data) {
 				
 				if (data.trim() == 'ok') {
-					$("#idCheckText").p("사용할 수 있는 아이디입니다.");
+					$("#idCheckText").text("사용할 수 있는 아이디입니다.");
 					idCheck = true;
 				
 				} else {
-					$("#idCheckText").p("중복된 아이디입니다.");
+					$("#idCheckText").text("중복된 아이디입니다.");
 					
 				}
 			},
@@ -132,6 +133,13 @@ function checknickname(nickname) {
 		})
 	}
 }
+
+$("input[name='memberId']").focusout(function(event) {
+	var id = $("input[name='memberId']").val();
+	checkid(id);
+})
+
+
 
 
 $("input[name='memberNickname']").focusout(function(event) {
