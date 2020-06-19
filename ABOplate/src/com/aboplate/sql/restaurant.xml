@@ -39,13 +39,13 @@
 		SELECT restaurant_name, restaurant_ration_total, 
 		restaurant_address, restaurant_hit FROM RESTAURANT
 		WHERE restaurant_ration_total >= 3.5
-		
 	</select>
 	
 	<select id="searchRestaurant" parameterType="map" resultType="restaurantBean">
 		SELECT restaurant_name, restaurant_ration_total,
 		restaurant_address, restaurant_hit FROM RESTAURANT
 		WHERE ${keyField} LIKE '%'||#keyWord#||'%'
+		ORDER BY restaurant_ration_total DESC
 	</select>
 	
 	
