@@ -145,3 +145,17 @@ $("input[name='memberNickname']").focusout(function(event) {
 	var nickname = $("input[name='memberNickname']").val();
 	checknickname(nickname);
 })
+
+
+$( document ).ready( function() {
+        $( '.check-all' ).click( function() {
+          $( '.check' ).prop( 'checked', this.checked );
+        } )
+      } )
+      
+      
+$( document ).ready( function() {
+        $( '.check' ).click( function() {
+          $( '.check-all' ).prop( 'checked', this.checked );
+        } )
+      } )
