@@ -16,7 +16,7 @@ public class MemberLogOutAction implements Action{
 		session.invalidate();
 		
 		forward.setRedirect(true);
-		//·Î±×¾Æ¿ôÈÄ ÀÌµ¿ÇÒ ÆäÀÌÁö ³Ö±â
+		//ë©”ì¸í˜ì´ì§€ë¡œ ì´ë™
 		return forward;
 	}
 }
