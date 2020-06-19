@@ -7,21 +7,22 @@
 		SELECT DISTINCT restaurant_name FROM RESTAURANT 
 	</select>
 	
-	<select id="getLocalCurrencyList" resultType="string">
-		SELECT DISTINCT restaurant_name FROM RESTAURANT 
-		WHERE restaurant_local_currency = 'O' 
-	</select>
-	
 	<select id="getFoodList" resultType="string">
 		SELECT DISTINCT restaurant_food_category FROM RESTAURANT
 	</select>
 	
-	<select id="getAddressList" resultType="string">
-		SELECT DISTINCT SUBSTR(restaurant_address, 1, INSTR(restaurant_address, ' ', 1, 1)) FROM RESTAURANT
+	<select id="getLocalCurrencyList" resultType="string">
+		SELECT DISTINCT restaurant_name FROM RESTAURANT 
+		WHERE restaurant_local_currency = 'O' 
 	</select>
-	
+
 	<select id="getBestRestaurantList" resultType="string">
 		SELECT DISTINCT restaurant_name FROM RESTAURANT WHERE restaurant_model = 'O'
+	</select>
+	
+
+	<select id="getAddressList" resultType="string">
+		SELECT DISTINCT SUBSTR(restaurant_address, 1, INSTR(restaurant_address, ' ', 1, 1)) FROM RESTAURANT
 	</select>
 	
 	<select id="getMemberChoiceRestaurantList" parameterType="map" resultType="restaurantBean">
@@ -34,11 +35,20 @@
 		ORDER BY restaurant_ration_total DESC
 	</select>
 	
-	<select id="getPopularRestaurant" resultType="restaurnatBean">
+	<select id="getPopularRestaurant" resultType="restaurantBean">
 		SELECT restaurant_name, restaurant_ration_total, 
 		restaurant_address, restaurant_hit FROM RESTAURANT
 		WHERE restaurant_ration_total >= 3.5
-		ORDER BY restaurant_ration_total DESC
+		
 	</select>
+	
+	<select id="searchRestaurant" parameterType="map" resultType="restaurantBean">
+		SELECT restaurant_name, restaurant_ration_total,
+		restaurant_address, restaurant_hit FROM RESTAURANT
+		WHERE ${keyField} LIKE '%'||#keyWord#||'%'
+	</select>
+	
+	
+
 	
 </mapper>

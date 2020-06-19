@@ -32,6 +32,7 @@ public class MemberDAO {
 		}
 		return check;
 	}
+	
 	public Map<String, String> login(String id, String pw) {
 
 		HashMap<String, String> datas = new HashMap<>();
