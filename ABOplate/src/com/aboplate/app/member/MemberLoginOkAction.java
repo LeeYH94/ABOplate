@@ -20,13 +20,14 @@ public class MemberLoginOkAction implements Action {
 		MemberDAO mDao=new MemberDAO();
 		HttpSession session=request.getSession();
 		
-		String id=request.getParameter("member_id");
-		String pw=request.getParameter("member_password");
+		String id=request.getParameter("memberId");
+		String pw=request.getParameter("memberPassword");
 		
 		Map<String, String> resultMap=mDao.login(id, pw);
+		
 		if(resultMap!=null) {
-			session.setAttribute("session_id", resultMap.get("MEMBER_ID"));
-			//
+			session.setAttribute("sessionId", resultMap.get("MEMBER_ID"));
+			
 		}else {
 			
 			forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
