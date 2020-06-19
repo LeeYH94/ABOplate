@@ -15,7 +15,7 @@ public class MemberJoinOkAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		MemberDAO m_dao=new MemberDAO();
+		MemberDAO mDao=new MemberDAO();
 		MemberBean member=new MemberBean();
 		
 		ActionForward forward=new ActionForward();
@@ -28,18 +28,18 @@ public class MemberJoinOkAction implements Action{
 		member.setMember_preference_food(request.getParameter("member_preference_food"));
 		member.setMember_region(request.getParameter("member_region"));
 		
-		check=m_dao.join(member);
+		check=mDao.join(member);
 		if(!check) {
 			PrintWriter out=response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
 			out.println("<script>");
-			out.println("alert('회占쏙옙占쏙옙占쏙옙 占쏙옙占쏙옙. 占쏙옙占� 占쏙옙 占쌕쏙옙 占시듸옙占쏙옙占쌍쇽옙占쏙옙.');");
+			out.println("alert('다시 시도해주세요.');");
 			out.println("</script>");
 			out.close();
 		}
 		
 		forward.setRedirect(true);
-		//회占쏙옙占쏙옙占쏙옙占쏙옙 占싱듸옙占쏙옙 占쏙옙占쏙옙占쏙옙 占쌍깍옙.
+		//메인페이지로 이동
 		return forward;
 	}
 }

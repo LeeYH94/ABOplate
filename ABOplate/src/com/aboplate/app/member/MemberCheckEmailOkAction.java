@@ -14,11 +14,11 @@ public class MemberCheckEmailOkAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		
-		MemberDAO memberDao = new MemberDAO();
+		MemberDAO mDao = new MemberDAO();
 		String email = request.getParameter("member_email");
 		PrintWriter out = response.getWriter();
 		
-		if(memberDao.checkEmail(email)) {
+		if(mDao.checkEmail(email)) {
 			//중복된 이메일입니다.
 			out.println("not-ok");
 		}else {

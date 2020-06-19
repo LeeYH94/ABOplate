@@ -21,10 +21,24 @@
 	</select>
 	
 	<select id="getBestRestaurantList" resultType="string">
-		SELECT DISTINCT restaurant_name FROM RESTAURANT WHERE restaurant_best = 'O'
+		SELECT DISTINCT restaurant_name FROM RESTAURANT WHERE restaurant_model = 'O'
 	</select>
 	
+	<select id="getMemberChoiceRestaurantList" parameterType="map" resultType="restaurantBean">
+		SELECT restaurant_name, restaurant_ration_total, 
+		restaurant_address, restaurant_hit FROM RESTAURANT
+		WHERE restaurant_address LIKE '%'||#address#||'%'
+		AND restaurant_food_category = #{category} AND
+		restaurant_age_group = ${age_group}
+		WHERE restaurant_ration_total >= 3.5
+		ORDER BY restaurant_ration_total DESC
+	</select>
 	
+	<select id="getPopularRestaurant" resultType="restaurnatBean">
+		SELECT restaurant_name, restaurant_ration_total, 
+		restaurant_address, restaurant_hit FROM RESTAURANT
+		WHERE restaurant_ration_total >= 3.5
+		ORDER BY restaurant_ration_total DESC
+	</select>
 	
-
 </mapper>

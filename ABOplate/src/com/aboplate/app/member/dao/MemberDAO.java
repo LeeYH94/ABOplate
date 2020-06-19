@@ -66,26 +66,25 @@ public class MemberDAO {
 		return check;
 	}
 
-	
 	public boolean checkEmail(String email) {
 		boolean check = false;
-		
-		if((Integer)sqlsession.selectOne("Member.checkId", email) == 1) {
+
+		if((Integer)sqlsession.selectOne("Member.checkEmail", email) == 1) {
 			check = true;
 		}
 		return check;
 	}
-	
-	public boolean updateStamp(String id) {
+
+	public boolean recommendStamp(String id) {
 		boolean check = false;
-		
+
 		if(checkId(id)) {
 			sqlsession.update("Member.updateStamp", id);
 			check = true;
 		}
 		return check;
 	}
-	
+
 	public boolean checkId(String id) {
 		boolean check = false;
 		if((Integer)sqlsession.selectOne("Member.checkId", id) == 1) {
@@ -93,8 +92,8 @@ public class MemberDAO {
 		}
 		return check;
 	}
-	
-	
+
+
 	//占쌈시븝옙橘占싫� 占쏙옙占쏙옙
 	public static String randomPw (int length) {
 		int index = 0;
@@ -111,7 +110,7 @@ public class MemberDAO {
 		}
 		return sb.toString();
 		}
-	
+
 	// 占쏙옙占쏙옙 占쌩쇽옙 占쌨소듸옙
 		public void sendMail(String email, String newPw) throws AddressException, MessagingException {
 			String host = "smtp.naver.com";
@@ -123,7 +122,7 @@ public class MemberDAO {
 
 			String recipient = email;
 			String subject = "占쏙옙占쏙옙 占쌩쇽옙 확占쏙옙";
-			
+
 
 			Properties props = System.getProperties();
 
@@ -152,14 +151,3 @@ public class MemberDAO {
 			Transport.send(mimeMessage);
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-

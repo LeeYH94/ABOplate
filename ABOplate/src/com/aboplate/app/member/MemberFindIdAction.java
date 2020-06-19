@@ -9,20 +9,18 @@ import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
 import com.aboplate.app.member.dao.MemberDAO;
 
-
-
 public class MemberFindIdAction implements Action{
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
-		MemberDAO memberDao = new MemberDAO();
+		MemberDAO mDao = new MemberDAO();
 		String email = request.getParameter("member_email");
 		String name = request.getParameter("member_nickname");
 		PrintWriter out = response.getWriter();
 		
-		String id = memberDao.findId(email, name);
+		String id = mDao.findId(email, name);
 		if(id!=null) {
 			response.setContentType("text/html; charset=UTF-8");
 			out.println("<script>");

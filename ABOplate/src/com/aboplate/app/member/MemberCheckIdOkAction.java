@@ -16,11 +16,11 @@ public class MemberCheckIdOkAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		
-		MemberDAO memberDao = new MemberDAO();
+		MemberDAO mDao = new MemberDAO();
 		
 		String id = request.getParameter("id");
 		PrintWriter out = response.getWriter();
-		if(memberDao.checkId(id)) {
+		if(mDao.checkId(id)) {
 			//중복된 아이디입니다.
 			out.println("not-ok");
 		}else {
