@@ -68,9 +68,9 @@ function formSubmit() {
 
 	
 function checkid(id) {
-	check = false;
+	idcheck = false;
 	if (id == "") {
-		$("#idheck_text").p("아이디를 작성해주세요.");
+		$("#idheck_text").text("아이디를 작성해주세요.");
 		
 	} else {
 		$.ajax({
@@ -105,7 +105,7 @@ $("input[name='memberId']").focusout(function(event) {
 
 
 function checknickname(nickname) {
-	check = false;
+	nicnamecheck = false;
 	if (nickname == "") {
 		
 		$("#nicknameCheck_text").p("nickname 작성해주세요.");
