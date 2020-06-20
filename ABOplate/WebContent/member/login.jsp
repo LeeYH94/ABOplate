@@ -7,6 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="250908572417-5s1lupekoch0mhm7tb9bjrucurkqbkn9.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
@@ -49,9 +53,9 @@
                 <input type="password" name="memberPassword" class="form-control" placeholder="PW">
               </div>
               <div class="form-group">
-              <div class="d-flex justify-content-center">
-              	<input type="submit" value="로그인" class="btn btn-primary py-3 p=x-5">
-              </div>
+              	<div class="d-flex justify-content-center">
+              	  <input type="submit" value="로그인" class="btn btn-primary py-3 p=x-5">
+              	</div>
               </div>
               <div class="form-group">
               <div class="d-flex justify-content-center">
@@ -72,7 +76,7 @@
               </div>
               <div class="d-flex justify-content-center">
               <div class="form-group">
-             	<input type="submit" value="구글로 로그인" class="btn btn-primary py-3 px-5">
+              	    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" lang="kor"></div>
             	</div>
               </div>
           	</form>
