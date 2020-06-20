@@ -18,6 +18,7 @@ public class MemberJoinOkAction implements Action{
 		MemberDAO mDao=new MemberDAO();
 		MemberBean member=new MemberBean();
 		
+		System.out.println(1);
 		ActionForward forward=new ActionForward();
 		boolean check=false;
 		

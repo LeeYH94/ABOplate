@@ -11,7 +11,7 @@ Kakao.Auth.createLoginButton({
 
 			success : function(res) {
 				$.ajax({
-					url : "board_mvc2_1/app/member/memberJoinOk.me?kakaoId=" + res.id,
+					url : contextPath + "/member/MemberJoinOk.me?member_id=" + res.id,
 					type : 'get',
 					dataType : 'text'
 				})

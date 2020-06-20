@@ -177,38 +177,10 @@
   <script src="../js/bootstrap-datepicker.js"></script>
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
-  <script src="../js/main.js"></script>
-   
-   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-   <script type='text/javascript'>
-  	//<![CDATA[
-    // 사용할 앱의 JavaScript 키를 설정해 주세요.
-    Kakao.init('056b94bb5df03a78a04b2c7f67882c60');  //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
-    // 카카오 로그인 버튼을 생성합니다.
-     Kakao.Auth.createLoginButton({
-      container: '#kakao-login-btn',
-      success: function(response) {
-         console.log(response);
-         Kakao.API.request({
-            url: '/v2/user/me',
-            success: function(res) {
-            var mydata = (res);
-            console.log(mydata);
-            }, 
-            fail: function(error) {
-            alert(
-               'login success, but failed to request user information: ' +
-               JSON.stringify(error)
-            )
-            },
-         })
-      },
-      fail: function(error) {
-         console.log("ERROR")
-         console.log(error);
-      },
-      });
-	</script>
+  <script src="../js/main.js"></script> 
+  <script>var contextPath = "${pageContext.request.contextPath}";</script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script src="${pageContext.request.contextPath}/member/memberJs/kakao.js"></script>
     
   </body>
 </html>

@@ -27,7 +27,7 @@ public class MemberFrontController extends HttpServlet {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-	
+
 		ActionForward forward = null;
 		Action action = null;
 		
