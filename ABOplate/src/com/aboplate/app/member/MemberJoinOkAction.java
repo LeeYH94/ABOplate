@@ -24,8 +24,10 @@ public class MemberJoinOkAction implements Action{
 		
 		if(request.getParameter("kakaoId") != null) {
 			System.out.println(2);
+			// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+			// 카카오 아이디가 DB에 없다면 회원가입
 		} else if (request.getParameter("googleId") != null) {
-			
+			//카카오랑 같음
 		} else {
 			member.setMember_id(request.getParameter("member_id"));
 			member.setMember_email(request.getParameter("member_email"));
