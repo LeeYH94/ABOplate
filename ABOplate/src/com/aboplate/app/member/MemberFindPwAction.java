@@ -22,11 +22,11 @@ public class MemberFindPwAction implements Action{
 		String email = request.getParameter("member_email");
 		
 		
-		String newPw = mDao.randomPw(10);
+		String newPw = mDao.createRandomPw();
 		PrintWriter out = response.getWriter();
 		if(mDao.updatePw(newPw, id)) {
 			//
-			mDao.sendMail(email, newPw);
+			mDao.sendNewPw(email, newPw);
 		}else {
 			out.println("<script>");
 			out.println("alert('�ٽ� �õ����ּ���');");

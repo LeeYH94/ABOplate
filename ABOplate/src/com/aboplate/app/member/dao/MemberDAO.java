@@ -3,6 +3,7 @@ package com.aboplate.app.member.dao;
 import java.util.HashMap;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -95,8 +96,66 @@ public class MemberDAO {
 		return check;
 	}
 
+	public String createRandomPw () {
+		int length = 10;
+		int index = 0;
+		String epw;
+		char[] charSet = new char[] {
+				'0','1','2','3','4','5','6','7','8','9'
+				,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
+				,'P','Q','R','S','T','U','V','W','X','Y','Z'
+				,'a','b','c','d','e','f','g','h','i','k','l','m','n','o','p'
+				,'q','r','s','t','u','v','w','x','y','z'};
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i<length; i++) {
+			index = (int)(charSet.length * Math.random());
+			sb.append(charSet[index]);
+		}
+		return sb.toString();
+	}
 
-	
+	public void sendNewPw(String email, String newPw) {
+        String user = "aboplate04@gmail.com";
+        String password = "asdf1234!@";
+
+        // SMTP 서버 정보를 설정한다.
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com"); 
+        prop.put("mail.smtp.port", 465); 
+        prop.put("mail.smtp.auth", "true"); 
+        prop.put("mail.smtp.ssl.enable", "true"); 
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        
+        Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, password);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+
+            //수신자메일주소
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); 
+
+            // Subject
+            message.setSubject("ABOplate 새로운 비밀번호 입니다."); //메일 제목을 입력
+
+            // Text
+            message.setText(newPw);    //메일 내용을 입력
+
+            // send the message
+            Transport.send(message); ////전송
+            System.out.println("message sent successfully...");
+        } catch (AddressException e) {
+        	System.out.println(e);
+        	System.out.println("MemberDAO sendNewPw 에러");
+        } catch (MessagingException e) {
+        	System.out.println(e);
+        	System.out.println("MemberDAO sendNewPw 에러");
+        }
+    }
 }
 	
 
