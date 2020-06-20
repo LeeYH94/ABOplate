@@ -36,7 +36,6 @@
   <body>
   		<c:if test="${not empty param.login}">
 			<c:if test="${not param.login}">
-			<!-- 로그인 실패시에만 alert창 실행 -->
 				<script>alert("아이디 또는 비밀번호를 다시 확인해주세요.");</script>
 			</c:if>
 		</c:if>

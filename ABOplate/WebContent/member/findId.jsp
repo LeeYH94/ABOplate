@@ -73,12 +73,12 @@
 						    	<div class="row">
 					     
 						          <div style="margin:0 auto;" class="col-md-8 mb-md-5">
-						            <form action="#" class="bg-light p-5 contact-form">
+						            <form action="${pageContext.request.contextPath}/member/MemberCheckEmail.me" class="bg-light p-5 contact-form">
 						              <div class="form-group">
 						                <input type="text" class="form-control" placeholder="이름" name="memberName">
 						              </div>
 						              <div class="form-group">
-						                <input type="text" class="form-control" placeholder="이메일" name="memberName">
+						                <input type="email" class="form-control" placeholder="이메일" name="memberEmail">
 						               
 						                <input  type="submit" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;" name="cerNumber">
 						              </div>
@@ -113,7 +113,7 @@
 						                <input type="text" class="form-control" placeholder="아이디" name="memberId">
 						              </div>
 						              <div class="form-group">
-						                <input type="text" class="form-control" placeholder="이메일" name="memberEmail">
+						                <input type="email" class="form-control" placeholder="이메일" name="memberEmail">
 						                <input  type="submit" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;">
 						              </div>
 						              <!-- <div class="form-group">
@@ -232,6 +232,6 @@
   <script src="../https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
-    
+  <script src="${pageContext.request.contextPath}/member/memberJs/test.js"></script>
   </body>
 </html>
