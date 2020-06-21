@@ -95,14 +95,6 @@ public class RestaurantDAO {
 		return sqlsession.selectOne("Restaurant.getRestaurantInfo", restaurantNum); 
 	}
 		
-	
-	
-	
-	
-	
-	
-	
-		
 		
 }
 

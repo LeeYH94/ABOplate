@@ -23,6 +23,7 @@ public class MemberJoinOkAction implements Action{
 		
 		if(request.getParameter("kakaoId") != null) {
 			//카카오 회원가입
+			mDao.joinSns(snsId);
 		} else if (request.getParameter("googleId") != null) {
 			//구글 회원가입
 		} else {
@@ -34,8 +35,8 @@ public class MemberJoinOkAction implements Action{
 			member.setMember_preference_food(request.getParameter("memberFavorite"));
 			member.setMember_age_group(Integer.parseInt(request.getParameter("memberAge")));
 			member.setMember_region(request.getParameter("memberRegion"));
+			check=mDao.join(member);
 		}
-		check=mDao.join(member);
 		if(!check) {
 			PrintWriter out=response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");

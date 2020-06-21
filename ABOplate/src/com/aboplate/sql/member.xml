@@ -59,5 +59,12 @@
 		SELECT member_preference_food, member_region, member_age_group FROM RESTAURANT
 		WHERE member_id = #{session_id}
 	</select>
+	
+	<insert id="joinSns" parameterType="map">
+		INSERT INTO MEMBER
+		(MEMBER_ID, MEMBER_NICKNAME)
+		VALUES(#{snsId}, #{nickName})
+	</insert>
+	<!-- 안녕하세요 -->
 
 </mapper>
