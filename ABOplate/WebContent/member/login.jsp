@@ -181,6 +181,8 @@
   <script>var contextPath = "${pageContext.request.contextPath}";</script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
   <script src="${pageContext.request.contextPath}/member/memberJs/kakao.js"></script>
+  <script src="${pageContext.request.contextPath}/member/memberJs/google.js"></script>
+  
     
   </body>
 </html>

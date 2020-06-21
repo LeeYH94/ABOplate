@@ -20,19 +20,30 @@ public class MemberLoginOkAction implements Action {
 		MemberDAO mDao=new MemberDAO();
 		HttpSession session=request.getSession();
 		
-		String id=request.getParameter("memberId");
-		String pw=request.getParameter("memberPassword");
-		
-		Map<String, String> resultMap=mDao.login(id, pw);
-		
-		if(resultMap!=null) {
-			session.setAttribute("sessionId", resultMap.get("MEMBER_ID"));
+		if(request.getParameter("kakaoId") != null) {
+			System.out.println(2);
+			String kakaoId = request.getParameter("kakaoId");
+			// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
 			
+			// 카카오 아이디가 DB에 없다면 회원가입
+			forward.setPath(request.getContextPath() + "/member/memberJoinOk.me?kakaoId=" + kakaoId);
+		} else if (request.getParameter("googleId") != null) {
+			//카카오랑 같음
+			System.out.println(3);
 		}else {
+			String id=request.getParameter("memberId");
+			String pw=request.getParameter("memberPassword");
 			
-			forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
+			Map<String, String> resultMap=mDao.login(id, pw);
+			
+			if(resultMap!=null) {
+				session.setAttribute("sessionId", resultMap.get("MEMBER_ID"));
+				//path = 메인 페이지 				
+			}else {
+				forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
+			}
+			forward.setRedirect(true);
 		}
-		forward.setRedirect(true);
 		return forward;
 	}
 }
