@@ -36,7 +36,8 @@
 	      <div class="container">
 	        <div class="row block-9 justify-content-center mb-5">
 	          <div class="col-md-6 mb-md-5">
-	          	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;">ABOplate</a>
+	          <a class="navbar-brand" href="${pageContext.request.contextPath}/member/MemberLogOut.me" style="font-size:56px;">ABOplate</a>
+
 	            <form name= "termsAgree" action="#" class="bg-light p-5 contact-form">
 	              
 	              <div class="field half">
@@ -149,9 +150,20 @@
 						</div>
 					<div class="form-group" style="margin-top:15px;">
 						<div class="d-flex justify-content-center">
-							<c:if test="${snsId eq null}"> 
-								<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
-							</c:if>
+						<c:choose>
+							<c:when test="${snsId eq null}"> 
+								<c:if test="">
+									<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+									<script>
+										alert("이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.");
+										location.replace("${pageContext.request.contextPath}/member/MemberJoin.me");
+									</script>
+								</c:if>
+							</c:when>
+							<c:otherwise>
+								<input type="button" value="확인" style="margin-left:5px;"onclick="${pageContext.request.contextPath}/member/MemberJoin.me" class="btn btn-primary py-3 p=x-5">
+							</c:otherwise>
+						</c:choose>
 						</div>
 	              </div>
 			</div>
