@@ -54,20 +54,26 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-		} 
-		else if (command.equals("/member/MemberCheckIdOk.me")) {
+		} else if (command.equals("/member/MemberCheckIdOk.me")) {
 			action = new MemberCheckIdOkAction();
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-		}
-		else {
+		} else if (command.equals("/member/MemberCheckEmail.me")) {
+			action = new MemberSendEmailOkAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		} else {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/error/404.jsp");
 		}
+		
 		if(forward != null) {
 			if(forward.isRedirect()) {
 				resp.sendRedirect(forward.getPath());
