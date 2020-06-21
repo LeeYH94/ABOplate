@@ -174,8 +174,6 @@ function sendEmail(){
 	
 }
 
-
-<<<<<<< HEAD
 function checkEmail(email){
 	
    if(form.memberEmail.value.search('@') == -1){
@@ -185,7 +183,7 @@ function checkEmail(email){
    }
 }
 
-
+  
 $( document ).ready( function() {
     $( '.check-all' ).click( function() {
       $( '.check' ).prop( 'checked', this.checked );
@@ -199,9 +197,3 @@ $( document ).ready( function() {
     } )
   } )
   
-  
-  
-
-
-=======
->>>>>>> 31179c63d259b70d5212f96ddbfdd34fa28ce7b0

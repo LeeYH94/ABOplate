@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html lang="kor">
 <head>
@@ -39,15 +40,13 @@
 	          <a class="navbar-brand" href="${pageContext.request.contextPath}/member/MemberLogOut.me" style="font-size:56px;">ABOplate</a>
 				<c:choose>
 					<c:when test="${snsId eq null}"> 
-						<form name= "termsAgree" action="/member/signup2.jsp" class="bg-light p-5 contact-form">
+						<form name= "termsAgree" action="${pageContext.request.contextPath}/member/signup2.jsp" class="bg-light p-5 contact-form">
 					</c:when>
 					<c:otherwise>
 						<form name= "termsAgree" action="${pageContext.request.contextPath}/member/MemberJoin.me" class="bg-light p-5 contact-form">
 					</c:otherwise>
 				</c:choose>
 
-
-	            <form name= "termsAgree" action="#" class="bg-light p-5 contact-form">
 	              
 	              <div class="field half">
 					<div class="d-flex">
@@ -62,7 +61,7 @@
 							<div class="field half">
 								<div class="d-flex">
 									<div>
-										<input type="checkbox" class="check" id="demo-human" name="demo-human">
+										<input type="checkbox" class="check" id="demo-human" name="demo-human" required>
 									</div>
 									<label><span style="color: red; font-weight: 900;">[필수]</span>
 									약관 및 개인정보수집/이용 동의 </label>
@@ -76,7 +75,7 @@
 						<div class="field half" style="margin-top:15px;">
 							<div class="d-flex">
 								<div>
-									<input type="checkbox" class="check" id="demo-human" name="demo-human">
+									<input type="checkbox" class="check" id="demo-human" name="demo-human" required>
 								</div>
 								<label><span style="color: red; font-weight: 900;">[필수]</span>
 								위치정보 이용약관 동의 </label>
@@ -159,7 +158,7 @@
 						</div>
 					<div class="form-group" style="margin-top:15px;">
 						<div class="d-flex justify-content-center">
-						<input type="button" value="확인" style="margin-left:5px;"onclick="###" class="btn btn-primary py-3 p=x-5">
+						<input type="submit" value="확인" style="margin-left:5px;" class="btn btn-primary py-3 p=x-5">
 					 </div>
 	              </div>
 				</div>
