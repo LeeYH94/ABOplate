@@ -12,13 +12,13 @@ import java.util.Properties;
 import javax.mail.Authenticator;
 
 import javax.mail.Message;
-
+import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 
 import javax.mail.Session;
 
 import javax.mail.Transport;
-
+import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 import javax.mail.internet.MimeMessage;
@@ -45,141 +45,54 @@ public class MemberSendEmailOkAction implements Action{
 			return sb.toString();
 			}
 		
-		public String sendMail () {
-			
-			String mailProtocol = "smtp";
+		
+		public void sendMail () {
+		String epw=randomPw (); 
+			 String user = "aboplate04@gmail.com"; // 네이버일 경우 네이버 계정, gmail경우 gmail 계정
+		        String password = "asdf1234!@";   // 패스워드
+		        
+
+		        // SMTP 서버 정보를 설정한다.
+		        Properties prop = new Properties();
+		        prop.put("mail.smtp.host", "smtp.gmail.com"); 
+		        prop.put("mail.smtp.port", 465); 
+		        prop.put("mail.smtp.auth", "true"); 
+		        prop.put("mail.smtp.ssl.enable", "true"); 
+		        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+		        
+		        Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+		            protected PasswordAuthentication getPasswordAuthentication() {
+		                return new PasswordAuthentication(user, password);
+		            }
+		        });
+
+		        try {
+		            MimeMessage message = new MimeMessage(session);
+		            message.setFrom(new InternetAddress(user));
+
+		            //수신자메일주소
+		            message.addRecipient(Message.RecipientType.TO, new InternetAddress(MemberEmail)); 
+
+		            // Subject
+		            message.setSubject("ABOPLATE 인증번호"); //메일 제목을 입력
+
+		            // Text
+		            message.setText(epw);    //메일 내용을 입력
+
+		            // send the message
+		            Transport.send(message); ////전송
+		            System.out.println("message sent successfully...");
+		        } catch (AddressException e) {
+		         System.out.println("AddressException"+e);
+		            e.printStackTrace();
+		        } catch (MessagingException e) {
+		            System.out.println("printStackTrace"+e);
+		            e.printStackTrace();
+		        }
+		    }
 
-			String mailHost = "smtp.gmail.com";
 
-			String mailPort = "587";
 
-			String mailId = "abc@gmail.com"; // 구글계정
-
-			String mailPassword = "abc"; // 구글계정 비밀번호 
-
-			
-
-			String fromName = "ABOplate";
-
-			String fromEmail = "aboplate04@gmail.com"; // 보내는 사람 메일
-
-			String toName = MemberName;
-
-			String toEmail = MemberEmail; // 받는사람메일
-
-			String mailTitle = "인증번호";
-
-			String mailContents = "randomPw ()";
-
-			String debugMode = "false";
-
-			String authMode = "true";
-			try {
-
-				
-
-				boolean debug = Boolean.valueOf(debugMode).booleanValue();
-
-
-
-				Properties mailProps = new Properties();
-
-				mailProps.put("mail.smtp.starttls.enable", "true");
-
-				mailProps.setProperty("mail.transport.protocol", mailProtocol); 
-
-				mailProps.put("mail.debug", debugMode);
-
-				mailProps.put("mail.smtp.host", mailHost);
-
-				mailProps.put("mail.smtp.port", mailPort);
-
-				mailProps.put("mail.smtp.connectiontimeout", "5000");
-
-				mailProps.put("mail.smtp.timeout", "5000");  
-
-				mailProps.put("mail.smtp.auth", authMode);
-
-				
-
-				Session msgSession = null;
-
-				if(authMode.equals("true")) {
-
-			        Authenticator auth = new MyAuthentication(mailId, mailPassword);
-
-					msgSession = Session.getInstance(mailProps, auth);
-
-				} else {
-
-					msgSession = Session.getInstance(mailProps, null); 
-
-				}
-
-				
-
-				msgSession.setDebug(debug);
-
-				
-
-				MimeMessage msg = new MimeMessage(msgSession);
-
-				msg.setFrom(new InternetAddress(fromEmail, fromName));
-
-				msg.setRecipient(Message.RecipientType.TO, new InternetAddress(toEmail, toName));
-
-				msg.setSubject(mailTitle);
-
-				msg.setContent(mailContents, "text/html; charset=euc-kr");
-
-				
-
-				// 스태틱함수로 직접 보내지 않고 객체를 이용해서 보내고 객체를 닫아준다. 
-
-				Transport t = msgSession.getTransport(mailProtocol);
-
-				try {
-
-					t.connect();
-
-					t.sendMessage(msg, msg.getAllRecipients());
-
-				} finally {
-
-				  t.close();
-
-				}
-
-		  
-
-			} catch(Exception e) {
-
-				e.printStackTrace();
-
-			}
-
-		}
-
-
-
-	class MyAuthentication extends Authenticator {
-
-	    PasswordAuthentication pa;
-
-	    public MyAuthentication(String mailId, String mailPass) {
-
-	        pa = new PasswordAuthentication(mailId, mailPass);  
-
-	    }
-
-	    public PasswordAuthentication getPasswordAuthentication() {
-
-	        return pa;
-
-
-		}
-	}
-	
 
 		@Override
 		public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
