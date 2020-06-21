@@ -40,7 +40,7 @@ if ('' == form.memberId.value) {
       form.memberRePassword.focus();
       form.memberRePassword.style.borderColor="red";
       return false;
-   } else if ('' == form.meberNickname.value) {
+   } else if ('' == form.memberNickname.value) {
       
       form.meberNickname.focus();
       form.meberNickname.style.color = "red";
@@ -147,5 +147,31 @@ $("input[name='memberNickname']").focusout(function(event) {
  * 2. 이메일 바꾸면 다시 인증버튼 만들어주고 재 인증 받게 하기
  * 둘중에 선택해서 하시면 될듯
  */
+/*인증번호 받기를 누를때 checkemail해주기*/
+function sendEmail(){
+	
+		$.ajax({
+			url: contextPath + "/member/MemberCheckEmail.me=?memberEmail"+memberEmail,
+			type: 'get',
+			dataType: 'text',
+			success: function(pw){
+				var verifyKey = pw;
+				 $("#memberCerNumber").text("email을 다시 써주세요");
+			},
+			error: function(){
+				console.log("오류");
+			}
+		})
+	
+}
 
+
+function checkEmail(email){
+	
+   if(form.memberEmail.value.search('@') == -1){
+      $("#emailCheckText").text("email을 다시 써주세요");
+   }else{
+      //$("#emailCheckText").text("email다시");
+   }
+}
 
