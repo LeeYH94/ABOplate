@@ -100,15 +100,6 @@ $("input[name='memberId']").focusout(function(event) {
    checkid(id);
    
 })
-/*인증번호 받기를 누를때 checkemail해주기*/
-//function checkEmail(email){
-//   check=false;
-//   if(form.memberEmail.value.search('@') == -1){
-//      $("#emailCheckText").text("email을 다시 써주세요");
-//   }else{
-//      $()
-//   }
-//}
 
 function checknickname(nickname) {
    
@@ -142,3 +133,17 @@ $("input[name='memberNickname']").focusout(function(event) {
    var nickname = $("input[name='memberNickname']").val();
    checknickname(nickname);
 })
+
+/*
+ * 인증번호 받기 버튼을 누르면
+ * ajax를 써서 sendEmailOkAction으로 보내줌(.me를 통해)
+ * 그러면 action통해서 위에 ajax처럼 pw가 매개변수로 전달됨
+ * 거기서 받은 값 변수에 저장, 버튼 이름 재전송으로 바꾸고 input태그랑 버튼 생성(보이게)
+ * 
+ * input태그에 적은 값 버튼을 통해 받으면 받은 변수를 비교
+ * 같으면 input이랑 버튼 없애고 인증 표시 
+ * 근데 인증 받고 다른 이메일 칠 수도 있으니까
+ * 1. 이메일은 readonly를 주든 해서 못바꾸게 하기
+ * 2. 이메일 바꾸면 다시 인증버튼 만들어주고 재 인증 받게 하기
+ * 둘중에 선택해서 하시면 될듯
+ */
