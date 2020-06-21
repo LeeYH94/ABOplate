@@ -40,6 +40,7 @@ public class MemberFrontController extends HttpServlet {
 			try {
 				forward=action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("MemberJoinOkAction 에러");
 				System.out.println(e);
 			}
 		} else if (command.equals("/member/MemberLogin.me")) {
@@ -53,6 +54,7 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
+				System.out.println("MemberLoginOkAction 에러");
 			}
 		} else if (command.equals("/member/MemberCheckIdOk.me")) {
 			action = new MemberCheckIdOkAction();
@@ -60,6 +62,7 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
+				System.out.println("MemberCheckIdOkAction 에러");
 			}
 		} else if (command.equals("/member/MemberCheckEmail.me")) {
 			action = new MemberSendEmailOkAction();
@@ -67,6 +70,7 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
+				System.out.println("MemberCheckEmailOkAction 에러");
 			}
 		} else {
 			forward = new ActionForward();
