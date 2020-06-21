@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
@@ -17,15 +18,17 @@ public class MemberJoinOkAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		MemberDAO mDao=new MemberDAO();
 		MemberBean member=new MemberBean();
+		HttpSession session = request.getSession();
 		
 		ActionForward forward=new ActionForward();
 		boolean check=false;
 		
-		if(request.getParameter("kakaoId") != null) {
-			//카카오 회원가입
-			mDao.joinSns(snsId);
-		} else if (request.getParameter("googleId") != null) {
-			//구글 회원가입
+		if(session.getAttribute("snsId") != null) {
+			// sns 회원가입
+			member.setMember_id(session.getAttribute("snsId").toString());
+			member.setMember_nickname(mDao.createRandomPw());
+			
+			mDao.joinSns(member.getMember_id());
 		} else {
 			member.setMember_id(request.getParameter("memberId"));
 			member.setMember_name(request.getParameter("memberName"));
