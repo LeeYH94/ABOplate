@@ -149,8 +149,9 @@
 						</div>
 					<div class="form-group" style="margin-top:15px;">
 						<div class="d-flex justify-content-center">
-							<input type="button" value="취소" style="margin-right:5px;"onclick="location.href='../index.jsp'" class="btn btn-primary py-3 p=x-5">
-							<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+							<c:if test="${snsId eq null}"> 
+								<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+							</c:if>
 						</div>
 	              </div>
 			</div>
