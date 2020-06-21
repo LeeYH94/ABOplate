@@ -113,7 +113,7 @@ public class MemberDAO {
 		return sb.toString();
 	}
 
-	public void sendNewPw(String email, String newPw) {
+	public void sendEmail(String email, String content) {
         String user = "aboplate04@gmail.com";
         String password = "asdf1234!@";
 
@@ -142,7 +142,7 @@ public class MemberDAO {
             message.setSubject("ABOplate 새로운 비밀번호 입니다."); //메일 제목을 입력
 
             // Text
-            message.setText(newPw);    //메일 내용을 입력
+            message.setText(content);    //메일 내용을 입력
 
             // send the message
             Transport.send(message); ////전송
