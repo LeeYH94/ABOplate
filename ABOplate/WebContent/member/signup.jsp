@@ -152,7 +152,13 @@
 						<div class="d-flex justify-content-center">
 						<c:choose>
 							<c:when test="${snsId eq null}"> 
-								<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+								<c:if test="">
+									<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+									<script>
+										alert("이용약관과 개인정보 수집 및 이용에 대한 안내 모두 동의해주세요.");
+										location.replace("${pageContext.request.contextPath}/member/MemberJoin.me");
+									</script>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<input type="button" value="확인" style="margin-left:5px;"onclick="${pageContext.request.contextPath}/member/MemberJoin.me" class="btn btn-primary py-3 p=x-5">
