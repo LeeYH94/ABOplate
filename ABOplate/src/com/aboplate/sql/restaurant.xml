@@ -48,6 +48,10 @@
 		ORDER BY restaurant_ration_total DESC
 	</select>
 	
+	<select id="getRestaurantInfo" parameterType="_int" resultType="restaurantBean">
+		SELECT * FROM RESTAURANT WHERE restaurant_num = ${num}
+	</select>
+	
 	
 
 	

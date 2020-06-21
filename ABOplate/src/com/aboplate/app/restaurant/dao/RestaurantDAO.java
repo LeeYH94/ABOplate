@@ -89,6 +89,11 @@ public class RestaurantDAO {
 		
 		return searchList;
 	}
+	
+	public RestaurantBean getRestaurantInfo(int restaurantNum) {
+		
+		return sqlsession.selectOne("Restaurant.getRestaurantInfo", restaurantNum); 
+	}
 		
 	
 	
