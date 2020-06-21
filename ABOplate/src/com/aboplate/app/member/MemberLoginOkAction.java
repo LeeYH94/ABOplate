@@ -23,7 +23,17 @@ public class MemberLoginOkAction implements Action {
 		if(request.getParameter("kakaoId") != null) {
 			System.out.println(2);
 			String kakaoId = request.getParameter("kakaoId");
+			session.setAttribute("kakaoId", kakaoId);
+			
+			
+			// db에 있는지 검사하는 메소드 사용
+		
 			// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+			
+			// 이건 단순 이동
+			
+			// 없다면 session_id에 담아서 join.me로 이동
+			// 닉네임도 임의로 만들어줘야함
 			
 			// 카카오 아이디가 DB에 없다면 회원가입
 			forward.setPath(request.getContextPath() + "/member/memberJoinOk.me?kakaoId=" + kakaoId);
