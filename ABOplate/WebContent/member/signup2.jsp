@@ -50,7 +50,7 @@
                   <div class="form-group">
                     <label for="email">이메일</label>
                     <input type="email" class="form-control" id="email" name="memberEmail">
-                    <input type="submit" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;" name="memberCerNumber">
+                    <input type="button" id ="checkEmail" name="memberCerNumber" value="인증번호 받기" onclick="javascript:checkemail()" class="btn btn-primary py-3 p=x-5" style="padding: 15px;">
                     <p id="emailCheckText"></p>
                   </div>
                   <div class="form-group">
