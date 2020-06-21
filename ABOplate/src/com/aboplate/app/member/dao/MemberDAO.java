@@ -95,6 +95,25 @@ public class MemberDAO {
 		}
 		return check;
 	}
+	
+	public void joinSns(String snsId) {
+		HashMap<String, String> datas = new HashMap<>();
+		
+		datas.put("snsId", snsId);
+		datas.put("nickName", createRandomPw());
+		
+		sqlsession.insert("Member.joinSns", datas);
+		
+	}
+	
+	public static int key = 5;
+	public String encryptPw(String pw) {
+		String result = "";
+		for (int i = 0; i < pw.length(); i++) {
+			result += (char)pw.charAt(i) * key;
+		}
+		return result;
+	}
 
 	public String createRandomPw () {
 		int length = 10;

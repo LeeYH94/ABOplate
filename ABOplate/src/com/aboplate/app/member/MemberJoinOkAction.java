@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
@@ -18,22 +17,23 @@ public class MemberJoinOkAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		MemberDAO mDao=new MemberDAO();
 		MemberBean member=new MemberBean();
-		HttpSession session = request.getSession();
 		
 		ActionForward forward=new ActionForward();
 		boolean check=false;
 		
-		if(session.getAttribute("snsId") != null) {
-			//sns 회원가입
-			member.setMember_id(session.getAttribute("snsId").toString());
-			member.setMember_nickname(mDao.createRandomPw());
+		if(request.getParameter("kakaoId") != null) {
+			//카카오 회원가입
+		} else if (request.getParameter("googleId") != null) {
+			//구글 회원가입
 		} else {
-			member.setMember_id(request.getParameter("member_id"));
-			member.setMember_email(request.getParameter("member_email"));
-			member.setMember_password(request.getParameter("member_password"));
-			member.setMember_nickname(request.getParameter("member_nickname"));
-			member.setMember_preference_food(request.getParameter("member_preference_food"));
-			member.setMember_region(request.getParameter("member_region"));
+			member.setMember_id(request.getParameter("memberId"));
+			member.setMember_name(request.getParameter("memberName"));
+			member.setMember_email(request.getParameter("memberEmail"));
+			member.setMember_password(mDao.encryptPw(request.getParameter("memberPassword")));
+			member.setMember_nickname(request.getParameter("memberNickname"));
+			member.setMember_preference_food(request.getParameter("memberFavorite"));
+			member.setMember_age_group(Integer.parseInt(request.getParameter("memberAge")));
+			member.setMember_region(request.getParameter("memberRegion"));
 		}
 		check=mDao.join(member);
 		if(!check) {

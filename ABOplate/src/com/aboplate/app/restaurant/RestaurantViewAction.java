@@ -1,7 +1,5 @@
 package com.aboplate.app.restaurant;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,18 +13,18 @@ public class RestaurantViewAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		ActionForward forward = new ActionForward();
 		
 		RestaurantDAO rDao = new RestaurantDAO();
 		RestaurantBean rBean = new RestaurantBean();
-		int restaurant_num = Integer.parseInt(request.getParameter("seq"));
+		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
-		List<RestaurantBean> rBeanList = rDao.getDetail(restaurant_num);
-		if(rBeanList != null) {
-			request.setAttribute("restaurantBeanList", rBeanList);
-		}
-		ActionForward forward = new ActionForward();
+		rBean = rDao.getRestaurantInfo(restaurantNum);
+		
+		request.setAttribute("restaurantBean", rBean);
+		
 		forward.setRedirect(false);
-		forward.setPath("/app/member/RestaurantView.jsp");
+		forward.setPath("/app/restaurant/storeInfo.jsp");
 		return forward;
 	}
 	
