@@ -156,7 +156,16 @@ function sendEmail(){
 			dataType: 'text',
 			success: function(pw){
 				var verifyKey = pw;
-				 $("#memberCerNumber").text("email을 다시 써주세요");
+				$("#resendEmail").show();
+				$("#verifyNum").show();
+				var checkkey = $("input[name='numberKey']").val();
+				if(pw==checkkey){
+					$("#resendEmail").hide();
+					$("#verifyNum").hide();
+					$("#emailCheckText").text("인증완료");
+				}else{
+					
+				}
 			},
 			error: function(){
 				console.log("오류");
@@ -166,6 +175,7 @@ function sendEmail(){
 }
 
 
+<<<<<<< HEAD
 function checkEmail(email){
 	
    if(form.memberEmail.value.search('@') == -1){
@@ -193,3 +203,5 @@ $( document ).ready( function() {
   
 
 
+=======
+>>>>>>> 31179c63d259b70d5212f96ddbfdd34fa28ce7b0
