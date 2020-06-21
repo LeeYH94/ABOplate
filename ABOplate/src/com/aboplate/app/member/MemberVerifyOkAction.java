@@ -24,6 +24,7 @@ public class MemberVerifyOkAction implements Action {
 			index = (int) (charSet.length * Math.random());
 			sb.append(charSet[index]);
 			code = sb.toString();
+			request.getParameter(code);
 			
 
 		}
