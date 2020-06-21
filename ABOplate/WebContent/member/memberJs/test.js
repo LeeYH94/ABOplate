@@ -160,9 +160,7 @@ $( document ).ready( function() {
           $( '.check-all' ).prop( 'checked', this.checked );
         } )
       } )
-      
-var counter2 = document.getElementById('counter2'); 
-button1.onclick = function() { counter1.innerHTML = Number(counter1.innerHTML) + 1; };
+
 
 
       
