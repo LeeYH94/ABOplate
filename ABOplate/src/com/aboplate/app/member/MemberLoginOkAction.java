@@ -23,13 +23,32 @@ public class MemberLoginOkAction implements Action {
 		if(request.getParameter("kakaoId") != null) {
 			System.out.println(2);
 			String kakaoId = request.getParameter("kakaoId");
-			// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+			session.setAttribute("snsId", kakaoId);
 			
-			// 카카오 아이디가 DB에 없다면 회원가입
-			forward.setPath(request.getContextPath() + "/member/memberJoinOk.me?kakaoId=" + kakaoId);
+			// db에 있는지 검사하는 메소드 사용
+			if(mDao.checkId(kakaoId)) {
+				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+				// 이건 단순 이동
+				forward.setPath(request.getContextPath() + "../index.jsp");
+			} else {
+				// 없다면 session_id에 담아서 join.me로 이동
+				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
+			}
 		} else if (request.getParameter("googleId") != null) {
 			//카카오랑 같음
 			System.out.println(3);
+			String googleId = request.getParameter("googleId");
+			session.setAttribute("snsId", googleId);
+			
+			// db에 있는지 검사하는 메소드 사용
+			if(mDao.checkId(googleId)) {
+				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+				// 이건 단순 이동
+				forward.setPath(request.getContextPath() + "../index.jsp");
+			} else {
+				// 없다면 session_id에 담아서 join.me로 이동
+				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
+			}
 		}else {
 			String id=request.getParameter("memberId");
 			String pw=request.getParameter("memberPassword");
@@ -42,8 +61,8 @@ public class MemberLoginOkAction implements Action {
 			}else {
 				forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
 			}
-			forward.setRedirect(true);
 		}
+		forward.setRedirect(true);
 		return forward;
 	}
 }
