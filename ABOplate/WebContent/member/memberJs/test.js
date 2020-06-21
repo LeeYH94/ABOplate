@@ -147,3 +147,5 @@ $("input[name='memberNickname']").focusout(function(event) {
  * 2. 이메일 바꾸면 다시 인증버튼 만들어주고 재 인증 받게 하기
  * 둘중에 선택해서 하시면 될듯
  */
+
+
