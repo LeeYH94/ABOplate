@@ -175,6 +175,7 @@ function checkEmail(email){
    }
 }
 
+
 $( document ).ready( function() {
     $( '.check-all' ).click( function() {
       $( '.check' ).prop( 'checked', this.checked );
