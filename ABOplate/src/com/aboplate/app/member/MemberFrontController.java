@@ -40,7 +40,7 @@ public class MemberFrontController extends HttpServlet {
 			try {
 				forward=action.execute(req, resp);
 			}catch(Exception e) {
-				System.out.println("MemberJoinOkAction 에러");
+				System.out.println("MemberJoinOkAction �뿉�윭");
 				System.out.println(e);
 			}
 		} else if (command.equals("/member/MemberLogin.me")) {
@@ -54,7 +54,7 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("MemberLoginOkAction 에러");
+				System.out.println("MemberLoginOkAction �뿉�윭");
 			}
 		} else if (command.equals("/member/MemberCheckIdOk.me")) {
 			action = new MemberCheckIdOkAction();
@@ -62,25 +62,18 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("MemberCheckIdOkAction 에러");
+				System.out.println("MemberCheckIdOkAction �뿉�윭");
 			}
-		} else if (command.equals("/member/MemberFindId.me")) {
-			action = new MemberFindIdAction();
+		} else if (command.equals("/member/MemberCheckEmail.me")) {
+			action = new MemberVerifyOkAction();
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("MemberFindId 에러");
+				System.out.println("memberVerifyOkAction �뿉�윭");
 			}
-		} else if (command.equals("/member/MemberFindPw.me")) {
-			action = new MemberFindPwAction();
-			try {
-				forward = action.execute(req, resp);
-			} catch (Exception e) {
-				System.out.println(e);
-				System.out.println("MemberFindPw 에러");
-			}
-		} else {
+		} 
+		else {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/error/404.jsp");
