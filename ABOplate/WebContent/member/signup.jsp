@@ -31,17 +31,18 @@
 </head>
 <body>
 
+
 	<section class="ftco-section contact-section">
 	      <div class="container">
 	        <div class="row block-9 justify-content-center mb-5">
 	          <div class="col-md-6 mb-md-5">
 	          	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;">ABOplate</a>
-	            <form action="#" class="bg-light p-5 contact-form">
+	            <form name= "termsAgree" action="#" class="bg-light p-5 contact-form">
 	              
 	              <div class="field half">
 					<div class="d-flex">
 	              		<div>
-							<input type="checkbox" id="demo-human" name="demo-human">
+							<input type="checkbox" class="check-all" id="demo-human" name="demo-human">
 				  		</div>
 	              		<label>개인정보 수집 및 이용, 위치정보 이용약관 에 모두 동의합니다.</label>
 	              	</div>
@@ -51,7 +52,7 @@
 							<div class="field half">
 								<div class="d-flex">
 									<div>
-										<input type="checkbox" id="demo-human" name="demo-human">
+										<input type="checkbox" class="check" id="demo-human" name="demo-human">
 									</div>
 									<label><span style="color: red; font-weight: 900;">[필수]</span>
 									약관 및 개인정보수집/이용 동의 </label>
@@ -65,7 +66,7 @@
 						<div class="field half" style="margin-top:15px;">
 							<div class="d-flex">
 								<div>
-									<input type="checkbox" id="demo-human" name="demo-human">
+									<input type="checkbox" class="check" id="demo-human" name="demo-human">
 								</div>
 								<label><span style="color: red; font-weight: 900;">[필수]</span>
 								위치정보 이용약관 동의 </label>
@@ -149,7 +150,7 @@
 					<div class="form-group" style="margin-top:15px;">
 						<div class="d-flex justify-content-center">
 							<input type="button" value="취소" style="margin-right:5px;"onclick="location.href='../index.jsp'" class="btn btn-primary py-3 p=x-5">
-							<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='signup2.jsp'" class="btn btn-primary py-3 p=x-5">
+							<input type="button" value="확인" style="margin-left:5px;"onclick="location.href='member/signup2.jsp'" class="btn btn-primary py-3 p=x-5">
 						</div>
 	              </div>
 			</div>
@@ -160,8 +161,9 @@
 	        </div>
 	      </div>
 	    </section>
-
 </body>
+
+
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery-migrate-3.0.1.min.js"></script>
 <script src="../js/popper.min.js"></script>
@@ -176,6 +178,7 @@
 <script src="../js/bootstrap-datepicker.js"></script>
 <script src="../js/jquery.timepicker.min.js"></script>
 <script src="../js/scrollax.min.js"></script>
-<script src="../js/google-map.js"></script>
 <script src="../js/main.js"></script>
+<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/member/memberJs/test.js"></script>
 </html>

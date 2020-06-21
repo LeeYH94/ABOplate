@@ -21,13 +21,18 @@ public class MemberJoinOkAction implements Action{
 		ActionForward forward=new ActionForward();
 		boolean check=false;
 		
-		member.setMember_id(request.getParameter("member_id"));
-		member.setMember_email(request.getParameter("member_email"));
-		member.setMember_password(request.getParameter("member_password"));
-		member.setMember_nickname(request.getParameter("member_nickname"));
-		member.setMember_preference_food(request.getParameter("member_preference_food"));
-		member.setMember_region(request.getParameter("member_region"));
-		
+		if(request.getParameter("kakaoId") != null) {
+			//카카오 회원가입
+		} else if (request.getParameter("googleId") != null) {
+			//구글 회원가입
+		} else {
+			member.setMember_id(request.getParameter("member_id"));
+			member.setMember_email(request.getParameter("member_email"));
+			member.setMember_password(request.getParameter("member_password"));
+			member.setMember_nickname(request.getParameter("member_nickname"));
+			member.setMember_preference_food(request.getParameter("member_preference_food"));
+			member.setMember_region(request.getParameter("member_region"));
+		}
 		check=mDao.join(member);
 		if(!check) {
 			PrintWriter out=response.getWriter();

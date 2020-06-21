@@ -27,25 +27,26 @@ public class MemberFrontController extends HttpServlet {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-	
+
 		ActionForward forward = null;
 		Action action = null;
 		
 		if (command.equals("/member/MemberJoin.me")) {
 			forward=new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/app/member/joinForm.jsp");
+			forward.setPath("/member/signup.jsp");
 		} else if (command.equals("/member/MemberJoinOk.me")) {
 			action=new MemberJoinOkAction();
 			try {
 				forward=action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("MemberJoinOkAction 에러");
 				System.out.println(e);
 			}
 		} else if (command.equals("/member/MemberLogin.me")) {
 			forward=new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("/app/member/loginForm.jsp");
+			forward.setPath("/member/login.jsp");
 			
 		} else if (command.equals("/member/MemberLoginOk.me")) {
 			action = new MemberLoginOkAction();
@@ -53,12 +54,30 @@ public class MemberFrontController extends HttpServlet {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
+				System.out.println("MemberLoginOkAction 에러");
+			}
+		} else if (command.equals("/member/MemberCheckIdOk.me")) {
+			action = new MemberCheckIdOkAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberCheckIdOkAction 에러");
+			}
+		} else if (command.equals("/member/MemberCheckEmail.me")) {
+			action = new MemberSendEmailOkAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberCheckEmailOkAction 에러");
 			}
 		} else {
 			forward = new ActionForward();
 			forward.setRedirect(false);
-			forward.setPath("app/error/404.jsp");
+			forward.setPath("/error/404.jsp");
 		}
+		
 		if(forward != null) {
 			if(forward.isRedirect()) {
 				resp.sendRedirect(forward.getPath());

@@ -37,10 +37,11 @@
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-6 mb-md-5">
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
-            <form action="#" class="p-5 bg-light">
+            <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoinOk.me" class="p-5 bg-light"  method="post">
             	  <div class="form-group">
                     <label for="id">아이디 *</label>
                     <input type="text" class="form-control" id="id" name="memberId">
+                    <p id="idCheckText"></p>
                   </div>
                   <div class="form-group">
                     <label for="name">이름</label>
@@ -50,18 +51,22 @@
                     <label for="email">이메일</label>
                     <input type="email" class="form-control" id="email" name="memberEmail">
                     <input type="submit" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;" name="memberCerNumber">
+                    <p id="emailCheckText"></p>
                   </div>
                   <div class="form-group">
                     <label for="password">비밀번호</label>
                     <input type="password" class="form-control" id="password" name="memberPassword">
+                    <p id="passwordText"></p>
                   </div>
                   <div class="form-group">
                     <label for="password">비밀번호 확인</label>
                     <input type="password" class="form-control" id="password" name="memberRePassword">
+                    <p id="passwordCheckText"></p>
                   </div>
                   <div class="form-group">
                     <label for="nickname">닉네임</label>
                     <input type="text" class="form-control" id="nickname" name="memberNickname">
+                    <p id="nicknameCheckText"></p>
                   </div>
                   <div class="form-group">
                     <label for="favorite">선호음식 : </label>
@@ -128,7 +133,7 @@
 					</div>
                   </div>
                   <div class="form-group justify-content-center">
-                  	<input type="submit" style="width:100%;" value="가입" onclick="location.href='signup3.jsp'" class="btn py-3 btn-primary">
+                  	<input type="button" style="width:100%;" value="가입" onclick="javascript:formSubmit()" class="btn py-3 btn-primary">
                   </div>
                 </form>
                 
@@ -157,4 +162,5 @@
 <script src="../js/scrollax.min.js"></script>
 <script src="../js/google-map.js"></script>
 <script src="../js/main.js"></script>
+<script src="${pageContext.request.contextPath}/member/memberJs/test.js"></script>
 </html>

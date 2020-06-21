@@ -3,6 +3,7 @@ package com.aboplate.app.member.dao;
 import java.util.HashMap;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -20,6 +21,7 @@ import com.aboplate.mybatis.config.SqlMapConfig;
 public class MemberDAO {
 	SqlSessionFactory sessionf = SqlMapConfig.getSqlMapInstance();
 	SqlSession sqlsession;
+	
 
 	public MemberDAO() {
 		sqlsession = sessionf.openSession(true);
@@ -32,6 +34,7 @@ public class MemberDAO {
 		}
 		return check;
 	}
+	
 	public Map<String, String> login(String id, String pw) {
 
 		HashMap<String, String> datas = new HashMap<>();
@@ -93,9 +96,8 @@ public class MemberDAO {
 		return check;
 	}
 
-
-	//占쌈시븝옙橘占싫� 占쏙옙占쏙옙
-	public static String randomPw (int length) {
+	public String createRandomPw () {
+		int length = 10;
 		int index = 0;
 		char[] charSet = new char[] {
 				'0','1','2','3','4','5','6','7','8','9'
@@ -109,45 +111,51 @@ public class MemberDAO {
 			sb.append(charSet[index]);
 		}
 		return sb.toString();
-		}
-
-	// 占쏙옙占쏙옙 占쌩쇽옙 占쌨소듸옙
-		public void sendMail(String email, String newPw) throws AddressException, MessagingException {
-			String host = "smtp.naver.com";
-
-			// --- 占싫울옙 占쏙옙占쏙옙占쏙옙 占쏙옙占� 占싱몌옙占쏙옙 占쌍쇽옙(@naver.com)占쏙옙占쏙옙, 占쏙옙橘占싫�
-			final String id = "yhya0904";
-			final String pw = "leeheader7679!";
-			int port = 465;
-
-			String recipient = email;
-			String subject = "占쏙옙占쏙옙 占쌩쇽옙 확占쏙옙";
-
-
-			Properties props = System.getProperties();
-
-			props.put("mail.smtp.host", host);
-			props.put("mail.smtp.port", port);
-			props.put("mail.smtp.auth", "true");
-			props.put("mail.smtp.ssl.enable", "true");
-			props.put("mail.smtp.ssl.trust", host);
-
-			Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-				String userName = id;
-				String passWord = pw;
-
-				protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
-					return new javax.mail.PasswordAuthentication(userName, passWord);
-				}
-			});
-			session.setDebug(true);
-
-			Message mimeMessage = new MimeMessage(session);
-			// --- 占싫울옙 占쏙옙占쏙옙占쏙옙 占쏙옙占� 占싱몌옙占쏙옙 占쌍쇽옙 占쌍깍옙 (@naver.com) 占쏙옙占쏙옙
-			mimeMessage.setFrom(new InternetAddress("yhya0904@naver.com"));
-			mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
-			mimeMessage.setSubject(subject);
-			mimeMessage.setText(newPw);
-			Transport.send(mimeMessage);
-		}
 	}
+
+	public void sendEmail(String email, String content) {
+        String user = "aboplate04@gmail.com";
+        String password = "asdf1234!@";
+
+        // SMTP 서버 정보를 설정한다.
+        Properties prop = new Properties();
+        prop.put("mail.smtp.host", "smtp.gmail.com"); 
+        prop.put("mail.smtp.port", 465); 
+        prop.put("mail.smtp.auth", "true"); 
+        prop.put("mail.smtp.ssl.enable", "true"); 
+        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        
+        Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user, password);
+            }
+        });
+
+        try {
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+
+            //수신자메일주소
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); 
+
+            // Subject
+            message.setSubject("ABOplate 새로운 비밀번호 입니다."); //메일 제목을 입력
+
+            // Text
+            message.setText(content);    //메일 내용을 입력
+
+            // send the message
+            Transport.send(message); ////전송
+            System.out.println("message sent successfully...");
+        } catch (AddressException e) {
+        	System.out.println(e);
+        	System.out.println("MemberDAO sendNewPw 에러");
+        } catch (MessagingException e) {
+        	System.out.println(e);
+        	System.out.println("MemberDAO sendNewPw 에러");
+        }
+    }
+}
+	
+
+	
