@@ -148,4 +148,27 @@ $("input[name='memberNickname']").focusout(function(event) {
  * 둘중에 선택해서 하시면 될듯
  */
 
+$( document ).ready( function() {
+        $( '.check-all' ).click( function() {
+          $( '.check' ).prop( 'checked', this.checked );
+        } )
+      } )
+      
+      
+$( document ).ready( function() {
+        $( '.check' ).click( function() {
+          $( '.check-all' ).prop( 'checked', this.checked );
+        } )
+      } )
+      
+var counter2 = document.getElementById('counter2'); 
+button1.onclick = function() { counter1.innerHTML = Number(counter1.innerHTML) + 1; };
+
+
+      
+$("input[name='cerNumber']").focusout(function(event) {     
+	$("#checkEmail").attr("style", "visibility:visible");
+	$("#checkEmailButton").attr("style", "visibility:visible");
+	})
+
 
