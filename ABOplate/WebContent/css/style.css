@@ -9140,7 +9140,7 @@ textarea.form-control {
   height: 500px;
   width: 100%;
   position: absolute;
-  right:200px;
+  right:100px;
   width:400px;}
   @media (max-width: 991.98px) {
     #map {
@@ -10000,13 +10000,13 @@ textarea.form-control {
     stroke-dashoffset: -136px; } }
     
     
-/* 占쎈땾占쎌젟 */
+ /* 占쎈땾占쎌젟 */
 
-.container > #map {
+/*.container > #map {
   height: 500px;
   width: 20%;
   right: 10%;
-  position:fixed !important;}
+  }
   @media (max-width: 991.98px) {
     .container > #map {
       width: 100%;
@@ -10020,11 +10020,11 @@ textarea.form-control {
       height: 300px;
       position:relative !important;
       margin-left:10% !important;
-      } }
+      } } */
       
       
 /* 占쎈땾占쎌젟 */
-.overlay01 > #map {
+/* .overlay01 > #map {
   height: 500px;
   width: 10%;
   right: 10%;
@@ -10036,7 +10036,7 @@ textarea.form-control {
       height: 300px;
       position:relative !important;
       margin:0 auto !important;
-      } }
+      } } */
 .table > #line{
    
    width: 100px;
@@ -10252,31 +10252,31 @@ textarea.form-control {
 	width:200px !important;
 }
 
+@media (max-width: 992px){
+.dropmenu ul li a{color: white !important;} }
+
 @media (max-width: 320px) {
   .flavor {
     padding: 5px;
-	background-color: #ffcd3c;
-	width:500px;} }
+	background-color: black;
+	width:100%;} }
 @media (max-width: 768px) {
   .flavor {
     padding: 5px;
-	background-color: #ffcd3c;
-	width:500px;} }
+	background-color: black;
+	width:100%;} }
 @media (max-width: 992px) {
   .flavor {
     padding: 5px;
-	background-color: #ffcd3c;
-	width:500px;} }
+	width:100%;} }
 @media (max-width: 1200px) {
   .flavor {
     padding: 5px;
-	background-color: #ffcd3c;
-	width:200px;} }
+	width:100%;} }
 @media (max-width: 1430.98px) {
   .flavor {
     padding: 5px;
-	background-color: #ffcd3c;
-	width:200px;
+	width:100%;
 	} }
 	
 @media (max-width: 1430.98px) {

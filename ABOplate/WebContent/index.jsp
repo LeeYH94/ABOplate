@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -9,7 +9,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
+	rel="stylesheet">
 
 <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="css/animate.css">
@@ -32,7 +34,9 @@
 </head>
 <body onload="javascript:goDetail();">
 
-	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	<nav
+		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+		id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="index.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -44,49 +48,51 @@
 			<div class="collapse navbar-collapse dropmenu" id="ftco-nav">
 
 				<ul class="navbar-nav ml-auto" id="dm_ul">
-					<li class="nav-item"><a href="member/login.jsp" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="member/signup.jsp" class="nav-link">회원가입</a></li>
-					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
+					<li class="nav-item"><a href="member/login.jsp"
+						class="nav-link">로그인</a></li>
+					<li class="nav-item"><a href="member/signup.jsp"
+						class="nav-link">회원가입</a></li>
+					<li class="nav-item"><a href="other/event.jsp"
+						class="nav-link">이벤트</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
 						<ul>
-			            <li>
-			            	<div class="flavor">
-				            	<div class="d-flex">
-				            		<a href="restaurant/storeInfoBefore.jsp">
-				            			<img src="images/image_1.jpg" style="width:100px;"></img>aaaa
-				            		</a>
-				            	</div>
-				            </div>
-			            </li>
-			            <li>
-			            	<div class="flavor">
-				            	<div class="d-flex">
-				            		<a href="restaurant/storeInfoBefore.jsp">
-				            			<img src="images/image_2.jpg" style="width:100px;"></img>bbbb
-				            		</a>
-				            	</div>
-				            </div>
-			            </li>
-			            <li>
-			            	<div class="flavor">
-				            	<div class="d-flex">
-				            		<a href="restaurant/storeInfoBefore.jsp">
-				            			<img src="images/image_3.jpg" style="width:100px;"></img>cccc
-				            		</a>
-				            	</div>
-				            </div>
-			            </li>
-			            <li>
-			            	<div class="flavor">
-				            	<div class="d-flex">
-				            		<a href="restaurant/storeInfoBefore.jsp">
-				            			<img src="images/image_4.jpg" style="width:100px;"></img>dddd
-				            		</a>
-				            	</div>
-				            </div>
-			            </li>
-			          </ul>
-					</li>
+							<li>
+								<div class="flavor">
+									<div class="d-flex">
+										<a href="restaurant/storeInfoBefore.jsp"> <img
+											src="images/image_1.jpg" style="width: 100px;"></img>aaaa
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="flavor">
+									<div class="d-flex">
+										<a href="restaurant/storeInfoBefore.jsp"> <img
+											src="images/image_2.jpg" style="width: 100px;"></img>bbbb
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="flavor">
+									<div class="d-flex">
+										<a href="restaurant/storeInfoBefore.jsp"> <img
+											src="images/image_3.jpg" style="width: 100px;"></img>cccc
+										</a>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="flavor">
+									<div class="d-flex">
+										<a href="restaurant/storeInfoBefore.jsp"> <img
+											src="images/image_4.jpg" style="width: 100px;"></img>dddd
+										</a>
+									</div>
+								</div>
+							</li>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -103,12 +109,22 @@
 				<div
 					class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
 					<div style="margin: 0 auto;">
-						<p style="font-size: 18px; visibility: hidden;">A small river
-							named Duden flows by their place and supplies it with the
-							necessary regelialia.</p>
 						<form action="#" class="search-location mt-md-5">
 							<div class="row justify-content-center">
-								<div class="col-lg-10 align-items-end">
+								<div class="form-group">
+									<div class="form-field">
+										<select class="form-control">
+											<option value=''>선택하세요</option>
+											<option value=''>항목1</option>
+											<option value=''>항목2</option>
+											<option value=''>항목3</option>
+											<option value=''>항목4</option>
+											<option value=''>항목5</option>
+											<option value=''>항목6</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
 											<input type="text" class="form-control"
@@ -118,10 +134,10 @@
 											</button>
 										</div>
 									</div>
-
+								</div>
+								<div class="col-lg-10 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-
 											실시간 차트
 											<table style="margin: 0 auto; background-color: white;"
 												class="form-control-tablel">
@@ -129,7 +145,6 @@
 													<tr>
 														<td><div id="ranking" style="padding: 10px;">키워드</div></td>
 													</tr>
-
 												</tbody>
 											</table>
 										</div>
@@ -152,23 +167,28 @@
 
 
 
+
 	<div id="mask"></div>
 	<!--Popup Start -->
 	<div class="container">
-		<div id="layerbox" class="layerpop" style="height: 300px; border-radius:5% !important;">
+		<div id="layerbox" class="layerpop"
+			style="height: 300px; border-radius: 5% !important;">
 			<article class="layerpop_area">
-				<div class="title" style="color:red; border-radius:15% 15% 0% 0% !important;">경고 회원가입 금지</div>
+				<div class="title"
+					style="color: red; border-radius: 15% 15% 0% 0% !important;">경고
+					회원가입 금지</div>
 				<a href="javascript:popupClose();" class="layerpop_close"
 					id="layerbox_close">X</a><br>
-					<div class="content">
-							<p> 이 페이지는 테스트용 페이지입니다.</p><br>
-							<p>따라서 회원가입으로 어떠한 혜택도 받으실 수
-							없고 넘겨진 개인정보는 즉시 파기할 것입니다.</p><br>
-					</div>
+				<div class="content">
+					<p>이 페이지는 테스트용 페이지입니다.</p>
+					<br>
+					<p>따라서 회원가입으로 어떠한 혜택도 받으실 수 없고 넘겨진 개인정보는 즉시 파기할 것입니다.</p>
+					<br>
+				</div>
 			</article>
 		</div>
 	</div>
-	
+
 	<section class="ftco-section ftco-agent">
 		<div class="container">
 			<div class="row">
@@ -193,7 +213,8 @@
 
 						<div class="tab-content" id="pills-tabContent">
 							<!-- 인기 맛집 -->
-							<div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
+							<div class="tab-pane fade show active" id="pills-description"
+								role="tabpanel" aria-labelledby="pills-description-tab">
 								<div class="row">
 									<div class="col-md-3">
 										<div class="agent">
@@ -340,10 +361,16 @@
 								role="tabpanel" aria-labelledby="pills-description-tab">
 								<div class="row">
 									<div style="margin: 0 auto;">
-										<h5 style="text-align:center;">로그인(회원가입)을 하시면 맞춤 맛집을 추천해드립니다</h5>
-										<div class="justify-content-center" style="text-align:center;">
-											<input type="button" style="margin-bottom:15px" value="로그인" class="btn btn-primary py-3" onClick="location.href='./member/login.jsp'"> 
-											<input type="button" style="margin-bottom:15px" value="회원가입" 	class="btn btn-primary py-3" onClick="location.href='./member/signup.jsp'">
+										<h5 style="text-align: center;">로그인(회원가입)을 하시면 맞춤 맛집을
+											추천해드립니다</h5>
+										<div class="justify-content-center"
+											style="text-align: center;">
+											<input type="button" style="margin-bottom: 15px" value="로그인"
+												class="btn btn-primary py-3"
+												onClick="location.href='./member/login.jsp'"> <input
+												type="button" style="margin-bottom: 15px" value="회원가입"
+												class="btn btn-primary py-3"
+												onClick="location.href='./member/signup.jsp'">
 										</div>
 									</div>
 								</div>
@@ -355,7 +382,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">
@@ -472,14 +499,13 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/jquery.timepicker.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 
 	<script src="js/popup.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	
+
 </body>
 </html>
