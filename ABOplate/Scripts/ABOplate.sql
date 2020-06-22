@@ -9,10 +9,9 @@ CREATE TABLE "MEMBER"(
 	member_stamp NUMBER DEFAULT NULL,
 	member_preference_food VARCHAR2(100) DEFAULT NULL,
 	member_region VARCHAR2(20) DEFAULT NULL,
-	member_age_group NUMBER DEFAULT NULL,
 	member_report NUMBER DEFAULT NULL,
 	member_last_report DATE DEFAULT NULL,
-	number_type NUMBER DEFAULT 1,
+	member_type NUMBER DEFAULT 1,
 	CONSTRAINT NUMBER_PK PRIMARY KEY(member_id)
 );
 

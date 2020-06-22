@@ -6,7 +6,7 @@
 	<typeAliases>
 		<typeAlias type="com.aboplate.app.member.dao.MemberBean" alias="memberBean"/>
 		<typeAlias type="com.aboplate.app.restaurant.dao.RestaurantBean" alias="restaurantBean"/>
-		<typeAlias type="com.aboplate.app.review.dao.ReviewBean" alias="reviewBean"/>
+		<typeAlias type="com.aboplate.app.restaurant.dao.ReviewBean" alias="reviewBean"/>
 	</typeAliases>
 
 	<environments default="development">

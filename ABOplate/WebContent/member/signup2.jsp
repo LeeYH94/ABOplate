@@ -37,7 +37,7 @@
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-6 mb-md-5">
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
-            <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoinOk.me" class="p-5 bg-light"  method="post">
+            <form name="joinForm" action="${pageContext.request.contextPath}/member/MemberJoinOk.me" class="p-5 bg-light" method="post">
             	  <div class="form-group">
                     <label for="id">아이디 </label>
                     <input type="text" class="form-control check" id="id" name="memberId" >
@@ -90,48 +90,23 @@
 					양식
 					</label>
                   </div>
+                  
                   <div class="form-group">
-                    <label for="age">나이대</label>
-                   	<div class="form-group"><select style="width: 150px; font-size: 13px;" name="age" class="form-control check" name="memberAge" required>
-										<option value=''>선택하세요</option>
-										<option value='10'>10대</option>
-										<option value='20'>20대</option>
-										<option value='30'>30대</option>
-										<option value='40'>40대</option>
-										<option value='50'>50대</option>
-										<option value='60'>60대</option>
-								</select>
-					</div>
-                  </div>
-                  <div class="form-group">
-                    <label for="memberRegion">지역(서울시)</label>
+                    <label for="memberRegion">지역</label>
                    	<div class="form-group"><select style="width: 150px; font-size: 13px;" class="form-control check" name="memberRegion" required>
 										<option value=''>선택하세요</option>
-										<option value='45'>강남구</option>
-										<option value='46'>강동구</option>
-										<option value='47'>강서구</option>
-										<option value='48'>강북구</option>
-										<option value='49'>관악구</option>
-										<option value='51'>광진구</option>
-										<option value='52'>구로구</option>
-										<option value='53'>금천구</option>
-										<option value='54'>노원구</option>
-										<option value='55'>도봉구</option>
-										<option value='56'>동대문구</option>
-										<option value='57'>동작구</option>
-										<option value='58'>마포구</option>
-										<option value='59'>서대문구</option>
-										<option value='61'>서초구</option>
-										<option value='62'>성동구</option>
-										<option value='63'>성북구</option>
-										<option value='64'>송파구</option>
-										<option value='65'>양천구</option>
-										<option value='66'>영등포구</option>
-										<option value='67'>용산구</option>
-										<option value='68'>은평구</option>
-										<option value='69'>종로구</option>
-										<option value='70'>중구</option>
-										<option value='71'>중랑구</option>
+										<option value='Gwangjin'>광진구</option>
+										<option value='Seocho'>서초구</option>
+										<option value='Seongdong'>성동구</option>
+										<option value='Yangcheon'>양천구</option>
+										<option value='Yongsan'>용산구</option>
+										<option value='Eunpyeong'>은평구</option>
+										<option value='Jongno'>종로구</option>
+										<option value='Jungnang'>중랑구</option>
+										<option value='Goyang'>고양시</option>
+										<option value='Suwon'>수원시</option>
+										<option value='Yongin'>용인시</option>
+										
 								</select>
 					</div>
                   </div>

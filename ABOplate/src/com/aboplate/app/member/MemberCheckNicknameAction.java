@@ -16,7 +16,7 @@ public class MemberCheckNicknameAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		
 		MemberDAO mDao = new MemberDAO();
-		String nickname = request.getParameter("member_nickname");
+		String nickname = request.getParameter("nickname");
 		PrintWriter out = response.getWriter();
 		if(mDao.checkNickname(nickname)) {
 			//중복가능한 닉네임
