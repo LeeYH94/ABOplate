@@ -157,8 +157,8 @@ function sendEmail(){
 			type: 'get',
 			dataType: 'text',
 			success: function(pw){
-				verifyKey = pw;
-				console.log(pw);
+				verifyKey = pw.trim();
+				console.log(pw.trim());
 				$("#checkEmail").hide();
 				$("#resendEmail").show();
 				$("#verifyNum").show();
@@ -174,11 +174,13 @@ function clickEmail(){
 	var checkkey = $("input[name='numberKey']").val();
 	console.log(verifyKey);
 	console.log(checkkey);
-	if(checkkey.contains(verifyKey)){
+	if(checkkey == verifyKey){
 		$("#resendEmail").hide();
 		$("#verifyNum").hide();
+		$("#checkVerifyEmail").hide();
 		$("#emailCheckText").text("인증완료");
-		$("#email").readonly= true;
+		$("input[name='memberEmail']").attr("readonly", true);
+		//email 인증 체크 boolean 변수 true
 	}else{
 		console.log("다름");
 	}

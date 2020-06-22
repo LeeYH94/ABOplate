@@ -30,7 +30,7 @@ public class MemberVerifyOkAction implements Action {
          code = sb.toString();
       }
       
-      memberDao.sendEmail(request.getParameter("memberEmail"), "ABOplate �씠硫붿씪 �씤利앺궎 �엯�땲�떎.", code);
+      memberDao.sendEmail(request.getParameter("memberEmail"), "ABOplate 이메일 인증키 입니다.", code);
       
       PrintWriter out = response.getWriter();
       out.println(code);
