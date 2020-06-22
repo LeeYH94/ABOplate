@@ -38,8 +38,8 @@ public class RestaurantFrontController extends HttpServlet{
 				System.out.println(e);
 			}
 			
-		}else if(command.equals("/restaurant/RestaurantRecommend.re")) {
-			action = new RestaurantRecommendAction();
+		}else if(command.equals("/restaurant/RestaurantPopular.re")) {
+			action = new RestaurantPopularAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {

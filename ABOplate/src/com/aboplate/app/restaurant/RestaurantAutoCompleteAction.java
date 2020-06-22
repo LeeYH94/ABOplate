@@ -20,9 +20,7 @@ public class RestaurantAutoCompleteAction implements Action{
 		String filter = request.getParameter("filter");
 		PrintWriter out = response.getWriter();
 		
-		if (filter.equals("localCurrency")) {
-			out.println(restaurantDao.getLocalCurrencyList().toString());
-		} else if (filter.equals("foodCategory")) {
+		if (filter.equals("foodCategory")) {
 			out.println(restaurantDao.getFoodCategoryList().toString());			
 		} else if (filter.equals("address")) {
 			out.println(restaurantDao.getAddressList().toString());						

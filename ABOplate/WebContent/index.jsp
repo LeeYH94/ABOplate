@@ -114,13 +114,10 @@
 								<div class="form-group">
 									<div class="form-field">
 										<select class="form-control" id="filter">
-											<option value=''>선택하세요</option>
-											<option value=''>항목1</option>
-											<option value=''>항목2</option>
-											<option value=''>항목3</option>
-											<option value=''>항목4</option>
-											<option value=''>항목5</option>
-											<option value=''>항목6</option>
+											<option value='default'>맛집 이름</option>
+											<option value='foodCategory'>음식 종류</option>
+											<option value='address'>주소</option>
+											<option value='bestRestaurant'>모범 음식점</option>
 										</select>
 									</div>
 								</div>

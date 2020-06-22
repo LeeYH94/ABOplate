@@ -13,7 +13,7 @@ import com.aboplate.app.member.dao.MemberBean;
 import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
 
-public class MemberRecRestaruantAction implements Action {
+public class RestaruantRecommendAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
