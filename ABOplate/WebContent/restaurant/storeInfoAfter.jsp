@@ -215,6 +215,14 @@
 						      		
 							   		
 							   			<div class="col-md-7">
+							   			<h3 class="head">Reviews</h3>
+											<div class="text-right">
+												<div class="form-field">
+					            					<a>최신순</a>
+													<a>좋아요순</a>
+						              				<a class="meta-chat"><span class="icon-filter"></span></a>
+						              			</div>
+											</div>
 							   			<div class="review d-flex">
 							   				
 									   		<div class="user-img" style="background-image: url(../images/apeach_01.jpeg)"></div>
