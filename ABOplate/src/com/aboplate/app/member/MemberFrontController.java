@@ -64,6 +64,14 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("MemberCheckIdOkAction 에러");
 			}
+		} else if (command.equals("/member/MemberChecknicknameOk.me")) {
+			action = new MemberCheckNicknameAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberCheckNicknameOkAction 에러");
+			}
 		} else if (command.equals("/member/MemberVerifyEmail.me")) {
 			action = new MemberVerifyOkAction();
 			try {
@@ -87,6 +95,14 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println(e);
 				System.out.println("MemberFindPw 에러");
+			}
+		} else if (command.equals("/member/MemberDelete.me")) {
+			action = new MemberDeleteAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberDelete 에러");
 			}
 		}
 		else {
