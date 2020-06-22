@@ -51,8 +51,9 @@
                     <label for="email">이메일</label>
                     <input type="email" class="form-control" id="email" name="memberEmail">
                     <input type="button" id ="checkEmail" name="memberCerNumber" value="인증번호 받기"  onClick ="sendEmail()"class="btn btn-primary py-3 p=x-5" style="padding: 15px;">
-                  	<input type="button" id="resendEmail" name="resendMail" value="재전송" onclick="sendEmail()" class="btn btn-primary py-3 p=x-5"style="padding: 15px; display: none;">
-                  	<input type="text" id="verifyNum" name="numberKey" value="" style=" display:none;">
+                  	<input type="text" id="verifyNum" name="numberKey" style="padding: 15px; display: none;" >
+                  	<input type="button" id="resendEmail" name="resendMail" value="재전송" onclick="sendEmail()" class="btn btn-primary py-3 p=x-5" style="padding: 15px; display: none;">
+                  	<input type="button" id="checkVerifyEmail" name="verifyEmail" value="인증" onclick="clickEmail()" class="btn btn-primary py-3 p=x-5" style="padding: 15px; display: none;" >
                   	<p id="emailCheckText"></p>
                   </div>
                   <div class="form-group">
