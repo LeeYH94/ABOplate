@@ -77,7 +77,16 @@ public class MemberDAO {
 		}
 		return check;
 	}
+	
+	public boolean checkNickname(String nickName) {
+		boolean check = false;
 
+		if((Integer)sqlsession.selectOne("Member.checkNickname", nickName) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
 	public boolean recommendStamp(String id) {
 		boolean check = false;
 
@@ -114,6 +123,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
+
 
 	public String createRandomPw () {
 		int length = 10;
@@ -166,11 +176,11 @@ public class MemberDAO {
             Transport.send(message); ////전송
             System.out.println("message sent successfully...");
         } catch (AddressException e) {
-        	System.out.println(e);
-        	System.out.println("MemberDAO sendNewPw 에러");
+           System.out.println(e);
+           System.out.println("MemberDAO sendNewPw 에러");
         } catch (MessagingException e) {
-        	System.out.println(e);
-        	System.out.println("MemberDAO sendNewPw 에러");
+           System.out.println(e);
+           System.out.println("MemberDAO sendNewPw 에러");
         }
     }
 }
