@@ -104,8 +104,7 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("MemberDelete 에러");
 			}
-		}
-		else {
+		} else {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/error/404.jsp");
