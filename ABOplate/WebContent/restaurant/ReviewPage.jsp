@@ -46,9 +46,9 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="login.jsp" class="nav-link">로그인</a></li>
-	          <li class="nav-item"><a href="signup.jsp" class="nav-link">회원가입</a></li>
-	          <li class="nav-item"><a href="event.jsp" class="nav-link">이벤트</a></li>
+	          <li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
+	          <li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
+	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
 	          <li class="nav-item"><a href="javascript:goDetail('테스트');" class="nav-link">최근 본 맛집</a></li>
 	        </ul>
 	      </div>

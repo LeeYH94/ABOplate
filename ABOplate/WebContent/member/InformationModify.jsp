@@ -39,9 +39,10 @@
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
             <form action="#" class="p-5 bg-light">
                   <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" class="form-control" id="memberEmail" name="memberEmail">
+                    <label for="id">아이디</label>
+                    <input type="id" class="form-control" id="memberId" name="memberId">
                   </div>
+                  <p>* 중복된 아이디 입니다.</p>
                   <div class="form-group">
                     <label for="password">비밀번호</label>
                     <input type="password" class="form-control" id="meberPassword" name="meberPassword">
@@ -50,10 +51,12 @@
                     <label for="password">비밀번호 확인</label>
                     <input type="password" class="form-control" id="memberRePassword" name="memberRePassword">
                   </div>
+                  <p>* 비밀번호와 일치하지 않습니다.</p>
                   <div class="form-group">
                     <label for="nickname">닉네임</label>
                     <input type="text" class="form-control" id="meberNickname" name="meberNickname">
                   </div>
+                  <p>* 중복된 닉네임 입니다.</p>
                   <div class="form-group">
                     <label for="favorite">선호음식 : </label>
                     <input type="checkbox" id="memberFavorite" name="memberFavorite">
@@ -128,7 +131,7 @@
     </section>
 
 
-	
+
 </body>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/jquery-migrate-3.0.1.min.js"></script>
