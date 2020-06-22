@@ -39,7 +39,7 @@ public class RestaurantPopularAction implements Action {
 		}
 		if(popularList!=null) {
 			request.setAttribute("popularList",popularList);
-			forward.setPath(request.getContextPath()+"/app/index.jsp");
+			forward.setPath(request.getContextPath()+"/index.jsp");
 			
 		}
 		forward.setRedirect(true);

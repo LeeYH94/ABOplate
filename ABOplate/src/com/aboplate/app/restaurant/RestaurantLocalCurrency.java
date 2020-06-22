@@ -39,7 +39,7 @@ public class RestaurantLocalCurrency implements Action {
 		request.setAttribute("restaurantList", restaurantDao.getLocalCurrencyList());
 		
 		forward.setRedirect(false);
-		forward.setPath("index.jsp");
+		//forward.setPath(""); 지역화폐 리스트 나오는 페이지 경로
 		
 		return forward;
 	}
