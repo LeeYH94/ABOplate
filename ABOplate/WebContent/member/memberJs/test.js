@@ -3,37 +3,37 @@
  */
 var check = false;
 
-
 function formSubmit() {
    var form = document.joinForm;
    
 if ('' == form.memberId.value) {
       
       form.memberId.focus();
-      form.memberId.style.borderColor = "red"; 
+    
+     
       
       return false;
 
    } else if ('' == form.memberName.value) {
-      
       form.memberName.focus();
-      form.memberName.style.borderColor = "red"; 
+	  
+   
       return false;
    } else if ('' == form.memberEmail.value) {
          
              form.memberEmail.focus();
-             form.memberEmail.style.color = "red";
+            
       return false;
  
    } else if ('' == form.memberPassword.value) {
       
        form.meberPassword.focus();
-       form.meberPassword.style.color = "red";
+      
       return false;
    } else if ('' == form.memberRePassword.value) {
       
       form.memberRePassword.focus();
-      form.memberRePassword.style.color = "red";
+     
       return false;
 
    } else if(form.memberPassword.value!=form.memberRePassword.value){
@@ -42,24 +42,24 @@ if ('' == form.memberId.value) {
       return false;
    } else if ('' == form.memberNickname.value) {
       
-      form.meberNickname.focus();
-      form.meberNickname.style.color = "red";
+      form.memberNickname.focus();
+     
       return false;
 
    } else if ('' == form.memberFavorite.value) {
       
+      form.memberFavorite.focus();
       
-      form.memberFavorite.style.color = "red";
       return false;
       
    } else if ('' == form. memberAge.value) {
-     
-      form. memberAge.style.color = "red";
+	   form.memberAge.focus();
+      
       return false;
       
    } else if ('' == form. memberRegion.value) {
-     
-      form. memberRegion.style.color = "red";
+	   form.memberRegion.focus();
+      
       return false;
 
    }
@@ -70,6 +70,7 @@ if ('' == form.memberId.value) {
 function checkid(id) {
    
    if (id == "") {
+	 
       $("#idCheckText").text("아이디를 작성해주세요.");
       
    } else {
@@ -104,11 +105,10 @@ $("input[name='memberId']").focusout(function(event) {
 function checknickname(nickname) {
    
    if (nickname == "") {
-      
       $("#nicknameCheckText").text("nickname을 작성해주세요.");
    } else {
       $.ajax({
-         url : contextPath + "/member/nicknameChecknicknameOk.me?nickname=" + nickname,
+         url : contextPath + "/member/MemberCheckNickname.me?nickname=" + nickname,
          
          type : 'get',
          dataType : 'text',
@@ -116,7 +116,6 @@ function checknickname(nickname) {
             
             if (data.trim() == 'ok') {
                $("#nicknameCheckText").text("사용할 수 있는 아이디입니다.");
-               nicknameCheck = true;
             
             } else {
                $("#nicknameCheckText").text("중복된 아이디입니다.");
@@ -170,6 +169,7 @@ function sendEmail(){
 		})
 	
 }
+
 function clickEmail(){
 	var checkkey = $("input[name='numberKey']").val();
 	console.log(verifyKey);
@@ -185,17 +185,11 @@ function clickEmail(){
 		console.log("다름");
 	}
 }
-
-
-function checkEmail(email){
-	
-   if(form.memberEmail.value.search('@') == -1){
-      $("#emailCheckText").text("email을 다시 써주세요");
-   }else{
-      //$("#emailCheckText").text("email다시");
-   }
+function btnSubmitClick(){
+	if(document.geteElemendById('name').required==true){
+		document.getElementById('name').setCustomValidity('[이름을 입력하세요]')
+	}
 }
-
   
 $( document ).ready( function() {
     $( '.check-all' ).click( function() {
