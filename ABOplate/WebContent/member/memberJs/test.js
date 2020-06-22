@@ -46,18 +46,16 @@ if ('' == form.memberId.value) {
       return false;
 
    } else if ('' == form.memberFavorite.value) {
-      
-      form.memberFavorite.focus();
+     
      alert("선호음식을 입력해주세요");
       return false;
       
    } else if ('' == form. memberAge.value) {
-	   form.memberAge.focus();
+	  
       alert("나이대를 입력해주세요");
       return false;
       
    } else if ('' == form. memberRegion.value) {
-	   form.memberRegion.focus();
       alert("지역을 입력해주세요");
       return false;
 

@@ -58,7 +58,7 @@
                   </div>
                   <div class="form-group">
                     <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" name="memberPassword" required>
+                    <input type="password" class="form-control" id="password" name="memberPassword">
                   
                   </div>
                   <div class="form-group">
