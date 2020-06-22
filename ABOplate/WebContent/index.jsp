@@ -113,7 +113,7 @@
 							<div class="row justify-content-center">
 								<div class="form-group">
 									<div class="form-field">
-										<select class="form-control">
+										<select class="form-control" id="filter">
 											<option value=''>선택하세요</option>
 											<option value=''>항목1</option>
 											<option value=''>항목2</option>
@@ -127,8 +127,7 @@
 								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input type="text" class="form-control"
-												placeholder="Search location"></input>
+											<input type="text" class="form-control" placeholder="Search location" id="search"></input>
 											<button>
 												<span class="ion-ios-search"></span>
 											</button>
