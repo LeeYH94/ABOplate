@@ -20,11 +20,11 @@ public class RestaurantAutoCompleteAction implements Action{
 		String filter = request.getParameter("filter");
 		PrintWriter out = response.getWriter();
 		
-		if (filter.equals("foodCategory")) {
+		if (filter.equals("food_category")) {
 			out.println(restaurantDao.getFoodCategoryList().toString());			
 		} else if (filter.equals("address")) {
 			out.println(restaurantDao.getAddressList().toString());						
-		} else if (filter.equals("bestRestaurant")) {
+		} else if (filter.equals("best_restaurant")) {
 			out.println(restaurantDao.getBestRestaurantList().toString());									
 		} else {
 			out.println(restaurantDao.getName().toString());												
