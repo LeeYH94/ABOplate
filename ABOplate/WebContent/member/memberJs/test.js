@@ -149,13 +149,13 @@ $("input[name='memberNickname']").focusout(function(event) {
  */
 /*인증번호 받기를 누를때 checkemail해주기*/
 function sendEmail(){
-	
 		$.ajax({
-			url: contextPath + "/member/MemberCheckEmail.me=?memberEmail"+memberEmail,
+			url: contextPath + "/member/MemberVerifyEmail.me?memberEmail=" + $("input[name='memberEmail']").val(),
 			type: 'get',
 			dataType: 'text',
 			success: function(pw){
 				var verifyKey = pw;
+				$("#checkEmail").hide();
 				$("#resendEmail").show();
 				$("#verifyNum").show();
 				var checkkey = $("input[name='numberKey']").val();

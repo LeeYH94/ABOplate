@@ -32,7 +32,7 @@ public class MemberVerifyOkAction implements Action {
 
       }
       
-      memberDao.sendEmail(request.getParameter("memberEmail"), code);
+      memberDao.sendEmail(request.getParameter("memberEmail"), "ABOplate 이메일 인증키 입니다.", code);
       
       PrintWriter out = response.getWriter();
       out.println(code);

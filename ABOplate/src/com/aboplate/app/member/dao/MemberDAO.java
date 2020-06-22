@@ -132,10 +132,10 @@ public class MemberDAO {
 		return sb.toString();
 	}
 
-	public void sendEmail(String email, String content) {
-        String user = "aboplate04@gmail.com";
-        String password = "asdf1234!@";
-
+	public void sendEmail(String email, String subject, String content) {
+        String user = "aboplate004@gmail.com";
+        String password = "qwer1234!@";
+        
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com"); 
@@ -153,12 +153,11 @@ public class MemberDAO {
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-
             //수신자메일주소
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); 
 
             // Subject
-            message.setSubject("ABOplate 새로운 비밀번호 입니다."); //메일 제목을 입력
+            message.setSubject(subject); //메일 제목을 입력
 
             // Text
             message.setText(content);    //메일 내용을 입력

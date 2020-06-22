@@ -26,7 +26,7 @@ public class MemberFindPwAction implements Action{
 		PrintWriter out = response.getWriter();
 		if(mDao.updatePw(newPw, id)) {
 			//
-			mDao.sendEmail(email, newPw);
+			mDao.sendEmail(email, "ABOplate 새로운 비밀번호 입니다.", newPw);
 		}else {
 			out.println("<script>");
 			out.println("alert('�ٽ� �õ����ּ���');");
