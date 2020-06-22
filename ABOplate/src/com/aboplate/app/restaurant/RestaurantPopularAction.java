@@ -11,7 +11,7 @@ import com.aboplate.action.ActionForward;
 import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
 
-public class RestaurantRecommendAction implements Action {
+public class RestaurantPopularAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -39,7 +39,7 @@ public class RestaurantRecommendAction implements Action {
 		}
 		if(popularList!=null) {
 			request.setAttribute("popularList",popularList);
-			forward.setPath(request.getContextPath()+"/app/index.jsp");
+			forward.setPath(request.getContextPath()+"/index.jsp");
 			
 		}
 		forward.setRedirect(true);
