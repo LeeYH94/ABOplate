@@ -2,6 +2,7 @@ package com.aboplate.app.restaurant;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -52,9 +53,23 @@ public class RestaurantFrontController extends HttpServlet{
 			}catch(Exception e) {
 				System.out.println(e);
 			}
+		} else if(command.equals("/restaurant/restaurantLocalCurrency.re")) {
+			action = new RestaurantLocalCurrency();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
 		}
 		
-		
+		if(forward != null) {
+			if(forward.isRedirect()) {
+				resp.sendRedirect(forward.getPath());
+			}else {
+				RequestDispatcher dispather = req.getRequestDispatcher(forward.getPath());
+				dispather.forward(req, resp);
+			}
+		}
 		
 	}
 
