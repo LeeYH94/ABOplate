@@ -8,16 +8,16 @@ var emailCheck =false;
 function formSubmit() {
    var form = document.joinForm;
    
-if ('' == form.memberId.value) {
+if ('' == form.memberId.value || !checkId) {
       
       form.memberId.focus();
       return false;
 
-   } else if ('' == form.memberName.value) {
+   } else if ('' == form.memberName.value || !nicknameCheck) {
       form.memberName.focus();
       alert("이름을 입력해주세요");
       return false;
-   } else if ('' == form.memberEmail.value) {
+   } else if ('' == form.memberEmail.value || !emailCheck) {
          
              form.memberEmail.focus();
              alert("이메일을 입력해주세요");
