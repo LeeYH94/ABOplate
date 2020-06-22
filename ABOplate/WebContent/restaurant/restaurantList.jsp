@@ -31,7 +31,7 @@
   <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Uptown</a>
+	      <a class="navbar-brand" href="../index.jsp">ABO plate</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -50,24 +50,39 @@
     
 		<!-- 여기가 시작 -->
 		<section class="ftco-section">
+		<div class="col-md-8">
+		<form action="#" class="search-location mt-md-5">
+							<div class="row justify-content-center">
+								<div class="col-lg-10 align-items-end">
+									<div class="form-group">
+										<div class="form-field">
+											<input type="text" class="form-control" placeholder="Search location" style="border: 1px solid;"></input>
+											<button>
+												<span class="ion-ios-search"></span>
+											</button>
+										</div>
+									</div>
+									<div class=row style="height:60px;">
+										<div class="tag-widget post-tag-container">
+								            		<div class="tagcloud" style="display:flex;">
+								            			<a href="#">위치순</a>
+														<a href="#">지역화폐</a>
+									              		<a href="#" class="tag-cloud-link">태그1</a>
+									              		<a href="#" class="tag-cloud-link">태그2</a>
+									              		<a href="#" class="tag-cloud-link">태그3</a>
+									              		<a href="#" class="tag-cloud-link">태그4</a>
+									              		<a href="#" class="tag-cloud-link">태그5</a>
+								            		</div>
+								        </div>
+							        </div>
+								</div>
+							</div>
+		</form>
+		</div>
     	<div class="container" style="margin-left:0;">
-		<div id="sort" class=row style="height:60px;">
-			<div class="tag-widget post-tag-container">
-	            		<div class="tagcloud" style="display:flex;">
-	            			<a href="#">위치순</a>
-							<a href="#">지역화폐</a>
-		              		<a href="#" class="tag-cloud-link">태그1</a>
-		              		<a href="#" class="tag-cloud-link">태그2</a>
-		              		<a href="#" class="tag-cloud-link">태그3</a>
-		              		<a href="#" class="tag-cloud-link">태그4</a>
-		              		<a href="#" class="tag-cloud-link">태그5</a>
-	            		</div>
-	        </div>
-        </div>
-				<!-- 수정부분 -->
-	    <div id="map" class="map" style="margin-left:0;"></div>
-        <div class="row" id="sort">
-        	<div class="col-md-6">
+	    <div id="map"></div>
+        <div class="row justify-content-center">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-1.jpg);"></a>
         			<div class="text">
@@ -85,7 +100,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-2.jpg);"></a>
         			<div class="text">
@@ -103,7 +118,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-3.jpg);"></a>
         			<div class="text">
@@ -121,8 +136,7 @@
         			</div>
         		</div>
         	</div>
-
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-4.jpg);"></a>
         			<div class="text">
@@ -140,7 +154,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-5.jpg);"></a>
         			<div class="text">
@@ -158,7 +172,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-6.jpg);"></a>
         			<div class="text">
@@ -176,8 +190,7 @@
         			</div>
         		</div>
         	</div>
-
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-4.jpg);"></a>
         			<div class="text">
@@ -195,7 +208,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-5.jpg);"></a>
         			<div class="text">
@@ -213,7 +226,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-6.jpg);"></a>
         			<div class="text">
@@ -231,7 +244,7 @@
         			</div>
         		</div>
         	</div>
-        	<div class="col-md-6">
+        	<div class="col-md-5">
         		<div class="property-wrap ftco-animate">
         			<a href="properties-single.html" class="img" style="background-image: url(../images/work-1.jpg);"></a>
         			<div class="text">
@@ -250,7 +263,7 @@
         		</div>
         	</div>
         </div>
-        <div class="row mt-5" id="sort">
+        <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
@@ -359,7 +372,7 @@
   <script src="../js/bootstrap-datepicker.js"></script>
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjRI247mxL30iZ8ytsKdCcQYo5c0AafFU&sensor=false"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
   

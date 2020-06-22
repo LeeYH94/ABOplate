@@ -28,11 +28,9 @@ public class MemberVerifyOkAction implements Action {
          index = (int) (charSet.length * Math.random());
          sb.append(charSet[index]);
          code = sb.toString();
-         request.getParameter(code);
-
       }
       
-      memberDao.sendEmail(request.getParameter("memberEmail"), code);
+      memberDao.sendEmail(request.getParameter("memberEmail"), "ABOplate 이메일 인증키 입니다.", code);
       
       PrintWriter out = response.getWriter();
       out.println(code);

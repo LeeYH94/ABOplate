@@ -64,7 +64,7 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("MemberCheckIdOkAction 에러");
 			}
-		} else if (command.equals("/member/MemberCheckEmail.me")) {
+		} else if (command.equals("/member/MemberVerifyEmail.me")) {
 			action = new MemberVerifyOkAction();
 			try {
 				forward = action.execute(req, resp);
