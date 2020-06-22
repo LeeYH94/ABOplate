@@ -234,13 +234,14 @@
 											</div>
 										<c:choose>
 										<c:when test="${list != null and fn:length(list) > 0}">	
+										<c:forEach var="r_bean" items="${reviewList}">
 							   			<div class="review d-flex">
 							   				
 									   		<div class="user-img" style="background-image: url(../images/apeach_01.jpeg)"></div>
 									   		<div class="desc">
 									   			<h4>
-									   				<span class="text-left">${reviewBean.getMember_id()}</span>
-									   				<span class="text-right">${reviewBean.getBoard_date()}</span>
+									   				<span class="text-left">${r_bean.getMember_id()}</span>
+									   				<span class="text-right">${r_bean.getBoard_date()}</span>
 									   			</h4>
 									   			
 									   			<p class="star">
@@ -252,19 +253,21 @@
 									   					<i class="ion-ios-star"></i>
 								   					</span>
 								   					<span class="text-right">
-								   					<c:if test="${reviewBean.getMember_id() eq session_id}">
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${reviewBean.getreview_num()}">[수정]</a>&nbsp;&nbsp;
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${reviewBean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
-														
+								   					<c:if test="${r_bean.getMember_id() eq session_id}">
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}">[수정]</a>&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
+													
+													
 														<a href="#" class="reply" style="background:none;"><img src="../images/좋아요.jpg" width="25px" height="25px"></a>
 														<a href="#" class="reply" style="background:none;"><img src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
-									   			<p>${reviewBean.getReview_contents()}</p>
+									   			<p>${r_bean.getReview_contents()}</p>
 									   		</div>
 									   		
 									   	</div>
+									   	</c:forEach>
 									   	</c:when>
 										<c:otherwise>
 											<div class="review d-flex">
