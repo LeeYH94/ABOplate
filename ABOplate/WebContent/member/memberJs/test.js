@@ -48,17 +48,17 @@ if ('' == form.memberId.value) {
 
    } else if ('' == form.memberFavorite.value) {
       
-      form.memberFavorite.focus();
+      
       form.memberFavorite.style.color = "red";
       return false;
       
    } else if ('' == form. memberAge.value) {
-      form. memberAge.focus();
+     
       form. memberAge.style.color = "red";
       return false;
       
    } else if ('' == form. memberRegion.value) {
-      form. memberRegion.focus();
+     
       form. memberRegion.style.color = "red";
       return false;
 
@@ -148,24 +148,21 @@ $("input[name='memberNickname']").focusout(function(event) {
  * 둘중에 선택해서 하시면 될듯
  */
 /*인증번호 받기를 누를때 checkemail해주기*/
+//클릭 할 때 마다 비밀번호 받아오기 function sendEmail
+var verifyKey;
 function sendEmail(){
+	
 		$.ajax({
 			url: contextPath + "/member/MemberVerifyEmail.me?memberEmail=" + $("input[name='memberEmail']").val(),
 			type: 'get',
 			dataType: 'text',
 			success: function(pw){
-				var verifyKey = pw;
+				verifyKey = pw;
+				console.log(pw);
 				$("#checkEmail").hide();
 				$("#resendEmail").show();
 				$("#verifyNum").show();
-				var checkkey = $("input[name='numberKey']").val();
-				if(pw==checkkey){
-					$("#resendEmail").hide();
-					$("#verifyNum").hide();
-					$("#emailCheckText").text("인증완료");
-				}else{
-					
-				}
+				$("#checkVerifyEmail").show();
 			},
 			error: function(){
 				console.log("오류");
@@ -173,6 +170,20 @@ function sendEmail(){
 		})
 	
 }
+function clickEmail(){
+	var checkkey = $("input[name='numberKey']").val();
+	console.log(verifyKey);
+	console.log(checkkey);
+	if(checkkey.contains(verifyKey)){
+		$("#resendEmail").hide();
+		$("#verifyNum").hide();
+		$("#emailCheckText").text("인증완료");
+		$("#email").readonly= true;
+	}else{
+		console.log("다름");
+	}
+}
+
 
 function checkEmail(email){
 	
