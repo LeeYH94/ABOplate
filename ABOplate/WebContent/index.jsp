@@ -114,10 +114,10 @@
 								<div class="form-group">
 									<div class="form-field">
 										<select class="form-control" id="filter">
-											<option value='default'>맛집 이름</option>
-											<option value='foodCategory'>음식 종류</option>
+											<option value='name'>전체</option>
+											<option value='food_category'>음식 종류</option>
 											<option value='address'>주소</option>
-											<option value='bestRestaurant'>모범 음식점</option>
+											<option value='best_restaurant'>모범 음식점</option>
 										</select>
 									</div>
 								</div>
