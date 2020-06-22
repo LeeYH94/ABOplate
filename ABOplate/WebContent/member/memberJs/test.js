@@ -1,7 +1,9 @@
 /**
  * formSubmit() 회원가입 필수항목 검사 checkid(id) 회원가입 아이디 중복검사
  */
-var check = false;
+var idCheck =false;
+var nicknameCheck =false;
+var emailCheck =false;
 
 function formSubmit() {
    var form = document.joinForm;
@@ -9,26 +11,22 @@ function formSubmit() {
 if ('' == form.memberId.value) {
       
       form.memberId.focus();
-    
-     
-      
       return false;
 
    } else if ('' == form.memberName.value) {
       form.memberName.focus();
-	  
-   
+      alert("이름을 입력해주세요");
       return false;
    } else if ('' == form.memberEmail.value) {
          
              form.memberEmail.focus();
-            
+             alert("이메일을 입력해주세요");
       return false;
  
    } else if ('' == form.memberPassword.value) {
       
-       form.meberPassword.focus();
-      
+       form.memberPassword.focus();
+       alert("비밀번호를 다시 입력해주세요");
       return false;
    } else if ('' == form.memberRePassword.value) {
       
@@ -39,6 +37,7 @@ if ('' == form.memberId.value) {
    } else if(form.memberPassword.value!=form.memberRePassword.value){
       form.memberRePassword.focus();
       form.memberRePassword.style.borderColor="red";
+      alert("비밀번호 확인을 다시 입력해주세요");
       return false;
    } else if ('' == form.memberNickname.value) {
       
@@ -49,17 +48,17 @@ if ('' == form.memberId.value) {
    } else if ('' == form.memberFavorite.value) {
       
       form.memberFavorite.focus();
-      
+     alert("선호음식을 입력해주세요");
       return false;
       
    } else if ('' == form. memberAge.value) {
 	   form.memberAge.focus();
-      
+      alert("나이대를 입력해주세요");
       return false;
       
    } else if ('' == form. memberRegion.value) {
 	   form.memberRegion.focus();
-      
+      alert("지역을 입력해주세요");
       return false;
 
    }
@@ -80,14 +79,14 @@ function checkid(id) {
          type : 'get',
          dataType : 'text',
          success : function(data) {
-            
+        	 
             if (data.trim() == 'ok') {
                $("#idCheckText").text("사용할 수 있는 아이디입니다.");
                idCheck = true;
-            
             } else {
+            	
                $("#idCheckText").text("중복된 아이디입니다.");
-               
+               idCheck= false;
             }
          },
          error : function() {
@@ -116,10 +115,11 @@ function checknickname(nickname) {
             
             if (data.trim() == 'ok') {
                $("#nicknameCheckText").text("사용할 수 있는 아이디입니다.");
+               nicknameCheck = true;
             
             } else {
                $("#nicknameCheckText").text("중복된 아이디입니다.");
-               
+               nicknameCheck= false;
             }
          },
          error : function() {
@@ -180,16 +180,14 @@ function clickEmail(){
 		$("#checkVerifyEmail").hide();
 		$("#emailCheckText").text("인증완료");
 		$("input[name='memberEmail']").attr("readonly", true);
+		 emailCheck=true;
 		//email 인증 체크 boolean 변수 true
 	}else{
 		console.log("다름");
+		 emailCheck=false;
 	}
 }
-function btnSubmitClick(){
-	if(document.geteElemendById('name').required==true){
-		document.getElementById('name').setCustomValidity('[이름을 입력하세요]')
-	}
-}
+
   
 $( document ).ready( function() {
     $( '.check-all' ).click( function() {
