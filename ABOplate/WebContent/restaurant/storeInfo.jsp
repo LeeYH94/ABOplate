@@ -245,7 +245,7 @@
 													</c:if>
 													
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
-														<a href="notify()" name="notify" class="reply" style="background:none;"><img src="../images/신고.jpg" width="25px" height="25px"></a>
+														<a href="notify()" name="notify" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
 									   			<p>${r_bean.getReview_contents()}</p>
