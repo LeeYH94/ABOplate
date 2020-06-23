@@ -21,7 +21,7 @@
 			</dataSource>
 		</environment>
 	</environments>
-	
+
 	<mappers>
 		<mapper resource="com/aboplate/sql/member.xml"/>
 		<mapper resource="com/aboplate/sql/restaurant.xml"/>

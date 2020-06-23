@@ -27,16 +27,20 @@ public class MemberJoinOkAction implements Action{
 			// sns 회원가입
 			member.setMember_id(session.getAttribute("snsId").toString());
 			member.setMember_nickname(mDao.createRandomPw());
+			member.setMember_type(2);
 			
 			mDao.joinSns(member.getMember_id());
 		} else {
+			String pref = "";
 			member.setMember_id(request.getParameter("memberId"));
 			member.setMember_name(request.getParameter("memberName"));
 			member.setMember_email(request.getParameter("memberEmail"));
 			member.setMember_password(mDao.encryptPw(request.getParameter("memberPassword")));
 			member.setMember_nickname(request.getParameter("memberNickname"));
-			member.setMember_preference_food(request.getParameter("memberFavorite"));
-			member.setMember_age_group(Integer.parseInt(request.getParameter("memberAge")));
+			for (String favorite : request.getParameterValues("memberFavorite")) {				
+				pref += favorite + ",";
+			}
+			member.setMember_preference_food(pref);
 			member.setMember_region(request.getParameter("memberRegion"));
 			check=mDao.join(member);
 		}
@@ -50,7 +54,7 @@ public class MemberJoinOkAction implements Action{
 		}
 		
 		forward.setRedirect(true);
-		//메인페이지로 이동
+		forward.setPath(request.getContextPath() + "/member/signup3.jsp");
 		return forward;
 	}
 }

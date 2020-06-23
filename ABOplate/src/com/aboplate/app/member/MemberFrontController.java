@@ -56,6 +56,14 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("MemberLoginOkAction 에러");
 			}
+		} else if (command.equals("/member/MemberLogOut.me")) {
+			action = new MemberLogOutAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberLoginOkAction 에러");
+			}
 		} else if (command.equals("/member/MemberCheckIdOk.me")) {
 			action = new MemberCheckIdOkAction();
 			try {
