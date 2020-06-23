@@ -97,12 +97,17 @@ public class MemberDAO {
 		return check;
 	}
 
+	
 	public boolean checkId(String id) {
 		boolean check = false;
 		if((Integer)sqlsession.selectOne("Member.checkId", id) == 1) {
 			check = true;
 		}
 		return check;
+	}
+	
+	public void deleteMember(String id) {
+		sqlsession.delete("Member.deleteMember", id);
 	}
 	
 	public void joinSns(String snsId) {

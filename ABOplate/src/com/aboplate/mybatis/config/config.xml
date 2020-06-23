@@ -6,7 +6,8 @@
 	<typeAliases>
 		<typeAlias type="com.aboplate.app.member.dao.MemberBean" alias="memberBean"/>
 		<typeAlias type="com.aboplate.app.restaurant.dao.RestaurantBean" alias="restaurantBean"/>
-		<typeAlias type="com.aboplate.app.review.dao.ReviewBean" alias="reviewBean"/>
+		<typeAlias type="com.aboplate.app.restaurant.dao.ReviewBean" alias="reviewBean"/>
+		<typeAlias type="com.aboplate.app.bookmark.dao.BookmarkBean" alias="bookmarkBean"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -14,9 +15,9 @@
 			<transactionManager type="JDBC"/>
 			<dataSource type="POOLED">
 				<property name="driver" value="oracle.jdbc.OracleDriver"/>
-				<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:XE"/>
-				<property name="username" value="hr"/>
-				<property name="password" value="hr"/>
+				<property name="url" value="jdbc:oracle:thin:@106.10.58.49:3389:XE"/>
+				<property name="username" value="root"/>
+				<property name="password" value="J4qF-Ma5?rn"/>
 			</dataSource>
 		</environment>
 	</environments>
@@ -25,5 +26,6 @@
 		<mapper resource="com/aboplate/sql/member.xml"/>
 		<mapper resource="com/aboplate/sql/restaurant.xml"/>
 		<mapper resource="com/aboplate/sql/review.xml"/>
+		<mapper resource="com/aboplate/sql/bookmark.xml"/>
 	</mappers>
 </configuration>
