@@ -18,7 +18,7 @@ public class BookmarkDAO {
 		sqlsession = sessionf.openSession(true);
 	}
 	
-	public List<RestaurantBean> getBookmarkList(String sessionId, int startRow, int endRow) {
+	public List<RestaurantBean> getBookmarkList( int startRow, int endRow, String sessionId) {
 		
 		HashMap<String , Object> datas = new HashMap<>();
 		
@@ -28,6 +28,7 @@ public class BookmarkDAO {
 		datas.put("restaurantNum", restaurantNumList);
 		
 		List<RestaurantBean> bookmarkList = sqlsession.selectOne("Bookmark.getBookmarkList", datas);
+			
 		
 		return bookmarkList;
 		

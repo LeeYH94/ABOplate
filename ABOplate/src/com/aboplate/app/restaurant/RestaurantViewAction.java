@@ -2,6 +2,7 @@ package com.aboplate.app.restaurant;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
@@ -19,6 +20,9 @@ public class RestaurantViewAction implements Action{
 		
 		RestaurantDAO restaurantDao = new RestaurantDAO();
 		RestaurantBean restaurantBean = new RestaurantBean();
+		HttpSession session = request.getSession();
+		
+		String id = session.getAttribute("sessionId").toString();
 		
 		ReviewDAO reviewDao = new ReviewDAO();
 		
@@ -45,6 +49,7 @@ public class RestaurantViewAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("reviewList", reviewDao.getReviewList(startRow, endRow, restaurantNum));
+		request.setAttribute("bookmark", restaurantDao.checkBookmark(id, restaurantNum));
 		
 		forward.setRedirect(false);
 		forward.setPath("/app/restaurant/storeInfo.jsp");
