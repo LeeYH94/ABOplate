@@ -67,10 +67,13 @@
 	
 	<insert id="joinSns" parameterType="map">
 		INSERT INTO MEMBER
-		(MEMBER_ID, MEMBER_NICKNAME)
-		VALUES(#{snsId}, #{nickName})
+		(MEMBER_ID, MEMBER_NICKNAME, MEMBER_TYPE)
+		VALUES(#{snsId}, #{nickName}, 2)
 	</insert>
-	<!-- 안녕하세요 -->
+	
+	<delete id="deleteMember" parameterType="">
+		DELETE FROM MEMBER WHERE member_id = #{id}
+	</delete>
 	
 
 </mapper>

@@ -27,6 +27,7 @@ public class MemberJoinOkAction implements Action{
 			// sns 회원가입
 			member.setMember_id(session.getAttribute("snsId").toString());
 			member.setMember_nickname(mDao.createRandomPw());
+			member.setMember_type(2);
 			
 			mDao.joinSns(member.getMember_id());
 		} else {
