@@ -258,8 +258,7 @@
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 													
-													
-														<a href="#" class="reply" style="background:none;"><img src="../images/좋아요.jpg" width="25px" height="25px"></a>
+														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
 														<a href="#" class="reply" style="background:none;"><img src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
