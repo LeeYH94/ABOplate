@@ -209,7 +209,8 @@
 						      <div class="row">
 						      		
 							   			<div class="col-md-7">
-							   			<form action="${pageContext.request.contextPath}/restaurant/ReviewWriteOk.re?seq=${restaurantBean.getrestaurant_num()}" method="post" name="Review">
+							   			<!-- 여기서 form 태그가 필요한가?... -->
+							   			<%-- <form action="${pageContext.request.contextPath}/restaurant/ReviewWriteOk.re?seq=${restaurantBean.getrestaurant_num()}" method="post" name="Review"> --%>
 							   			<h3 class="head">Reviews</h3>
 											<div class="text-right">
 												
@@ -226,8 +227,8 @@
 									   		<div class="user-img" style="background-image: url(../images/apeach_01.jpeg)"></div>
 									   		<div class="desc">
 									   			<h4>
-									   				<span class="text-left">${r_bean.getMember_id()}</span>
-									   				<span class="text-right">${r_bean.getBoard_date()}</span>
+									   				<span class="text-left">${r_bean.getMember_nickname()}</span>
+									   				<span class="text-right">${r_bean.getreview_upload_date()}</span>
 									   			</h4>
 									   			
 									   			<p class="star">
@@ -239,11 +240,10 @@
 									   					<i class="ion-ios-star"></i>
 								   					</span>
 								   					<span class="text-right">
-								   					<c:if test="${r_bean.getMember_id() eq session_id}">
+								   					<c:if test="${r_bean.getMember_id() eq session_id}"> <!-- 백과 이야기 필요 -->
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
-													
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
 														<a href="notify()" name="notify" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
@@ -292,7 +292,7 @@
 											            </div>
 											          </div>
 									   		</div>
-									   		</form>   
+									   		<!-- </form>   --> 
 									   		    
 									   	</div>
 									   	
