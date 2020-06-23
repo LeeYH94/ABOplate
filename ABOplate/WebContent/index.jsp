@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -33,6 +34,9 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body onload="javascript:goDetail();">
+	<c:set var="memberBean" value="${requestScope.memberBean}"/>
+	<c:set var="popularList" value="${requestScope.popularList}"/>
+	<c:set var="recommendList" value="${requestScope.recommendList}"/>
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -49,19 +53,19 @@
 
 				<ul class="navbar-nav ml-auto" id="dm_ul">
 					<c:choose>
-					<c:when test="${session_id eq null}">
+					<c:when test="${sessionId eq null}">
 						<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
 						<li class="nav-item"><a href="member/signup.jsp" class="nav-link">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
-	          			<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
-	          			<li class="nav-item"><a href="member/mypage.jsp" class="nav-link">마이페이지</a></li>
-	          			<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+	          <li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
 					</c:otherwise>
 					</c:choose>
 					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
 						<ul>
 							<li>
@@ -112,10 +116,8 @@
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
-			<div
-				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-				<div
-					class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
+			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
 					<div style="margin: 0 auto;">
 						<form action="#" class="search-location mt-md-5">
 							<div class="row justify-content-center">
@@ -132,8 +134,8 @@
 								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input type="text" class="form-control" placeholder="Search location" id="search"></input>
-											<button>
+											<input type="text" class="form-control" placeholder="Search location" id="search">
+											<button type="button" onclick="javascript:searchRestaurant()">
 												<span class="ion-ios-search"></span>
 											</button>
 										</div>
@@ -201,12 +203,11 @@
 					<div class="bd-example bd-example-tabs">
 						<div class="d-flex justify-content-center">
 							<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-
 								<li class="nav-item"><a class="nav-link active"
 									id="pills-description-tab" data-toggle="pill"
 									href="#pills-description" role="tab"
-									aria-controls="pills-description" aria-expanded="true">인기
-										맛집</a></li>
+									aria-controls="pills-description" aria-expanded="true">인기맛집</a>
+								</li>
 								<li class="nav-item"><a class="nav-link"
 									id="pills-manufacturer-tab" data-toggle="pill"
 									href="#pills-manufacturer" role="tab"
@@ -221,23 +222,30 @@
 							<div class="tab-pane fade show active" id="pills-description"
 								role="tabpanel" aria-labelledby="pills-description-tab">
 								<div class="row">
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/1.jpg"
-													class="img-fluid" alt="Colorlib Template">
+									<c:choose>
+									<c:when test="${popularList != null and fn:length(popularList) > 0}">
+										<c:forEach var="restaurantBean" items="${popularList}">
+											<div class="col-md-3">
+												<div class="agent">
+													<div class="img">
+														<img style="width: 100%; height: 300px;" 
+															src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
+															class="img-fluid" alt="Colorlib Template">
+													</div>
+													<div class="desc">
+														<h3>
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me">James Stallon</a>
+														</h3>
+														<p class="h-info">
+															<span class="location">Listing</span> <span class="details">—
+																10 restaurant</span>
+														</p>
+													</div>
+												</div>
 											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
+										</c:forEach>
+									</c:when>
+									</c:choose>
 									<div class="col-md-3">
 										<div class="agent">
 											<div class="img">
