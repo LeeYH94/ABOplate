@@ -1,5 +1,7 @@
 package com.aboplate.app.restaurant;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,10 +27,14 @@ public class RestaurantBookmarkOkAction implements Action {
 		int seq = restaurantBean.getRestaurant_num();
 		
 		//boolean값으로, DB에 있으면 빼기, DB에 없으면 추가
+		PrintWriter out = response.getWriter();
+		
 		if(restaurantDao.checkBookmark(id, seq)) {
 			restaurantDao.popBookmark(id, seq);
+			out.print("pop");
 		} else {
 			restaurantDao.addBookmark(id, seq);
+			out.print("add");
 		}
 		
 		return null;
