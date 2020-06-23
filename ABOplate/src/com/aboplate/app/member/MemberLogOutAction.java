@@ -14,9 +14,10 @@ public class MemberLogOutAction implements Action{
 		ActionForward forward=new ActionForward();
 		
 		session.invalidate();
+		System.out.println(1);
 		
 		forward.setRedirect(true);
-		//메인페이지로 이동
+		forward.setPath(request.getContextPath() + "/index.jsp");
 		return forward;
 	}
 }
