@@ -2,6 +2,7 @@ package com.aboplate.app.restaurant;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
@@ -21,17 +22,20 @@ public class RestaurantBookmarkAction implements Action{
 		BookmarkBean bookmarkBean = new BookmarkBean();
 		int bookmark_num = Integer.parseInt(request.getParameter("bookmarkNum"));
 		String email = request.getParameter("member_email");
+		HttpSession session = request.getSession();
+		
+		String id = (String)session.getAttribute("sessionId");
 		
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
-		int pageSize = 5;
-		int totalCnt = bookmarkDao.getBookmarkCnt(bookmark_num);
+		int pageSize = 8;
+		int totalCnt = bookmarkDao.getBookmarkCnt(id);
 		
-		int endRow = page * 5;
-		int startRow = page - 4;
+		int endRow = page * 8;
+		int startRow = page -7;
 		
 		int startPage = ((page-1)/pageSize) * pageSize + 1;
-		int endPage = startPage + 4;
+		int endPage = startPage + 7;
 		int totalPage = (totalCnt-1) / pageSize + 1;
 		
 		endPage = endPage > totalPage ? totalPage : endPage;
@@ -42,7 +46,7 @@ public class RestaurantBookmarkAction implements Action{
 		request.setAttribute("currentPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow));
+		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow,id));
 		
 		forward.setRedirect(false);
 		forward.setPath("/app/bookmark/storeInfo.jsp");
