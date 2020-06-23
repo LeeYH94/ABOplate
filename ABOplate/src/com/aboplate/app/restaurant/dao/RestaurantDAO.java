@@ -94,6 +94,11 @@ public class RestaurantDAO {
 		
 		return sqlsession.selectOne("Restaurant.getRestaurantInfo", restaurantNum); 
 	}
+	
+	public int getLocalCurrencyCnt() {
+		
+		return sqlsession.selectOne("Restaurant.getLocalCurrencyCnt");
+	}
 		
 		
 }
