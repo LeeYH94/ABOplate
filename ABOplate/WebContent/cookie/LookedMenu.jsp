@@ -13,13 +13,7 @@
 <title>최근본 목록</title>
 </head>
 <body>
-<%
-if(cookie!=null){
-	for(Cookie ck:cookie){
-		
-	}
-}
-%>
+
 
 </body>
 
@@ -28,8 +22,8 @@ if(cookie!=null){
   <script >
   function checkCookie() {
 	  var cookieCnt=10;
-	  String[] cookie_list ;// HashMap에 들어갈 key name
-	  Cookie[] cookies = request.getCookies(); // 현재 있는 쿠키를 받아서
+	  var String[] cookie_list ;// HashMap에 들어갈 key name
+	  var Cookie[] cookies = request.getCookies(); // 현재 있는 쿠키를 받아서
 	  HashMap map = new HashMap();
 	  boolean check = false; // 중복확인체크
 	  for(int i=0; i<cookies.length-1; i++){
