@@ -30,6 +30,7 @@ public class RestaurantReviewWriteAction implements Action{
 		int ration = Integer.parseInt(request.getParameter("ration"));
 		String report = request.getParameter("report");
 		String upload_date = request.getParameter("upload_date");
+		String id = (String)session.getAttribute("sessionId");
 		
 		if(!check) {
 			reviewBean.setRestaurant_num(restaurant_num);
