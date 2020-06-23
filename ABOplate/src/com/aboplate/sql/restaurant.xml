@@ -52,6 +52,10 @@
 		SELECT * FROM RESTAURANT WHERE restaurant_num = ${num}
 	</select>
 	
+	<select id="getLocalCurrencyCnt" resultType="_int">
+		SELECT COUNT(*) FROM RESTAURANT WHERE restaurant_local_currency = 'O'
+	</select>
+	
 	
 	
 </mapper>
