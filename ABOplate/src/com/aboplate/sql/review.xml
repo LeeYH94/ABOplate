@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Review">
+
+<select id="getReviewList" parameterType="map" resultType="reviewBean">
+		SELECT * FROM
+			(SELECT ROWNUM R, V.* FROM
+				(SELECT * FROM REVIEW WHERE restaurant_num = ${restaurantNum}
+					ORDER BY review_num DESC) V ) L
+			WHERE L.R BETWEEN ${startRow} AND ${endRow}		
+	</select>
+	
+	<select id="getReviewCnt" parameterType="_int" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW
+			WHERE restaurant_num = ${restaurantNum}
+	</select>
+	
+</mapper>	

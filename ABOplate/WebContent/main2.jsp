@@ -44,7 +44,7 @@
 	          <li class="nav-item"><p class="nav-p">***님</p></li>
 	          <li class="nav-item"><p class="nav-p">★ 포인트</p></li>
 	          <li class="nav-item"><a href="mypage.jsp" class="nav-link">마이페이지</a></li>
-	          <li class="nav-item"><a href="agent.jsp" class="nav-link">로그아웃</a></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
 	          <li class="nav-item"><a href="event.jsp" class="nav-link">이벤트</a></li>
 	          <li class="nav-item"><a href="favorites.jsp" class="nav-link">즐겨찾기</a></li>
 	          <li class="nav-item"><a href="javascript:goDetail('테스트');" class="nav-link">최근 본 맛집</a></li>
@@ -495,6 +495,8 @@
   <script src="js/popup.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  <script>var contextPath = "${pageContext.request.contextPath}";</script>
+  
     
   </body>
 </html>

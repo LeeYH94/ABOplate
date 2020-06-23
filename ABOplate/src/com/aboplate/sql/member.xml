@@ -20,7 +20,7 @@
 	 -->
 	<select id="login" parameterType="map" resultType="map">
 		SELECT member_id, member_type FROM MEMBER
-		WHERE member_id = #{id} AND member_password = #{pw}
+		WHERE member_id = #{id} AND member_password = #{password}
 	</select>
 
 	<!--
@@ -48,6 +48,11 @@
 		SELECT COUNT(*) FROM MEMBER
 		WHERE member_email = #{email}
 	</select>
+	
+	<select id="checkNickname" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE member_nickname = #{nickname}
+	</select>	
 
 	<update id="recommendStamp" parameterType="string">
 		UPDATE MEMBER
@@ -66,5 +71,6 @@
 		VALUES(#{snsId}, #{nickName})
 	</insert>
 	<!-- 안녕하세요 -->
+	
 
 </mapper>

@@ -113,22 +113,18 @@
 							<div class="row justify-content-center">
 								<div class="form-group">
 									<div class="form-field">
-										<select class="form-control">
-											<option value=''>선택하세요</option>
-											<option value=''>항목1</option>
-											<option value=''>항목2</option>
-											<option value=''>항목3</option>
-											<option value=''>항목4</option>
-											<option value=''>항목5</option>
-											<option value=''>항목6</option>
+										<select class="form-control" id="filter">
+											<option value='name'>전체</option>
+											<option value='food_category'>음식 종류</option>
+											<option value='address'>주소</option>
+											<option value='best_restaurant'>모범 음식점</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input type="text" class="form-control"
-												placeholder="Search location"></input>
+											<input type="text" class="form-control" placeholder="Search location" id="search"></input>
 											<button>
 												<span class="ion-ios-search"></span>
 											</button>
@@ -151,8 +147,9 @@
 									</div>
 									<div class="form-group">
 										<div class="form-field">
-											<input type="submit" value="지역화폐"
+											<input type="button" value="지역화폐"
 												class="btn btn-primary py-3 px-5"
+												onclick="location.href = '${contextPath}/restaurant/restaurantLocalCurrency.re'"
 												style="position: relative;">
 										</div>
 									</div>
@@ -502,10 +499,11 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
-
+	<script type="js/search.autocomplete.js"></script>
 	<script src="js/popup.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-
+	<script>var contextPath = "${pageContext.request.contextPath}";</script>
+	
 </body>
 </html>

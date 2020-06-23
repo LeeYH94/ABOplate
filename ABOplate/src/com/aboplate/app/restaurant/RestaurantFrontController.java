@@ -2,6 +2,7 @@ package com.aboplate.app.restaurant;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,16 +39,62 @@ public class RestaurantFrontController extends HttpServlet{
 				System.out.println(e);
 			}
 			
-		}else if(command.equals("/restaurant/RestaurantRecommend.re")) {
-			action = new RestaurantRecommendAction();
+		}else if(command.equals("/restaurant/RestaurantPopular.re")) {
+			action = new RestaurantPopularAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
 				System.out.println(e);
 			}
+		}else if(command.equals("/restaurant/restaurantAutoComplete.re")) {
+			action = new RestaurantAutoCompleteAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		} else if(command.equals("/restaurant/ReviewModify.re")) {
+			action = new RestaurantReviewModifyAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		} else if(command.equals("/restaurant/ReviewDeleteOk.re")) {
+			action = new RestaurantReviewDeleteAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		} else if(command.equals("/restaurant/restaurantLocalCurrency.re")) {
+			action = new RestaurantLocalCurrency();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		} else if(command.equals("/restaurant/restaurantBookmarkOk.re")) {
+			action = new RestaurantBookmarkOkAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		} else {
+			forward = new ActionForward();
+			forward.setRedirect(false);
+			forward.setPath("/error/404.jsp");
 		}
 		
-		
+		if(forward != null) {
+			if(forward.isRedirect()) {
+				resp.sendRedirect(forward.getPath());
+			}else {
+				RequestDispatcher dispather = req.getRequestDispatcher(forward.getPath());
+				dispather.forward(req, resp);
+			}
+		}
 		
 	}
 
