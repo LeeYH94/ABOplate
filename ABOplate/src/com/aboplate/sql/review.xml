@@ -16,4 +16,6 @@
 			WHERE restaurant_num = ${restaurantNum}
 	</select>
 	
+	
+	
 </mapper>	

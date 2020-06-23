@@ -23,7 +23,7 @@ public class MemberLoginOkAction implements Action {
 		if(request.getParameter("kakaoId") != null) {
 			System.out.println(2);
 			String kakaoId = request.getParameter("kakaoId");
-			session.setAttribute("snsId", kakaoId);
+			session.setAttribute("sessionId", kakaoId);
 			
 			// db에 있는지 검사하는 메소드 사용
 			if(mDao.checkId(kakaoId)) {
@@ -36,9 +36,9 @@ public class MemberLoginOkAction implements Action {
 			}
 		} else if (request.getParameter("googleId") != null) {
 			//카카오랑 같음
-			System.out.println(3);
+			System.out.println("3");
 			String googleId = request.getParameter("googleId");
-			session.setAttribute("snsId", googleId);
+			session.setAttribute("sessionId", googleId);
 			
 			// db에 있는지 검사하는 메소드 사용
 			if(mDao.checkId(googleId)) {
@@ -50,6 +50,7 @@ public class MemberLoginOkAction implements Action {
 				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
 			}
 		}else {
+			System.out.println("2");
 			String id=request.getParameter("memberId");
 			String pw=request.getParameter("memberPassword");
 			

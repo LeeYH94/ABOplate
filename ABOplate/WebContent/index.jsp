@@ -48,12 +48,20 @@
 			<div class="collapse navbar-collapse dropmenu" id="ftco-nav">
 
 				<ul class="navbar-nav ml-auto" id="dm_ul">
-					<li class="nav-item"><a href="member/login.jsp"
-						class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="member/signup.jsp"
-						class="nav-link">회원가입</a></li>
-					<li class="nav-item"><a href="other/event.jsp"
-						class="nav-link">이벤트</a></li>
+					<c:choose>
+					<c:when test="${session_id eq null}">
+						<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
+						<li class="nav-item"><a href="member/signup.jsp" class="nav-link">회원가입</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
+	          			<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+	          			<li class="nav-item"><a href="member/mypage.jsp" class="nav-link">마이페이지</a></li>
+	          			<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+					</c:otherwise>
+					</c:choose>
+					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
+					<li class="nav-item"><a href="member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
 						<ul>
 							<li>
