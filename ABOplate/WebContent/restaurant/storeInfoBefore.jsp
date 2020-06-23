@@ -39,7 +39,7 @@
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
     
-	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	  	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="main_2.html">ABO PLATE</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,14 +49,21 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><p class="nav-p">***님</p></li>
-	          <li class="nav-item"><p class="nav-p">★ 포인트</p></li>
-	          <li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
-	          <li class="nav-item"><a href="../index.jsp" class="nav-link">로그아웃</a></li>
+			<c:choose>
+			<c:when test="${session_id eq null}">
+				<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
+				<li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
+	          	<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+	          	<li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
+	          	<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+			</c:otherwise>
+			</c:choose>
 	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
 	          <li class="nav-item"><a href="../member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
 	          <li class="nav-item"><a href="#" class="nav-link">최근 본 맛집</a></li>
-	          
 	        </ul>
 	      </div>
 	    </div>
@@ -68,7 +75,7 @@
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
           
-            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">맛집페이지 리뷰수정</p>
+            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">맛집페이지</p>
 
         </div>
       </div>
@@ -115,17 +122,27 @@
 		<!-- 음식점 정보 영역 -->
 		<section class="ftco-section01  services-section img mx-md-5" id="#line02" >
     	 
-    	<div class="container">
+    	    	<div class="container">
     	 
     	<div>
     		<div class="row justify-content-start mb-5">
-    		
-          <div id="map"></div>
+    			<div id="map"></div>
+			
+			
           <div class="col-md-6  heading-section heading-section-white ftco-animate">
-          	<h1>사보텐 </h1><br>
-          	<h3>강남 파이낸스센터점</h3>
-          	<strong><span>2.8</span></strong>
-          	</div>
+          	<h1>${RestaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
+          	<h3>${RestaurantBean.getRestaurant_name()}</h3>
+          	<c:choose>  
+	   			<c:when test="${session_id eq !null}">
+	   				<div class="form-group text-right">
+						<a href="#" class="reply" style="background:none;"><img src="../images/favorite.png" width="25px" height="25px"></a>
+					</div>
+				</c:when>
+			</c:choose>
+			<!-- 로그인 시 북마크 표시 뜨게함 -->
+			
+          	<strong><span>${RestaurantBean.getRestaurant_ration_total()}</span></strong> <!-- 평점 -->
+          </div>
           	</div>
           	
 		 
@@ -142,66 +159,35 @@
 								<tbody>
 									<tr>
 										<th>주소</th>
-										<td>"서울 강남구 테헤란로 152 강남파이낸스센터 지하1층 (우)06236 지번 역삼동 737"<br>
-											<span>지번 : </span> <span>서울시 강남구 역삼동 737</span>
+										<td>${RestaurantBean.getRestaurant_address_road()}<br>
+											<span>지번 : </span> <span>${RestaurantBean.getRestaurant_address()}</span>
 										</td>
 									</tr>
 									<tr>
 										<th>전화번호</th>
-										<td>02-533-2588</td>
+										<td>${RestaurantBean.getRestaurant_tel()}</td>
 									</tr>
 									<tr>
 										<th>음식 종류</th>
-										<td><span>까스 요리</span></td>
+										<td><span>${RestaurantBean.getRestaurant_food_category()}</span></td>
 									</tr>
 									<tr>
-										<th>가격대</th>
-										<td>1만원~2만원</td>
+										<th>시설정보</th>
+										<td>${RestaurantBean.getRestaurant_facility()}</td> 
 									</tr>
 									<tr>
-										<th>주차</th>
-										<td>무료 주차 가능 지하주차장 이용가능</td>
+										<th>재난지원금</th>
+										<td>${RestaurantBean.getRestaurant_disaster_grant()}</td>
 									</tr>
 									<tr>
-										<th style="vertical-align: top;">영업 시간</th>
-										<td>"월~금 : 11:30 - 22:30" <br> "토~일 : 11:30 - 22:00"
-										</td>
-									</tr>
-									<tr>
-										<th style="vertical-align: top;">쉬는 시간</th>
-										<td>14:30 - 17:00</td>
-									</tr>
-
-									<tr>
-										<th>메뉴</th>
-										<td>
-											<ul>
-												<li><span>한우 특갈빗살 (100g)</span> <span>20,000원</span></li>
-												<li><span>한우 육회</span> <span>20,000원</span></li>
-												<li><span>시골된장죽</span> <span>20,000원</span></li>
-												<li><span>[점심] 한우특갈빗살 정식(평일)</span> <span>20,000원</span>
-												</li>
-												<li><span>[점심] 강남갈빗대곰탕</span> <span>20,000원</span></li>
-												<li><span>한우 특갈빗살 (100g)</span> <span>20,000원</span></li>
-											</ul>
-										</td>
-									</tr>
-									<tr>
-										<th>식당 소개</th>
-										<td>일본 신주쿠에서 시작된 일식 돈까스 전문점</td>
+										<th>지역화폐</th>
+										<td>${RestaurantBean.getRestaurant_local_currency()}</td>
 									</tr>
 								</tbody>
 							</table>
-
 						</div>
 					</div>
-
-					<!-- 지도 영역 -->
-					<div class="overlay01" id="line04"></div>
 				</div>
-		     
-    		
-    		</div>
     		</div>
     		
     	<!-- 리뷰 부분 -->	
@@ -259,7 +245,7 @@
 													</c:if>
 													
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
-														<a href="#" class="reply" style="background:none;"><img src="../images/신고.jpg" width="25px" height="25px"></a>
+														<a href="notify()" name="notify" class="reply" style="background:none;"><img src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
 									   			<p>${r_bean.getReview_contents()}</p>
@@ -410,7 +396,10 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-
+  <script>var contextPath = "${pageContext.request.contextPath}";</script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=056b94bb5df03a78a04b2c7f67882c60"></script>
+  <script src="${pageContext.request.contextPath}/restaurant/restaurantJs/kakaoMap.js"></script>
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>
   <script src="../js/popper.min.js"></script>
