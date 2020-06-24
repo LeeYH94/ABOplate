@@ -33,22 +33,11 @@
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
 
-<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>var contextPath = "${pageContext.request.contextPath}";</script>
+	
 
 </head>
 <!-- 페이지 시작 때 popular list 불러옴 -->
-<body onload="javascript:goDetail()">
-	<c:set var="popularList" value="${requestScope.popularList}"/>
-	<c:choose>
-	<c:when test="${memberBean ne null}">
-		<c:when test="${memberBean.member_type == 1}">
-			<script type="javascript:getRestaurantRecommend()"></script>
-			<c:set var="recommendList" value="${requestScope.recommendList}"/>
-		</c:when>
-	</c:when>
-	
-	</c:choose>
+<body onload="javascript:goDetail();">
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -246,13 +235,13 @@
 													</div>
 													<div class="desc">
 														<h3>
-															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num}">
-															${restaurantBean.getRestaurant_name}
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+															${restaurantBean.getRestaurant_name()}
 															</a>
 														</h3>
 														<p class="h-info">
-															<span class="location">${restaurantBean.getRestaurant_address}</span> 
-															<span class="details">${restaurantBean.getRestaurant_food_category}</span>
+															<span class="location">${restaurantBean.getRestaurant_address()}</span> 
+															<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
 														</p>
 													</div>
 												</div>
@@ -435,27 +424,30 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.easing.1.3.js"></script>
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/jquery.stellar.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/jquery.animateNumber.min.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/jquery.timepicker.min.js"></script>
-	<script src="js/scrollax.min.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
-	<script src="js/main.js"></script>
-	<script type="js/search.autocomplete.js"></script>
-	<script src="js/popup.js"></script>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="./js/popper.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
+	<script src="./js/jquery.easing.1.3.js"></script>
+	<script src="./js/jquery.waypoints.min.js"></script>
+	<script src="./js/jquery.stellar.min.js"></script>
+	<script src="./js/owl.carousel.min.js"></script>
+	<script src="./js/jquery.magnific-popup.min.js"></script>
+	<script src="./js/aos.js"></script>
+	<script src="./js/jquery.animateNumber.min.js"></script>
+	<script src="./js/bootstrap-datepicker.js"></script>
+	<script src="./js/jquery.timepicker.min.js"></script>
+	<script src="./js/scrollax.min.js"></script>
+	<script src="./https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/search.autocomplete.js"></script>
+	<script src="./js/popup.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script>var contextPath = "${pageContext.request.contextPath}";</script>
+
+
 
 </body>
 </html>

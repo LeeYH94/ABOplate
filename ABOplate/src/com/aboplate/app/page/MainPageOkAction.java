@@ -46,13 +46,13 @@ public class MainPageOkAction implements Action{
 		List<RestaurantBean> recommendList = new ArrayList<>();
 		if(id != null) {
 			recommendList = restaurantDao.getMemberChoiceList(id);
-			request.setAttribute("recommendList", recommendList);
+			session.setAttribute("recommendList", recommendList);
 		}
 		
-		request.setAttribute("popularList", popularList);
+		session.setAttribute("popularList", popularList);
 		
-		forward.setPath("/main.jsp");
-		forward.setRedirect(false);
+		forward.setPath(request.getContextPath() + "/main.jsp");
+		forward.setRedirect(true); 
 		
 		return forward;
 	}
