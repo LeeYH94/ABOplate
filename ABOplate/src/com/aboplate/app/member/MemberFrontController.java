@@ -110,6 +110,14 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("memberCheckNickName 에러");
 			}
+		} else if (command.equals("/member/MemberInfo.me")) {
+			action = new MemberMypageAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberInfo 에러");
+			}
 		}
 		else {
 			forward = new ActionForward();
