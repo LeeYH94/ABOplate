@@ -32,11 +32,32 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+
+<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>var contextPath = "${pageContext.request.contextPath}";</script>
+<script src="js/mainPage.js"></script>
+
 </head>
-<body onload="javascript:goDetail();">
-	<c:set var="memberBean" value="${requestScope.memberBean}"/>
-	<c:set var="popularList" value="${requestScope.popularList}"/>
-	<c:set var="recommendList" value="${requestScope.recommendList}"/>
+<!-- 페이지 시작 때 popular list 불러옴 -->
+<body onload="javascript:getPopularList()">
+	<c:set var="popularList" value="${sessionScope.popularList}"/>
+	<c:choose>
+	
+	<!-- sessionId가 있고 memberBean이 없으면 sessionId로 memberBean 불러옴 -->
+	<c:when test="${memberBean eq null && sessionId ne null}">
+		<script src="javascript:getMemberBean(${sessionId})"></script>
+		<c:set var="memberBean" value="${sessionScope.memberBean}"/>
+	</c:when>
+	
+	<!-- memberBean이 있고 정보 입력을 했을 때 recommend list 불러옴 -->
+	<c:when test="${memberBean ne null}">
+		<c:when test="${memberBean.member_type == 1}">
+			<script type="javascript:getRestaurantRecommend()"></script>
+			<c:set var="recommendList" value="${sessionScope.recommendList}"/>
+		</c:when>
+	</c:when>
+	
+	</c:choose>
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
