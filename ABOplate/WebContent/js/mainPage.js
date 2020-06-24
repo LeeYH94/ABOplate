@@ -8,13 +8,6 @@ function getPopularList(){
 	});
 }
 
-function getMemberBean(sessionId){
-	$.ajax({
-		url : contextPath + "/member/MemberGetBean.me",
-		type : "GET"
-	});
-}
-
 function getRestaurantRecommend(){
 	$.ajax({
 		url : contextPath + "/restaurant/RestaurantRecommend.re",

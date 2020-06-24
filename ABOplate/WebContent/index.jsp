@@ -40,20 +40,13 @@
 </head>
 <!-- 페이지 시작 때 popular list 불러옴 -->
 <body onload="javascript:getPopularList()">
-	<c:set var="popularList" value="${sessionScope.popularList}"/>
+	<c:set var="popularList" value="${requestScope.popularList}"/>
 	<c:choose>
 	
-	<!-- sessionId가 있고 memberBean이 없으면 sessionId로 memberBean 불러옴 -->
-	<c:when test="${memberBean eq null && sessionId ne null}">
-		<script src="javascript:getMemberBean(${sessionId})"></script>
-		<c:set var="memberBean" value="${sessionScope.memberBean}"/>
-	</c:when>
-	
-	<!-- memberBean이 있고 정보 입력을 했을 때 recommend list 불러옴 -->
 	<c:when test="${memberBean ne null}">
 		<c:when test="${memberBean.member_type == 1}">
 			<script type="javascript:getRestaurantRecommend()"></script>
-			<c:set var="recommendList" value="${sessionScope.recommendList}"/>
+			<c:set var="recommendList" value="${requestScope.recommendList}"/>
 		</c:when>
 	</c:when>
 	
