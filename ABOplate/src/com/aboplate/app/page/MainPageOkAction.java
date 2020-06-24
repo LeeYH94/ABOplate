@@ -24,8 +24,11 @@ public class MainPageOkAction implements Action{
 		RestaurantDAO restaurantDao = new RestaurantDAO();
 		HttpSession session = request.getSession();
 		RestaurantBean restaurantBean;
+		String id = null;
 		
-		String id = session.getAttribute("sessionId").toString();
+		if(session.getAttribute("sessionId") != null) {
+			id = session.getAttribute("sessionId").toString();
+		}
 		
 		List<RestaurantBean> tempPopularList = restaurantDao.getPopularList();
 		List<RestaurantBean> popularList = new ArrayList<>();

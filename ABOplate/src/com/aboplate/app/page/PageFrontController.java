@@ -38,7 +38,7 @@ public class PageFrontController extends HttpServlet{
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("mainPage 에러");
+				System.out.println("mainPageOk 에러");
 			}
 		} else {
 			forward = new ActionForward();
