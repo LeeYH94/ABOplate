@@ -1,10 +1,10 @@
 DROP TABLE MEMBER;
 
 CREATE TABLE "MEMBER"(
-	member_id VARCHAR2(30),
-	member_name VARCHAR2(30) DEFAULT NULL,
-	member_email VARCHAR2(30) DEFAULT NULL,
-	member_password VARCHAR2(30) DEFAULT NULL,
+	member_id VARCHAR2(100),
+	member_name VARCHAR2(50) DEFAULT NULL,
+	member_email VARCHAR2(50) DEFAULT NULL,
+	member_password VARCHAR2(50) DEFAULT NULL,
 	member_nickname VARCHAR2(50) UNIQUE,
 	member_stamp NUMBER DEFAULT NULL,
 	member_preference_food VARCHAR2(100) DEFAULT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE "MEMBER"(
 	member_report NUMBER DEFAULT NULL,
 	member_last_report DATE DEFAULT NULL,
 	member_type NUMBER DEFAULT 1,
-	CONSTRAINT NUMBER_PK PRIMARY KEY(member_id)
+	CONSTRAINT MEMBER_PK PRIMARY KEY(member_id)
 );
 
 DROP TABLE "MEMBER";

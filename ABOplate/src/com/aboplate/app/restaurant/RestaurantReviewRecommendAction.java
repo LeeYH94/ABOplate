@@ -10,6 +10,7 @@ import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
 import com.aboplate.app.restaurant.dao.ReviewBean;
+import com.aboplate.app.restaurant.dao.ReviewDAO;
 
 public class RestaurantReviewRecommendAction implements Action {
 
@@ -19,18 +20,18 @@ public class RestaurantReviewRecommendAction implements Action {
 		response.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
-		RestaurantDAO restaurantDao = new RestaurantDAO();
+		ReviewDAO reviewDao = new ReviewDAO();
 		
 		String id = session.getAttribute("sessionId").toString();
 		int reviewNum = (int) request.getAttribute("reviewNum");
 		
 		PrintWriter out = response.getWriter();
 		
-		if(restaurantDao.checkReviewRecommend(id, reviewNum)) {
-			restaurantDao.popReviewRecommend(id, reviewNum);
+		if(reviewDao.checkReviewRecommend(id, reviewNum)) {
+			reviewDao.popReviewRecommend(id, reviewNum);
 			out.print("pop");
 		} else {
-			restaurantDao.addReviewRecommend(id, reviewNum);
+			reviewDao.addReviewRecommend(id, reviewNum);
 			out.print("add");
 		}
 		

@@ -16,9 +16,9 @@ public class RestaurantReviewDeleteAction implements Action{
 		
 		ReviewDAO reviewDao = new ReviewDAO();
 		ActionForward forward = new ActionForward();
-		int review_num = Integer.parseInt(request.getParameter("reviewNum"));
+		int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
-		reviewDao.deleteOneReview(review_num);
+		reviewDao.deleteOneReview(reviewNum);
 		
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/restaruant/RestarunatView.re?seq=\"+ restaurantNum");

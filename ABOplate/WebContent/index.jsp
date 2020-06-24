@@ -54,7 +54,7 @@
 				<ul class="navbar-nav ml-auto" id="dm_ul">
 					<c:choose>
 					<c:when test="${sessionId eq null}">
-						<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
+						<li class="nav-item"><a href="./member/login.jsp" class="nav-link">로그인</a></li>
 						<li class="nav-item"><a href="member/signup.jsp" class="nav-link">회원가입</a></li>
 					</c:when>
 					<c:otherwise>

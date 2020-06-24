@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
+import com.aboplate.app.bookmark.dao.BookmarkDAO;
 import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
 import com.aboplate.app.restaurant.dao.ReviewBean;
@@ -18,7 +19,9 @@ public class RestaurantViewAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
 		
-		RestaurantDAO restaurantDao = new RestaurantDAO();
+		BookmarkDAO bDao = new BookmarkDAO();
+		RestaurantDAO rDao = new RestaurantDAO();
+		
 		RestaurantBean restaurantBean = new RestaurantBean();
 		HttpSession session = request.getSession();
 		
@@ -40,7 +43,7 @@ public class RestaurantViewAction implements Action{
 		int totalPage = (totalCnt-1) / pageSize + 1;
 		
 		endPage = endPage > totalPage ? totalPage : endPage;
-		restaurantBean = restaurantDao.getRestaurantInfo(restaurantNum);
+		restaurantBean = rDao.getRestaurantInfo(restaurantNum);
 		
 		request.setAttribute("restaurantBean", restaurantBean);
 		request.setAttribute("totalPage", totalPage);
@@ -49,7 +52,7 @@ public class RestaurantViewAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("reviewList", reviewDao.getReviewList(startRow, endRow, restaurantNum));
-		request.setAttribute("bookmark", restaurantDao.checkBookmark(id, restaurantNum));
+		request.setAttribute("bookmark", bDao.checkBookmark(id, restaurantNum));
 		
 		forward.setRedirect(false);
 		forward.setPath("/app/restaurant/storeInfo.jsp");

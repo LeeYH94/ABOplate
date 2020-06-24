@@ -19,15 +19,15 @@
 		map객체로 받아서 db에 있는지 확인 map 객체 리턴
 	 -->
 	<select id="login" parameterType="map" resultType="map">
-		SELECT member_id, member_type FROM MEMBER
-		WHERE member_id = #{id} AND member_password = #{password}
+		SELECT MEMBER_ID, MEMBER_TYPE FROM MEMBER
+		WHERE MEMBER_ID = #{id} AND MEMBER_PASSWORD = #{password}
 	</select>
 
 	<!--
 		map객체로 받아서 db에 있는지 확인해서 아이디값이 있으면 리턴
 	 -->
 	<select id="findId" parameterType="map" resultType="string">
-		SELECT member_id FROM MEMBER WHERE member_email = #{email} AND member_name = #{name}
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_EMAIL = #{email} AND MEMBER_NAME = #{name}
 	</select>
 
 	<!--
@@ -35,34 +35,34 @@
 	 -->
 	<update id="updatePw" parameterType="map">
 		UPDATE MEMBER SET
-		member_pw = #{new_pw}
-		WHERE member_id = #{id}
+		MEMBER_PASSWORD = #{new_pw}
+		WHERE MEMBER_ID = #{id}
 	</update>
 
 	<select id="checkId" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE member_id = #{id}
+		WHERE MEMBER_ID = #{id}
 	</select>
 
 	<select id="checkEmail" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE member_email = #{email}
+		WHERE MEMBER_EMAIL = #{email}
 	</select>
 	
 	<select id="checkNickname" parameterType="string" resultType="_int">
 		SELECT COUNT(*) FROM MEMBER
-		WHERE member_nickname = #{nickname}
+		WHERE MEMBER_NICKNAME = #{nickname}
 	</select>	
 
 	<update id="recommendStamp" parameterType="string">
 		UPDATE MEMBER
-		SET stamp = stamp + 10
-		WHERE member_id = #{id}
+		SET MEMBER_STAMP = MEMBER_STAMP + 10
+		WHERE MEMBER_ID = #{id}
 	</update>
 	
 	<select id="getjoinList" parameterType="string" resultType="memberBean">
-		SELECT member_preference_food, member_region, member_age_group FROM RESTAURANT
-		WHERE member_id = #{session_id}
+		SELECT MEMBER_PREFERENCE_FOOD, MEMBER_REGION, MEMBER_AGE_GROUP FROM RESTAURANT
+		WHERE MEMBER_ID = #{session_id}
 	</select>
 	
 	<insert id="joinSns" parameterType="map">
@@ -71,9 +71,13 @@
 		VALUES(#{snsId}, #{nickName}, 2)
 	</insert>
 	
-	<delete id="deleteMember" parameterType="">
-		DELETE FROM MEMBER WHERE member_id = #{id}
+	<delete id="deleteMember" parameterType="string">
+		DELETE FROM MEMBER WHERE MEMBER_ID = #{id}
 	</delete>
+	
+	<select id="getMemerInfo" parameterType="string" resultType="memberBean">	
+		SELECT * FROM MEMBER WHERE MEMBER_ID = #{id}
+	</select>
 	
 
 </mapper>
