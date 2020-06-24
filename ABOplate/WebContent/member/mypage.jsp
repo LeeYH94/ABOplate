@@ -35,7 +35,7 @@
 </head>
 <body>
 		<c:set var="memberBean" value="${requestScope.memberBean}"/>
-		<c:set var="List" value="${requestScope.reviewList}"/>
+		<c:set var="List" value="${requestScope.memberReviewList}"/>
 		<c:set var="nowPage" value="${requestScope.nowPage}"/>
 		<c:set var="startPage" value="${requestScope.startPage}"/>
 		<c:set var="endPage" value="${requestScope.endPage}"/>
@@ -118,7 +118,7 @@
 									    				</div>
 								    				</div>
 								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="${r_bean.getReview()" class="sort">
+								        			<input type="text" readonly maxlength="50" style="width:50%;" value="${r_bean.getReview()}" class="sort">
 								        			
 								        			<input type="button" onclick="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}"value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
 		              								<input type="button" onclick="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
@@ -311,7 +311,7 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 	
-	
+	<script src="${pageContext.request.contextPath}/member/MemberInfo.me"></script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>
