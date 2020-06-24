@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>       
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -32,7 +34,14 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
+		<c:set var="memberBean" value="${requestScope.memberBean}"/>
+		<c:set var="List" value="${requestScope.memberReviewList}"/>
+		<c:set var="nowPage" value="${requestScope.nowPage}"/>
+		<c:set var="startPage" value="${requestScope.startPage}"/>
+		<c:set var="endPage" value="${requestScope.endPage}"/>
+		<c:set var="totalCnt" value="${requestScope.totalCnt}"/>
+		<c:set var="totalPage" value="${requestScope.totalPage}"/>
+	
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="main2.jsp">ABO PLATE</a>
@@ -94,39 +103,9 @@
 							<!-- 리뷰 -->
 							<div class="tab-pane fade show active" id="pills-description"
 								role="tabpanel" aria-labelledby="pills-description-tab">
-								
-											<div class="row">
-								        	<div class="col-md-3" style="background-color:#ffcd3c !important;">
-								        		<div class="agent">
-								    					<div class="img">
-										    				<img style="height:200px; width:100%;" src="../images/1.jpg" class="img-fluid" alt="Colorlib Template">
-									    				</div>
-									    				<div class="desc">
-									    					<h3><a href="storeInfoBefore.jsp">음식점 이름</a></h3>
-																<p class="h-info"><span class="location">위치</span> <span class="details">상세정보</span></p>
-									    				</div>
-								    				</div>
-								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="리뷰 내용 최대 50자" class="sort">
-								        			<input type="submit" value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
-								        	</div>
-											<div class="row" style="margin-top:5px !important;">
-								        	<div class="col-md-3" style="background-color:#ffcd3c !important;">
-								        		<div class="agent">
-								    					<div class="img">
-										    				<img style="height:200px; width:100%;" src="../images/2.jpg" class="img-fluid" alt="Colorlib Template">
-									    				</div>
-									    				<div class="desc">
-									    					<h3><a href="storeInfoBefore.jsp">음식점 이름</a></h3>
-																<p class="h-info"><span class="location">위치</span> <span class="details">상세정보</span></p>
-									    				</div>
-								    				</div>
-								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="리뷰 내용 최대 50자" class="sort">
-								        			<input type="submit" value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
-								        	</div>
+											<c:choose>
+											<c:when test="${list != null and fn:length(list) > 0}">	
+											<c:forEach var="r_bean" items="${List}">
 											<div class="row" style="margin-top:5px !important;">
 								        	<div class="col-md-3" style="background-color:#ffcd3c !important;">
 								        		<div class="agent">
@@ -134,61 +113,52 @@
 										    				<img style="height:200px; width:100%;" src="../images/3.jpg" class="img-fluid" alt="Colorlib Template">
 									    				</div>
 									    				<div class="desc">
-									    					<h3><a href="storeInfoBefore.jsp">음식점 이름</a></h3>
+									    					<h3><a href="storeInfoBefore.jsp">${r_bean.getRestaurant_num()}</a></h3>
 																<p class="h-info"><span class="location">위치</span> <span class="details">상세정보</span></p>
 									    				</div>
 								    				</div>
 								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="리뷰 내용 최대 50자" class="sort">
-								        			<input type="submit" value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+								        			<input type="text" readonly maxlength="50" style="width:50%;" value="${r_bean.getReview()}" class="sort">
+								        			
+								        			<input type="button" onclick="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}"value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
+		              								<input type="button" onclick="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 								        	</div>
-											<div class="row" style="margin-top:5px !important;">
-								        	<div class="col-md-3" style="background-color:#ffcd3c !important;">
-								        		<div class="agent">
-								    					<div class="img">
-										    				<img style="height:200px; width:100%;" src="../images/4.jpg" class="img-fluid" alt="Colorlib Template">
-									    				</div>
-									    				<div class="desc">
-									    					<h3><a href="storeInfoBefore.jsp">음식점 이름</a></h3>
-																<p class="h-info"><span class="location">위치</span> <span class="details">상세정보</span></p>
-									    				</div>
-								    				</div>
-								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="리뷰 내용 최대 50자" class="sort">
-								        			<input type="submit" value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
-								        	</div>
-											<div class="row" style="margin-top:5px !important;">
-								        	<div class="col-md-3" style="background-color:#ffcd3c !important;">
-								        		<div class="agent">
-								    					<div class="img">
-										    				<img style="height:200px; width:100%;" src="../images/5.jpg" class="img-fluid" alt="Colorlib Template">
-									    				</div>
-									    				<div class="desc">
-									    					<h3><a href="storeInfoBefore.jsp">음식점 이름</a></h3>
-																<p class="h-info"><span class="location">위치</span> <span class="details">상세정보</span></p>
-									    				</div>
-								    				</div>
-								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="리뷰 내용 최대 50자" class="sort">
-								        			<input type="submit" value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
-								        	</div>
+								        	</c:forEach>
+										   	</c:when>
+											<c:otherwise>
+												<div class="review d-flex">
+										   			<p>작성한 리뷰가 없습니다.</p>
+										   		</div>
+											</c:otherwise>
+											</c:choose>
+								<div class="review d-flex">			
 								<div class="col text-center">
 									<div class="block-27">
-										<ul>
-											<li><a href="#">&lt;</a></li>
-											<li class="active"><span>1</span></li>
-											<li><a href="#">2</a></li>
-											<li><a href="#">3</a></li>
-											<li><a href="#">4</a></li>
-											<li><a href="#">5</a></li>
-											<li><a href="#">&gt;</a></li>
-										</ul>
+									<ul>
+											              <c:choose>
+															<c:when test="${nowPage > 1}">
+											                	<li><a href="#">&lt;</a></li>
+											                </c:when>
+														</c:choose>
+														<c:forEach var="i" begin="${startPage}" end="${endPage}">
+															<c:choose>
+																<c:when test="${i eq nowPage}">
+																	<li>${i}</li>
+																</c:when>
+																<c:otherwise>
+																	<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${i}">${i}</a></li>
+																</c:otherwise>
+															</c:choose>
+														</c:forEach>
+														<c:choose>
+															<c:when test="${nowPage < totalPage}">
+																<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${nowPage + 1}">&gt;</a></li>
+															</c:when>
+														</c:choose>
+											              </ul>
 									</div>
 								</div>
-
+								</div>
 
 							</div>
 
@@ -199,31 +169,27 @@
 						     	<div class="col-md-6 mb-md-5">
 						     	  <div class="form-group">
 				                    <label for="id">아이디</label>
-				                    <input type="text" class="form-control" id="id" readonly value="abc1234">
+				                    <input type="text" class="form-control" id="id" readonly value="${memberBean.getmember_id()}">
 				                  </div>
 						     	  <div class="form-group">
 				                    <label for="name">이름</label>
-				                    <input type="text" class="form-control" id="name" readonly value="abc">
+				                    <input type="text" class="form-control" id="name" readonly value="${memberBean.getmember_name()}">
 				                  </div>
 						     	  <div class="form-group">
 				                    <label for="email">이메일</label>
-				                    <input type="email" class="form-control" id="email" readonly value="abcd@naver.com">
+				                    <input type="email" class="form-control" id="email" readonly value="${memberBean.getmember_email()}">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="nickname">닉네임</label>
-				                    <input type="text" class="form-control" id="nickname" readonly value="nick">
+				                    <input type="text" class="form-control" id="nickname" readonly value="${memberBean.getmember_nickname()}">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="favorite">선호음식</label>
-				                    <input type="text" class="form-control" id="favorite" readonly value="한식">
-				                  </div>
-				                  <div class="form-group">
-				                    <label for="age">나이대</label>
-				                    <input type="text" class="form-control" id="age" readonly value="20대">
+				                    <input type="text" class="form-control" id="favorite" readonly value="${memberBean.getmember_preference_food()}">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="">지역</label>
-				                    <input type="text" class="form-control" id="" readonly value="강남구">
+				                    <input type="text" class="form-control" id="" readonly value="${memberBean.getmember_region()}">
 				                  </div>
 							<div class="form-group">
 								<div class="d-flex justify-content-center">
@@ -345,7 +311,7 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 	
-	
+	<script src="${pageContext.request.contextPath}/member/MemberInfo.me"></script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>

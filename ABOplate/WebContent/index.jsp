@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -31,8 +32,32 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+
+<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>var contextPath = "${pageContext.request.contextPath}";</script>
+<script src="js/mainPage.js"></script>
+
 </head>
-<body onload="javascript:goDetail();">
+<!-- 페이지 시작 때 popular list 불러옴 -->
+<body onload="javascript:getPopularList()">
+	<c:set var="popularList" value="${sessionScope.popularList}"/>
+	<c:choose>
+	
+	<!-- sessionId가 있고 memberBean이 없으면 sessionId로 memberBean 불러옴 -->
+	<c:when test="${memberBean eq null && sessionId ne null}">
+		<script src="javascript:getMemberBean(${sessionId})"></script>
+		<c:set var="memberBean" value="${sessionScope.memberBean}"/>
+	</c:when>
+	
+	<!-- memberBean이 있고 정보 입력을 했을 때 recommend list 불러옴 -->
+	<c:when test="${memberBean ne null}">
+		<c:when test="${memberBean.member_type == 1}">
+			<script type="javascript:getRestaurantRecommend()"></script>
+			<c:set var="recommendList" value="${sessionScope.recommendList}"/>
+		</c:when>
+	</c:when>
+	
+	</c:choose>
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -49,19 +74,19 @@
 
 				<ul class="navbar-nav ml-auto" id="dm_ul">
 					<c:choose>
-					<c:when test="${session_id eq null}">
-						<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
-						<li class="nav-item"><a href="member/signup.jsp" class="nav-link">회원가입</a></li>
+					<c:when test="${sessionId eq null}">
+						<li class="nav-item"><a href="./member/login.jsp" class="nav-link">로그인</a></li>
+						<li class="nav-item"><a href="./member/signup.jsp" class="nav-link">회원가입</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
-	          			<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
-	          			<li class="nav-item"><a href="member/mypage.jsp" class="nav-link">마이페이지</a></li>
-	          			<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+						<li class="nav-item"><p class="nav-p">${MemberBean.getMember_nickname()}님</p></li>
+	          <li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+						<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
 					</c:otherwise>
 					</c:choose>
 					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
 						<ul>
 							<li>
@@ -112,10 +137,8 @@
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
-			<div
-				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-				<div
-					class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
+			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+				<div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
 					<div style="margin: 0 auto;">
 						<form action="#" class="search-location mt-md-5">
 							<div class="row justify-content-center">
@@ -132,8 +155,8 @@
 								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input type="text" class="form-control" placeholder="Search location" id="search"></input>
-											<button>
+											<input type="text" class="form-control" placeholder="Search location" id="search">
+											<button type="button" onclick="javascript:searchRestaurant()">
 												<span class="ion-ios-search"></span>
 											</button>
 										</div>
@@ -201,12 +224,11 @@
 					<div class="bd-example bd-example-tabs">
 						<div class="d-flex justify-content-center">
 							<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-
 								<li class="nav-item"><a class="nav-link active"
 									id="pills-description-tab" data-toggle="pill"
 									href="#pills-description" role="tab"
-									aria-controls="pills-description" aria-expanded="true">인기
-										맛집</a></li>
+									aria-controls="pills-description" aria-expanded="true">인기맛집</a>
+								</li>
 								<li class="nav-item"><a class="nav-link"
 									id="pills-manufacturer-tab" data-toggle="pill"
 									href="#pills-manufacturer" role="tab"
@@ -221,143 +243,32 @@
 							<div class="tab-pane fade show active" id="pills-description"
 								role="tabpanel" aria-labelledby="pills-description-tab">
 								<div class="row">
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/1.jpg"
-													class="img-fluid" alt="Colorlib Template">
+									<c:choose>
+									<c:when test="${popularList != null and fn:length(popularList) > 0}">
+										<c:forEach var="restaurantBean" items="${popularList}">
+											<div class="col-md-3">
+												<div class="agent">
+													<div class="img">
+														<img style="width: 100%; height: 300px;" 
+															src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
+															class="img-fluid" alt="Colorlib Template">
+													</div>
+													<div class="desc">
+														<h3>
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num}">
+															${restaurantBean.getRestaurant_name}
+															</a>
+														</h3>
+														<p class="h-info">
+															<span class="location">${restaurantBean.getRestaurant_address}</span> 
+															<span class="details">${restaurantBean.getRestaurant_food_category}</span>
+														</p>
+													</div>
+												</div>
 											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/2.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/3.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/4.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="position">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/5.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/6.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/7.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="location">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="agent">
-											<div class="img">
-												<img style="width: 100%; height: 300px;" src="images/8.jpg"
-													class="img-fluid" alt="Colorlib Template">
-											</div>
-											<div class="desc">
-												<h3>
-													<a href="restaurant/storeInfoBefore.jsp">James Stallon</a>
-												</h3>
-												<p class="h-info">
-													<span class="position">Listing</span> <span class="details">—
-														10 restaurant</span>
-												</p>
-											</div>
-										</div>
-									</div>
+										</c:forEach>
+									</c:when>
+									</c:choose>
 								</div>
 							</div>
 
@@ -365,22 +276,66 @@
 							<div class="tab-pane fade" id="pills-manufacturer"
 								role="tabpanel" aria-labelledby="pills-description-tab">
 								<div class="row">
-									<div style="margin: 0 auto;">
-										<h5 style="text-align: center;">로그인(회원가입)을 하시면 맞춤 맛집을
-											추천해드립니다</h5>
-										<div class="justify-content-center"
-											style="text-align: center;">
-											<input type="button" style="margin-bottom: 15px" value="로그인"
-												class="btn btn-primary py-3"
-												onClick="location.href='./member/login.jsp'"> <input
-												type="button" style="margin-bottom: 15px" value="회원가입"
-												class="btn btn-primary py-3"
-												onClick="location.href='./member/signup.jsp'">
+									<c:choose>
+									<c:when test="${sessionId eq null}">
+										<div style="margin: 0 auto;">
+											<h5 style="text-align: center;">로그인(회원가입)을 하시면 맞춤 맛집을
+												추천해드립니다</h5>
+											<div class="justify-content-center"
+												style="text-align: center;">
+												<input type="button" style="margin-bottom: 15px" value="로그인"
+													class="btn btn-primary py-3"
+													onClick="location.href='./member/login.jsp'"> <input
+													type="button" style="margin-bottom: 15px" value="회원가입"
+													class="btn btn-primary py-3"
+													onClick="location.href='./member/signup.jsp'">
+											</div>
 										</div>
-									</div>
+									</c:when>
+									
+									<c:when test="${memberBean.getMember_type == 2}">
+										<div style="margin: 0 auto;">
+											<h5 style="text-align: center;">회원정보를 입력하시면 맞춤 맛집을 추천해드립니다.</h5>
+											<div class="justify-content-center"
+												style="text-align: center;">
+												<input type="button" style="margin-bottom: 15px" value="마이페이지"
+													class="btn btn-primary py-3"
+													onClick="location.href='./member/mypage'">
+											</div>
+										</div>
+									</c:when>
+									
+									<c:when test="${memberBean.getMember_type == 1}">
+										<c:choose>
+										<c:when test="${recommendList != null and fn:length(recommendList) > 0}">
+											<c:forEach var="restaurantBean" items="${recommendList}">
+												<div class="col-md-3">
+													<div class="agent">
+														<div class="img">
+															<img style="width: 100%; height: 300px;" 
+																src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
+																class="img-fluid" alt="Colorlib Template">
+														</div>
+														<div class="desc">
+															<h3>
+																<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num}">
+																${restaurantBean.getRestaurant_name}
+																</a>
+															</h3>
+															<p class="h-info">
+																<span class="location">${restaurantBean.getRestaurant_address}</span> 
+																<span class="details">${restaurantBean.getRestaurant_food_category}</span>
+															</p>
+														</div>
+													</div>
+												</div>
+											</c:forEach>
+										</c:when>
+										</c:choose>
+									</c:when>
+									</c:choose>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</div>
@@ -505,13 +460,11 @@
 	<script src="js/jquery.timepicker.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
-	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 	<script type="js/search.autocomplete.js"></script>
 	<script src="js/popup.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	<script>var contextPath = "${pageContext.request.contextPath}";</script>
-	
+
 </body>
 </html>

@@ -10,7 +10,8 @@ function like(){
 			dataType : 'text',
 			success : function(data) {
 				if (data.trim() == 'add') {
-				$("#likeIcon").style.backgroundColor = "none";
+					$("#likeIcon").style.backgroundColor = "none";
+					/*'좋아요'가 취소되었습니다.*/
 				} else{
 					$("#likeIcon").style.backgroundColor = "#ff0000";
 				}
@@ -29,23 +30,24 @@ $("like").click(function() {
 
 function notify(){
 		$.ajax({
-			url : contextPath + "/restaurant/ReviewLike.re",
+			url : contextPath + "/restaurant/ReviewNotify.re",
 			type : 'get',
 			dataType : 'text',
 			success : function(data) {
 				if (data.trim() == 'add') {
-				$("#likeIcon").style.backgroundColor = "none";
+					$("#notifyIcon").style.backgroundColor = "none";
+					/*신고가 취소되었습니다.*/
 				} else{
-					$("#likeIcon").style.backgroundColor = "#ff0000";
+					$("#notifyIcon").style.backgroundColor = "#ff0000";
 				}
 			},
 			error : function() {
-				console.log("like() 오류");
+				console.log("notify() 오류");
 			}
 		})
 	}
 
 
-$("like").click(function() {
-	like();
+$("notify").click(function() {
+	notify();
 })

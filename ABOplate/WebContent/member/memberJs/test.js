@@ -10,37 +10,34 @@ function formSubmit() {
   	var form = document.joinForm;
 
 	if ('' == form.memberId.value || !idCheck) {
+		alert("아이디를 확인해주세요");
 		form.memberId.focus();
-		alert("아이디를 확인해주세요")
 		return false;
 
 	} else if ('' == form.memberName.value) {
-		form.memberName.focus();
 		alert("이름을 입력해주세요");
+		form.memberName.focus();
 		return false;
 	} else if ('' == form.memberEmail.value || !emailCheck) {
-
-		form.memberEmail.focus();
 		alert("이메일을 입력해주세요");
+		form.memberEmail.focus();
 		return false;
 
 	} else if ('' == form.memberPassword.value) {
-
-		form.memberPassword.focus();
 		alert("비밀번호를 입력해주세요");
+		form.memberPassword.focus();
 		return false;
 	} else if ('' == form.memberRePassword.value) {
-		form.memberRePassword.focus();
 		alert("비밀번호 확인을 입력해주세요");
+		form.memberRePassword.focus();
 		return false;
-
 	} else if (form.memberPassword.value != form.memberRePassword.value) {
 		form.memberRePassword.focus();
 		alert("비밀번호 확인이 일치하지 않습니다");
 		return false;
 	} else if ('' == form.memberNickname.value || !nicknameCheck) {
-		form.memberNickname.focus();
 		alert("닉네임을 확인해주세요")
+		form.memberNickname.focus();
 		return false;
 
 	}

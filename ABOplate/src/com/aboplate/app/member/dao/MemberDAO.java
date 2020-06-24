@@ -1,6 +1,8 @@
 package com.aboplate.app.member.dao;
 
 import java.util.HashMap;
+import java.util.List;
+
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -39,7 +41,7 @@ public class MemberDAO {
 
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("id", id);
-		datas.put("pw", pw);
+		datas.put("password", pw);
 		Map<String, String> loginDatas = sqlsession.selectOne("Member.login", datas);
 
 		return loginDatas;
@@ -120,17 +122,30 @@ public class MemberDAO {
 		
 	}
 	
+	public MemberBean getMemerInfo(String sessionId) {
+		return sqlsession.selectOne("Member.getMemerInfo", sessionId);
+		
+	}
+	
 	public static int key = 5;
 	public String encryptPw(String pw) {
 		String result = "";
 		for (int i = 0; i < pw.length(); i++) {
-			result += (char)pw.charAt(i) * key;
+			result += (char)(pw.charAt(i) * key);
+		}
+		return result;
+	}
+	
+	public String decryptPw(String enPw) {
+		String result = "";
+		for (int i = 0; i < enPw.length(); i++) {
+			result += (char)(enPw.charAt(i) / key);
 		}
 		return result;
 	}
 
 
-	public String createRandomPw () {
+	public String createRandomPw() {
 		int length = 10;
 		int index = 0;
 		char[] charSet = new char[] {
@@ -146,6 +161,7 @@ public class MemberDAO {
 		}
 		return sb.toString();
 	}
+
 
 	public void sendEmail(String email, String subject, String content) {
         String user = "aboplate004@gmail.com";

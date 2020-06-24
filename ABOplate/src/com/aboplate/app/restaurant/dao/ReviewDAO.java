@@ -34,4 +34,44 @@ public class ReviewDAO {
 		
 		return sqlsession.selectOne("Review.getReviewCnt", restaurantNum);
 	}
+	
+	public void deleteOneReview(int reviewNum) {
+		sqlsession.delete("Review.deleteOneReview", reviewNum);
+	}
+	
+	public boolean insertReview(ReviewBean reviewBean) {
+		boolean check = false;
+		
+		if(sqlsession.insert("Review.insertReview", reviewBean) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
+	public boolean checkReviewRecommend(String id, int reviewNum) {
+		boolean check = false;
+		HashMap<String, Object> datas = new HashMap<>();
+		
+		datas.put("id", id);
+		datas.put("reviewNum", reviewNum);
+		if((Integer)sqlsession.selectOne("Review.checkReviewRecommend", datas) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
+	public void popReviewRecommend(String id, int reviewNum) {
+		HashMap<String, Object> datas = new HashMap<>();
+		sqlsession.delete("Review.popReviewRecommend", datas);
+	}
+	
+	public void addReviewRecommend(String id, int reviewNum) {
+		
+		HashMap<String, Object> datas = new HashMap<>();
+		
+		datas.put("id", id);
+		datas.put("reviewNum", reviewNum);
+		sqlsession.insert("Review.addReviewRecommend", datas);
+	}
+	
 }

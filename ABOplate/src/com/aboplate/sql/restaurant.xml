@@ -4,56 +4,55 @@
 <mapper namespace="Restaurant">
 	
 	<select id="getNameList" resultType="string">
-		SELECT DISTINCT restaurant_name FROM RESTAURANT 
+		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
 	</select>
 	
 	<select id="getFoodList" resultType="string">
-		SELECT DISTINCT restaurant_food_category FROM RESTAURANT
+		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM RESTAURANT
 	</select>
 	
 	<select id="getLocalCurrencyList" resultType="string">
-		SELECT DISTINCT restaurant_name FROM RESTAURANT 
-		WHERE restaurant_local_currency = 'O' 
+		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
+		WHERE RESTAURANT_LOCAL_CURRENCY = 'O' 
 	</select>
 
 	<select id="getBestRestaurantList" resultType="string">
-		SELECT DISTINCT restaurant_name FROM RESTAURANT WHERE restaurant_model = 'O'
+		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT WHERE RESTAURANT_BEST = 'O'
 	</select>
 	
 
 	<select id="getAddressList" resultType="string">
-		SELECT DISTINCT SUBSTR(restaurant_address, 1, INSTR(restaurant_address, ' ', 1, 1)) FROM RESTAURANT
+		SELECT DISTINCT SUBSTR(RESTAURANT_ADDRESS, 1, INSTR(RESTAURANT_ADDRESS, ' ', 1, 1)) FROM RESTAURANT
 	</select>
 	
 	<select id="getMemberChoiceRestaurantList" parameterType="map" resultType="restaurantBean">
-		SELECT restaurant_name, restaurant_ration_total, 
-		restaurant_address, restaurant_hit FROM RESTAURANT
-		WHERE restaurant_address LIKE '%'||#address#||'%'
-		AND restaurant_food_category = #{category} AND
-		restaurant_age_group = ${age_group}
-		WHERE restaurant_ration_total >= 3.5
-		ORDER BY restaurant_ration_total DESC
+		SELECT RESTAURANT_NAME, RESTAURANT_RATION_TOTAL, 
+		RESTAURANT_ADDRESS, RESTAURANT_HIT FROM RESTAURANT
+		WHERE RESTAURANT_ADDRESS LIKE '%'||#address#||'%'
+		AND RESTAURANT_FOOD_CATEGORY = #{category}
+		WHERE RESTAURANT_RATION_TOTAL >= 3.5
+		ORDER BY RESTAURANT_RATION_TOTAL DESC
 	</select>
 	
 	<select id="getPopularRestaurant" resultType="restaurantBean">
-		SELECT restaurant_name, restaurant_ration_total, 
-		restaurant_address, restaurant_hit FROM RESTAURANT
-		WHERE restaurant_ration_total >= 3.5
+		SELECT RESTAURANT_NAME, RESTAURANT_RATION_TOTAL, 
+		RESTAURANT_ADDRESS, RESTAURANT_HIT FROM RESTAURANT
+		WHERE RESTAURANT_RATION_TOTAL >= 3.5
 	</select>
 	
 	<select id="searchRestaurant" parameterType="map" resultType="restaurantBean">
-		SELECT restaurant_name, restaurant_ration_total,
-		restaurant_address, restaurant_hit FROM RESTAURANT
+		SELECT RESTAURANT_NAME, RESTAURANT_RATION_TOTAL,
+		RESTAURANT_ADDRESS, RESTAURANT_HIT FROM RESTAURANT
 		WHERE ${keyField} LIKE '%'||#keyWord#||'%'
-		ORDER BY restaurant_ration_total DESC
+		ORDER BY RESTAURANT_RATION_TOTAL DESC
 	</select>
 	
 	<select id="getRestaurantInfo" parameterType="_int" resultType="restaurantBean">
-		SELECT * FROM RESTAURANT WHERE restaurant_num = ${num}
+		SELECT * FROM RESTAURANT WHERE RESTAURANT_NUM = ${num}
 	</select>
 	
 	<select id="getLocalCurrencyCnt" resultType="_int">
-		SELECT COUNT(*) FROM RESTAURANT WHERE restaurant_local_currency = 'O'
+		SELECT COUNT(*) FROM RESTAURANT WHERE RESTAURANT_LOCAL_CURRENCY = 'O'
 	</select>
 	
 	

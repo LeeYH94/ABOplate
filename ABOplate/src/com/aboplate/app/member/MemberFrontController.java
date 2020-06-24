@@ -13,6 +13,11 @@ import com.aboplate.action.ActionForward;
 
 public class MemberFrontController extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
@@ -104,6 +109,14 @@ public class MemberFrontController extends HttpServlet {
 			} catch (Exception e) {
 				System.out.println(e);
 				System.out.println("memberCheckNickName 에러");
+			}
+		} else if (command.equals("/member/MemberInfo.me")) {
+			action = new MemberMypageAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("MemberInfo 에러");
 			}
 		}
 		else {

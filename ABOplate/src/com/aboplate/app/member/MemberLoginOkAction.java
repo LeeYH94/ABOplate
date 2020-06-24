@@ -52,13 +52,15 @@ public class MemberLoginOkAction implements Action {
 		}else {
 			System.out.println("2");
 			String id=request.getParameter("memberId");
-			String pw=request.getParameter("memberPassword");
+			String pw=mDao.encryptPw((request.getParameter("memberPassword")));
 			
+	
 			Map<String, String> resultMap=mDao.login(id, pw);
+			
 			
 			if(resultMap!=null) {
 				session.setAttribute("sessionId", resultMap.get("MEMBER_ID"));
-				//path = 메인 페이지 				
+				forward.setPath(request.getContextPath()+"/index.jsp");	
 			}else {
 				forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
 			}
