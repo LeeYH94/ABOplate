@@ -71,7 +71,7 @@
 		VALUES(#{snsId}, #{nickName}, 2)
 	</insert>
 	
-	<delete id="deleteMember" parameterType="">
+	<delete id="deleteMember" parameterType="string">
 		DELETE FROM MEMBER WHERE member_id = #{id}
 	</delete>
 	
