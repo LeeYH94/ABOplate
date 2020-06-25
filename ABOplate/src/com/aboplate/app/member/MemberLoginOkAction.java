@@ -21,12 +21,14 @@ public class MemberLoginOkAction implements Action {
 		MemberDAO mDao=new MemberDAO();
 		HttpSession session=request.getSession();
 		MemberBean mBean = null;
-
+		String id = null;
+		
 		if (request.getParameter("memberId") != null && request.getParameter("memberPassword") != null){
-			String id=request.getParameter("memberId");
+			id = request.getParameter("memberId");
 			String pw=mDao.encryptPw((request.getParameter("memberPassword")));
 			
 			mBean = mDao.login(id, pw);
+			
 		} else if(request.getParameter("kakaoId") != null) {
 			String kakaoId = request.getParameter("kakaoId");
 			session.setAttribute("sessionId", kakaoId);
@@ -57,7 +59,8 @@ public class MemberLoginOkAction implements Action {
 		}
 			
 		if(mBean != null) {
-			session.setAttribute("memberBean", mBean);				
+			session.setAttribute("memberBean", mBean);
+			session.setAttribute("sessionId", id);
 			forward.setPath(request.getContextPath()+"/index.jsp");	
 		} else {
 			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
