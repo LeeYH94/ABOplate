@@ -38,6 +38,7 @@
 		<c:set var="totalCnt" value="${requestScope.totalCnt}"/>
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
+	
     
 	  	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">

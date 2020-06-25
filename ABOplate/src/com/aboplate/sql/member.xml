@@ -18,7 +18,7 @@
 	<!--
 		map객체로 받아서 db에 있는지 확인 map 객체 리턴
 	 -->
-	<select id="login" parameterType="map" resultType="map">
+	<select id="login" parameterType="map" resultType="memberBean">
 		SELECT MEMBER_ID, MEMBER_TYPE FROM MEMBER
 		WHERE MEMBER_ID = #{id} AND MEMBER_PASSWORD = #{password}
 	</select>

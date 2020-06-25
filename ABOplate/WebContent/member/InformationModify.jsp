@@ -37,26 +37,29 @@
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-6 mb-md-5">
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
-            <form action="#" class="p-5 bg-light">
+            <form name="modifyForm" action="${pageContext.request.contextPath}/member/MemberModify.me"class="p-5 bg-light" method="post">
                   <div class="form-group">
                     <label for="id">아이디</label>
-                    <input type="id" class="form-control" id="memberId" name="memberId">
+                    <input type="id" class="form-control" id="memberId" name="memberId" value="${session_id}smk1656" readonly>
                   </div>
-                  <p>* 중복된 아이디 입니다.</p>
+                  
                   <div class="form-group">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="meberPassword" name="meberPassword">
+                    <label for="password">현재 비밀번호</label>
+                    <input type="password" class="form-control" id="memberPassword" name="memberPassword">
                   </div>
                   <div class="form-group">
-                    <label for="password">비밀번호 확인</label>
-                    <input type="password" class="form-control" id="memberRePassword" name="memberRePassword">
+                    <label for="password">새 비밀번호</label>
+                    <input type="password" class="form-control" id="newMemberPassword" name="newMemberPassword">
                   </div>
-                  <p>* 비밀번호와 일치하지 않습니다.</p>
                   <div class="form-group">
-                    <label for="nickname">닉네임</label>
-                    <input type="text" class="form-control" id="meberNickname" name="meberNickname">
+                    <label for="password">새 비밀번호 확인</label>
+                    <input type="password" class="form-control" id="newMemberRePassword" name="newMemberRePassword">
                   </div>
-                  <p>* 중복된 닉네임 입니다.</p>
+                  
+                  <div class="form-group">
+                    <label for="nickname">닉네임</label>${b_bean.getBoard_readcount()}
+                    <input type="text" class="form-control" id="memberNickname" name="memberNickname" value="${memberBean.getMember_nickname()}" readonly>
+                  </div>
                   <div class="form-group">
                     <label for="favorite">선호음식 : </label>
                     <input type="checkbox" id="memberFavorite" name="memberFavorite">
@@ -76,7 +79,7 @@
 					양식
 					</label>
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="age">나이대</label>
                    	<div class="form-group"><select style="width: 150px; font-size: 13px;" name="memberAge" class="form-control">
 												<option value=''>선택하세요</option>
@@ -88,7 +91,7 @@
 												<option value='44'>60대</option>
 											</select>
 					</div>
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label for="age">지역(서울시)</label>
                    	<div class="form-group"><select style="width: 150px; font-size: 13px;" name="" class="form-control">
@@ -122,7 +125,7 @@
 					</div>
                   </div>
                   <div class="form-group justify-content-center">
-                  	<input type="submit" style="width:100%;" value="수정" onclick="location.href='signup3.jsp'" class="btn py-3 btn-primary">
+                  	<input type="button" style="width:100%;" value="수정" onclick="javascript:formSubmit()" class="btn py-3 btn-primary">
                   </div>
                 </form>
           </div>
@@ -151,4 +154,6 @@
 	src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
+<script>var contextPath = "${pageContext.request.contextPath}";</script>
+<script src="${pageContext.request.contextPath}/member/memberJs/modify.js"></script>
 </html>
