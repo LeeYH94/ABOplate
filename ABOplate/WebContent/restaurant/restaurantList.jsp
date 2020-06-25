@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="kor">
   <head>
@@ -38,10 +40,21 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
-	          <li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
+	          <c:choose>
+			<c:when test="${session_id eq null}">
+				<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
+				<li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
+			</c:when>
+			<c:otherwise>
+				<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
+	          	<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+	          	<li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
+	          	<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+			</c:otherwise>
+			</c:choose>
 	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
-	          <li class="nav-item"><a href="javascript:goDetail('테스트');" class="nav-link">최근 본 맛집</a></li>
+	          <li class="nav-item"><a href="../member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
+	          <li class="nav-item"><a href="#" class="nav-link">최근 본 맛집</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -357,6 +370,10 @@
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
+  <script>var contextPath = "${pageContext.request.contextPath}";</script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=056b94bb5df03a78a04b2c7f67882c60"></script>
+  <script src="${pageContext.request.contextPath}/restaurant/restaurantJs/kakaoMap.js"></script>
 
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>
@@ -372,7 +389,7 @@
   <script src="../js/bootstrap-datepicker.js"></script>
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=056b94bb5df03a78a04b2c7f67882c60"></script>
   <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
   
