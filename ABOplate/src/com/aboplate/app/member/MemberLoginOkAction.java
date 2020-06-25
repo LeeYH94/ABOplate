@@ -20,7 +20,7 @@ public class MemberLoginOkAction implements Action {
 		MemberDAO mDao=new MemberDAO();
 		HttpSession session=request.getSession();
 		
-		if(request.getParameter("kakaoId") != null) {
+		/*if(request.getParameter("kakaoId") != null) {
 			System.out.println(2);
 			String kakaoId = request.getParameter("kakaoId");
 			session.setAttribute("sessionId", kakaoId);
@@ -34,7 +34,7 @@ public class MemberLoginOkAction implements Action {
 				// 없다면 session_id에 담아서 join.me로 이동
 				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
 			}
-		} else if (request.getParameter("googleId") != null) {
+		}*/ if (request.getParameter("googleId") != null) {
 			//카카오랑 같음
 			System.out.println("3");
 			String googleId = request.getParameter("googleId");
@@ -50,7 +50,7 @@ public class MemberLoginOkAction implements Action {
 				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
 			}
 		}else {
-			System.out.println("2");
+			System.out.println("나다");
 			String id=request.getParameter("memberId");
 			String pw=mDao.encryptPw((request.getParameter("memberPassword")));
 			
