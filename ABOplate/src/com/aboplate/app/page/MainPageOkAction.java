@@ -45,7 +45,7 @@ public class MainPageOkAction implements Action{
 		}
 
 		if(id != null) {
-			List<RestaurantBean> tempRecommendList = restaurantDao.getMemberChoiceList(id);
+			List<RestaurantBean> tempRecommendList = restaurantDao.getRecommendList(id);
 			List<RestaurantBean> recommendList = new ArrayList<>();
 			int tempRecommendListLength = tempRecommendList.size();
 			

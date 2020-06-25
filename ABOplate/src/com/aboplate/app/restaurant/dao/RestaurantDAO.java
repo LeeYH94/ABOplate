@@ -61,7 +61,7 @@ public class RestaurantDAO {
 	// 회원 맞춤 맛집 추천
 	public List<RestaurantBean> getMemberChoiceList(String session_id, String foodCategory) {
 		
-		HashMap<String, Object> datas = new HashMap<>();
+		HashMap<String, String> datas = new HashMap<>();
 		MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
 		 
 		datas.put("category",foodCategory);
