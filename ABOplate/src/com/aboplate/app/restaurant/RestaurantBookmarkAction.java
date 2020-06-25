@@ -49,7 +49,7 @@ public class RestaurantBookmarkAction implements Action{
 		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow,id));
 		
 		forward.setRedirect(false);
-		forward.setPath("/app/bookmark/storeInfo.jsp");
+		forward.setPath("/member/favorites.jsp");
  		return forward;
 	}
 }
