@@ -46,8 +46,8 @@
 				<li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
-	          	<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+				<li class="nav-item"><p class="nav-p">${memberBean.getMember_id()}님</p></li>
+	          	<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
 	          	<li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
 	          	<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
 			</c:otherwise>
