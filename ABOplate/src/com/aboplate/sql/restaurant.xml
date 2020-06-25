@@ -28,7 +28,7 @@
 	<select id="getMemberChoiceRestaurantList" parameterType="map" resultType="restaurantBean">
 		SELECT RESTAURANT_NUM, RESTAURANT_NAME, RESTAURANT_RATION_TOTAL, 
 		RESTAURANT_ADDRESS, RESTAURANT_HIT FROM RESTAURANT
-		WHERE RESTAURANT_ADDRESS LIKE '%'||#{address}||'%'
+		WHERE RESTAURANT_ADDRESS_ROAD LIKE '%'||#{address}||'%'
 		AND RESTAURANT_FOOD_CATEGORY = #{category}
 		ORDER BY RESTAURANT_RATION_TOTAL DESC
 	</select>
@@ -42,7 +42,7 @@
 	<select id="searchRestaurant" parameterType="map" resultType="restaurantBean">
 		SELECT RESTAURANT_NAME, RESTAURANT_RATION_TOTAL,
 		RESTAURANT_ADDRESS, RESTAURANT_HIT FROM RESTAURANT
-		WHERE ${keyField} LIKE '%'||#keyWord#||'%'
+		WHERE ${keyField} LIKE '%'||#{keyWord}||'%'
 		ORDER BY RESTAURANT_RATION_TOTAL DESC
 	</select>
 	
