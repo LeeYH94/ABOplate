@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -32,6 +33,9 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+	<c:set var="reviewBean" value="${requestScope.reviewBean}"/>
+	<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
+	
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -129,7 +133,7 @@
 			<!-- 리뷰 작성 부분 -->
 			<div class="row" style="margin-top: 2.25rem; margin-bottom: 3rem;">
 				<div class="text text-left">
-					<h2>음식점 이름</h2>
+					<h2>${restaurantBean.getRestaurant_name()} 역삼점</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -139,10 +143,11 @@
 						<div class="row block-9 justify-content-center mb-5">
 							<div class="col-md-8 mb-md-5">
 
-								<form action="#" class="bg-light p-5 contact-form ">
+								<form action="${pageContext.request.contextPath}/restaurant/ReviewModifyOk.re" class="reviewForm" method="post" name="reviewForm" enctype="multipart/form-data">
+								<input type="hidden" name="seq" value="${reviewBean.getReview_num()}">
 									<div class="form-group">
 										<div>
-											<h8>이 가게의 별점</h8>
+											<h8>숟가락 점수</h8>
 											<br>
 											<p class="star_rating">
 												<!-- a태그는 별점 jquery 적용해야함 -->
@@ -153,7 +158,7 @@
 									</div>
 
 									<div class="form-group">
-										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용" readonly></textarea>
+										<textarea name="" id="" cols="100" rows="10" class="form-control">${reviewBean.getReview()}원래 써있던 내용</textarea>
 									</div>
 
 									<!-- 사진 올리기 용 -->
@@ -171,6 +176,8 @@
 														<div class="d-flex align-items-center">
 															<div class="text">
 																<p class="mb-4">사진부분1</p>
+																<input type="file" name="picture_1">
+																<input type="button" onclick="cancleFile('picture_1')" value="첨부 삭제">
 																<div class="pl-3"></div>
 															</div>
 														</div>
@@ -220,7 +227,15 @@
 											</div>
 										</div>
 									</div>
+									<table border="0" cellpadding="0" cellspacing="0" width="900px">
+										<tr align="right" valign="middle">
+											<td>
+												<a href="javascript:modifyReview()">[수정]</a>&nbsp;&nbsp;
+												<a href="${pageContext.request.contextPath}/restaurant/storeInfo.jsp">[이전]</a>&nbsp;&nbsp;
+											</td>
+										</tr>
 									<!-- form 태그 끝  -->
+									</table>
 								</form>
 							</div>
 						</div>
@@ -339,6 +354,26 @@
 	<script src="../js/popup.js"></script>
   	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
  	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-
+	<script>
+		$('.star_rating a').click(function(){
+			$(this).parent().children('a').removeClass('on');
+			$(this).addClass('on').prevAll('a').addClass('on');
+			return false;
+		})
+		
+		function modifyReview(){
+			reviewForm.submit();
+		}
+		
+		function cancleFile(fileTagName){
+			
+			if($.browser.msie){
+				$("input[name='"+fileTagName+"']").replaceWith(("input[name='"+fileTagName+"']").clone(true));
+			}else{
+				
+				$("input[name='"+fileTagName+"']").val("");
+			}
+		}
+	</script>
 </body>
 </html>
