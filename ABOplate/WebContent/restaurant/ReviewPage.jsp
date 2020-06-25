@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -32,6 +33,9 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+	<c:set var="reviewBean" value="${requestScope.reviewBean}"/>
+	<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
+	
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -129,7 +133,7 @@
 			<!-- 리뷰 작성 부분 -->
 			<div class="row" style="margin-top: 2.25rem; margin-bottom: 3rem;">
 				<div class="text text-left">
-					<h2>음식점 이름</h2>
+						<h2>음식점 이름</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -153,7 +157,7 @@
 									</div>
 
 									<div class="form-group">
-										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용" readonly></textarea>
+											<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용" readonly></textarea>
 									</div>
 
 									<!-- 사진 올리기 용 -->
@@ -220,6 +224,7 @@
 											</div>
 										</div>
 									</div>
+									
 									<!-- form 태그 끝  -->
 								</form>
 							</div>
@@ -339,6 +344,6 @@
 	<script src="../js/popup.js"></script>
   	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
  	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-
+	
 </body>
 </html>

@@ -64,10 +64,9 @@ public class RestaurantDAO {
 		MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
 		 
 		datas.put("category", memberBean.getMember_preference_food());
-		datas.put("region", memberBean.getMember_region());
-		datas.put("age_group", memberBean.getMember_age_group());
+		datas.put("address", memberBean.getMember_region());
 		
-		List<RestaurantBean> memberChoicerestaurantList = sqlsession.selectList("Restaurant.getMemberChoiceRestaurantList");
+		List<RestaurantBean> memberChoicerestaurantList = sqlsession.selectList("Restaurant.getMemberChoiceRestaurantList", datas);
 		
 		return memberChoicerestaurantList;
 	}

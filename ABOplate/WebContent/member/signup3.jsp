@@ -45,7 +45,7 @@
               </div>
               <br>
               <div class="form-group">
-                <a href="../index.jsp">메인화면으로 돌아가기</a>
+                <a href="./login.jsp">로그인 페이지로 돌아가기</a>
               </div>
               
             </form>
