@@ -33,7 +33,7 @@ public class MemberJoinOkAction implements Action{
 		
 		
 		if(session.getAttribute("snsId") != null) {
-			// sns 회원가입
+			// sns �쉶�썝媛��엯
 			member.setMember_id(session.getAttribute("snsId").toString());
 			member.setMember_nickname(mDao.createRandomPw());
 			member.setMember_type(2);
@@ -66,7 +66,7 @@ public class MemberJoinOkAction implements Action{
 			PrintWriter out=response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
 			out.println("<script>");
-			out.println("alert('다시 시도해주세요.');");
+			out.println("alert('�떎�떆 �떆�룄�빐二쇱꽭�슂.');");
 			out.println("</script>");
 			out.close();
 		}

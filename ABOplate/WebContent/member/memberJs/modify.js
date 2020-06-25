@@ -33,15 +33,12 @@ function formSubmit() {
 	}
 	form.submit();
 }
-function output(){
-	var form = document.modifyForm;
-//	var id = contextPath + "/member/MemberLogin.me?id="
-//				+ $("input[name='memberId']").val(),
-	 form.memberId.value = smk1656;
+function pwcheckAlert(){
+	
 }
 
 function modify(){
-
+	
 	
 	form.modify();
 }

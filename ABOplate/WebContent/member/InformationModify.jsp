@@ -32,21 +32,34 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+	<c:set var="memberBean" value="${requestScope.MemberBean}"/>
+	<c:set var="mDao" value="${requestScope.MemberDAO}"/>
+	<script>
+	var pw = prompt("패스워드를 입력하세요"+"");
+		if(pw==decryptPw(${memberBean.getMember_password()})){
+		alert("인증되었습니다.");
+		}
+	</script>
+	
     <section class="ftco-section contact-section">
       <div class="container">
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-6 mb-md-5">
           	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
+          	
             <form name="modifyForm" action="${pageContext.request.contextPath}/member/MemberModify.me"class="p-5 bg-light" method="post">
                   <div class="form-group">
                     <label for="id">아이디</label>
                     <input type="id" class="form-control" id="memberId" name="memberId" value="${session_id}smk1656" readonly>
                   </div>
-                  
                   <div class="form-group">
+                    <label for="nickname">닉네임</label>
+                    <input type="text" class="form-control" id="memberNickname" name="memberNickname" value="${memberBean.getMember_nickname()}smk1656" readonly>
+                  </div>
+                  <!-- <div class="form-group">
                     <label for="password">현재 비밀번호</label>
                     <input type="password" class="form-control" id="memberPassword" name="memberPassword">
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label for="password">새 비밀번호</label>
                     <input type="password" class="form-control" id="newMemberPassword" name="newMemberPassword">
@@ -57,70 +70,40 @@
                   </div>
                   
                   <div class="form-group">
-                    <label for="nickname">닉네임</label>${b_bean.getBoard_readcount()}
-                    <input type="text" class="form-control" id="memberNickname" name="memberNickname" value="${memberBean.getMember_nickname()}" readonly>
-                  </div>
-                  <div class="form-group">
                     <label for="favorite">선호음식 : </label>
-                    <input type="checkbox" id="memberFavorite" name="memberFavorite">
+                    <input type="checkbox" id="memberFavorite" name="memberFavorite" value="korean">
                     <label for="demo-human" style="position: static;"> 
 					한식
 					</label>
-                    <input type="checkbox" id="memberFavorite" name="memberFavorite">
+                    <input type="checkbox" id="memberFavorite" name="memberFavorite" value="chinese">
                     <label for="demo-human" style="position: static;"> 
 					중식
 					</label>
-                    <input type="checkbox" id="memberFavorite" name="memberFavorite">
+                    <input type="checkbox" id="memberFavorite" name="memberFavorite" value="japanese">
                     <label for="demo-human" style="position: static;"> 
 					일식
 					</label>
-                    <input type="checkbox" id="memberFavorite" name="memberFavorite">
+                    <input type="checkbox" id="memberFavorite" name="memberFavorite" value="american">
                     <label for="demo-human" style="position: static;"> 
 					양식
 					</label>
                   </div>
-                  <!-- <div class="form-group">
-                    <label for="age">나이대</label>
-                   	<div class="form-group"><select style="width: 150px; font-size: 13px;" name="memberAge" class="form-control">
-												<option value=''>선택하세요</option>
-												<option value='39'>10대</option>
-												<option value='40'>20대</option>
-												<option value='41'>30대</option>
-												<option value='42'>40대</option>
-												<option value='43'>50대</option>
-												<option value='44'>60대</option>
-											</select>
-					</div>
-                  </div> -->
+        
                   <div class="form-group">
                     <label for="age">지역(서울시)</label>
                    	<div class="form-group"><select style="width: 150px; font-size: 13px;" name="" class="form-control">
 										<option value=''>선택하세요</option>
-										<option value='45'>강남구</option>
-										<option value='46'>강동구</option>
-										<option value='47'>강서구</option>
-										<option value='48'>강북구</option>
-										<option value='49'>관악구</option>
-										<option value='50'>광진구</option>
-										<option value='51'>구로구</option>
-										<option value='52'>금천구</option>
-										<option value='53'>노원구</option>
-										<option value='54'>도봉구</option>
-										<option value='55'>동대문구</option>
-										<option value='56'>동작구</option>
-										<option value='57'>마포구</option>
-										<option value='58'>서대문구</option>
-										<option value='59'>서초구</option>
-										<option value='60'>성동구</option>
-										<option value='61'>성북구</option>
-										<option value='62'>송파구</option>
-										<option value='63'>양천구</option>
-										<option value='64'>영등포구</option>
-										<option value='65'>용산구</option>
-										<option value='66'>은평구</option>
-										<option value='67'>종로구</option>
-										<option value='68'>중구</option>
-										<option value='69'>중랑구</option>
+										<option value='Gwangjin'>광진구</option>
+										<option value='Seocho'>서초구</option>
+										<option value='Seongdong'>성동구</option>
+										<option value='Yangcheon'>양천구</option>
+										<option value='Yongsan'>용산구</option>
+										<option value='Eunpyeong'>은평구</option>
+										<option value='Jongno'>종로구</option>
+										<option value='Jungnang'>중랑구</option>
+										<option value='Goyang'>고양시</option>
+										<option value='Suwon'>수원시</option>
+										<option value='Yongin'>용인시</option>
 								</select>
 					</div>
                   </div>
