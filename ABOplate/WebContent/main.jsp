@@ -58,9 +58,11 @@
 						<li class="nav-item"><a href="./member/login.jsp" class="nav-link">로그인</a></li>
 						<li class="nav-item"><a href="./member/signup.jsp" class="nav-link">회원가입</a></li>
 					</c:when>
+					<c:when test="${sessionId ne null && memberBean ne null}">
+						<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
+	          <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+					</c:when>
 					<c:otherwise>
-						<li class="nav-item"><p class="nav-p">${MemberBean.getMember_nickname()}님</p></li>
-	          <li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
@@ -277,7 +279,7 @@
 										</div>
 									</c:when>
 									
-									<c:when test="${memberBean.getMember_type == 2}">
+									<c:when test="${memberBean.getMember_type() == 2}">
 										<div style="margin: 0 auto;">
 											<h5 style="text-align: center;">회원정보를 입력하시면 맞춤 맛집을 추천해드립니다.</h5>
 											<div class="justify-content-center"
@@ -289,7 +291,7 @@
 										</div>
 									</c:when>
 									
-									<c:when test="${memberBean.getMember_type == 1}">
+									<c:when test="${memberBean.getMember_type() == 1}">
 										<c:choose>
 										<c:when test="${recommendList != null and fn:length(recommendList) > 0}">
 											<c:forEach var="restaurantBean" items="${recommendList}">
@@ -302,13 +304,13 @@
 														</div>
 														<div class="desc">
 															<h3>
-																<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num}">
-																${restaurantBean.getRestaurant_name}
+																<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+																${restaurantBean.getRestaurant_name()}
 																</a>
 															</h3>
 															<p class="h-info">
-																<span class="location">${restaurantBean.getRestaurant_address}</span> 
-																<span class="details">${restaurantBean.getRestaurant_food_category}</span>
+																<span class="location">${restaurantBean.getRestaurant_address()}</span> 
+																<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
 															</p>
 														</div>
 													</div>

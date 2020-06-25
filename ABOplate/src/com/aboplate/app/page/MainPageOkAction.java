@@ -27,13 +27,14 @@ public class MainPageOkAction implements Action{
 		String id = null;
 		
 		if(session.getAttribute("sessionId") != null) {
+			System.out.println("2");
 			id = session.getAttribute("sessionId").toString();
 		}
 		
 		List<RestaurantBean> tempPopularList = restaurantDao.getPopularList();
 		List<RestaurantBean> popularList = new ArrayList<>();
 		int tempPopularListLength = tempPopularList.size();
-		
+
 		while(popularList.size() < 8) {
 			restaurantBean = tempPopularList.get((int)(Math.random()*tempPopularListLength));
 			if(popularList.contains(restaurantBean)) {
@@ -42,13 +43,24 @@ public class MainPageOkAction implements Action{
 				popularList.add(restaurantBean);
 			}
 		}
-		
-		List<RestaurantBean> recommendList = new ArrayList<>();
+
 		if(id != null) {
-			recommendList = restaurantDao.getMemberChoiceList(id);
+			List<RestaurantBean> tempRecommendList = restaurantDao.getMemberChoiceList(id);
+			List<RestaurantBean> recommendList = new ArrayList<>();
+			int tempRecommendListLength = tempRecommendList.size();
+			
+			while(recommendList.size() < 8) {
+				restaurantBean = tempRecommendList.get((int)(Math.random()*tempRecommendListLength));
+				if(recommendList.contains(restaurantBean)) {
+					continue;
+				} else {
+					recommendList.add(restaurantBean);
+				}
+			}
+			
 			session.setAttribute("recommendList", recommendList);
 		}
-		
+
 		session.setAttribute("popularList", popularList);
 		
 		forward.setPath(request.getContextPath() + "/main.jsp");

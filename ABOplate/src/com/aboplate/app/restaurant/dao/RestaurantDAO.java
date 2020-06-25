@@ -1,5 +1,6 @@
 package com.aboplate.app.restaurant.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,16 +59,15 @@ public class RestaurantDAO {
 	// 여기까지 연관검색어
 	
 	// 회원 맞춤 맛집 추천
-	public List<RestaurantBean> getMemberChoiceList(String session_id) {
+	public List<RestaurantBean> getMemberChoiceList(String session_id, String foodCategory) {
 		
 		HashMap<String, Object> datas = new HashMap<>();
 		MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
 		 
-		datas.put("category", memberBean.getMember_preference_food());
-		datas.put("region", memberBean.getMember_region());
-		datas.put("age_group", memberBean.getMember_age_group());
+		datas.put("category",foodCategory);
+		datas.put("address", memberBean.getMember_region());
 		
-		List<RestaurantBean> memberChoicerestaurantList = sqlsession.selectList("Restaurant.getMemberChoiceRestaurantList");
+		List<RestaurantBean> memberChoicerestaurantList = sqlsession.selectList("Restaurant.getMemberChoiceRestaurantList", datas);
 		
 		return memberChoicerestaurantList;
 	}
@@ -77,6 +77,23 @@ public class RestaurantDAO {
 		List<RestaurantBean> popularList = sqlsession.selectList("Restaurant.getPopularRestaurant");
 			
 		return popularList;
+	}
+	
+	public List<RestaurantBean> getRecommendList(String id) {
+		
+		List<String> foodCategoryList = sqlsession.selectList("Member.getFoodCategory", id);
+		List<RestaurantBean> recommendList = new ArrayList<RestaurantBean>();
+		
+		String category = foodCategoryList.toString();
+		
+		category = category.substring(1, foodCategoryList.toString().length() - 2);
+		
+		System.out.println(category);
+		String[] arCategory = category.split(",");
+		for(String foodCategory : arCategory) {
+			recommendList.addAll(getMemberChoiceList(id, foodCategory));
+		}
+		return recommendList;
 	}
 	
 	public List<RestaurantBean> search(String keyField, String keyWord) {
@@ -99,6 +116,8 @@ public class RestaurantDAO {
 		
 		return sqlsession.selectOne("Restaurant.getLocalCurrencyCnt");
 	}
+	
+	
 		
 		
 }

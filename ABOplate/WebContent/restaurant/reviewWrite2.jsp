@@ -144,7 +144,7 @@
                   <div class="row block-9 justify-content-center mb-5">
                      <div class="col-md-8 mb-md-5">
 
-                        <form action="${pageContext.request.contextPath}/restaurant/ReviewModifyOk.re" class="reviewForm" method="post" name="reviewForm" enctype="multipart/form-data">
+                        <form action="${pageContext.request.contextPath}/restaurant/ReviewWriteOk.re" class="reviewForm" method="post" name="reviewForm" enctype="multipart/form-data">
                         <input type="hidden" name="seq" value="${reviewBean.getReview_num()}">
                            <div class="form-group">
                               <div>

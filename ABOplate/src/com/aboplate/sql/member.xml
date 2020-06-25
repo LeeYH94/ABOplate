@@ -19,7 +19,7 @@
 		map객체로 받아서 db에 있는지 확인 map 객체 리턴
 	 -->
 	<select id="login" parameterType="map" resultType="memberBean">
-		SELECT MEMBER_ID, MEMBER_TYPE FROM MEMBER
+		SELECT MEMBER_ID, MEMBER_TYPE, MEMBER_NICKNAME, MEMBER_STAMP FROM MEMBER
 		WHERE MEMBER_ID = #{id} AND MEMBER_PASSWORD = #{password}
 	</select>
 
@@ -60,11 +60,6 @@
 		WHERE MEMBER_ID = #{id}
 	</update>
 	
-	<select id="getjoinList" parameterType="string" resultType="memberBean">
-		SELECT MEMBER_PREFERENCE_FOOD, MEMBER_REGION, MEMBER_AGE_GROUP FROM RESTAURANT
-		WHERE MEMBER_ID = #{session_id}
-	</select>
-	
 	<insert id="joinSns" parameterType="map">
 		INSERT INTO MEMBER
 		(MEMBER_ID, MEMBER_NICKNAME, MEMBER_TYPE)
@@ -79,5 +74,13 @@
 		SELECT * FROM MEMBER WHERE MEMBER_ID = #{id}
 	</select>
 	
+	<select id="getJoinList" parameterType="string" resultType="memberBean">
+		SELECT MEMBER_PREFERENCE_FOOD, MEMBER_REGION FROM MEMBER
+		WHERE MEMBER_ID = #{session_id}
+	</select>
+	
+	<select id="getFoodCategory" parameterType="string" resultType="string">
+		SELECT MEMBER_PREFERENCE_FOOD FROM MEMBER WHERE MEMBER_ID = #{id}
+	</select>
 
 </mapper>

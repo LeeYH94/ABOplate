@@ -8,52 +8,36 @@ import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
+import com.aboplate.app.member.dao.MemberBean;
+import com.aboplate.app.member.dao.MemberDAO;
+import com.aboplate.app.picture.dao.PictureDAO;
+import com.aboplate.app.restaurant.dao.RestaurantBean;
+import com.aboplate.app.restaurant.dao.RestaurantDAO;
 import com.aboplate.app.restaurant.dao.ReviewBean;
 import com.aboplate.app.restaurant.dao.ReviewDAO;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class RestaurantReviewWriteAction implements Action{
 	public static boolean check = false;
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
 		ActionForward forward = new ActionForward();
 		
+		MemberDAO memberDao = new MemberDAO();
+		MemberBean memberBean = new MemberBean();
 		HttpSession session = request.getSession();
-		ReviewDAO reviewDao = new ReviewDAO();
-		ReviewBean reviewBean = new ReviewBean();
 		
-		int restaurant_num = Integer.parseInt(request.getParameter("restaurantNum"));
-		String nickname = request.getParameter("nickname");
-		String review = request.getParameter("review");
-		int ration = Integer.parseInt(request.getParameter("ration"));
-		String report = request.getParameter("report");
-		String upload_date = request.getParameter("upload_date");
-		String id = (String)session.getAttribute("sessionId");
+		int restauranNum = Integer.parseInt(request.getParameter("seq"));
+		String member_id = (String)session.getAttribute("session_id");
+
+		memberBean = memberDao.getMemberNickname(member_id);
 		
-		if(!check) {
-			reviewBean.setRestaurant_num(restaurant_num);
-			reviewBean.setNickname(nickname);
-			reviewBean.setReview(review);
-			reviewBean.setRation(ration);
-			reviewBean.setReport(report);
-			reviewBean.setUpload_date(upload_date);
-			
-			check = true;
-			if(reviewDao.insertReview(reviewBean)) {
-				forward = new ActionForward();
-				forward.setRedirect(true);
-				forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?seq="+restaurant_num);
-			}
-		}else {
-			PrintWriter out = response.getWriter();
-			response.setContentType("text/html;charset=utf-8");
-			out.println("<script>");
-			out.println("alert('기다려주세요'); history.back();");
-			out.println("</script>");
-			out.close();
-			}
+		request.setAttribute("restauranNum", restauranNum);
+		request.setAttribute("memberBean", memberBean);
+		
+		forward.setRedirect(true);
+		forward.setPath("/restaurant/ReviewWrite.jsp");
 		return forward;
 	}
 }
