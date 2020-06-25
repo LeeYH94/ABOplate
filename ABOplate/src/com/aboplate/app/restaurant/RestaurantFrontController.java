@@ -96,7 +96,21 @@ public class RestaurantFrontController extends HttpServlet{
 			}catch(Exception e) {
 				System.out.println(e);
 			}
-		} else {
+		} else if(command.equals("/restaurant/ReviewWrite.re")) {
+			action = new RestaurantReviewWriteAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/restaurant/ReviewWriteOk.re")) {
+			action = new RestaurantReviewWriteOkAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}else {
 			forward = new ActionForward();
 			forward.setRedirect(false);
 			forward.setPath("/error/404.jsp");
