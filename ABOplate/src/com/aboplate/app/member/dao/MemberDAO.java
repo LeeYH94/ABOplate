@@ -1,5 +1,6 @@
 package com.aboplate.app.member.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import java.util.Properties;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.aboplate.app.restaurant.dao.RestaurantBean;
+import com.aboplate.app.restaurant.dao.RestaurantDAO;
 import com.aboplate.mybatis.config.SqlMapConfig;
 
 

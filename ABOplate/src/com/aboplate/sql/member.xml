@@ -78,5 +78,9 @@
 		SELECT MEMBER_PREFERENCE_FOOD, MEMBER_REGION FROM MEMBER
 		WHERE MEMBER_ID = #{session_id}
 	</select>
+	
+	<select id="getFoodCategory" parameterType="string" resultType="string">
+		SELECT MEMBER_PREFERENCE_FOOD FROM MEMBER WHERE MEMBER_ID = #{id}
+	</select>
 
 </mapper>
