@@ -23,7 +23,9 @@ public class MemberModifyAction implements Action {
 		MemberBean member =new MemberBean();
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		//비밀번호 수정, 선호음식 수정, 지역수정 
+		//비밀번호 수정
+		if(request.getParameter("memberPassword")!=null) {
+			
 		String id = session.getAttribute("sessionId").toString();
 		String Password = mDao.encryptPw((request.getParameter("memberPassword")));
 		String SessionPassword = session.getAttribute("Password").toString();
@@ -37,6 +39,19 @@ public class MemberModifyAction implements Action {
 		else {
 			System.out.println("not-ok");
 		}
+		//선호음식 수정
+		}else if(request.getParameter("memberFavorite")!=null) {
+			String pref = "";
+			for (String favorite : request.getParameterValues("memberFavorite")) {				
+				pref = favorite + ",";
+			}
+			member.setMember_preference_food(pref);
+		}
+		//지역수정 
+		else if(request.getParameter("memberRegion")!=null) {
+			member.setMember_region(request.getParameter("memberRegion"));
+		}
+		
 		forward.setPath("/member/main.jsp");
 		forward.setRedirect(true);
 		return forward;
