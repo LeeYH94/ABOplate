@@ -28,6 +28,10 @@ public class MemberJoinOkAction implements Action{
 		String[] region_kor = {"광진구", "서초구", "성동구", "양천구", "용산구", "은평구"
 				, "종로구", "중랑구", "고양시", "수원시", "용인시"};
 		
+		String[] preference_en = {"korean", "chinese", "japanese", "american"};
+		String[] preference_kor = {"한식", "중식", "일식", "양식"};
+		
+		
 		if(session.getAttribute("snsId") != null) {
 			// sns 회원가입
 			member.setMember_id(session.getAttribute("snsId").toString());
@@ -43,7 +47,11 @@ public class MemberJoinOkAction implements Action{
 			member.setMember_password(mDao.encryptPw(request.getParameter("memberPassword")));
 			member.setMember_nickname(request.getParameter("memberNickname"));
 			for (String favorite : request.getParameterValues("memberFavorite")) {				
-				pref += favorite + ",";
+				for (int i = 0; i < preference_en.length; i++) {
+					if (favorite.equals(preference_en[i])) {
+						pref += preference_kor + ",";						
+					}
+				}
 			}
 			member.setMember_preference_food(pref);
 			for (int i = 0; i < region_en.length; i++) {
