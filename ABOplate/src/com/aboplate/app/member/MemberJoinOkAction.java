@@ -49,7 +49,7 @@ public class MemberJoinOkAction implements Action{
 			for (String favorite : request.getParameterValues("memberFavorite")) {				
 				for (int i = 0; i < preference_en.length; i++) {
 					if (favorite.equals(preference_en[i])) {
-						pref += preference_kor + ",";						
+						pref += preference_kor[i] + ",";						
 					}
 				}
 			}
