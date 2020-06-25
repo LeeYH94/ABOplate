@@ -23,6 +23,11 @@ public class MemberJoinOkAction implements Action{
 		ActionForward forward=new ActionForward();
 		boolean check=false;
 		
+		String[] region_en = {"Gwangjin", "Seocho", "Seongdong", "Yangcheon", "Yongsan", "Eunpyeong"
+				, "Jongno", "Jungnang", "Goyang", "Suwon", "Yongin"};
+		String[] region_kor = {"광진구", "서초구", "성동구", "양천구", "용산구", "은평구"
+				, "종로구", "중랑구", "고양시", "수원시", "용인시"};
+		
 		if(session.getAttribute("snsId") != null) {
 			// sns 회원가입
 			member.setMember_id(session.getAttribute("snsId").toString());
@@ -41,7 +46,12 @@ public class MemberJoinOkAction implements Action{
 				pref += favorite + ",";
 			}
 			member.setMember_preference_food(pref);
-			member.setMember_region(request.getParameter("memberRegion"));
+			for (int i = 0; i < region_en.length; i++) {
+				if (request.getParameter("memberRegion").equals(region_en[i])) {
+					member.setMember_region(region_kor[i]);
+					break;
+				}
+			}
 			check=mDao.join(member);
 		}
 		if(!check) {
