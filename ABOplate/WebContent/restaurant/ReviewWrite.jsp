@@ -31,7 +31,8 @@
 <link rel="stylesheet" href="../css/icomoon.css">
 <link rel="stylesheet" href="../css/style.css">
 </head>
-<section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('../images/main.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight"
+ style="background-image: url('../images/main.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
@@ -131,11 +132,7 @@
 
 		<div class="container">
 			<!-- 리뷰 작성 부분 -->
-			<div class="row" style="margin-top: 2.25rem; margin-bottom: 3rem;">
-				<div class="text text-left">
-					<h2>음식점 이름</h2>
-				</div>
-			</div>
+
 			<div class="row">
 				<div class="col-md-12">
 					<div class="property-details">
@@ -143,9 +140,10 @@
 						<div class="row block-9 justify-content-center mb-5">
 							<div class="col-md-8 mb-md-5">
 
-								<form action="#" class="bg-light p-5 contact-form ">
+								<form action="${pageContext.request.contextPath}/restaurant/ReviewWriteOk.re?seq=${restaurantBean.getRestaurant_num()}" method="post" enctype="multipart/form-data" name="reviewWriteform" class="bg-light p-5 contact-form">
 									<div class="form-group">
 										<div>
+											<h2>${restaurantBean.getRestaurant_name()}</h2>
 											<h8>별점을 표시해주세요</h8>
 											<br>
 											<p class="star_rating">
@@ -157,7 +155,7 @@
 									</div>
 
 									<div class="form-group">
-										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="000님 리뷰를 작성해주세요"></textarea>
+										<textarea name="reivew" id="" cols="100" rows="10" class="form-control" placeholder="000님 리뷰를 작성해주세요"></textarea>
 									</div>
 
 									<!-- 사진 올리기 용 -->
@@ -174,7 +172,7 @@
 													<div class="testimony-wrap py-4">
 														<div class="d-flex align-items-center">
 															<div class="text">
-																<p class="mb-4">파일추가1</p>
+																<p class="mb-4">사진 첨부</p>
 																<div class="pl-3"></div>
 															</div>
 														</div>
@@ -183,7 +181,9 @@
 												<div class="item">
 													<div class="testimony-wrap py-4">
 														<div class="text">
-															<p class="mb-4 ">파일추가2</p>
+															<input name="board_file1" type="file"/>
+															<input type="button" onclick="cancleFile('board_file1')" value="첨부 삭제">
+															<p class="mb-4 ">사진 첨부</p>
 															<div class="d-flex align-items-center">
 																<div class="pl-3"></div>
 															</div>
@@ -194,27 +194,7 @@
 												<div class="item">
 													<div class="testimony-wrap py-4">
 														<div class="text">
-															<p class="mb-4 ">파일추가3</p>
-															<div class="d-flex align-items-center">
-																<div class="pl-3"></div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="item">
-													<div class="testimony-wrap py-4">
-														<div class="text">
-															<p class="mb-4 ">파일추가4</p>
-															<div class="d-flex align-items-center">
-																<div class="pl-3"></div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="item">
-													<div class="testimony-wrap py-4">
-														<div class="text">
-															<p class="mb-4 ">파일추가5</p>
+															<p class="mb-4 ">사진 첨부</p>
 															<div class="d-flex align-items-center">
 																<div class="pl-3"></div>
 															</div>
@@ -348,6 +328,18 @@
 	<script src="../js/popup.js"></script>
   	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
  	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+ 	
+ 	<script>
+ 	function cancleFile(fileTagName){
+		//ie일 때
+		if($.browser.msie){
+			$("input[name='"+fileTagName+"']").replaceWith(("input[name='"+fileTagName+"']").clone(true));
+		}else{
+		//그 외 브라우저	
+			$("input[name='"+fileTagName+"']").val("");
+		}
+	}
+ 	</script>
 
 </body>
 </html>
