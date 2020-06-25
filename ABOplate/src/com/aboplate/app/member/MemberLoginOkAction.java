@@ -20,9 +20,14 @@ public class MemberLoginOkAction implements Action {
 		ActionForward forward=new ActionForward();
 		MemberDAO mDao=new MemberDAO();
 		HttpSession session=request.getSession();
-		
-		/*if(request.getParameter("kakaoId") != null) {
-			System.out.println(2);
+		MemberBean mBean = null;
+
+		if (request.getParameter("memberId") != null && request.getParameter("memberPassword") != null){
+			String id=request.getParameter("memberId");
+			String pw=mDao.encryptPw((request.getParameter("memberPassword")));
+			
+			mBean = mDao.login(id, pw);
+		} else if(request.getParameter("kakaoId") != null) {
 			String kakaoId = request.getParameter("kakaoId");
 			session.setAttribute("sessionId", kakaoId);
 			
@@ -35,9 +40,8 @@ public class MemberLoginOkAction implements Action {
 				// 없다면 session_id에 담아서 join.me로 이동
 				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
 			}
-		}*/ if (request.getParameter("googleId") != null) {
+		} else if (request.getParameter("googleId") != null) {
 			//카카오랑 같음
-			System.out.println("3");
 			String googleId = request.getParameter("googleId");
 			session.setAttribute("sessionId", googleId);
 			
@@ -50,21 +54,15 @@ public class MemberLoginOkAction implements Action {
 				// 없다면 session_id에 담아서 join.me로 이동
 				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
 			}
-		}else {
-			System.out.println("나다");
-			String id=request.getParameter("memberId");
-			String pw=mDao.encryptPw((request.getParameter("memberPassword")));
-			
-			MemberBean mBean = mDao.login(id, pw); 
-			
-			
-			if(mBean != null) {
-				session.setAttribute("memberBean", mBean);				
-				forward.setPath(request.getContextPath()+"/index.jsp");	
-			}else {
-				forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
-			}
 		}
+			
+		if(mBean != null) {
+			session.setAttribute("memberBean", mBean);				
+			forward.setPath(request.getContextPath()+"/index.jsp");	
+		} else {
+			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
+		}
+
 		forward.setRedirect(true);
 		return forward;
 	}

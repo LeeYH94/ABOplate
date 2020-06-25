@@ -58,9 +58,11 @@
 						<li class="nav-item"><a href="./member/login.jsp" class="nav-link">로그인</a></li>
 						<li class="nav-item"><a href="./member/signup.jsp" class="nav-link">회원가입</a></li>
 					</c:when>
-					<c:otherwise>
+					<c:when test="${sessionId ne null && memberBean ne null}">
 						<li class="nav-item"><p class="nav-p">${MemberBean.getMember_nickname()}님</p></li>
 	          <li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+					</c:when>
+					<c:otherwise>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
