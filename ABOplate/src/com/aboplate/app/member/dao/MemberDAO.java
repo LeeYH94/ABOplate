@@ -37,14 +37,13 @@ public class MemberDAO {
 		return check;
 	}
 	
-	public Map<String, String> login(String id, String pw) {
+	public MemberBean login(String id, String pw) {
 
 		HashMap<String, String> datas = new HashMap<>();
 		datas.put("id", id);
 		datas.put("password", pw);
-		Map<String, String> loginDatas = sqlsession.selectOne("Member.login", datas);
+		return sqlsession.selectOne("Member.login", datas);
 
-		return loginDatas;
 	}
 
 	public String findId(String email, String name) {

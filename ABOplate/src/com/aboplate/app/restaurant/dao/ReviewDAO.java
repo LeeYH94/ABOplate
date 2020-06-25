@@ -74,4 +74,13 @@ public class ReviewDAO {
 		sqlsession.insert("Review.addReviewRecommend", datas);
 	}
 	
+	public ReviewBean getReviewDetail(int reviewNum) {
+		
+		return sqlsession.selectOne("Review.getReviewDetail", reviewNum);
+	}
+	
+	public void updateReview(ReviewBean reviewBean) {
+		sqlsession.update("Review.updateReview", reviewBean);
+	}
+	
 }

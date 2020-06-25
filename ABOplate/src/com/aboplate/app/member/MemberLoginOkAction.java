@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
+import com.aboplate.app.member.dao.MemberBean;
 import com.aboplate.app.member.dao.MemberDAO;
 
 
@@ -54,12 +55,11 @@ public class MemberLoginOkAction implements Action {
 			String id=request.getParameter("memberId");
 			String pw=mDao.encryptPw((request.getParameter("memberPassword")));
 			
-	
-			Map<String, String> resultMap=mDao.login(id, pw);
+			MemberBean mBean = mDao.login(id, pw); 
 			
 			
-			if(resultMap!=null) {
-				session.setAttribute("sessionId", resultMap.get("MEMBER_ID"));
+			if(mBean != null) {
+				session.setAttribute("memberBean", mBean);				
 				forward.setPath(request.getContextPath()+"/index.jsp");	
 			}else {
 				forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");

@@ -30,6 +30,7 @@ public class RestaurantFrontController extends HttpServlet{
 		ActionForward forward = null;
 		Action action = null;
 		
+		
 		if(command.equals("/restaurant/RestaurantSearch.re")) {
 			action = new RestaurantSearchAction();
 			
@@ -40,7 +41,7 @@ public class RestaurantFrontController extends HttpServlet{
 			}
 			
 		}else if(command.equals("/restaurant/RestaurantPopular.re")) {
-			action = new RestaurantPopularAction();
+			//action = new RestaurantPopularAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
@@ -76,6 +77,20 @@ public class RestaurantFrontController extends HttpServlet{
 			}
 		} else if(command.equals("/restaurant/restaurantBookmarkOk.re")) {
 			action = new RestaurantBookmarkOkAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		} else if(command.equals("/restaurant/ReviewModify.re")) {
+			action = new RestaurantReviewModifyAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/restaurant/ReviewModifyOk.re")) {
+			action = new RestaurantReviewModifyOkAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
