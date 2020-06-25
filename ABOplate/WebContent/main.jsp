@@ -9,7 +9,9 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="250908572417-5s1lupekoch0mhm7tb9bjrucurkqbkn9.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
 	rel="stylesheet">
@@ -62,11 +64,13 @@
 						<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
 	          <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
 					</c:when>
-					<c:otherwise>
+					</c:choose>
+					<c:choose>
+					<c:when test="${sessionId ne null}">
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
-	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+	          <li class="nav-item"><a href="javascript:logout()" class="nav-link">로그아웃</a></li>
 						<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
-					</c:otherwise>
+					</c:when>
 					</c:choose>
 					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
@@ -231,7 +235,7 @@
 											<div class="col-md-3">
 												<div class="agent">
 													<div class="img">
-														<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+														<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 															<img style="width: 100%; height: 300px;" 
 																src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
 																class="img-fluid" alt="Colorlib Template">
@@ -239,12 +243,12 @@
 													</div>
 													<div class="desc">
 														<h3>
-															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 															${restaurantBean.getRestaurant_name()}
 															</a>
 														</h3>
 														<p class="h-info">
-															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 																<span class="location">${restaurantBean.getRestaurant_address()}</span> 
 																<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
 															</a>
@@ -286,7 +290,7 @@
 												style="text-align: center;">
 												<input type="button" style="margin-bottom: 15px" value="마이페이지"
 													class="btn btn-primary py-3"
-													onClick="location.href='./member/mypage'">
+													onClick="location.href='./member/mypage.me">
 											</div>
 										</div>
 									</c:when>
@@ -304,7 +308,7 @@
 														</div>
 														<div class="desc">
 															<h3>
-																<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+																<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 																${restaurantBean.getRestaurant_name()}
 																</a>
 															</h3>
@@ -430,6 +434,10 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
+
+
+
+</body>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="./js/popper.min.js"></script>
@@ -452,8 +460,4 @@
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="./js/popup.js"></script>
 	<script>var contextPath = "${pageContext.request.contextPath}";</script>
-
-
-
-</body>
 </html>
