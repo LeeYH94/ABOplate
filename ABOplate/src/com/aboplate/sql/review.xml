@@ -38,6 +38,15 @@
 	 	INSERT INTO REVIEW_RECOMMEND WHERE MEMBER_ID = #{id} AND REVIEW_NUM = #{reviewNum}
 	</insert>
 	
+	<select id="getReviewDetail" parameterType="_int" resultType="reviewBean">
+		SELECT * FROM REVIEW WHERE REVIEW_NUM = ${reviewNum}
+	</select>
+	
+	<update id="updateReview" parameterType="reviewBean">
+		UPDATE REVIEW
+		SET REVIEW = #{review}
+		WHERE REVIEW_NUM = ${review_num}
+	</update>
 	
 	
 </mapper>	
