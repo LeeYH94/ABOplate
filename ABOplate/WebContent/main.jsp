@@ -229,9 +229,11 @@
 											<div class="col-md-3">
 												<div class="agent">
 													<div class="img">
-														<img style="width: 100%; height: 300px;" 
-															src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
-															class="img-fluid" alt="Colorlib Template">
+														<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+															<img style="width: 100%; height: 300px;" 
+																src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
+																class="img-fluid" alt="Colorlib Template">
+														</a>
 													</div>
 													<div class="desc">
 														<h3>
@@ -240,8 +242,10 @@
 															</a>
 														</h3>
 														<p class="h-info">
-															<span class="location">${restaurantBean.getRestaurant_address()}</span> 
-															<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+																<span class="location">${restaurantBean.getRestaurant_address()}</span> 
+																<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
+															</a>
 														</p>
 													</div>
 												</div>
@@ -441,10 +445,10 @@
 	<script src="./https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/search.autocomplete.js"></script>
-	<script src="./js/popup.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="./js/popup.js"></script>
 	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 
 
