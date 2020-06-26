@@ -27,7 +27,6 @@ public class MainPageOkAction implements Action{
 		String id = null;
 		
 		if(session.getAttribute("sessionId") != null) {
-			System.out.println("2");
 			id = session.getAttribute("sessionId").toString();
 		}
 		

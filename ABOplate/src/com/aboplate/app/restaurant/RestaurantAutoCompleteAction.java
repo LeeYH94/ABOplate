@@ -14,20 +14,23 @@ public class RestaurantAutoCompleteAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		RestaurantDAO restaurantDao = new RestaurantDAO();
 		
 		String filter = request.getParameter("filter");
+		String search = request.getParameter("search");
+
 		PrintWriter out = response.getWriter();
 		
-		if (filter.equals("food_category")) {
-			out.println(restaurantDao.getFoodCategoryList().toString());			
-		} else if (filter.equals("address")) {
-			out.println(restaurantDao.getAddressList().toString());						
-		} else if (filter.equals("best_restaurant")) {
-			out.println(restaurantDao.getBestRestaurantList().toString());									
+		if (filter.equals("restaurant_food_category")) {
+			out.println(restaurantDao.getFoodCategoryList(search).toString());
+		} else if (filter.equals("restaurant_address")) {
+			out.println(restaurantDao.getAddressList(search).toString());		
+		} else if (filter.equals("restaurant_best")) {
+			out.println(restaurantDao.getBestRestaurantList(search).toString());	
 		} else {
-			out.println(restaurantDao.getName().toString());												
+			out.println(restaurantDao.getName(search).toString());
 		}
 		
 		return null;

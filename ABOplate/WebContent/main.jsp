@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
 
-	
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
 
 </head>
 <!-- 페이지 시작 때 popular list 불러옴 -->
@@ -127,17 +127,17 @@
 								<div class="form-group">
 									<div class="form-field">
 										<select class="form-control" id="filter">
-											<option value='name'>전체</option>
-											<option value='food_category'>음식 종류</option>
-											<option value='address'>주소</option>
-											<option value='best_restaurant'>모범 음식점</option>
+											<option value='restaurant_name' selected>전체</option>
+											<option value='restaurant_food_category'>음식 종류</option>
+											<option value='restaurant_address'>주소</option>
+											<option value='restaurant_best'>모범 음식점</option>
 										</select>
 									</div>
 								</div>
 								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input type="text" class="form-control" placeholder="Search location" id="search">
+											<input type="text" class="form-control" placeholder="Search location" id="mainSearch">
 											<button type="button" onclick="javascript:searchRestaurant()">
 												<span class="ion-ios-search"></span>
 											</button>
@@ -147,7 +147,7 @@
 								<div class="col-lg-10 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											실시간 차트
+											<span style="color:#FFFFFF; text-shadow: 0px 3px 4px rgba(0,0,0,0.4);">실시간 차트</span>
 											<table style="margin: 0 auto; background-color: white;"
 												class="form-control-tablel">
 												<tbody>
@@ -450,10 +450,10 @@
 	<script src="./js/scrollax.min.js"></script>
 	<script src="./https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 	<script src="./js/main.js"></script>
-	<script src="./js/search.autocomplete.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script> -->
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="./js/search.autocomplete.js"></script>
 	<script src="./js/popup.js"></script>
 	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 </html>
