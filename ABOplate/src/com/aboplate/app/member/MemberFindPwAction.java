@@ -34,7 +34,7 @@ public class MemberFindPwAction implements Action{
 			out.close();
 		}
 		forward.setRedirect(true);
-		//로그인 페이지로 이동
+		forward.setPath("/member/login.jsp");
 		return forward;
 	}
 }
