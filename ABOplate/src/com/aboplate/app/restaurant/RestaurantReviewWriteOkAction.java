@@ -43,11 +43,11 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
-			reviewBean.setBoard_title(multi.getParameter("board_title"));
-			reviewBean.setBoard_contents(multi.getParameter("board_contents"));
-			reviewBean.setMember_id(multi.getParameter("member_id"));
-			reviewResult = reviewDao.insertBoard(reviewBean);
-			pictureResult = pictureDao.insertFiles(multi, reviewDao.getBoardSeq());
+			reviewBean.setReview(multi.getParameter("review"));
+			reviewResult = reviewDao.insertReview(reviewBean);
+			
+			int reviewNum = Integer.parseInt(multi.getParameter("seq"));
+			pictureResult = pictureDao.insertFiles(multi,reviewNum);
 			
 			if(!reviewResult || !pictureResult) {
 				PrintWriter out = response.getWriter();
@@ -59,7 +59,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 				return null;
 			}
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "어디로 갈까");
+			forward.setPath(request.getContextPath() + "/restaurant/storeInfo.jsp");
 			return forward;
 			
 		} catch (Exception e) {
