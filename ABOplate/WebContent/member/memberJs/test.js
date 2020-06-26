@@ -5,6 +5,7 @@
 var idCheck = false;
 var nicknameCheck = false;
 var emailCheck = false;
+var favoriteOk = false;
 
 function formSubmit() {
   	var form = document.joinForm;
@@ -39,19 +40,8 @@ function formSubmit() {
 		alert("닉네임을 확인해주세요")
 		form.memberNickname.focus();
 		return false;
-
 	}
-	/*else if ('' == form.memberFavorite.value) {
-
-		alert("선호음식을 입력해주세요");
-	return false;
-
-	}
-		else if ('' == form.memberRegion.value) {
-		alert("지역을 입력해주세요");
-		return false;
-
-	}*/
+	
 	form.submit();
 }
 

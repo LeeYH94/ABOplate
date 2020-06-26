@@ -29,7 +29,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 		ActionForward forward = new ActionForward();
 		
 		int restaurant_num = Integer.parseInt(request.getParameter("seq"));
-		String member_id = (String)session.getAttribute("session_id");
+		String member_id = (String)session.getAttribute("sessionId");
 		String review = request.getParameter("review");
 		
 		String saveFolder = "";
@@ -43,7 +43,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
-			reviewBean.setBoard_title(multi.getParameter("board_title"));
+			reviewBean.setReview(multi.getParameter("board_title"));
 			reviewBean.setBoard_contents(multi.getParameter("board_contents"));
 			reviewBean.setMember_id(multi.getParameter("member_id"));
 			reviewResult = reviewDao.insertBoard(reviewBean);

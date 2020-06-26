@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="kor">
   <head>
-    <title>맛집페이지 로그인 후</title>
+    <title>맛집페이지</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -38,11 +38,12 @@
 		<c:set var="totalCnt" value="${requestScope.totalCnt}"/>
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
+		<c:set var="reviewBean" value="${requestScope.reviewBean}"/>
 	
     
 	  	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="main_2.html">ABO PLATE</a>
+	      <a class="navbar-brand" href="../index.jsp">ABO PLATE</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -51,13 +52,13 @@
 
 	        <ul class="navbar-nav ml-auto">
 			<c:choose>
-			<c:when test="${session_id eq null}">
+			<c:when test="${sessionId eq null}">
 				<li class="nav-item"><a href="../member/login.jsp" class="nav-link">로그인</a></li>
 				<li class="nav-item"><a href="../member/signup.jsp" class="nav-link">회원가입</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}님</p></li>
-	          	<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}점</p></li>
+				<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
+	          	<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
 	          	<li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
 	          	<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
 			</c:otherwise>
@@ -131,8 +132,7 @@
 			
 			
           <div class="col-md-6  heading-section heading-section-white ftco-animate">
-          	<h1>${RestaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
-          	<h3>${RestaurantBean.getRestaurant_name()}</h3>
+          	<h1>${restaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
           	<c:choose>  
 	   			<c:when test="${session_id eq !null}">
 	   				<div class="form-group text-right">
@@ -142,7 +142,7 @@
 			</c:choose>
 			<!-- 로그인 시 북마크 표시 뜨게함 -->
 			
-          	<strong><span>${RestaurantBean.getRestaurant_ration_total()}</span></strong> <!-- 평점 -->
+          	<strong><span>${restaurantBean.getRestaurant_ration_total()}점</span></strong> <!-- 평점 -->
           </div>
           	</div>
           	
@@ -160,29 +160,29 @@
 								<tbody>
 									<tr>
 										<th>주소</th>
-										<td>${RestaurantBean.getRestaurant_address_road()}<br>
-											<span>지번 : </span> <span>${RestaurantBean.getRestaurant_address()}</span>
+										<td>${restaurantBean.getRestaurant_address_road()}<br>
+											<span>지번 : </span> <span>${restaurantBean.getRestaurant_address()}</span>
 										</td>
 									</tr>
 									<tr>
 										<th>전화번호</th>
-										<td>${RestaurantBean.getRestaurant_tel()}</td>
+										<td>${restaurantBean.getRestaurant_tel()}</td>
 									</tr>
 									<tr>
 										<th>음식 종류</th>
-										<td><span>${RestaurantBean.getRestaurant_food_category()}</span></td>
+										<td><span>${restaurantBean.getRestaurant_food_category()}</span></td>
 									</tr>
 									<tr>
 										<th>시설정보</th>
-										<td>${RestaurantBean.getRestaurant_facility()}</td> 
+										<td>${restaurantBean.getRestaurant_facility()}</td> 
 									</tr>
 									<tr>
 										<th>재난지원금</th>
-										<td>${RestaurantBean.getRestaurant_disaster_grant()}</td>
+										<td>${restaurantBean.getRestaurant_disaster_grant()}</td>
 									</tr>
 									<tr>
 										<th>지역화폐</th>
-										<td>${RestaurantBean.getRestaurant_local_currency()}</td>
+										<td>${restaurantBean.getRestaurant_local_currency()}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -216,7 +216,7 @@
 											<div class="text-right">
 												
 												<div class="form-field">
-													<p><a href="${pageContext.request.contextPath}/restaurant/ReviewWrite.re">[글쓰기]</a></p>
+													<p><a href="${pageContext.request.contextPath}/restaurant/ReviewWrite.re?restaurantNum=${restaurantBean.getRestaurant_num()}">[글쓰기]</a></p>
 					            					<p>글 개수 : ${totalCnt}</p>
 						              			</div>
 											</div>
@@ -241,8 +241,8 @@
 									   					<i class="ion-ios-star"></i>
 								   					</span>
 								   					<span class="text-right">
-								   					<c:if test="${r_bean.getMember_id() eq session_id}"> <!-- 백과 이야기 필요 -->
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}">[수정]</a>&nbsp;&nbsp;
+								   					<c:if test="${r_bean.getMember_id() eq sessionId}"> <!-- 백과 이야기 필요 -->
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}&modify=true">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
@@ -294,19 +294,12 @@
 											          </div>
 									   		</div>
 									   		<!-- </form>   --> 
-									   		    
 									   	</div>
-									   	
 							   		</div>
-							   		
-							   		
-						    </div>
-						    
-						  </div>
-						  
-						</div>
-						
-		      </div>				   		
+							    </div>
+							  </div>
+							</div>
+		      			</div>				   		
 							   
 							   	</div>
 							   	
@@ -314,12 +307,26 @@
 						    
     		</div>
     		
-    		</div>
     </section>
+    
+    <div style="display:none;" class="map_wrap">
+	    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 	
-   
-   
-   
+	    <div id="menu_wrap" class="bg_white">
+	        <div class="option">
+	            <div>
+	                <form onsubmit="searchPlaces(); return false;">
+	                    키워드 : <input type="text" value="${restaurantBean.getRestaurant_tel()}" id="keyword" size="15"> 
+	                    <button type="submit">검색하기</button> 
+	                </form>
+	            </div>
+	        </div>
+	        <hr>
+	        <ul id="placesList"></ul>
+	        <div id="pagination"></div>
+	    </div>
+	</div>
+    
 	<section>
     <footer class="ftco-footer img mx-md-5">
       <div class="container">
@@ -399,7 +406,7 @@
 
   <script>var contextPath = "${pageContext.request.contextPath}";</script>
   <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=056b94bb5df03a78a04b2c7f67882c60"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=056b94bb5df03a78a04b2c7f67882c60&libraries=services"></script>
   <script src="${pageContext.request.contextPath}/restaurant/restaurantJs/kakaoMap.js"></script>
   <script src="../js/jquery.min.js"></script>
   <script src="../js/jquery-migrate-3.0.1.min.js"></script>
@@ -415,8 +422,6 @@
   <script src="../js/bootstrap-datepicker.js"></script>
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=&sensor"></script>
-  <script src="../js/google-map.js"></script>
   <script src="../js/main.js"></script>
     
   </body>

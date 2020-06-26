@@ -59,7 +59,8 @@ public class RestaurantDAO {
 	// 여기까지 연관검색어
 	
 	// 회원 맞춤 맛집 추천
-	public List<RestaurantBean> getMemberChoiceList(String session_id, String foodCategory) {
+	public List<RestaurantBean> getMemberChoiceList(String session_id, String foodCategory){
+		System.out.println(session_id);
 		
 		HashMap<String, Object> datas = new HashMap<>();
 		MemberBean memberBean = sqlsession.selectOne("Member.getJoinList", session_id);
@@ -71,7 +72,7 @@ public class RestaurantDAO {
 		
 		return memberChoicerestaurantList;
 	}
-		
+	
 	public List<RestaurantBean> getPopularList(){
 			
 		List<RestaurantBean> popularList = sqlsession.selectList("Restaurant.getPopularRestaurant");
@@ -88,7 +89,6 @@ public class RestaurantDAO {
 		
 		category = category.substring(1, foodCategoryList.toString().length() - 2);
 		
-		System.out.println(category);
 		String[] arCategory = category.split(",");
 		for(String foodCategory : arCategory) {
 			recommendList.addAll(getMemberChoiceList(id, foodCategory));
@@ -121,4 +121,5 @@ public class RestaurantDAO {
 		
 		
 }
+
 

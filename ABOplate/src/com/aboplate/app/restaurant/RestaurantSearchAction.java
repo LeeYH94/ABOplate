@@ -34,5 +34,4 @@ public class RestaurantSearchAction implements Action{
 		forward.setRedirect(true);
 		return forward;
 	}
-
 }

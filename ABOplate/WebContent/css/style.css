@@ -10214,7 +10214,7 @@ textarea.form-control {
    max-width: 500px;
       } }  
 
-/* @media (max-width: 1430.98px) {
+@media (max-width: 1430.98px) {
   #map {
     position: static;
     right:0px;
@@ -10283,13 +10283,16 @@ textarea.form-control {
   .dropmenu ul ul {
 	right:50px !important;} }
 
+
+/*  */
+
 @media (max-width: 1430.98px) {
 #menu_wrap {
 	position:absolute; display:block;top:0;left:0;bottom:0;width:100% !important;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;
 } }
 
 
-맵 시작
+/* 맵 시작 */
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
@@ -10343,4 +10346,23 @@ textarea.form-control {
 #category li .store {background-position: -10px -180px;}
 #category li.on .category_bg {background-position-x:-46px;}
 
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
