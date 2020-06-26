@@ -3,11 +3,11 @@ package com.aboplate.app.restaurant.dao;
 public class ReviewBean {
 	private int review_num;
 	private int restaurant_num;
-	private String nickname;
+	private String member_nickname;
 	private String review;
-	private int ration;
-	private String report;
-	private String upload_date;
+	private int review_ration;
+	private String review_report;
+	private String review_upload_date;
 	
 	public ReviewBean() {;}
 
@@ -27,12 +27,12 @@ public class ReviewBean {
 		this.restaurant_num = restaurant_num;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getMember_nickname() {
+		return member_nickname;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setMember_nickname(String member_nickname) {
+		this.member_nickname = member_nickname;
 	}
 
 	public String getReview() {
@@ -43,29 +43,32 @@ public class ReviewBean {
 		this.review = review;
 	}
 
-	public int getRation() {
-		return ration;
+	
+	public int getReview_ration() {
+		return review_ration;
 	}
 
-	public void setRation(int ration) {
-		this.ration = ration;
+	public void setReview_ration(int review_ration) {
+		this.review_ration = review_ration;
 	}
 
-	public String getReport() {
-		return report;
+	public String getReview_report() {
+		return review_report;
 	}
 
-	public void setReport(String report) {
-		this.report = report;
+	public void setReview_report(String review_report) {
+		this.review_report = review_report;
 	}
 
-	public String getUpload_date() {
-		return upload_date;
+	public String getReview_upload_date() {
+		return review_upload_date;
 	}
 
-	public void setUpload_date(String upload_date) {
-		this.upload_date = upload_date;
+	public void setReview_upload_date(String review_upload_date) {
+		this.review_upload_date = review_upload_date;
 	}
+
+	
 	
 	
 

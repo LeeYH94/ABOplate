@@ -28,11 +28,9 @@ public class RestaurantReviewWriteOkAction implements Action{
 		HttpSession session = request.getSession();
 		MemberDAO memberDao = new MemberDAO();
 		
-		ActionForward forward = new ActionForward();
+		ActionForward forward = new ActionForward();		
 		
-		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		String memberId = (String)session.getAttribute("sessionId");
-		int starRating =  Integer.parseInt(request.getParameter("starRating"));
 		
 		String nickName = memberDao.getMemberNickname(memberId);
 		
@@ -47,10 +45,13 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
+			int restaurantNum = Integer.parseInt(multi.getParameter("restaurantNum"));
+			int starRating =  Integer.parseInt(multi.getParameter("starRating"));
+
 			reviewBean.setRestaurant_num(restaurantNum);
-			reviewBean.setNickname(nickName);
+			reviewBean.setMember_nickname(nickName);
 			reviewBean.setReview(multi.getParameter("review"));
-			reviewBean.setRation(starRating);
+			reviewBean.setReview_ration(starRating);
 			reviewResult = reviewDao.insertReview(reviewBean);
 			
 			pictureResult = pictureDao.insertPicture(multi, reviewDao.getReviewSeq());
@@ -65,7 +66,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 				return null;
 			}
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "/restaurant/restaurantView.re?restaurantNum=" + restaurantNum);
+			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum);
 			return forward;
 			
 		} catch (Exception e) {

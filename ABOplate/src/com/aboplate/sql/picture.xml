@@ -9,6 +9,6 @@
 	
 	<insert id="insertPicture" parameterType="map">
 		INSERT INTO PICTURE
-		VALUSE(${reviewNum}, #{picturePath})
+		VALUES(${reviewNum}, #{picturePath})
 	</insert>
 </mapper>
