@@ -78,12 +78,12 @@
               <a href="javascript:popupClose();" class="layerpop_close" id="layerbox_close">X</a><br>
                     <div class="content" style="display:flex;">
                          <div class="col-md-4 d-flex ftco-animate">
-                            <div class="blog-entry justify-content-end">
+                           <div class="blog-entry justify-content-end">
                              <div class="text">
                                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_1.jpg');">
-                                </a>
-                                <p>맛있어보이는 돈까스!</p>
-                                 <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+                               </a>
+                               <p>맛있어보이는 돈까스!</p>
+                               <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
                              </div>
                            </div>
                          </div>
@@ -140,13 +140,14 @@
                      <div class="col-md-8 mb-md-5">
 
                         <form action="${pageContext.request.contextPath}/restaurant/ReviewWriteOk.re" class="reviewForm" method="post" name="reviewForm" enctype="multipart/form-data">
-                        <input type="hidden" name="seq" value="${reviewBean.getReview_num()}">
+                        <input type="hidden" name="restaurantNum" value="${restaurantBean.getRestaurant_num()}">
                            <div class="form-group">
                               <div>
                              	 <h2>${restaurantBean.getRestaurant_name()}</h2>
                                  <h8>별점</h8>
                                  <br>
                                  <p class="star_rating">
+                                 		<input style="display:none;" class="star_rating_cnt" value="" name="starRating"/>
                                     <!-- a태그는 별점 jquery 적용해야함 -->
                                     <a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
                                        href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
@@ -173,8 +174,8 @@
                                           <div class="d-flex align-items-center">
                                              <div class="text">
                                                 <p class="mb-4">사진 첨부</p>
-                                                <input type="file" name="picture_1">
-                                                <input type="button" onclick="cancleFile('picture_1')" value="첨부 삭제">
+                                                <input type="file" name="picture_1" accept="image/x-png,image/gif,image/jpeg">
+                                                <input type="button" onclick="cancelFile('picture_1')" value="첨부 삭제">
                                              </div>
                                           </div>
                                        </div>
@@ -184,8 +185,8 @@
                                           <div class="text">
                                              <p class="mb-4 ">사진 첨부</p>
                                              <div class="d-flex align-items-center">
-                                                <input type="file" name="picture_2">
-                                                <input type="button" onclick="cancleFile('picture_2')" value="첨부 삭제">
+                                                <input type="file" name="picture_2" accept="image/x-png,image/gif,image/jpeg">
+                                                <input type="button" onclick="cancelFile('picture_2')" value="첨부 삭제">
                                              </div>
                                           </div>
                                        </div>
@@ -196,8 +197,8 @@
                                           <div class="text">
                                              <p class="mb-4 ">사진 첨부</p>
                                              <div class="d-flex align-items-center">
-                                                <input type="file" name="picture_3">
-                                                <input type="button" onclick="cancleFile('picture_3')" value="첨부 삭제">
+                                                <input type="file" name="picture_3" accept="image/x-png,image/gif,image/jpeg">
+                                                <input type="button" onclick="cancelFile('picture_3')" value="첨부 삭제">
                                              </div>
                                           </div>
                                        </div>
@@ -209,7 +210,7 @@
                            <br>
 
 	                          <div class="form-group text-right">
-	                          	<input type="button" onclick="location.href='/restaurant/storeInfo.jsp'"value="취소" class="btn btn-primary py-2 px-3">
+	                          	<input type="button" onclick="location.href='history.back()'"value="취소" class="btn btn-primary py-2 px-3">
 								<input type="submit" value="작성" class="btn btn-primary py-2 px-3">	
 							</div>
 						 <!-- form 태그 끝  -->
@@ -329,25 +330,31 @@
    <script src="../js/google-map.js"></script>
    <script src="../js/main.js"></script>
    <script src="../js/popup.js"></script>
-     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+   <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+   <script src="http://code.jquery.com/jquery-1.9.0.js"></script>
+	 <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
    <script>
-      $('.star_rating a').click(function(){
-         $(this).parent().children('a').removeClass('on');
-         $(this).addClass('on').prevAll('a').addClass('on');
-         return false;
-      })
+		   var rating = 3;
+		   $('.star_rating a').click(function(){
+		      $(this).parent().children('a').removeClass('on');
+		      $(this).addClass('on').prevAll('a').addClass('on');
+		      rating = $('.star_rating').children('.on').text().length;
+		      $('.star_rating_cnt').val(rating);
+		      console.log($('.star_rating_cnt').val());
+		      return false;
+		   })
       
       function modifyReview(){
          reviewForm.submit();
       }
       
-      function cancleFile(fileTagName){
+      function cancelFile(fileTagName){
          
          if($.browser.msie){
             $("input[name='"+fileTagName+"']").replaceWith(("input[name='"+fileTagName+"']").clone(true));
          }else{
-            
+        	 console.log( $("input[name='"+fileTagName+"']").val());
             $("input[name='"+fileTagName+"']").val("");
          }
       }
