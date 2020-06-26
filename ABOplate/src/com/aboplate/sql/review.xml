@@ -48,5 +48,19 @@
 		WHERE REVIEW_NUM = ${review_num}
 	</update>
 	
+	<select id="getMemberReviewCnt" parameterType="string" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW WHERE MEMBER_NICKNAME = #{nickname}
+	</select>
+	
+	<select id="getMemberReviewList" parameterType="map" resultType="reviewBean">
+		SELECT * FROM
+			(SELECT ROWNUM R, V.* FROM
+				(SELECT * FROM REVIEW WHERE MEMBER_NICKNAME = ${nickname}
+					ORDER BY REVIEW_NUM DESC) V ) L
+			WHERE L.R BETWEEN ${startRow} AND ${endRow}		
+	</select>
+	
+	
+	
 	
 </mapper>	

@@ -40,14 +40,14 @@ public class RestaurantFrontController extends HttpServlet{
 				System.out.println(e);
 			}
 			
-		}else if(command.equals("/restaurant/RestaurantPopular.re")) {
-			//action = new RestaurantPopularAction();
+		}/*else if(command.equals("/restaurant/RestaurantPopular.re")) {
+			action = new RestaurantPopularAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
 				System.out.println(e);
 			}
-		}else if(command.equals("/restaurant/restaurantAutoComplete.re")) {
+		}*/else if(command.equals("/restaurant/restaurantAutoComplete.re")) {
 			action = new RestaurantAutoCompleteAction();
 			try {
 				forward = action.execute(req, resp);
@@ -105,6 +105,13 @@ public class RestaurantFrontController extends HttpServlet{
 			}
 		}else if(command.equals("/restaurant/ReviewWriteOk.re")) {
 			action = new RestaurantReviewWriteOkAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}else if(command.equals("/restaurant/RestaurantView.re")) {
+			action = new RestaurantViewOkAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {

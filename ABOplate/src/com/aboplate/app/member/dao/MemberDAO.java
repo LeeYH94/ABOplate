@@ -145,6 +145,11 @@ public class MemberDAO {
 		}
 		return result;
 	}
+	
+	public String getMemberNickname(String id) {
+		String nickname = sqlsession.selectOne("Member.getMemberNickname", id);
+		return nickname;
+	}
 
 
 	public String createRandomPw() {

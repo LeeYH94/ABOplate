@@ -41,17 +41,7 @@ function formSubmit() {
 		return false;
 
 	}
-	else if ('' == form.memberFavorite.value) {
-
-		alert("선호음식을 입력해주세요");
-	return false;
-
-	}
-		else if ('' == form.memberRegion.value) {
-		alert("지역을 입력해주세요");
-		return false;
-
-	}
+	
 	form.submit();
 }
 

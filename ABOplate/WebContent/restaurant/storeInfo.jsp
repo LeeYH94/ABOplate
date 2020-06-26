@@ -131,8 +131,7 @@
 			
 			
           <div class="col-md-6  heading-section heading-section-white ftco-animate">
-          	<h1>${RestaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
-          	<h3>${RestaurantBean.getRestaurant_name()}</h3>
+          	<h1>${restaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
           	<c:choose>  
 	   			<c:when test="${session_id eq !null}">
 	   				<div class="form-group text-right">
@@ -142,7 +141,7 @@
 			</c:choose>
 			<!-- 로그인 시 북마크 표시 뜨게함 -->
 			
-          	<strong><span>${RestaurantBean.getRestaurant_ration_total()}</span></strong> <!-- 평점 -->
+          	<strong><span>${restaurantBean.getRestaurant_ration_total()}점</span></strong> <!-- 평점 -->
           </div>
           	</div>
           	
@@ -160,29 +159,29 @@
 								<tbody>
 									<tr>
 										<th>주소</th>
-										<td>${RestaurantBean.getRestaurant_address_road()}<br>
-											<span>지번 : </span> <span>${RestaurantBean.getRestaurant_address()}</span>
+										<td>${restaurantBean.getRestaurant_address_road()}<br>
+											<span>지번 : </span> <span>${restaurantBean.getRestaurant_address()}</span>
 										</td>
 									</tr>
 									<tr>
 										<th>전화번호</th>
-										<td>${RestaurantBean.getRestaurant_tel()}</td>
+										<td>${restaurantBean.getRestaurant_tel()}</td>
 									</tr>
 									<tr>
 										<th>음식 종류</th>
-										<td><span>${RestaurantBean.getRestaurant_food_category()}</span></td>
+										<td><span>${restaurantBean.getRestaurant_food_category()}</span></td>
 									</tr>
 									<tr>
 										<th>시설정보</th>
-										<td>${RestaurantBean.getRestaurant_facility()}</td> 
+										<td>${restaurantBean.getRestaurant_facility()}</td> 
 									</tr>
 									<tr>
 										<th>재난지원금</th>
-										<td>${RestaurantBean.getRestaurant_disaster_grant()}</td>
+										<td>${restaurantBean.getRestaurant_disaster_grant()}</td>
 									</tr>
 									<tr>
 										<th>지역화폐</th>
-										<td>${RestaurantBean.getRestaurant_local_currency()}</td>
+										<td>${restaurantBean.getRestaurant_local_currency()}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -242,7 +241,7 @@
 								   					</span>
 								   					<span class="text-right">
 								   					<c:if test="${r_bean.getMember_id() eq session_id}"> <!-- 백과 이야기 필요 -->
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}">[수정]</a>&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}&modify=true">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>

@@ -35,6 +35,7 @@
 <body>
 	<c:set var="reviewBean" value="${requestScope.reviewBean}"/>
 	<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
+	<c:set var="modify"/>
 	
 
 	<nav
@@ -157,7 +158,14 @@
 									</div>
 
 									<div class="form-group">
-											<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용" readonly></textarea>
+									<c:choose>
+									<c:when test="${modify ne null}">
+										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용"></textarea>
+									</c:when>
+									<c:otherwise>
+										<textarea name="" id="" cols="100" rows="10" class="form-control" placeholder="리뷰내용" readonly></textarea>									
+									</c:otherwise>		
+									</c:choose>		
 									</div>
 
 									<!-- 사진 올리기 용 -->
@@ -166,9 +174,9 @@
 											<h2 class="mb-3">Photos Upload</h2>
 										</div>
 									</div>
-									<div class="row ftco-animate">
+									 <!--  <div class="row ftco-animate"> -->
 										<div class="col-md-12">
-											<div class="carousel-testimony owl-carousel ftco-owl">
+											<!-- <div class="carousel-testimony owl-carousel ftco-owl"> -->
 												<!-- 한 칸  -->
 												<div class="item">
 													<div class="testimony-wrap py-4">
@@ -221,9 +229,9 @@
 														</div>
 													</div>
 												</div>
-											</div>
+											<!-- </div> -->
 										</div>
-									</div>
+									<!-- </div> -->
 									
 									<!-- form 태그 끝  -->
 								</form>

@@ -61,12 +61,10 @@
 					<c:when test="${sessionId ne null && memberBean ne null}">
 						<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
 	          <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
-					</c:when>
-					<c:otherwise>
+			  <li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
 	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
-					</c:otherwise>
+					</c:when>
 					</c:choose>
 					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
@@ -231,7 +229,7 @@
 											<div class="col-md-3">
 												<div class="agent">
 													<div class="img">
-														<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+														<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 															<img style="width: 100%; height: 300px;" 
 																src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
 																class="img-fluid" alt="Colorlib Template">
@@ -239,12 +237,12 @@
 													</div>
 													<div class="desc">
 														<h3>
-															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 															${restaurantBean.getRestaurant_name()}
 															</a>
 														</h3>
 														<p class="h-info">
-															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.me?restaurantNum=${restaurantBean.getRestaurant_num()}">
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
 																<span class="location">${restaurantBean.getRestaurant_address()}</span> 
 																<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
 															</a>

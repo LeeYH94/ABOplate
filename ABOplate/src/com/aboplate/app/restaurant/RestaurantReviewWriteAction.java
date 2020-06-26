@@ -30,11 +30,12 @@ public class RestaurantReviewWriteAction implements Action{
 		
 		int restauranNum = Integer.parseInt(request.getParameter("seq"));
 		String member_id = (String)session.getAttribute("session_id");
+		String memberNickname = "";
 
-		memberBean = memberDao.getMemberNickname(member_id);
+		memberNickname = memberDao.getMemberNickname(member_id);
 		
 		request.setAttribute("restauranNum", restauranNum);
-		request.setAttribute("memberBean", memberBean);
+		request.setAttribute("memberNickname", memberNickname);
 		
 		forward.setRedirect(true);
 		forward.setPath("/restaurant/ReviewWrite.jsp");
