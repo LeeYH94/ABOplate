@@ -54,6 +54,9 @@
 		SELECT COUNT(*) FROM RESTAURANT WHERE RESTAURANT_LOCAL_CURRENCY = 'O'
 	</select>
 	
+	<select id="getReviewSeq" resultType="_int">
+		SELECT REVIEW_SEQ.CURRVAL FROM DUAL
+	</select>
 	
 	
 </mapper>

@@ -117,6 +117,10 @@ public class RestaurantDAO {
 		return sqlsession.selectOne("Restaurant.getLocalCurrencyCnt");
 	}
 	
+	public int getReviewSeq() {
+		return sqlsession.selectOne("Restaurant.getReviewSeq");
+	}
+	
 	
 		
 		
