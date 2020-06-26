@@ -9,9 +9,6 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="google-signin-scope" content="profile email">
-<meta name="google-signin-client_id" content="250908572417-5s1lupekoch0mhm7tb9bjrucurkqbkn9.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js" async defer></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
 	rel="stylesheet">
@@ -109,7 +106,8 @@
 									</div>
 								</div>
 							</li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
