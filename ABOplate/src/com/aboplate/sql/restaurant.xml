@@ -7,7 +7,7 @@
 		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
 	</select>
 	
-	<select id="getFoodList" resultType="string">
+	<select id="getFoodCategoryList" resultType="string">
 		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM RESTAURANT
 	</select>
 	

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -8,7 +8,9 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900&display=swap"
+	rel="stylesheet">
 
 <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../css/animate.css">
@@ -24,16 +26,12 @@
 <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="../css/jquery.timepicker.css">
 
-
 <link rel="stylesheet" href="../css/flaticon.css">
 <link rel="stylesheet" href="../css/icomoon.css">
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
+	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="../index.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -52,161 +50,167 @@
 		</div>
 	</nav>
 	<!-- END nav -->
-	
-	  <section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url('../images/main.jpg');" data-stellar-background-ratio="0.5">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
-          
-            <p class="mb-3 bread" style="position: relative; top: 50px; font-size: 30px;">관리자페이지</p>
 
-        </div>
-      </div>
-    </section>
+	<section class="hero-wrap2 hero-wrap-2 ftco-degree-bg js-fullheight"
+		style="background-image: url('../images/main.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+
+				<p class="mb-3 bread"
+					style="position: relative; top: 50px; font-size: 30px;">관리자페이지</p>
+
+			</div>
+		</div>
+	</section>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 pills">
 				<form action="#" class="search-location mt-md-5">
-		        		<div class="row justify-content-center">
-		        			<div class="col-lg-10 align-items-end">
-		        				<div class="form-group">
-			          				<div class="form-field">
-					                	<input type="text" class="form-control" placeholder="Search" style="border:1px solid silver;">
-					                	<button><span class="ion-ios-search"></span></button>
-					              	</div>
-			              		</div>
-			              		<div class="tag-widget post-tag-container">
-				            		<div class="tagcloud">
-				            			<div class="form-field">
-					            			<a>최신순</a>
-											<a>신고횟수</a>
-						              		<a class="meta-chat"><span class="icon-filter"></span></a>
-						              	</div>
-				            		</div>
-        						</div>
-		        			</div>
-		        		</div>
-		        	</form>   
+					<div class="row justify-content-center">
+						<div class="col-lg-10 align-items-end">
+							<div class="form-group">
+								<div class="form-field">
+									<input type="text" class="form-control" placeholder="Search"
+										style="border: 1px solid silver;">
+									<button>
+										<span class="ion-ios-search"></span>
+									</button>
+								</div>
+							</div>
+							<div class="tag-widget post-tag-container">
+								<div class="tagcloud">
+									<div class="form-field">
+										<a>최신순</a> <a>신고횟수</a> <a class="meta-chat"><span
+											class="icon-filter"></span></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
 				<!-- 관리자 페이지 -->
 				<div class="tab-pane fade show active" id="pills-description"
 					role="tabpanel" aria-labelledby="pills-description-tab">
-						<div class="row" style="margin-top: 5px !important;">
-							<div class="col-md-3" style="background-color: #ffcd3c !important;">
-								<div class="agent">
-									<div class="img">
-										<img style="height: 200px; width: 100%;" src="../images/1.jpg"
-											class="img-fluid" alt="Colorlib Template">
-									</div>
-									<div class="desc">
-										<h3>
-											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
-										</h3>
-										<p class="h-info">
-											<span class="location">위치</span> 
-											<span class="details">상세정보</span>
-											<span class="icon-warning2" style="color:red;">1</span>
-										</p>
-									</div>
+					<div class="row" style="margin-top: 5px !important;">
+						<div class="col-md-3"
+							style="background-color: #ffcd3c !important;">
+							<div class="agent">
+								<div class="img">
+									<img style="height: 200px; width: 100%;" src="../images/1.jpg"
+										class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3>
+										<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
+									</h3>
+									<p class="h-info">
+										<span class="location">위치</span> <span class="details">상세정보</span>
+										<span class="icon-warning2" style="color: red;">1</span>
+									</p>
 								</div>
 							</div>
-							<input type="text" readonly maxlength="50" style="width: 60%;"
-								value="리뷰 내용 최대 50자" class="sort">
-								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 						</div>
-						<div class="row" style="margin-top: 5px !important;">
-							<div class="col-md-3" style="background-color: #ffcd3c !important;">
-								<div class="agent">
-									<div class="img">
-										<img style="height: 200px; width: 100%;" src="../images/2.jpg"
-											class="img-fluid" alt="Colorlib Template">
-									</div>
-									<div class="desc">
-										<h3>
-											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
-										</h3>
-										<p class="h-info">
-											<span class="location">위치</span> 
-											<span class="details">상세정보</span>
-											<span class="icon-warning2" style="color:red;">6</span>
-										</p>
-									</div>
+						<input type="text" readonly maxlength="50" style="width: 60%;"
+							value="리뷰 내용 최대 50자" class="sort"> <input type="submit"
+							value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+					</div>
+					<div class="row" style="margin-top: 5px !important;">
+						<div class="col-md-3"
+							style="background-color: #ffcd3c !important;">
+							<div class="agent">
+								<div class="img">
+									<img style="height: 200px; width: 100%;" src="../images/2.jpg"
+										class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3>
+										<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
+									</h3>
+									<p class="h-info">
+										<span class="location">위치</span> <span class="details">상세정보</span>
+										<span class="icon-warning2" style="color: red;">6</span>
+									</p>
 								</div>
 							</div>
-							<input type="text" readonly maxlength="50" style="width: 60%;"
-								value="리뷰 내용 최대 50자" class="sort">
-								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 						</div>
-						<div class="row" style="margin-top: 5px !important;">
-							<div class="col-md-3" style="background-color: #ffcd3c !important;">
-								<div class="agent">
-									<div class="img">
-										<img style="height: 200px; width: 100%;" src="../images/3.jpg"
-											class="img-fluid" alt="Colorlib Template">
-									</div>
-									<div class="desc">
-										<h3>
-											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
-										</h3>
-										<p class="h-info">
-											<span class="location">위치</span> 
-											<span class="details">상세정보</span>
-											<span class="icon-warning2" style="color:red;">5</span>
-										</p>
-									</div>
+						<input type="text" readonly maxlength="50" style="width: 60%;"
+							value="리뷰 내용 최대 50자" class="sort"> <input type="submit"
+							value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+					</div>
+					<div class="row" style="margin-top: 5px !important;">
+						<div class="col-md-3"
+							style="background-color: #ffcd3c !important;">
+							<div class="agent">
+								<div class="img">
+									<img style="height: 200px; width: 100%;" src="../images/3.jpg"
+										class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3>
+										<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
+									</h3>
+									<p class="h-info">
+										<span class="location">위치</span> <span class="details">상세정보</span>
+										<span class="icon-warning2" style="color: red;">5</span>
+									</p>
 								</div>
 							</div>
-							<input type="text" readonly maxlength="50" style="width: 60%;"
-								value="리뷰 내용 최대 50자" class="sort">
-								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 						</div>
-						<div class="row" style="margin-top: 5px !important;">
-							<div class="col-md-3" style="background-color: #ffcd3c !important;">
-								<div class="agent">
-									<div class="img">
-										<img style="height: 200px; width: 100%;" src="../images/4.jpg"
-											class="img-fluid" alt="Colorlib Template">
-									</div>
-									<div class="desc">
-										<h3>
-											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
-										</h3>
-										<p class="h-info">
-											<span class="location">위치</span> 
-											<span class="details">상세정보</span>
-											<span class="icon-warning2" style="color:red;">3</span>
-										</p>
-									</div>
+						<input type="text" readonly maxlength="50" style="width: 60%;"
+							value="리뷰 내용 최대 50자" class="sort"> <input type="submit"
+							value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+					</div>
+					<div class="row" style="margin-top: 5px !important;">
+						<div class="col-md-3"
+							style="background-color: #ffcd3c !important;">
+							<div class="agent">
+								<div class="img">
+									<img style="height: 200px; width: 100%;" src="../images/4.jpg"
+										class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3>
+										<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
+									</h3>
+									<p class="h-info">
+										<span class="location">위치</span> <span class="details">상세정보</span>
+										<span class="icon-warning2" style="color: red;">3</span>
+									</p>
 								</div>
 							</div>
-							<input type="text" readonly maxlength="50" style="width: 60%;"
-								value="리뷰 내용 최대 50자" class="sort">
-								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 						</div>
-						<div class="row" style="margin-top: 5px !important;">
-							<div class="col-md-3" style="background-color: #ffcd3c !important;">
-								<div class="agent">
-									<div class="img">
-										<img style="height: 200px; width: 100%;" src="../images/5.jpg"
-											class="img-fluid" alt="Colorlib Template">
-									</div>
-									<div class="desc">
-										<h3>
-											<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
-										</h3>
-										<p class="h-info">
-											<span class="location">위치</span> 
-											<span class="details">상세정보</span>
-											<span class="icon-warning2" style="color:red;">2</span>
-										</p>
-									</div>
+						<input type="text" readonly maxlength="50" style="width: 60%;"
+							value="리뷰 내용 최대 50자" class="sort"> <input type="submit"
+							value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+					</div>
+					<div class="row" style="margin-top: 5px !important;">
+						<div class="col-md-3"
+							style="background-color: #ffcd3c !important;">
+							<div class="agent">
+								<div class="img">
+									<img style="height: 200px; width: 100%;" src="../images/5.jpg"
+										class="img-fluid" alt="Colorlib Template">
+								</div>
+								<div class="desc">
+									<h3>
+										<a href="../restaurant/storeInfoBefore.jsp">음식점 이름</a>
+									</h3>
+									<p class="h-info">
+										<span class="location">위치</span> <span class="details">상세정보</span>
+										<span class="icon-warning2" style="color: red;">2</span>
+									</p>
 								</div>
 							</div>
-							<input type="text" readonly maxlength="50" style="width: 60%;"
-								value="리뷰 내용 최대 50자" class="sort">
-								<input type="submit" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 						</div>
-					
+						<input type="text" readonly maxlength="50" style="width: 60%;"
+							value="리뷰 내용 최대 50자" class="sort"> <input type="submit"
+							value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+					</div>
+
 					<div class="col text-center">
 						<div class="block-27">
 							<ul>
@@ -344,8 +348,7 @@
 	<script src="../js/bootstrap-datepicker.js"></script>
 	<script src="../js/jquery.timepicker.min.js"></script>
 	<script src="../js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 	<script src="../js/google-map.js"></script>
 	<script src="../js/main.js"></script>
 </body>

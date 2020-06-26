@@ -157,6 +157,8 @@
 										</div>
 									</div>
 
+									<c:choose>
+									<c:when test="test="${modify ne null}">
 									<div class="form-group">
 									<c:choose>
 									<c:when test="${modify ne null}">
@@ -167,6 +169,11 @@
 									</c:otherwise>		
 									</c:choose>		
 									</div>
+									
+									</c:when>
+									</c:choose>
+									
+									
 
 									<!-- 사진 올리기 용 -->
 									<div class="row justify-content-center mb-5">

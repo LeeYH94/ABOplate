@@ -171,8 +171,8 @@ public class MemberDAO {
 
 
 	public void sendEmail(String email, String subject, String content) {
-        String user = "aboplate004@gmail.com";
-        String password = "qwer1234!@";
+        final String user = "aboplate004@gmail.com";
+        final String password = "qwer1234!@";
         
         // SMTP 서버 정보를 설정한다.
         Properties prop = new Properties();

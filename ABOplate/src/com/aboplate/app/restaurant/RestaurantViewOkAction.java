@@ -9,6 +9,8 @@ import com.aboplate.action.ActionForward;
 import com.aboplate.app.bookmark.dao.BookmarkDAO;
 import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
+import com.aboplate.app.restaurant.dao.ReviewBean;
+import com.aboplate.app.restaurant.dao.ReviewDAO;
 
 
 public class RestaurantViewOkAction implements Action{
@@ -17,24 +19,27 @@ public class RestaurantViewOkAction implements Action{
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
-		
-		BookmarkDAO bDao = new BookmarkDAO();
-		RestaurantDAO rDao = new RestaurantDAO();
-		
+
+		/*BookmarkDAO bDao = new BookmarkDAO();*/
+		RestaurantDAO restaurantDao = new RestaurantDAO();
+		ReviewDAO reviewDAO = new ReviewDAO();
+
 		RestaurantBean restaurantBean = new RestaurantBean();
-		HttpSession session = request.getSession();
-		
-		String id = session.getAttribute("sessionId").toString();
-		
+		ReviewBean reviewBean = new ReviewBean();
+		/*HttpSession session = request.getSession();*/
+
+		/*String id = session.getAttribute("sessionId").toString();*/
+
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
-		restaurantBean = rDao.getRestaurantInfo(restaurantNum);
-		
+		restaurantBean = restaurantDao.getRestaurantInfo(restaurantNum);
+
+
 		request.setAttribute("restaurantBean", restaurantBean);
-		
-		
+
+
 		forward.setRedirect(false);
 		forward.setPath("/restaurant/storeInfo.jsp");
 		return forward;
 	}
-	
+
 }

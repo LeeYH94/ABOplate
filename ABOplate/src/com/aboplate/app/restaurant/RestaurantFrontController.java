@@ -16,42 +16,45 @@ public class RestaurantFrontController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
 	}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doProcess(req, resp);
 	}
-	
+
 	protected void doProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String requestURI = req.getRequestURI();
 		String contextPath = req.getContextPath();
 		String command = requestURI.substring(contextPath.length());
-		
+
 		ActionForward forward = null;
 		Action action = null;
-		
-		
+
+
 		if(command.equals("/restaurant/RestaurantSearch.re")) {
 			action = new RestaurantSearchAction();
-			
+
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
+				System.out.println("RestaurantSearchAction 에러");
 				System.out.println(e);
 			}
-			
-		}/*else if(command.equals("/restaurant/RestaurantPopular.re")) {
-			action = new RestaurantPopularAction();
+
+		}else if(command.equals("/restaurant/RestaurantView.re")) {
+			action = new RestaurantViewAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
 				System.out.println(e);
+				System.out.println("RestaurantViewAction 에러");
 			}
 		}*/else if(command.equals("/restaurant/restaurantAutoComplete.re")) {
 			action = new RestaurantAutoCompleteAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantAutoCompleteAction 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/ReviewModify.re")) {
@@ -59,6 +62,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewModifyAction 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/ReviewDeleteOk.re")) {
@@ -66,6 +70,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewDeleteAction 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/restaurantLocalCurrency.re")) {
@@ -73,6 +78,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantLocalCurrency 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/restaurantBookmarkOk.re")) {
@@ -80,6 +86,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantBookmarkOkAction 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/ReviewModify.re")) {
@@ -87,6 +94,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewModifyAction 에러");
 				System.out.println(e);
 			}
 		}else if(command.equals("/restaurant/ReviewModifyOk.re")) {
@@ -94,6 +102,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewModifyOkAction 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/ReviewWrite.re")) {
@@ -101,6 +110,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewWriteAction 에러");
 				System.out.println(e);
 			}
 		}else if(command.equals("/restaurant/ReviewWriteOk.re")) {
@@ -108,6 +118,15 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewWriteOkAction 에러");
+				System.out.println(e);
+			}
+		}else if(command.equals("/restaurant/RestaurantView.re")) {
+			action = new RestaurantViewOkAction();
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println("RestaurantViewOkAction 에러");
 				System.out.println(e);
 			}
 		}else if(command.equals("/restaurant/RestaurantView.re")) {
@@ -122,7 +141,7 @@ public class RestaurantFrontController extends HttpServlet{
 			forward.setRedirect(false);
 			forward.setPath("/error/404.jsp");
 		}
-		
+
 		if(forward != null) {
 			if(forward.isRedirect()) {
 				resp.sendRedirect(forward.getPath());
@@ -131,7 +150,7 @@ public class RestaurantFrontController extends HttpServlet{
 				dispather.forward(req, resp);
 			}
 		}
-		
+
 	}
 
 }

@@ -34,9 +34,7 @@
 </head>
 <body>
 
-   <c:set var="reviewBean" value="${requestScope.reviewBean}"/>
    <c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
-   
 
    <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -133,9 +131,6 @@
       <div class="container">
          <!-- 리뷰 작성 부분 -->
          <div class="row" style="margin-top: 2.25rem; margin-bottom: 3rem;">
-            <div class="text text-left">
-               <h2>${restaurantBean.getRestaurant_name()} 역삼점</h2>
-            </div>
          </div>
          <div class="row">
             <div class="col-md-12">
@@ -144,11 +139,12 @@
                   <div class="row block-9 justify-content-center mb-5">
                      <div class="col-md-8 mb-md-5">
 
-                        <form action="${pageContext.request.contextPath}/restaurant/ReviewModifyOk.re" class="reviewForm" method="post" name="reviewForm" enctype="multipart/form-data">
+                        <form action="${pageContext.request.contextPath}/restaurant/ReviewWriteOk.re" class="reviewForm" method="post" name="reviewForm" enctype="multipart/form-data">
                         <input type="hidden" name="seq" value="${reviewBean.getReview_num()}">
                            <div class="form-group">
                               <div>
-                                 <h8>숟가락 점수</h8>
+                             	 <h2>${restaurantBean.getRestaurant_name()}</h2>
+                                 <h8>별점</h8>
                                  <br>
                                  <p class="star_rating">
                                     <!-- a태그는 별점 jquery 적용해야함 -->
@@ -159,7 +155,7 @@
                            </div>
 
                            <div class="form-group">
-                              <textarea name="" id="" cols="100" rows="10" class="form-control">${reviewBean.getReview()}원래 써있던 내용</textarea>
+                              <textarea name="review" cols="100" rows="10" class="form-control" placeholder="리뷰를 작성해주세요"></textarea>
                            </div>
 
                            <!-- 사진 올리기 용 -->
@@ -211,15 +207,12 @@
                            <!-- </div> -->
                            <br>
                            <br>
-                           <table border="0" cellpadding="0" cellspacing="0" width="900px">
-                              <tr align="right" valign="middle">
-                                 <td>
-                                    <a href="javascript:modifyReview()">[수정]</a>&nbsp;&nbsp;
-                                    <a href="${pageContext.request.contextPath}/restaurant/storeInfo.jsp">[이전]</a>&nbsp;&nbsp;
-                                 </td>
-                              </tr>
-                           <!-- form 태그 끝  -->
-                           </table>
+
+	                          <div class="form-group text-right">
+	                          	<input type="button" onclick="location.href='/restaurant/storeInfo.jsp'"value="취소" class="btn btn-primary py-2 px-3">
+								<input type="submit" value="작성" class="btn btn-primary py-2 px-3">	
+							</div>
+						 <!-- form 태그 끝  -->
                         </form>
                      </div>
                   </div>
