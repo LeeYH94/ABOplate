@@ -49,7 +49,7 @@ public class RestaurantFrontController extends HttpServlet{
 				System.out.println(e);
 				System.out.println("RestaurantViewAction 에러");
 			}
-		}*/else if(command.equals("/restaurant/restaurantAutoComplete.re")) {
+		}else if(command.equals("/restaurant/restaurantAutoComplete.re")) {
 			action = new RestaurantAutoCompleteAction();
 			try {
 				forward = action.execute(req, resp);
