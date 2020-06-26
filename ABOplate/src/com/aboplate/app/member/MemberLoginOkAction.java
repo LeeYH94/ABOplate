@@ -1,5 +1,8 @@
 package com.aboplate.app.member;
 
+import java.io.PrintWriter;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,22 +30,23 @@ public class MemberLoginOkAction implements Action {
 			
 			mBean = mDao.login(id, pw);
 			
-		} else if(request.getParameter("kakaoId") != null) {
-			String kakaoId = request.getParameter("kakaoId");
-			String kakaoNickname = "1123213213123";
-			// db에 있는지 검사하는 메소드 사용
-//			if(mDao.checkId(kakaoId)) {
-				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
-				// 이건 단순 이동
-				session.setAttribute("sessionId", kakaoNickname);
-				System.out.println("들어옴");
-				PrintWriter out = response.getWriter();
-				System.out.println("들어옴123");
-				response.setContentType("text/html; charset=UTF-8");
-				out.println("ok");
-				System.out.println(1);
-				out.close();
-		}
+		} 
+//		else if(request.getParameter("kakaoId") != null) {
+//			String kakaoId = request.getParameter("kakaoId");
+//			String kakaoNickname = "1123213213123";
+//			// db에 있는지 검사하는 메소드 사용
+////			if(mDao.checkId(kakaoId)) {
+//				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+//				// 이건 단순 이동
+//				session.setAttribute("sessionId", kakaoNickname);
+//				System.out.println("들어옴");
+//				PrintWriter out = response.getWriter();
+//				System.out.println("들어옴123");
+//				response.setContentType("text/html; charset=UTF-8");
+//				out.println("ok");
+//				System.out.println(1);
+//				out.close();
+//		}
 //			} else {
 //				
 //				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
@@ -63,15 +67,15 @@ public class MemberLoginOkAction implements Action {
 //			}
 //		}
 //			
-//		if(mBean != null) {
-//			session.setAttribute("memberBean", mBean);
-//			session.setAttribute("sessionId", id);
-//			forward.setPath(request.getContextPath()+"/index.jsp");	
-//		} else {
-//			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
-//		}
-//
-//		forward.setRedirect(true);
+		if(mBean != null) {
+			session.setAttribute("memberBean", mBean);
+			session.setAttribute("sessionId", id);
+			forward.setPath(request.getContextPath()+"/index.jsp");	
+		} else {
+			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
+		}
+
+		forward.setRedirect(true);
 		return null;
 		
 	}
