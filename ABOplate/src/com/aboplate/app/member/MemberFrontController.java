@@ -86,7 +86,7 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println("memberVerifyOkAction 에러");
 			}
 		} else if (command.equals("/member/MemberFindId.me")) {
-			action = new MemberVerifyOkAction();
+			action = new MemberFindIdAction();
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {

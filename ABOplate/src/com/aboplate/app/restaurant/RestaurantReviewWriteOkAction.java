@@ -59,7 +59,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 				return null;
 			}
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "어디로 갈까");
+			forward.setPath(request.getContextPath() + "/restaurant/storeInfo.jsp");
 			return forward;
 			
 		} catch (Exception e) {

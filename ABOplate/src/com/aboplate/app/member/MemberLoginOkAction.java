@@ -29,42 +29,50 @@ public class MemberLoginOkAction implements Action {
 			
 		} else if(request.getParameter("kakaoId") != null) {
 			String kakaoId = request.getParameter("kakaoId");
-			session.setAttribute("sessionId", kakaoId);
-			
+			String kakaoNickname = "1123213213123";
 			// db에 있는지 검사하는 메소드 사용
-			if(mDao.checkId(kakaoId)) {
+//			if(mDao.checkId(kakaoId)) {
 				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
 				// 이건 단순 이동
-				forward.setPath(request.getContextPath() + "../index.jsp");
-			} else {
-				// 없다면 session_id에 담아서 join.me로 이동
-				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
-			}
-		} else if (request.getParameter("googleId") != null) {
-			//카카오랑 같음
-			String googleId = request.getParameter("googleId");
-			session.setAttribute("sessionId", googleId);
-			
-			// db에 있는지 검사하는 메소드 사용
-			if(mDao.checkId(googleId)) {
-				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
-				// 이건 단순 이동
-				forward.setPath(request.getContextPath() + "../index.jsp");
-			} else {
-				// 없다면 session_id에 담아서 join.me로 이동
-				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
-			}
+				session.setAttribute("sessionId", kakaoNickname);
+				System.out.println("들어옴");
+				PrintWriter out = response.getWriter();
+				System.out.println("들어옴123");
+				response.setContentType("text/html; charset=UTF-8");
+				out.println("ok");
+				System.out.println(1);
+				out.close();
 		}
-			
-		if(mBean != null) {
-			session.setAttribute("memberBean", mBean);
-			session.setAttribute("sessionId", id);
-			forward.setPath(request.getContextPath()+"/index.jsp");	
-		} else {
-			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
-		}
-
-		forward.setRedirect(true);
-		return forward;
+//			} else {
+//				
+//				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
+//			}
+//		} else if (request.getParameter("googleId") != null) {
+//			//카카오랑 같음
+//			String googleId = request.getParameter("googleId");
+//			session.setAttribute("sessionId", googleId);
+//			
+//			// db에 있는지 검사하는 메소드 사용
+//			if(mDao.checkId(googleId)) {
+//				// 카카오 아이디가 DB에 있다면 세션에 담아서 메인 페이지로 이동
+//				// 이건 단순 이동
+//				forward.setPath(request.getContextPath() + "../index.jsp");
+//			} else {
+//				// 없다면 session_id에 담아서 join.me로 이동
+//				forward.setPath(request.getContextPath() + "/member/MemberJoin.me");
+//			}
+//		}
+//			
+//		if(mBean != null) {
+//			session.setAttribute("memberBean", mBean);
+//			session.setAttribute("sessionId", id);
+//			forward.setPath(request.getContextPath()+"/index.jsp");	
+//		} else {
+//			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
+//		}
+//
+//		forward.setRedirect(true);
+		return null;
+		
 	}
 }
