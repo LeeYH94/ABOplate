@@ -36,7 +36,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 		
 		String nickName = memberDao.getMemberNickname(memberId);
 		
-		String saveFolder = "C:\\\\restaurantImages";
+		String saveFolder = "C:\\restaurantImages";
 		int fileSize = 5 * 1024 * 1024;	//5M
 		
 		boolean reviewResult = false;
@@ -53,7 +53,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 			reviewBean.setRation(starRating);
 			reviewResult = reviewDao.insertReview(reviewBean);
 			
-			pictureResult = pictureDao.insertFiles(multi, reviewDao.getReviewSeq());
+			pictureResult = pictureDao.insertPicture(multi, reviewDao.getReviewSeq());
 			
 			if(!reviewResult || !pictureResult) {
 				PrintWriter out = response.getWriter();
