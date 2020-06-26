@@ -32,11 +32,11 @@ public class RestaurantReviewWriteOkAction implements Action{
 		
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		String memberId = (String)session.getAttribute("sessionId");
-		String starRating = request.getParameter("starRating");
+		int starRating =  Integer.parseInt(request.getParameter("starRating"));
 		
 		String nickName = memberDao.getMemberNickname(memberId);
 		
-		String saveFolder = "";
+		String saveFolder = "C:\\\\restaurantImages";
 		int fileSize = 5 * 1024 * 1024;	//5M
 		
 		boolean reviewResult = false;
@@ -47,8 +47,10 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
-			reviewBean.setReview(multi.getParameter("review"));
+			reviewBean.setRestaurant_num(restaurantNum);
 			reviewBean.setNickname(nickName);
+			reviewBean.setReview(multi.getParameter("review"));
+			reviewBean.setRation(starRating);
 			reviewResult = reviewDao.insertReview(reviewBean);
 			
 			pictureResult = pictureDao.insertFiles(multi, reviewDao.getReviewSeq());
