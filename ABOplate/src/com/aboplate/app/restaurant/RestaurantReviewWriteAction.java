@@ -22,8 +22,6 @@ public class RestaurantReviewWriteAction implements Action{
 		RestaurantDAO restaurantDao = new RestaurantDAO();
 		restaurantBean = restaurantDao.getRestaurantInfo(restaurantNum);
 
-
-		request.setAttribute("restauranNum", restaurantNum);
 		request.setAttribute("restaurantBean", restaurantBean);
 
 		forward.setRedirect(false);
