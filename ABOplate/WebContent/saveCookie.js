@@ -4,7 +4,8 @@
 
 
 function CookieSave() {
-	var r_bean=new RestaurantBean;
+	
+	/*var r_bean= RestaurantBean;*/
 	var items = getCookie('r_bean');
 	
 	var maxItemNum = 5; // 최대 저장 가능한 아이템개수
