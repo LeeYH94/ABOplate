@@ -323,3 +323,20 @@ $(".dropmenu ul li").hover(function(){
     $(this).find("ul").stop().fadeToggle(300);
   });
 
+
+
+
+//윈도우 창을 닫을 때 로그아웃 처리
+function closePage( event ){
+   if( event.clientY < 0 ){
+      // 로그아웃 처리
+   }
+
+}
+
+document.onkeydown = function() {
+    // 윈도우 창이 닫힐 경우
+    if (event.keyCode == 505) { 
+        alert(document.body.onBeforeUnload);
+   }
+}

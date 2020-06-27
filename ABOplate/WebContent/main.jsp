@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
 
-	
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
 
 </head>
 <!-- 페이지 시작 때 popular list 불러옴 -->
@@ -53,19 +53,21 @@
 
 				<ul class="navbar-nav ml-auto" id="dm_ul">
 					<c:choose>
+						<c:when test="${memberBean ne null}">
+						  <li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
+				          <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+				    </c:when>
+				  </c:choose>
+					<c:choose>
 					<c:when test="${sessionId eq null}">
 						<li class="nav-item"><a href="./member/login.jsp" class="nav-link">로그인</a></li>
 						<li class="nav-item"><a href="./member/signup.jsp" class="nav-link">회원가입</a></li>
 					</c:when>
-					<c:when test="${sessionId ne null}">
-						<c:if test="${memberBean ne null}">
-							<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
-		          <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
-	          </c:if>
-	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
-	          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
-						<li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
-					</c:when>
+					<c:otherwise>
+						  <li class="nav-item"><a href="${pageContext.request.contextPath}/member/favorites.me" class="nav-link">즐겨찾기</a></li>
+				          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me" class="nav-link">마이페이지</a></li>
+				          <li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+					</c:otherwise>
 					</c:choose>
 					<li class="nav-item"><a href="other/event.jsp" class="nav-link">이벤트</a></li>
 					<li class="nav-item"><a class="nav-link">최근본 맛집</a>
@@ -127,10 +129,10 @@
 								<div class="form-group">
 									<div class="form-field">
 										<select class="form-control" id="filter">
-											<option value='name'>전체</option>
-											<option value='food_category'>음식 종류</option>
-											<option value='address'>주소</option>
-											<option value='best_restaurant'>모범 음식점</option>
+											<option value='restaurant_name' selected>전체</option>
+											<option value='restaurant_food_category'>음식 종류</option>
+											<option value='restaurant_address'>주소</option>
+											<option value='restaurant_best'>모범 음식점</option>
 										</select>
 									</div>
 								</div>
@@ -138,7 +140,7 @@
 									<div class="form-group">
 										<div class="form-field">
 											<input type="text" class="form-control" placeholder="Search location" id="search">
-											<button type="button" onclick="javascript:searchRestaurant()">
+											<button onclick="'${contextPath}/restaurant/restaurantSearch.re'">
 												<span class="ion-ios-search"></span>
 											</button>
 										</div>
@@ -147,7 +149,7 @@
 								<div class="col-lg-10 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											실시간 차트
+											<span style="color:#FFFFFF; text-shadow: 0px 3px 4px rgba(0,0,0,0.4);">실시간 차트</span>
 											<table style="margin: 0 auto; background-color: white;"
 												class="form-control-tablel">
 												<tbody>
@@ -232,7 +234,7 @@
 												<div class="agent">
 													<div class="img">
 														<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
-															<img style="width: 100%; height: 300px;" 
+															<img style="width: 100%; height: 300px;"
 																src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
 																class="img-fluid" alt="Colorlib Template">
 														</a>
@@ -245,7 +247,7 @@
 														</h3>
 														<p class="h-info">
 															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
-																<span class="location">${restaurantBean.getRestaurant_address()}</span> 
+																<span class="location">${restaurantBean.getRestaurant_address()}</span>
 																<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
 															</a>
 														</p>
@@ -278,7 +280,7 @@
 											</div>
 										</div>
 									</c:when>
-									
+
 									<c:when test="${memberBean.getMember_type() == 2}">
 										<div style="margin: 0 auto;">
 											<h5 style="text-align: center;">회원정보를 입력하시면 맞춤 맛집을 추천해드립니다.</h5>
@@ -290,33 +292,34 @@
 											</div>
 										</div>
 									</c:when>
-									
+
 									<c:when test="${memberBean.getMember_type() == 1}">
 										<c:choose>
-										<c:when test="${recommendList != null and fn:length(recommendList) > 0}">
-											<c:forEach var="restaurantBean" items="${recommendList}">
-												<div class="col-md-3">
-													<div class="agent">
-														<div class="img">
-															<img style="width: 100%; height: 300px;" 
+											<c:when test="${recommendList != null and fn:length(recommendList) > 0}">
+												<c:forEach var="restaurantBean" items="${recommendList}">
+													<div class="col-md-3">
+														<div class="agent">
+															<div class="img">
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
+																<img style="width: 100%; height: 300px;"
 																src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
-																class="img-fluid" alt="Colorlib Template">
-														</div>
-														<div class="desc">
-															<h3>
+																	class="img-fluid" alt="Colorlib Template"></a>
+															</div>
+															<div class="desc">
+																<h3>
+																	<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
+																	${restaurantBean.getRestaurant_name()}
+																	</a>
+																</h3>
 																<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
-																${restaurantBean.getRestaurant_name()}
+																	<span class="location">${restaurantBean.getRestaurant_address()}</span>
+																	<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
 																</a>
-															</h3>
-															<p class="h-info">
-																<span class="location">${restaurantBean.getRestaurant_address()}</span> 
-																<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
-															</p>
+															</div>
 														</div>
 													</div>
-												</div>
-											</c:forEach>
-										</c:when>
+												</c:forEach>
+											</c:when>
 										</c:choose>
 									</c:when>
 									</c:choose>
@@ -429,11 +432,6 @@
 			<circle class="path" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
-
-
-
-
-</body>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="./js/popper.min.js"></script>
@@ -448,12 +446,11 @@
 	<script src="./js/bootstrap-datepicker.js"></script>
 	<script src="./js/jquery.timepicker.min.js"></script>
 	<script src="./js/scrollax.min.js"></script>
-	<script src="./https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
 	<script src="./js/main.js"></script>
-	<script src="./js/search.autocomplete.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script> -->
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="./js/search.autocomplete.js"></script>
 	<script src="./js/popup.js"></script>
 	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 </html>

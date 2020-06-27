@@ -7,7 +7,7 @@
 		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
 	</select>
 	
-	<select id="getFoodList" resultType="string">
+	<select id="getFoodCategoryList" resultType="string">
 		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM RESTAURANT
 	</select>
 	
@@ -54,6 +54,9 @@
 		SELECT COUNT(*) FROM RESTAURANT WHERE RESTAURANT_LOCAL_CURRENCY = 'O'
 	</select>
 	
+	<select id="getReviewSeq" resultType="_int">
+		SELECT REVIEW_SEQ.CURRVAL FROM DUAL
+	</select>
 	
 	
 </mapper>

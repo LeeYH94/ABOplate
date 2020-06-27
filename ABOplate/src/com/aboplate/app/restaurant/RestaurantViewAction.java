@@ -55,7 +55,7 @@ public class RestaurantViewAction implements Action{
 		request.setAttribute("bookmark", bDao.checkBookmark(id, restaurantNum));
 		
 		forward.setRedirect(false);
-		forward.setPath("/app/restaurant/storeInfo.jsp");
+		forward.setPath("/restaurant/storeInfo.jsp");
 		return forward;
 	}
 	

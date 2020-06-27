@@ -24,7 +24,7 @@ public class ReviewDAO {
 		datas.put("endRow", endRow);
 		datas.put("restaurantNum", restaurantNum);
 		
-		List<ReviewBean> reviewList = sqlsession.selectList("Review.getReviwList", datas);
+		List<ReviewBean> reviewList = sqlsession.selectList("Review.getReviewList", datas);
 		
 		return reviewList;
 		
@@ -83,4 +83,25 @@ public class ReviewDAO {
 		sqlsession.update("Review.updateReview", reviewBean);
 	}
 	
+	public int getMemberReviewCnt(String nickname) {
+		int reviewCnt = sqlsession.selectOne("Review.getMemberReviewCnt", nickname);
+		
+		return reviewCnt;
+	}
+	
+	public List<ReviewBean> getMemberReviewList(int startRow, int endRow, String nickname){
+		HashMap<String, Object> datas = new HashMap<>();
+		
+		datas.put("startRow", startRow);
+		datas.put("endRow", endRow);
+		datas.put("nickname", nickname);
+		
+		List<ReviewBean> reviewList = sqlsession.selectList("Review.getMemberReviewList", datas);
+		
+		return reviewList;
+	}
+	
+	public int getReviewSeq() {
+		return sqlsession.selectOne("Restaurant.getReviewSeq");
+	}
 }

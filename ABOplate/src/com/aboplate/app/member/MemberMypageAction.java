@@ -25,7 +25,7 @@ public class MemberMypageAction implements Action{
 		HttpSession session = request.getSession();
 		
 		String id = session.getAttribute("sessionId").toString();
-		String nickname = memberDao.getMembernickname(id);
+		String nickname = memberDao.getMemberNickname(id);
 		
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);

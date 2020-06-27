@@ -1,6 +1,6 @@
 package com.aboplate.app.member;
 
-import java.io.PrintWriter;
+/*import java.io.PrintWriter;*/
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,16 +21,16 @@ public class MemberModifyAction implements Action {
 		ActionForward forward = new ActionForward();
 		MemberDAO mDao = new MemberDAO();
 		MemberBean member =new MemberBean();
-		PrintWriter out = response.getWriter();
+		/*PrintWriter out = response.getWriter();*/
 		HttpSession session = request.getSession();
-		//ºñ¹Ð¹øÈ£ ¼öÁ¤
+		//ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 		if(request.getParameter("memberPassword")!=null) {
 			
 		String id = session.getAttribute("sessionId").toString();
 		String Password = mDao.encryptPw((request.getParameter("memberPassword")));
 		String SessionPassword = session.getAttribute("Password").toString();
 		String newPassword = request.getParameter("newMemberPassword");
-		//¼¼¼Çºñ¹Ð¹øÈ£¿Í ÇöÀç ºñ¹Ð¹øÈ£°¡ °°À¸¸é update °¡´É  ´Ù¸£¸é ¾ÈµÊ 
+		//ï¿½ï¿½ï¿½Çºï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ update ï¿½ï¿½ï¿½ï¿½  ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½Èµï¿½ 
 		if(SessionPassword.equals(Password)) {
 			mDao.updatePw(newPassword, id);
 			session.setAttribute("newPassword", newPassword);
@@ -39,7 +39,7 @@ public class MemberModifyAction implements Action {
 		else {
 			System.out.println("not-ok");
 		}
-		//¼±È£À½½Ä ¼öÁ¤
+		//ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		}else if(request.getParameter("memberFavorite")!=null) {
 			String pref = "";
 			for (String favorite : request.getParameterValues("memberFavorite")) {				
@@ -47,7 +47,7 @@ public class MemberModifyAction implements Action {
 			}
 			member.setMember_preference_food(pref);
 		}
-		//Áö¿ª¼öÁ¤ 
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		else if(request.getParameter("memberRegion")!=null) {
 			member.setMember_region(request.getParameter("memberRegion"));
 		}

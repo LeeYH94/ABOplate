@@ -45,7 +45,8 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
-
+			
+			<c:set var="bookmarkBean" value="${requestScope.bookmarkBean}"/>
 			<c:set var="memberBean" value="${requestScope.memberBean}" />
 			<c:set var="totalPage" value="${requestScope.totalPage}" />
 			<c:set var="totalCnt" value="${requestScope.totalCnt}" />
@@ -63,41 +64,9 @@
 						class="nav-link">마이페이지</a></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me"
 						class="nav-link">로그아웃</a></li>
-					<li class="nav-item"><a href="/other/event.jsp"
-						class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="/member/favorites.jsp"
-						class="nav-link">즐겨찾기</a></li>
+					<li class="nav-item"><a href="/other/event.jsp" class="nav-link">이벤트</a></li>
+					<li class="nav-item"><a href="/member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">최근본 맛집</a>
-						<ul>
-							<li>
-								<div class="d-flex">
-									<a href="storeInfoBefore.jsp"> <img
-										src="../images/image_1.jpg" style="width: 100px;"></img>aaaa
-									</a>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex">
-									<a href="storeInfoBefore.jsp"> <img
-										src="../images/image_2.jpg" style="width: 100px;"></img>bbbb
-									</a>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex">
-									<a href="storeInfoBefore.jsp"> <img
-										src="../images/image_3.jpg" style="width: 100px;"></img>cccc
-									</a>
-								</div>
-							</li>
-							<li>
-								<div class="d-flex">
-									<a href="storeInfoBefore.jsp"> <img
-										src="../images/image_4.jpg" style="width: 100px;"></img>dddd
-									</a>
-								</div>
-							</li>
-						</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -135,10 +104,9 @@
 										<a href="blog-single.html" class="block-20 img"
 											style="background-image: url('../images/image_2.jpg');">
 										</a>
-										<p>사진 설명</p>
+										<p>${restaurantBean.getrestaurant_name()}<!-- 음식점 이름 --></p>
 										<div>
-											<a href="#" class="meta-chat"><span class="icon-chat"></span>
-												9</a>
+											<a href="" class="meta-chat"><span class="icon-chat"></span>${totalCnt}</a><!-- 리뷰개수 -->
 										</div>
 									</div>
 								</div>
@@ -182,8 +150,13 @@
 			</div>
 		</div>
 	</div>
-
-
+	
+	
+	
+	
+	
+	
+	
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">

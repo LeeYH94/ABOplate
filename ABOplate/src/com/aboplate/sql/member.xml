@@ -82,5 +82,9 @@
 	<select id="getFoodCategory" parameterType="string" resultType="string">
 		SELECT MEMBER_PREFERENCE_FOOD FROM MEMBER WHERE MEMBER_ID = #{id}
 	</select>
+	
+	<select id="getMemberNickname" parameterType="string" resultType="string">
+		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_ID = #{id}
+	</select>
 
 </mapper>

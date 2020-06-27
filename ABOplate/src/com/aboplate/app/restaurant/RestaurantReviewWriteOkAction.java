@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
+import com.aboplate.app.member.dao.MemberDAO;
 import com.aboplate.app.picture.dao.PictureDAO;
 import com.aboplate.app.restaurant.dao.ReviewBean;
 import com.aboplate.app.restaurant.dao.ReviewDAO;
@@ -25,14 +26,15 @@ public class RestaurantReviewWriteOkAction implements Action{
 		ReviewBean reviewBean = new ReviewBean();
 		PictureDAO pictureDao = new PictureDAO();
 		HttpSession session = request.getSession();
+		MemberDAO memberDao = new MemberDAO();
 		
-		ActionForward forward = new ActionForward();
+		ActionForward forward = new ActionForward();		
 		
-		int restaurant_num = Integer.parseInt(request.getParameter("seq"));
-		String member_id = (String)session.getAttribute("session_id");
-		String review = request.getParameter("review");
+		String memberId = (String)session.getAttribute("sessionId");
 		
-		String saveFolder = "";
+		String nickName = memberDao.getMemberNickname(memberId);
+		
+		String saveFolder = "C:\\restaurantImages";
 		int fileSize = 5 * 1024 * 1024;	//5M
 		
 		boolean reviewResult = false;
@@ -43,11 +45,16 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			
+			int restaurantNum = Integer.parseInt(multi.getParameter("restaurantNum"));
+			int starRating =  Integer.parseInt(multi.getParameter("starRating"));
+
+			reviewBean.setRestaurant_num(restaurantNum);
+			reviewBean.setMember_nickname(nickName);
 			reviewBean.setReview(multi.getParameter("review"));
+			reviewBean.setReview_ration(starRating);
 			reviewResult = reviewDao.insertReview(reviewBean);
 			
-			int reviewNum = Integer.parseInt(multi.getParameter("seq"));
-			pictureResult = pictureDao.insertFiles(multi,reviewNum);
+			pictureResult = pictureDao.insertPicture(multi, reviewDao.getReviewSeq());
 			
 			if(!reviewResult || !pictureResult) {
 				PrintWriter out = response.getWriter();
@@ -59,7 +66,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 				return null;
 			}
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "/restaurant/storeInfo.jsp");
+			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum);
 			return forward;
 			
 		} catch (Exception e) {
