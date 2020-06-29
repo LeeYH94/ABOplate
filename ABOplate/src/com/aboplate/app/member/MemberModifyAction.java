@@ -49,7 +49,7 @@ public class MemberModifyAction implements Action {
 			}
 			member.setMember_preference_food(pref);
 		}*/
-		else if(request.getParameter("memberFavorite")!=null) {
+			else if(request.getParameter("memberFavorite")!=null) {
 			
 			out.print("<hteml><body>");
 			String favorite[] = request.getParameterValues("memberFavorite");
@@ -57,7 +57,7 @@ public class MemberModifyAction implements Action {
 			for(String memberFavorite:favorite) {
 				out.println(favorite+" ");
 				member.setMember_preference_food(request.getParameter("memberFavorite"));
-			}
+			} 
 			out.println("</body></html>");
 			out.close();
 		}
