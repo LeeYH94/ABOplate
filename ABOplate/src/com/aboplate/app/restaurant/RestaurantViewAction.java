@@ -19,17 +19,20 @@ public class RestaurantViewAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
 		
-		BookmarkDAO bDao = new BookmarkDAO();
-		RestaurantDAO rDao = new RestaurantDAO();
+		BookmarkDAO bookmarkDao = new BookmarkDAO();
+		RestaurantDAO restaurantDao = new RestaurantDAO();
 		
 		RestaurantBean restaurantBean = new RestaurantBean();
 		HttpSession session = request.getSession();
+		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
-		String id = session.getAttribute("sessionId").toString();
+		if(session.getAttribute("sessionId") != null) {
+			String id = session.getAttribute("sessionId").toString();
+			request.setAttribute("bookmark", bookmarkDao.checkBookmark(id, restaurantNum));
+		}
 		
 		ReviewDAO reviewDao = new ReviewDAO();
 		
-		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		int pageSize = 5;
@@ -43,7 +46,7 @@ public class RestaurantViewAction implements Action{
 		int totalPage = (totalCnt-1) / pageSize + 1;
 		
 		endPage = endPage > totalPage ? totalPage : endPage;
-		restaurantBean = rDao.getRestaurantInfo(restaurantNum);
+		restaurantBean = restaurantDao.getRestaurantInfo(restaurantNum);
 		
 		request.setAttribute("restaurantBean", restaurantBean);
 		request.setAttribute("totalPage", totalPage);
@@ -52,7 +55,6 @@ public class RestaurantViewAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("reviewList", reviewDao.getReviewList(startRow, endRow, restaurantNum));
-		request.setAttribute("bookmark", bDao.checkBookmark(id, restaurantNum));
 		
 		forward.setRedirect(false);
 		forward.setPath("/restaurant/storeInfo.jsp");

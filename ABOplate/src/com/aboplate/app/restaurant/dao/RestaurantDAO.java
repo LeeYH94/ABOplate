@@ -117,11 +117,6 @@ public class RestaurantDAO {
 		return sqlsession.selectOne("Restaurant.getLocalCurrencyCnt");
 	}
 	
-	
-	
-	
-		
-		
 }
 
 

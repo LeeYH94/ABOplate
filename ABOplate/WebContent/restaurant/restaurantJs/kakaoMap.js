@@ -8,7 +8,7 @@ currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수�
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 mapOption = {
 	center : new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-	level : 3
+	level : 5
 // 지도의 확대 레벨
 };
 
