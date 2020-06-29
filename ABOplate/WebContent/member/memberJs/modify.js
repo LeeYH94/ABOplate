@@ -41,6 +41,7 @@ function getPreferencefoodValue(){
 }
 
 
+
 function modify(){
 	
 	$("#memberFavorite").click(function() {

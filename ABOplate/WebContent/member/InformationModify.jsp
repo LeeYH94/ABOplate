@@ -34,7 +34,6 @@
 </head>
 <body>
 	<c:set var="memberBean" value="${requestScope.MemberBean}" />
-	<c:set var="mDao" value="${requestScope.MemberDAO}" />
 	<script>
 		var pw = prompt("패스워드를 입력하세요" + "");
 	</script>
@@ -74,10 +73,7 @@
 								class="form-control" id="memberNickname" name="memberNickname"
 								value="${memberBean.getMember_nickname()}smk1656" readonly>
 						</div>
-						<!-- <div class="form-group">
-                    <label for="password">현재 비밀번호</label>
-                    <input type="password" class="form-control" id="memberPassword" name="memberPassword">
-                  </div> -->
+					
 						<div class="form-group">
 							<label for="password">새 비밀번호</label> <input type="password"
 								class="form-control" id="newMemberPassword"
@@ -93,12 +89,12 @@
 							<c:choose>
 								<c:when test="${memberBean.getMember_preference_food() eq null }">
 								<script>
-									$('input:checkbox[id="memberFavorite"]').is(":checked") == true;
+								$('input:checkbox[name="memberFavorite"]').attr("checked", true);
 									</script>
 								</c:when>
 								<c:otherwise>
 									<script>
-									$('input:checkbox[id="memberFavorite"]').is(":checked") == false;
+									$('input:checkbox[name="memberFavorite"]').attr("checked", false);
 									</script>
 								</c:otherwise>
 							</c:choose>
@@ -109,8 +105,7 @@
 								type="checkbox" id="memberFavorite" name="memberFavorite"
 								value="chinese"> <label for="demo-human"
 								style="position: static;"> 중식 </label>
-								 <input type="checkbox"
-								id="memberFavorite" name="memberFavorite" value="japanese">
+								 <input type="checkbox"id="memberFavorite" name="memberFavorite" value="japanese">
 							<label for="demo-human" style="position: static;"> 일식 </label>
 							 <input
 								type="checkbox" id="memberFavorite" name="memberFavorite"
