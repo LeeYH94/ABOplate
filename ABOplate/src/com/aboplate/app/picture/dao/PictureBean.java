@@ -2,7 +2,7 @@ package com.aboplate.app.picture.dao;
 
 public class PictureBean {
 	private int review_num;
-	private String picture_path;
+	private String picture_name;
 	
 	public PictureBean() {;}
 
@@ -14,12 +14,12 @@ public class PictureBean {
 		this.review_num = review_num;
 	}
 
-	public String getPicture_path() {
-		return picture_path;
+	public String getPicture_name() {
+		return picture_name;
 	}
 
-	public void setPicture_path(String picture_path) {
-		this.picture_path = picture_path;
+	public void setPicture_name(String picture_name) {
+		this.picture_name = picture_name;
 	}	
 	
 }

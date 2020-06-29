@@ -3,7 +3,7 @@
 
 <mapper namespace="Picture">
 	
-	<select id="getPictureDetail" parameterType="_int" resultType="reviewBean">
+	<select id="getPictureDetail" parameterType="_int" resultType="pictureBean">
 		SELECT * FROM PICTURE WHERE REVIEW_NUM = ${reviewNum}
 	</select>
 	
@@ -11,4 +11,9 @@
 		INSERT INTO PICTURE
 		VALUES(${reviewNum}, #{picturePath})
 	</insert>
+	
+	<delete id="deletePicture" parameterType="_int">
+		DELETE FROM PICTURE WHERE REVIEW_NUM = ${reviewNum}
+	</delete>
+	
 </mapper>

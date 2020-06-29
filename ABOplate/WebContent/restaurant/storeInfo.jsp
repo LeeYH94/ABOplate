@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
-  		<c:set var="List" value="${requestScope.reviewList}"/>
 		<c:set var="nowPage" value="${requestScope.currentPage}"/>
 		<c:set var="startPage" value="${requestScope.startPage}"/>
 		<c:set var="endPage" value="${requestScope.endPage}"/>
@@ -242,7 +241,7 @@
 								   					</span>
 								   					<span class="text-right">
 								   					<c:if test="${reviewBean.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${reviewBean.getReview_num()}&modify=true">[수정]</a>&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${reviewBean.getReview_num()}&seq=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
