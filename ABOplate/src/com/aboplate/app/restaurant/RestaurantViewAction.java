@@ -34,6 +34,7 @@ public class RestaurantViewAction implements Action{
 		ReviewDAO reviewDao = new ReviewDAO();
 		
 		String temp = request.getParameter("page");
+		System.out.println(temp);
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		int pageSize = 5;
 		int totalCnt = reviewDao.getReviewCnt(restaurantNum);

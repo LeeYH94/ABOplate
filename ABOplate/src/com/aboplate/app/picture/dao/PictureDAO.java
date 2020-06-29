@@ -20,7 +20,7 @@ public class PictureDAO {
 	
 	public List<PictureBean> getPictureDetail(int reviewNum){
 		
-		List<PictureBean> pictureBeanList = sqlsession.selectList("Picture.getPicture", reviewNum);
+		List<PictureBean> pictureBeanList = sqlsession.selectList("Picture.getPictureDetail", reviewNum);
 		return pictureBeanList;
 	}
 	
@@ -41,6 +41,10 @@ public class PictureDAO {
 			}
 		}
 		return check;
+	}
+	
+	public void deletePicture(int reviewNum) {
+		sqlsession.delete("Picture.deletePicture", reviewNum);
 	}
 
 }

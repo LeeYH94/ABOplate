@@ -108,4 +108,6 @@ public class ReviewDAO {
 	public void updateReviewStamp(String id) {
 		sqlsession.update("Review.updateReviewStamp", id);
 	}
+	
+	
 }
