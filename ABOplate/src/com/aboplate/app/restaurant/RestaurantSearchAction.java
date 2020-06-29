@@ -27,17 +27,18 @@ public class RestaurantSearchAction implements Action{
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
 		
-		List<RestaurantBean> restaurantBeanList = r_dao.search(keyField, keyWord);
-				
-		if(restaurantBeanList != null) {
+		List<RestaurantBean> restaurantBeanList = null;
+		try {
+			restaurantBeanList = r_dao.search(keyField, keyWord);
 			request.setAttribute("restaurantBeanList", restaurantBeanList);
 			forward.setPath("/restaurant/restaurantList.jsp");
-		}else {
-			System.out.println("잘못들어옴");
+		} catch (Exception e) {
+			request.setAttribute("restaurantBeanList", restaurantBeanList);
+			System.out.println("들어옴");
+			forward.setPath("/restaurant/restaurantList.jsp");
 		}
-		
-		System.out.println(restaurantBeanList.get(0));
-
+			
+		System.out.println(restaurantBeanList);
 		forward.setRedirect(false);
 		return forward;
 	}

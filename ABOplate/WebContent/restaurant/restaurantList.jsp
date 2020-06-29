@@ -121,7 +121,7 @@
 
 	<!-- 여기가 시작 -->
 	<section class="ftco-section">
-		<div class="col-md-8">
+		<div class="col-md-11">
 			<form action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re" class="search-location mt-md-5">
 				<div class="row justify-content-center">
 					<div class="form-group">
@@ -144,7 +144,7 @@
 									</button>
 							</div>
 						</div>
-						<div class=row style="height: 60px;">
+						<!-- <div class=row style="height: 60px;">
 							<div class="tag-widget post-tag-container">
 								<div class="tagcloud" style="display: flex;">
 									<a href="#">위치순</a> <a href="#">지역화폐</a> <a href="#"
@@ -155,13 +155,12 @@
 										class="tag-cloud-link">태그5</a>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</form>
 		</div>
-		<div class="container" style="margin-left: 0;">
-			<div id="map"></div>
+		<div class="container">
 			<div class="row justify-content-center">
 				<c:choose>
 					<c:when test="${restaurantBeanList ne null}">
