@@ -104,4 +104,8 @@ public class ReviewDAO {
 	public int getReviewSeq() {
 		return sqlsession.selectOne("Restaurant.getReviewSeq");
 	}
+	
+	public void updateReviewStamp(String id) {
+		sqlsession.update("Review.updateReviewStamp", id);
+	}
 }

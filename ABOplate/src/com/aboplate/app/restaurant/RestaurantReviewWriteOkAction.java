@@ -34,7 +34,8 @@ public class RestaurantReviewWriteOkAction implements Action{
 		
 		String nickName = memberDao.getMemberNickname(memberId);
 		
-		String saveFolder = "${pageContext.request.contextPath}/images";
+		String saveFolder = request.getServletContext().getRealPath("images");		
+		
 		int fileSize = 5 * 1024 * 1024;	//5M
 		
 		boolean reviewResult = false;
@@ -64,6 +65,8 @@ public class RestaurantReviewWriteOkAction implements Action{
 				out.println("</script>");
 				out.close();
 				return null;
+			}else {
+				reviewDao.updateReviewStamp(memberId);
 			}
 			forward.setRedirect(true);
 			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum);
