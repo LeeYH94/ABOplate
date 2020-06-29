@@ -30,7 +30,6 @@ public class RestaurantReviewModifyOkAction implements Action{
 		int fileSize = 5 * 1024 * 1024;
 		try {
 			MultipartRequest multi = null;
-			System.out.println("들어옴");
 			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
 			System.out.println(multi.getParameter("seq"));
 			

@@ -35,13 +35,17 @@
 </head>
 <body onload="javascript:goDetail();">
 	<c:set var="List" value="${requestScope.reviewList}"/>
+	<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}"/>
+	<c:set var="search" value="${requestScope.searchRestaurant}"/>
+	<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
+	<c:set var="restaurantList" value="${requestScope.restaurant }"/>
 
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="../index.jsp">ABO plate</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/index.jsp">ABO plate</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -118,16 +122,26 @@
 	<!-- 여기가 시작 -->
 	<section class="ftco-section">
 		<div class="col-md-8">
-			<form action="#" class="search-location mt-md-5">
+			<form action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re" class="search-location mt-md-5">
 				<div class="row justify-content-center">
-					<div class="col-lg-10 align-items-end">
+					<div class="form-group">
+						<div class="form-field">
+							<select style="border:solid 1px;"class="form-control" id="filter" name="keyField">
+								<option value='restaurant_name' selected>전체</option>
+								<option value='restaurant_food_category'>음식 종류</option>
+								<option value='restaurant_address'>주소</option>
+								<option value='restaurant_best'>모범 음식점</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-lg-8 align-items-end">
 						<div class="form-group">
 							<div class="form-field">
-								<input type="text" class="form-control"
+								<input type="text" class="form-control" name="keyWord"
 									placeholder="Search location" style="border: 1px solid;"></input>
-								<button type="button" onclick="javascript:searchRestaurant()">
-									<span class="ion-ios-search"></span>
-								</button>
+									<button type="button" onclick="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re">
+										<span class="ion-ios-search"></span>
+									</button>
 							</div>
 						</div>
 						<div class=row style="height: 60px;">
@@ -150,28 +164,28 @@
 			<div id="map"></div>
 			<div class="row justify-content-center">
 				<c:choose>
-					<c:when test="${searchRestaurant ne null and fn:length(searchRestaurant) > 0}">
-						<c:forEach var="restaurantBean" items="${searchRestaurant}">
+					<c:when test="${restaurantBeanList ne null}">
+						<c:forEach var="restaurantBeanList" items="${restaurantBeanList}">
 							<div class="col-md-5">
 								<div class="img">
 									<a
-										href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
+										href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
 										<img style="width: 100%; height: 300px;"
-										src="${pageContext.request.contextPath}/restaurantImages/${restaurantBean.getRestaurant_num()}.jpg"
+										src="${pageContext.request.contextPath}/restaurantImages/${restaurantBeanList.getRestaurant_num()}.jpg"
 										class="img-fluid" alt="Colorlib Template">
 									</a>
 								</div>
 								<div class="desc">
 									<h3>
 										<a
-											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
-											${restaurantBean.getRestaurant_name()} </a>
+											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+											${restaurantBeanList.getRestaurant_name()} </a>
 									</h3>
 									<p class="h-info">
 										<a
-											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">
-											<span class="location">${restaurantBean.getRestaurant_address()}</span>
-											<span class="details">${restaurantBean.getRestaurant_food_category()}</span>
+											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+											<span class="location">${restaurantBeanList.getRestaurant_address()}</span>
+											<span class="details">${restaurantBeanList.getRestaurant_food_category()}</span>
 										</a>
 									</p>
 								</div>
@@ -215,8 +229,8 @@
 		</div>
 	</section>
 	
-	<!-- 검색영역 -->
-	<%-- <div style="display:none;" class="map_wrap">
+	<%-- <!-- 검색영역 -->
+	<div style="display:none;" class="map_wrap">
 	    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 	
 	    <div id="menu_wrap" class="bg_white">

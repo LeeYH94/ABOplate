@@ -34,7 +34,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 		
 		String nickName = memberDao.getMemberNickname(memberId);
 		
-		String saveFolder = "C:\\restaurantImages";
+		String saveFolder = "${pageContext.request.contextPath}/images";
 		int fileSize = 5 * 1024 * 1024;	//5M
 		
 		boolean reviewResult = false;

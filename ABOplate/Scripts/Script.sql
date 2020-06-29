@@ -23,8 +23,6 @@ CREATE TABLE BOOKMARK(
 
 CREATE SEQUENCE BOOKMARK_SEQ;
 
-DROP TABLE BOOKMARK;
-
 CREATE TABLE MENU_LIST(
 	restaurant_num NUMBER,
 	menu VARCHAR2(30),
@@ -39,11 +37,45 @@ CREATE TABLE PICTURE(
    CONSTRAINT PICTURE_PK PRIMARY KEY(PICTURE_NAME)  
 );
 
+CREATE TABLE RESTAURANT(
+   restaurant_num NUMBER,
+   restaurant_tel VARCHAR2(30),
+   restaurant_name VARCHAR2(100),
+   restaurant_address_road VARCHAR2(200),
+   restaurant_address VARCHAR2(200),
+   restaurant_food_category VARCHAR2(50),
+   restaurant_facility VARCHAR2(100),
+   restaurant_disaster_grant VARCHAR2(200),
+   restaurant_local_currency VARCHAR2(200),
+   restaurant_ration_total FLOAT DEFAULT 0,
+   restaurant_hit NUMBER DEFAULT 0,
+   restaurant_link VARCHAR2(500),
+   menu VARCHAR2(500),
+   price VARCHAR2(500),
+   CONSTRAINT RESTAURANT_PK PRIMARY KEY(restaurant_num)
+);
 
+CREATE TABLE "MEMBER"(
+   member_id VARCHAR2(100),
+   member_name VARCHAR2(50) DEFAULT NULL,
+   member_email VARCHAR2(50) DEFAULT NULL,
+   member_password VARCHAR2(50) DEFAULT NULL,
+   member_nickname VARCHAR2(50) UNIQUE,
+   member_stamp NUMBER DEFAULT 0,
+   member_preference_food VARCHAR2(100) DEFAULT NULL,
+   member_region VARCHAR2(20) DEFAULT NULL,
+   member_report NUMBER DEFAULT NULL,
+   member_last_report DATE DEFAULT NULL,
+   member_type NUMBER DEFAULT 1,
+   CONSTRAINT MEMBER_PK PRIMARY KEY(member_id)
+);
 
-
-
-
+CREATE TABLE MENU_LIST(
+   restaurant_num NUMBER,
+   menu VARCHAR2(500),
+   price VARCHAR2(500),
+   CONSTRAINT MENU_LIST_FK FOREIGN KEY(restaurant_num) REFERENCES RESTAURANT(restaurant_num) ON DELETE CASCADE
+);
 
 
 
