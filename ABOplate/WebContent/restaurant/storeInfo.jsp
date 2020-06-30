@@ -233,11 +233,10 @@
 
 									   			<p class="star">
 									   				<span>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
+									   					<%-- <i class="ion-ios-star"></i> ${reviewBean.getReview_ration()} --%>
+									   					<c:forEach var="i" begin="1" end="${reviewBean.getReview_ration()}">
+															<i class="ion-ios-star"></i>
+														</c:forEach>
 								   					</span>
 								   					<span class="text-right">
 								   					<c:if test="${reviewBean.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
