@@ -43,17 +43,12 @@ public class RestaurantReviewModifyOkAction implements Action{
 				File f = new File(saveFolder + "\\" + picture.getPicture_name());
 				if(f.exists()) {f.delete();}
 			}
-			
 			pictureDao.deletePicture(reviewNum);
-			
 			reviewBean.setReview_num(reviewNum);
 			reviewBean.setReview(review);
-			
+			reviewBean.setReview_ration(starRating);
 			reviewDao.updateReview(reviewBean);
-			
 			pictureDao.insertPicture(multi, reviewNum);
-			
-			
 			
 			forward = new ActionForward();
 			forward.setRedirect(true);

@@ -44,8 +44,8 @@
 
 	<update id="updateReview" parameterType="reviewBean">
 		UPDATE REVIEW
-		SET REVIEW = #{review}
-		WHERE REVIEW_NUM = ${review_num}
+      	SET REVIEW = #{review}, REVIEW_RATION = ${review_ration}
+      	WHERE REVIEW_NUM = ${review_num}
 	</update>
 
 	<select id="getMemberReviewCnt" parameterType="string" resultType="_int">
