@@ -395,6 +395,7 @@
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<script>
 		var rating = 3;
+		$('.star_rating_cnt').val(rating);
 		$('.star_rating a').click(function() {
 			$(this).parent().children('a').removeClass('on');
 			$(this).addClass('on').prevAll('a').addClass('on');

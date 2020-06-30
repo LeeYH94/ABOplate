@@ -6,9 +6,7 @@
 	<select id="getBookmarkList" parameterType="map" resultType="restaurantBean">
 		SELECT ROUNUM R, * FROM RESTAURANT
 			WHERE RESTAURANT_NUM = ${restaurantNum} 
-			AND R BETWEEN ${startRow} AND ${endRow}	
-				
-				
+			AND R BETWEEN ${startRow} AND ${endRow}			
 	</select>
 	
 	<select id="getRestaurantNumList" parameterType="string" resultType="_int">

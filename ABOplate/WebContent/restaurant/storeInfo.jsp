@@ -241,7 +241,7 @@
 								   					<span class="text-right">
 								   					<c:if test="${reviewBean.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${reviewBean.getReview_num()}&seq=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
 														<a href="notify()" name="notify" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
@@ -269,7 +269,7 @@
 											              <ul>
 											              <c:choose>
 															<c:when test="${nowPage > 1}">
-											                	<li><a href="#">&lt;</a></li>
+											                	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage - 1}">&lt;</a></li>
 											                </c:when>
 														</c:choose>
 														<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -278,13 +278,13 @@
 																	<li>[${i}]</li>
 																</c:when>
 																<c:otherwise>
-																	<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${i}">[${i}]</a></li>
+																	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${i}">[${i}]</a></li>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>
 														<c:choose>
 															<c:when test="${nowPage < totalPage}">
-																<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${nowPage + 1}">&gt;</a></li>
+																<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage + 1}">&gt;</a></li>
 															</c:when>
 														</c:choose>
 											              </ul>

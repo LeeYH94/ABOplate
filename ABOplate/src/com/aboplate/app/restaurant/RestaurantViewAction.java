@@ -40,7 +40,7 @@ public class RestaurantViewAction implements Action{
 		int totalCnt = reviewDao.getReviewCnt(restaurantNum);
 		
 		int endRow = page * 5;
-		int startRow = page - 4;
+		int startRow = endRow - 4;
 		
 		int startPage = ((page-1) / pageSize) * pageSize + 1;
 		int endPage = startPage + 4;
