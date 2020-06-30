@@ -66,11 +66,11 @@ public class RestaurantFrontController extends HttpServlet{
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/ReviewDeleteOk.re")) {
-			action = new RestaurantReviewDeleteAction();
+			action = new RestaurantReviewDeleteOkAction();
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
-				System.out.println("RestaurantReviewDeleteAction 에러");
+				System.out.println("RestaurantReviewDeleteOkAction 에러");
 				System.out.println(e);
 			}
 		} else if(command.equals("/restaurant/restaurantLocalCurrency.re")) {
