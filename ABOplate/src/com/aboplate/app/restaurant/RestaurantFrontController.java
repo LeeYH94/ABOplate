@@ -29,16 +29,15 @@ public class RestaurantFrontController extends HttpServlet{
 
 		ActionForward forward = null;
 		Action action = null;
-
+		
 
 		if(command.equals("/restaurant/RestaurantSearch.re")) {
 			action = new RestaurantSearchAction();
-
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
-				System.out.println("RestaurantSearchAction 에러");
 				System.out.println(e);
+				System.out.println("RestaurantSearchAction 에러");
 			}
 
 		}else if(command.equals("/restaurant/RestaurantView.re")) {

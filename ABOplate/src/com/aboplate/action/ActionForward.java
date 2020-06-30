@@ -23,6 +23,5 @@ public class ActionForward {
 		this.path = path;
 	}
 	
-	
 }
 

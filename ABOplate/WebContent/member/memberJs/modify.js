@@ -33,13 +33,27 @@ function formSubmit() {
 	}
 	form.submit();
 }
-function pwcheckAlert(){
-	
+//getMember_preference_food()
+function getPreferencefoodValue(){
+	$("input[name=memberFavorite]:checked").each(function(){
+		console.log('checkbox값 : '+$(this).val());
+	});
 }
+
+
 
 function modify(){
 	
-	
-	form.modify();
+	$("#memberFavorite").click(function() {
+
+		$("input[name=memberFavorite]:checked").each(function() {
+
+			var test = $(this).val();
+			console.log(test);
+		});
+
+	});
+	//form.modify();
 }
+
 

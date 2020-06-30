@@ -5,8 +5,8 @@
 
 function CookieSave() {
 	
-	/*var r_bean= RestaurantBean;*/
-	var items = getCookie('r_bean');
+	var rBean= RestaurantBean;
+	var items = getCookie('rBean');
 	
 	var maxItemNum = 5; // 최대 저장 가능한 아이템개수
 	  var expire = 7; // 쿠키값을 저장할 기간

@@ -124,11 +124,11 @@
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
 					<div style="margin: 0 auto;">
-						<form action="#" class="search-location mt-md-5">
+						<form method="get" action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re" class="search-location mt-md-5">
 							<div class="row justify-content-center">
 								<div class="form-group">
 									<div class="form-field">
-										<select class="form-control" id="filter">
+										<select class="form-control" id="filter" name="keyField">
 											<option value='restaurant_name' selected>전체</option>
 											<option value='restaurant_food_category'>음식 종류</option>
 											<option value='restaurant_address'>주소</option>
@@ -139,8 +139,8 @@
 								<div class="col-lg-8 align-items-end">
 									<div class="form-group">
 										<div class="form-field">
-											<input type="text" class="form-control" placeholder="Search location" id="search">
-											<button onclick="'${contextPath}/restaurant/restaurantSearch.re'">
+											<input type="text" class="form-control" placeholder="Search location" id="search" name="keyWord">
+											<button onclick="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re">
 												<span class="ion-ios-search"></span>
 											</button>
 										</div>
@@ -164,7 +164,7 @@
 										<div class="form-field">
 											<input type="button" value="지역화폐"
 												class="btn btn-primary py-3 px-5"
-												onclick="location.href = '${contextPath}/restaurant/restaurantLocalCurrency.re'"
+												onclick="location.href = '${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re'"
 												style="position: relative;">
 										</div>
 									</div>
@@ -452,5 +452,5 @@
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 	<script src="./js/search.autocomplete.js"></script>
 	<script src="./js/popup.js"></script>
-	<script>var contextPath = "${pageContext.request.contextPath}";</script>
+	<script>var contextPath = "${pageContext.request.contextPath}"</script>
 </html>

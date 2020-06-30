@@ -23,6 +23,7 @@ public class RestaurantReviewWriteAction implements Action{
 		restaurantBean = restaurantDao.getRestaurantInfo(restaurantNum);
 
 		request.setAttribute("restaurantBean", restaurantBean);
+		
 
 		forward.setRedirect(false);
 		forward.setPath("/restaurant/ReviewWrite.jsp");

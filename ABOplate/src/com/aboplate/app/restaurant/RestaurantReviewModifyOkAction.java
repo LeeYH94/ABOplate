@@ -26,35 +26,33 @@ public class RestaurantReviewModifyOkAction implements Action{
 		PictureDAO pictureDao = new PictureDAO();
 		ActionForward forward = null;
 		
-		String saveFolder = "C:\\Users\\Lee dae han\\Documents\\GitHub\\ABOplate\\ABOplate\\WebContent\\restaurantImages";
+		String saveFolder = request.getServletContext().getRealPath("images");	
 		int fileSize = 5 * 1024 * 1024;
 		try {
 			MultipartRequest multi = null;
-			System.out.println("들어옴");
-			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());
-			System.out.println(multi.getParameter("seq"));
+			multi = new MultipartRequest(request, saveFolder, fileSize, "UTF-8", new DefaultFileRenamePolicy());;
 			
-			int reviewNum = Integer.parseInt(multi.getParameter("seq"));
-			System.out.println(multi.getParameter("seq"));
+			int reviewNum = Integer.parseInt(multi.getParameter("reviewNum"));
+			int starRating =  Integer.parseInt(multi.getParameter("starRating"));
+			int restaurantNum = Integer.parseInt(multi.getParameter("restaurantNum"));
+			
 			String review = multi.getParameter("review");
 			
 			for(PictureBean picture : pictureDao.getPictureDetail(reviewNum)) {
-				File f = new File(saveFolder + "\\" + picture.getPicture_path());
+				System.out.println(picture);
+				File f = new File(saveFolder + "\\" + picture.getPicture_name());
 				if(f.exists()) {f.delete();}
 			}
-			
+			pictureDao.deletePicture(reviewNum);
 			reviewBean.setReview_num(reviewNum);
 			reviewBean.setReview(review);
-			
+			reviewBean.setReview_ration(starRating);
 			reviewDao.updateReview(reviewBean);
-			
 			pictureDao.insertPicture(multi, reviewNum);
-			
-			
 			
 			forward = new ActionForward();
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "/restaurant/ReviewPage.jsp");
+			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum);
 			
 		}catch(Exception e) {
 			System.out.println(e);
@@ -65,6 +63,6 @@ public class RestaurantReviewModifyOkAction implements Action{
 			out.println("</script>");
 		}
 		
-		return null;
+		return forward;
 	}
 }

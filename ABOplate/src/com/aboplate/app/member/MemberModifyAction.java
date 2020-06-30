@@ -1,5 +1,7 @@
 package com.aboplate.app.member;
 
+import java.io.PrintWriter;
+
 /*import java.io.PrintWriter;*/
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,16 +23,16 @@ public class MemberModifyAction implements Action {
 		ActionForward forward = new ActionForward();
 		MemberDAO mDao = new MemberDAO();
 		MemberBean member =new MemberBean();
-		/*PrintWriter out = response.getWriter();*/
 		HttpSession session = request.getSession();
-		//��й�ȣ ����
+		PrintWriter out = response.getWriter();
+		//占쏙옙橘占싫� 占쏙옙占쏙옙
 		if(request.getParameter("memberPassword")!=null) {
 			
 		String id = session.getAttribute("sessionId").toString();
 		String Password = mDao.encryptPw((request.getParameter("memberPassword")));
 		String SessionPassword = session.getAttribute("Password").toString();
 		String newPassword = request.getParameter("newMemberPassword");
-		//���Ǻ�й�ȣ�� ���� ��й�ȣ�� ������ update ����  �ٸ��� �ȵ� 
+		//占쏙옙占실븝옙橘占싫ｏ옙占� 占쏙옙占쏙옙 占쏙옙橘占싫ｏ옙占� 占쏙옙占쏙옙占쏙옙 update 占쏙옙占쏙옙  占쌕몌옙占쏙옙 占싫듸옙 
 		if(SessionPassword.equals(Password)) {
 			mDao.updatePw(newPassword, id);
 			session.setAttribute("newPassword", newPassword);
@@ -39,17 +41,43 @@ public class MemberModifyAction implements Action {
 		else {
 			System.out.println("not-ok");
 		}
-		//��ȣ���� ����
-		}else if(request.getParameter("memberFavorite")!=null) {
+		//占쏙옙호占쏙옙占쏙옙 占쏙옙占쏙옙
+		}/*else if(request.getParameter("memberFavorite")!=null) {
 			String pref = "";
 			for (String favorite : request.getParameterValues("memberFavorite")) {				
 				pref = favorite + ",";
 			}
 			member.setMember_preference_food(pref);
+		}*/
+			else if(request.getParameter("memberFavorite")!=null) {
+			
+			out.print("<hteml><body>");
+			String favorite[] = request.getParameterValues("memberFavorite");
+			System.out.println("당신이 선택한 항목입니다.");
+			for(String memberFavorite:favorite) {
+				out.println(favorite+" ");
+				member.setMember_preference_food(request.getParameter("memberFavorite"));
+			} 
+			out.println("</body></html>");
+			out.close();
 		}
-		//�������� 
+		//占쏙옙占쏙옙占쏙옙占쏙옙 
 		else if(request.getParameter("memberRegion")!=null) {
-			member.setMember_region(request.getParameter("memberRegion"));
+			//jsp에서 받을 값 변수 선언 
+			String region = request.getParameter("memberRegion");
+			String regions[] = request.getParameterValues("region");
+			
+			out.print("<html><body>");
+			out.println("회원님이 선택한 지역 : <b>");
+			
+			out.println(region);
+			for(String selectregion:regions) {
+				out.print(regions+" ");
+				member.setMember_region(request.getParameter("memberRegion"));
+			}
+			out.print("</body></html>");
+			out.close();
+			
 		}
 		
 		forward.setPath("/member/main.jsp");

@@ -31,7 +31,6 @@
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
-  		<c:set var="List" value="${requestScope.reviewList}"/>
 		<c:set var="nowPage" value="${requestScope.currentPage}"/>
 		<c:set var="startPage" value="${requestScope.startPage}"/>
 		<c:set var="endPage" value="${requestScope.endPage}"/>
@@ -58,10 +57,10 @@
 			</c:when>
 			<c:otherwise>
 				<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
-      	<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
-      	<li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
-      	<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
-        <li class="nav-item"><a href="../member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
+		      	<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+		      	<li class="nav-item"><a href="../member/mypage.jsp" class="nav-link">마이페이지</a></li>
+		      	<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me" class="nav-link">로그아웃</a></li>
+		        <li class="nav-item"><a href="../member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
 			</c:otherwise>
 			</c:choose>
 	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
@@ -234,15 +233,14 @@
 
 									   			<p class="star">
 									   				<span>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
-									   					<i class="ion-ios-star"></i>
+									   					<%-- <i class="ion-ios-star"></i> ${reviewBean.getReview_ration()} --%>
+									   					<c:forEach var="i" begin="1" end="${reviewBean.getReview_ration()}">
+															<i class="ion-ios-star"></i>
+														</c:forEach>
 								   					</span>
 								   					<span class="text-right">
 								   					<c:if test="${reviewBean.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${reviewBean.getReview_num()}&modify=true">[수정]</a>&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${reviewBean.getReview_num()}&seq=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														<a href="like()" name="like" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
