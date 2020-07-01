@@ -7,8 +7,9 @@
 		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
 	</select>
 	
-	<select id="getFoodCategoryList" resultType="string">
-		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM RESTAURANT
+	<select id="getFoodCategoryList" parameterType="string" resultType="string">
+		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM 
+			(SELECT * FROM RESTAURANT WHERE RESTAURANT_FOOD_CATEGORY LIKE '%'||#{search}||'%')
 	</select>
 	
 	<select id="getLocalCurrencyList" resultType="string">

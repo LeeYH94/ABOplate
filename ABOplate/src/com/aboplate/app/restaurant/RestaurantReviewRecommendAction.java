@@ -23,8 +23,8 @@ public class RestaurantReviewRecommendAction implements Action {
 		ReviewDAO reviewDao = new ReviewDAO();
 		
 		String id = session.getAttribute("sessionId").toString();
-		int reviewNum = (int) request.getAttribute("reviewNum");
-		
+		int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
+		System.out.println(reviewNum);
 		PrintWriter out = response.getWriter();
 		
 		if(reviewDao.checkReviewRecommend(id, reviewNum)) {
