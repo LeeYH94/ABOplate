@@ -36,9 +36,9 @@ public class RestaurantDAO {
 		return localCurrencyList;
 	}
 	
-	public List<String> getFoodCategoryList(){
+	public List<String> getFoodCategoryList(String search){
 		
-		List<String> foodCategoryList = sqlsession.selectList("Restaurant.getFoodCategoryList");
+		List<String> foodCategoryList = sqlsession.selectList("Restaurant.getFoodCategoryList", search);
 		
 		return foodCategoryList;
 	}

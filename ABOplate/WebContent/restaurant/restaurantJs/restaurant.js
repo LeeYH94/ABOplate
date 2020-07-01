@@ -3,10 +3,11 @@
  * notify() 신고
  */
 
-function like(){
+function recommend(reviewNum){
+		console.log("들어왔어요");
 		$.ajax({
-			url : contextPath + "/restaurant/ReviewLike.re",
-			type : 'get',
+			url : contextPath + "/restaurant/ReviewRecommend.re?reviewNum=" + reviewNum,
+			type : 'GET',
 			dataType : 'text',
 			success : function(data) {
 				if (data.trim() == 'add') {
@@ -22,10 +23,6 @@ function like(){
 		})
 	}
 
-
-$("like").click(function() {
-	like();
-})
 
 
 function notify(){
