@@ -94,7 +94,7 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println("MemberFindId 에러");
 			}
 		} else if (command.equals("/member/MemberFindPw.me")) {
-			action = new MemberVerifyOkAction();
+			action = new MemberFindPwAction();
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {

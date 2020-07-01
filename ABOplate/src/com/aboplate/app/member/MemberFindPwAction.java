@@ -18,23 +18,29 @@ public class MemberFindPwAction implements Action{
 		ActionForward forward = new ActionForward();
 		MemberDAO mDao = new MemberDAO();
 		
-		String id = request.getParameter("member_id");
-		String email = request.getParameter("member_email");
+		String id = request.getParameter("memberId");
+		String email = request.getParameter("memberEmail");
 		
 		
 		String newPw = mDao.createRandomPw();
-		PrintWriter out = response.getWriter();
+
+		request.setAttribute("memberPassword", newPw);
+		PrintWriter out = response.getWriter(); 
 		if(mDao.updatePw(newPw, id)) {
-			//
 			mDao.sendEmail(email, "ABOplate 새로운 비밀번호 입니다.", newPw);
+			System.out.println(newPw);
+			out.println("<script>");
+			out.println("alert('새로운 임시 비밀번호가 발급되었습니다. 다시 로그인해주세요'); location.href='login.jsp'; ");
+			out.println("</script>");
+			out.close();
 		}else {
 			out.println("<script>");
-			out.println("alert('�ٽ� �õ����ּ���');");
+			out.println("alert('가입된 정보가 없습니다. 다시  시도해주세요'); history.back(); ");
 			out.println("</script>");
 			out.close();
 		}
 		forward.setRedirect(true);
-		//로그인 페이지로 이동
+		//forward.setPath(request.getContextPath() + "/member/MemberLogin.me");
 		return forward;
 	}
 }
