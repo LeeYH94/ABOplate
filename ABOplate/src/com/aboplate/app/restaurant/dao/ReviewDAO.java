@@ -57,11 +57,14 @@ public class ReviewDAO {
 		if((Integer)sqlsession.selectOne("Review.checkReviewRecommend", datas) == 1) {
 			check = true;
 		}
+		
 		return check;
 	}
 	
 	public void popReviewRecommend(String id, int reviewNum) {
 		HashMap<String, Object> datas = new HashMap<>();
+		datas.put("id", id);
+		datas.put("reviewNum", reviewNum);
 		sqlsession.delete("Review.popReviewRecommend", datas);
 	}
 	

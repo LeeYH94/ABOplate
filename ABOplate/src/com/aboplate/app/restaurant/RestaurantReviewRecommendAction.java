@@ -24,16 +24,17 @@ public class RestaurantReviewRecommendAction implements Action {
 		
 		String id = session.getAttribute("sessionId").toString();
 		int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
-		System.out.println(reviewNum);
+		
 		PrintWriter out = response.getWriter();
 		
 		if(reviewDao.checkReviewRecommend(id, reviewNum)) {
 			reviewDao.popReviewRecommend(id, reviewNum);
-			out.print("pop");
+			out.println("pop");
 		} else {
 			reviewDao.addReviewRecommend(id, reviewNum);
-			out.print("add");
+			out.println("add");
 		}
+		out.close();
 		
 		return null;
 	}

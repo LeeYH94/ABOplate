@@ -4,17 +4,17 @@
  */
 
 function recommend(reviewNum){
-		console.log("들어왔어요");
+		  var icon = document.getElementById("likeIcon");
 		$.ajax({
 			url : contextPath + "/restaurant/ReviewRecommend.re?reviewNum=" + reviewNum,
 			type : 'GET',
 			dataType : 'text',
 			success : function(data) {
 				if (data.trim() == 'add') {
-					$("#likeIcon").style.backgroundColor = "none";
+					icon.src = "../images/ABO.jpg"; // 여기에 추가해주세요
 					/*'좋아요'가 취소되었습니다.*/
 				} else{
-					$("#likeIcon").style.backgroundColor = "#ff0000";
+					icon.src = "../images/좋아요.jpg";
 				}
 			},
 			error : function() {

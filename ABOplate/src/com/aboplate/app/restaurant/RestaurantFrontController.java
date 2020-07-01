@@ -133,6 +133,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantViewOkAction 에러");
 				System.out.println(e);
 			}
 		}else if(command.equals("/restaurant/ReviewRecommend.re")) {
@@ -140,6 +141,7 @@ public class RestaurantFrontController extends HttpServlet{
 			try {
 				forward = action.execute(req, resp);
 			}catch(Exception e) {
+				System.out.println("RestaurantReviewRecommendAction 에러");
 				System.out.println(e);
 			}
 		}else {

@@ -27,15 +27,16 @@
 	</insert>
 
 	<select id="checkReviewRecommend" parameterType="map" resultType="_int">
-		SELECT COUNT(*) FROM REVIEW_RECOMMEND WHERE MEMBER_ID = #{id} AND REVIEW_NUM = #{reviewNum}
+		SELECT COUNT(*) FROM REVIEW_RECOMMEND WHERE REFERRER_ID = #{id} AND REVIEW_NUM = ${reviewNum}
 	</select>
 
 	<delete id="popReviewRecommend" parameterType="map">
-		DELETE FROM REVIEW_RECOMMEND WHERE MEMBER_ID = #{id} AND REVIEW_NUM = #{reviewNum}
+		DELETE FROM REVIEW_RECOMMEND WHERE REFERRER_ID = #{id} AND REVIEW_NUM = ${reviewNum}
 	</delete>
 
 	<insert id="addReviewRecommend" parameterType="map">
-	 	INSERT INTO REVIEW_RECOMMEND WHERE MEMBER_ID = #{id} AND REVIEW_NUM = #{reviewNum}
+	 	INSERT INTO REVIEW_RECOMMEND 
+	 	VALUES(${reviewNum}, #{id})
 	</insert>
 
 	<select id="getReviewDetail" parameterType="_int" resultType="reviewBean">
