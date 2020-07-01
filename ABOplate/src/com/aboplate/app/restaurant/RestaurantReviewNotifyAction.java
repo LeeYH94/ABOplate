@@ -8,11 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
-import com.aboplate.app.restaurant.dao.RestaurantDAO;
-import com.aboplate.app.restaurant.dao.ReviewBean;
 import com.aboplate.app.restaurant.dao.ReviewDAO;
 
-public class RestaurantReviewRecommendAction implements Action {
+public class RestaurantReviewNotifyAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -27,13 +25,11 @@ public class RestaurantReviewRecommendAction implements Action {
 		
 		PrintWriter out = response.getWriter();
 		
-		if(reviewDao.checkReviewRecommend(id, reviewNum)) {
-			reviewDao.popReviewRecommend(id, reviewNum);
-			reviewDao.minusRecommend(reviewNum); /*reviewBean에 recommend가 없는것 같던데요..*/
+		if(reviewDao.checkReviewNotify(id, reviewNum)) {
+			reviewDao.popReviewNotify(id, reviewNum);
 			out.println("pop");
 		} else {
-			reviewDao.addReviewRecommend(id, reviewNum);
-			reviewDao.plusRecommend(reviewNum);
+			reviewDao.addReviewNotify(id, reviewNum);
 			out.println("add");
 		}
 		out.close();

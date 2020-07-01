@@ -244,9 +244,9 @@
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														
-														<a href="javascript:recommend(${reviewBean.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px"></a>
+														<a href="javascript:recommend(${reviewBean.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px">${reviewBean.getReview_recommend()}</a>
 														
-														<a href="notify()" name="notify" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
+														<a href="javascript:notify(${reviewBean.getReview_num()})" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
 									   			<p>${reviewBean.getReview()}</p>
