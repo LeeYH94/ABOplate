@@ -1,5 +1,5 @@
 /**
- * like()좋아요
+ * recommend() 추천
  * notify() 신고
  */
 
@@ -11,31 +11,32 @@ function recommend(reviewNum){
 			dataType : 'text',
 			success : function(data) {
 				if (data.trim() == 'add') {
-					icon.src = "../images/ABO.jpg"; // 여기에 추가해주세요
+					icon.src = "../images/recommend.jpg";
 					/*'좋아요'가 취소되었습니다.*/
 				} else{
 					icon.src = "../images/좋아요.jpg";
 				}
 			},
 			error : function() {
-				console.log("like() 오류");
+				console.log("recommend() 오류");
 			}
 		})
 	}
 
 
 
-function notify(){
+function notify(reviewNum){
+	var icon = document.getElementById("notifyIcon");
 		$.ajax({
-			url : contextPath + "/restaurant/ReviewNotify.re",
-			type : 'get',
+			url : contextPath + "/restaurant/ReviewNotify.re?reviewNum=" + reviewNum,
+			type : 'GET',
 			dataType : 'text',
 			success : function(data) {
 				if (data.trim() == 'add') {
-					$("#notifyIcon").style.backgroundColor = "none";
+					icon.src = "../images/notify.jpg"; 
 					/*신고가 취소되었습니다.*/
 				} else{
-					$("#notifyIcon").style.backgroundColor = "#ff0000";
+					icon.src = "../images/신고.jpg";
 				}
 			},
 			error : function() {
@@ -44,10 +45,6 @@ function notify(){
 		})
 	}
 
-
-$("notify").click(function() {
-	notify();
-})
 
 $('#review').on('keyup', function() {
 	if($(this).val().length > 50) {
