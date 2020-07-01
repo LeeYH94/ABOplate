@@ -193,7 +193,7 @@
 				                  </div>
 							<div class="form-group">
 								<div class="d-flex justify-content-center">
-									<input type="submit" value="수정" style="margin-right:10px !important;" class="btn btn-primary py-3 p=x-5">
+									<input type="button" value="수정" onclick="location.href='/member/InformationModify.jsp'" style="margin-right:10px !important;" class="btn btn-primary py-3 p=x-5" >
 	              					<input type="submit" value="탈퇴" class="btn btn-primary py-3 p=x-5">
 								</div>
 	             			 </div>

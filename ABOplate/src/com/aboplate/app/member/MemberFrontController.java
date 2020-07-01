@@ -126,7 +126,12 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("MemberInfo 에러");
 			}
+		}else if (command.equals("/member/mypage.me")) {
+			forward=new ActionForward();
+	         forward.setRedirect(false);
+	         forward.setPath("/member/mypage.jsp");
 		}
+		
 		else {
 			forward = new ActionForward();
 			forward.setRedirect(false);

@@ -66,12 +66,12 @@
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" id="memberId" name="memberId"
-								value="${session_id}smk1656" readonly>
+								value="${session_id}" readonly>
 						</div>
 						<div class="form-group">
 							<label for="nickname">닉네임</label> <input type="text"
 								class="form-control" id="memberNickname" name="memberNickname"
-								value="${memberBean.getMember_nickname()}smk1656" readonly>
+								value="${memberBean.getMember_nickname()}" readonly>
 						</div>
 					
 						<div class="form-group">

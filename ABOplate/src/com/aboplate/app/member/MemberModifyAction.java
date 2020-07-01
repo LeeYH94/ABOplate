@@ -25,14 +25,14 @@ public class MemberModifyAction implements Action {
 		MemberBean member =new MemberBean();
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
-		//占쏙옙橘占싫� 占쏙옙占쏙옙
+		
 		if(request.getParameter("memberPassword")!=null) {
 			
 		String id = session.getAttribute("sessionId").toString();
 		String Password = mDao.encryptPw((request.getParameter("memberPassword")));
 		String SessionPassword = session.getAttribute("Password").toString();
 		String newPassword = request.getParameter("newMemberPassword");
-		//占쏙옙占실븝옙橘占싫ｏ옙占� 占쏙옙占쏙옙 占쏙옙橘占싫ｏ옙占� 占쏙옙占쏙옙占쏙옙 update 占쏙옙占쏙옙  占쌕몌옙占쏙옙 占싫듸옙 
+		 
 		if(SessionPassword.equals(Password)) {
 			mDao.updatePw(newPassword, id);
 			session.setAttribute("newPassword", newPassword);
@@ -41,7 +41,7 @@ public class MemberModifyAction implements Action {
 		else {
 			System.out.println("not-ok");
 		}
-		//占쏙옙호占쏙옙占쏙옙 占쏙옙占쏙옙
+	
 		}/*else if(request.getParameter("memberFavorite")!=null) {
 			String pref = "";
 			for (String favorite : request.getParameterValues("memberFavorite")) {				
