@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-	<c:set var="memberBean" value="${requestScope.MemberBean}" />
+	<c:set var="memberBean" value="${requestScope.memberBean}" />
 	<script>
 		var pw = prompt("패스워드를 입력하세요" + "");
 	</script>
@@ -61,19 +61,21 @@
 						style="font-size: 56px;"><img src="../images/ABO.png" /></a>
 
 					<form name="modifyForm"
-						action="${pageContext.request.contextPath}/member/MemberModify.me"
-						class="p-5 bg-light" method="post">
+						action="${pageContext.request.contextPath}/member/MemberModifyOk.me"
+						class="p-5 bg-light" method="POST">
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" id="memberId" name="memberId"
-								value="${session_id}" readonly>
+								value="${sessionId}" readonly>
 						</div>
+						
 						<div class="form-group">
 							<label for="nickname">닉네임</label> <input type="text"
 								class="form-control" id="memberNickname" name="memberNickname"
 								value="${memberBean.getMember_nickname()}" readonly>
+								
 						</div>
-					
+							
 						<div class="form-group">
 							<label for="password">새 비밀번호</label> <input type="password"
 								class="form-control" id="newMemberPassword"
@@ -142,7 +144,7 @@
 			</div>
 		</div>
 	</section>
-
+<% out.println("${memberBean.getMember_nickname()}"); %>
 
 
 </body>

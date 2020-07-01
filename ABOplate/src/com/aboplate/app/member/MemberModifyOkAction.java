@@ -2,8 +2,6 @@ package com.aboplate.app.member;
 
 import java.io.PrintWriter;
 
-/*import java.io.PrintWriter;*/
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,29 +11,27 @@ import com.aboplate.action.ActionForward;
 import com.aboplate.app.member.dao.MemberBean;
 import com.aboplate.app.member.dao.MemberDAO;
 
-public class MemberModifyAction implements Action {
+public class MemberModifyOkAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		ActionForward forward = new ActionForward();
+		ActionForward forward = null;
 		MemberDAO mDao = new MemberDAO();
 		MemberBean memberBean =new MemberBean();
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
-		System.out.println("modify들어옴");
+		//if(request.getParameter("memberPassword")!=null) {
+			
+		String id = session.getAttribute("sessionId").toString();
+		String memberNickname =  mDao.getMemberNickname(id);
 		
-		String memberId = (String)session.getAttribute("sessionId");
-		String memberNickname = mDao.getMemberNickname(memberId);
-		
-		memberBean = mDao.getMemberInfo(memberId);
-		request.setAttribute("memberBean", memberBean);
-		request.setAttribute("nickName",memberNickname);
-		forward.setRedirect(false);
-		forward.setPath("/member/Informationmodify.jsp");
+		forward = new ActionForward();
+		forward.setRedirect(true);
+		forward.setPath(request.getContextPath()+"/member/MemberInfo.me");
 		
 		return forward;
 	}

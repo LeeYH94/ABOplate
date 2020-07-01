@@ -41,7 +41,7 @@ public class MemberMypageAction implements Action{
 		
 		endPage = endPage > totalPage ? totalPage : endPage;
 		
-		memberBean = memberDao.getMemerInfo(id);
+		memberBean = memberDao.getMemberInfo(id);
 		
 		request.setAttribute("memberBean", memberBean);
 		request.setAttribute("totalPage", totalPage);
