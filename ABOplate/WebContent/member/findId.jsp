@@ -73,17 +73,17 @@
 						    	<div class="row">
 					     
 						          <div style="margin:0 auto;" class="col-md-8 mb-md-5">
-						            <form action="${pageContext.request.contextPath}/member/MemberFindId.me" class="bg-light p-5 contact-form">
+						            <form name="findId" action="${pageContext.request.contextPath}/member/MemberFindId.me" class="bg-light p-5 contact-form">
 						              <div class="form-group">
 						                <input type="text" class="form-control" placeholder="이름" name="memberName">
 						              </div>
 						              <div class="form-group">
 						                <input type="email" class="form-control" placeholder="이메일" name="memberEmail">
-						                <input type="button" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;" name="cerNumber">
+						                <!-- <input type="button" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;" name="cerNumber"> -->
 						              </div>
 						              <div class="d-flex justify-content-center">	
 							              <div class="form-group">
-							                <input type="submit" value="    아이디 찾기    " class="btn btn-primary py-3 px-5">
+							                <input type="submit" value="아이디 찾기    " class="btn btn-primary py-3 px-5" onclick="location.href='javascript:findId.submit()'">
 							              </div>
 							              </div>
 
@@ -99,7 +99,7 @@
 						    <div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-description-tab">
 						    <div class="row">
 						    	<div id="find" style="margin:0 auto;" class="col-md-8 mb-md-5">
-						            <form action="${pageContext.request.contextPath}/member/MemberFindPw.me" class="bg-light p-5 contact-form">
+						            <form name="findPw" action="${pageContext.request.contextPath}/member/MemberFindPw.me" class="bg-light p-5 contact-form">
 						              <div class="form-group">
 						                <input type="text" class="form-control" placeholder="이름" name="memberName">
 						              </div>
@@ -108,12 +108,13 @@
 						              </div>
 						              <div class="form-group">
 						                <input type="email" class="form-control" placeholder="이메일" name="memberEmail">
-						                <input  type="submit" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;">
+						               <!--  <input  type="submit" value="인증번호 받기" class="btn btn-primary py-3 p=x-5" style="padding: 15px;"> -->
 						              </div>
 						              
 						              <div class="d-flex justify-content-center">	
 							              <div class="form-group">
-							                <input type="submit" value="비밀번호 재설정" class="btn btn-primary py-3 px-5" name="memberPasswordConfig">
+							                <input type="submit" value="비밀번호 재설정" class="btn btn-primary py-3 px-5" name="memberPasswordConfig" onclick="location.href='javascript:findPw.submit()'">
+							                 <input type="submit" value="로그인하기" class="btn btn-primary py-3 px-5" onclick="location.href='login.jsp'">
 							              </div>
 							              </div>
 						            </form>

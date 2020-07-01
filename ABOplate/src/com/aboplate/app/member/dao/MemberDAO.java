@@ -64,7 +64,7 @@ public class MemberDAO {
 		boolean check = false;
 		HashMap<String, String> datas = new HashMap<>();
 
-		datas.put("newPw", newPw);
+		datas.put("new_pw", newPw);
 		datas.put("id", id);
 
 		if (sqlsession.update("Member.updatePw", datas) == 1) {

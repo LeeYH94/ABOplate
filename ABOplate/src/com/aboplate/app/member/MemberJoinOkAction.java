@@ -32,36 +32,36 @@ public class MemberJoinOkAction implements Action{
 		String[] preference_kor = {"한식", "중식", "일식", "양식"};
 		
 		
-		if(session.getAttribute("snsId") != null) {
-			// sns �쉶�썝媛��엯
-			member.setMember_id(session.getAttribute("snsId").toString());
-			member.setMember_nickname(mDao.createRandomPw());
-			member.setMember_type(2);
-			
-			mDao.joinSns(member.getMember_id());
-		} else {
-			String pref = "";
-			member.setMember_id(request.getParameter("memberId"));
-			member.setMember_name(request.getParameter("memberName"));
-			member.setMember_email(request.getParameter("memberEmail"));
-			member.setMember_password(mDao.encryptPw(request.getParameter("memberPassword")));
-			member.setMember_nickname(request.getParameter("memberNickname"));
-			for (String favorite : request.getParameterValues("memberFavorite")) {				
-				for (int i = 0; i < preference_en.length; i++) {
-					if (favorite.equals(preference_en[i])) {
-						pref += preference_kor[i] + ",";						
-					}
+//		if(session.getAttribute("snsId") != null) {
+//			// sns �쉶�썝媛��엯
+//			member.setMember_id(session.getAttribute("snsId").toString());
+//			member.setMember_nickname(mDao.createRandomPw());
+//			member.setMember_type(2);
+//			
+//			mDao.joinSns(member.getMember_id());
+//		} else {
+		String pref = "";
+		member.setMember_id(request.getParameter("memberId"));
+		member.setMember_name(request.getParameter("memberName"));
+		member.setMember_email(request.getParameter("memberEmail"));
+		member.setMember_password(mDao.encryptPw(request.getParameter("memberPassword")));
+		member.setMember_nickname(request.getParameter("memberNickname"));
+		for (String favorite : request.getParameterValues("memberFavorite")) {				
+			for (int i = 0; i < preference_en.length; i++) {
+				if (favorite.equals(preference_en[i])) {
+					pref += preference_kor[i] + ",";						
 				}
 			}
-			member.setMember_preference_food(pref);
-			for (int i = 0; i < region_en.length; i++) {
-				if (request.getParameter("memberRegion").equals(region_en[i])) {
-					member.setMember_region(region_kor[i]);
-					break;
-				}
-			}
-			check=mDao.join(member);
 		}
+		member.setMember_preference_food(pref);
+		for (int i = 0; i < region_en.length; i++) {
+			if (request.getParameter("memberRegion").equals(region_en[i])) {
+				member.setMember_region(region_kor[i]);
+				break;
+			}
+		}
+		check=mDao.join(member);
+//		}
 		if(!check) {
 			PrintWriter out=response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");

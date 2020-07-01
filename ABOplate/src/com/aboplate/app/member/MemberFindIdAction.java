@@ -14,27 +14,30 @@ public class MemberFindIdAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		
 		ActionForward forward = new ActionForward();
 		MemberDAO mDao = new MemberDAO();
-		String email = request.getParameter("member_email");
-		String name = request.getParameter("member_nickname");
-		PrintWriter out = response.getWriter();
+		String email = request.getParameter("memberEmail");
+		String name = request.getParameter("memberName");
 		
 		String id = mDao.findId(email, name);
-		if(id!=null) {
+		
+		PrintWriter out = response.getWriter();
+		if(id != null) {
+			System.out.println(id);
 			response.setContentType("text/html; charset=UTF-8");
 			out.println("<script>");
-			out.println("alert('당신의 아이디는'"+id+"'입니다.');");
+			out.println("alert('당신의 아이디는"+id+"입니다.'); location.href='login.jsp'; ");
 			out.println("</script>");
 			out.close();
-		}else {
+			}else {
 			out.println("<script>");
-			out.println("alert('등록된 아이디가 없습니다.');");
+			out.println("alert('등록된 아이디가 없습니다. 다시 시도해주세요.'); history.back(); ");
 			out.println("</script>");
 			out.close();
 		}
 		forward.setRedirect(true);
-		//로그인 페이지로 이동
 		return forward;
 	}
 }

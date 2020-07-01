@@ -69,6 +69,7 @@
                <div class="form-group">
                  <!-- <input type="submit" value="카카오톡으로 로그인" class="btn btn-primary py-3 px-5"> -->
                  <!-- 추가부분 -->
+             	<!--
 					<a id="kakao-login-btn"></a>
 					<a href="http://developers.kakao.com/logout"></a>
                </div>
@@ -78,6 +79,7 @@
               	    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" lang="kor"></div>
             	</div>
               </div>
+              -->
           	</form>
           </div>
         </div>
