@@ -56,7 +56,7 @@
 	<select id="getMemberReviewList" parameterType="map" resultType="reviewBean">
 		SELECT * FROM
 			(SELECT ROWNUM R, V.* FROM
-				(SELECT * FROM REVIEW WHERE MEMBER_NICKNAME = ${nickname}
+				(SELECT * FROM REVIEW WHERE MEMBER_NICKNAME = #{nickname}
 					ORDER BY REVIEW_NUM DESC) V ) L
 			WHERE L.R BETWEEN ${startRow} AND ${endRow}
 	</select>

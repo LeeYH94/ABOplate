@@ -24,11 +24,11 @@ public class MemberModifyOkAction implements Action {
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
-		//if(request.getParameter("memberPassword")!=null) {
-			
-		String id = session.getAttribute("sessionId").toString();
-		String memberNickname =  mDao.getMemberNickname(id);
-		
+		System.out.println("memberok들어옴");
+		String memberId = (String)session.getAttribute("sessionId");
+		System.out.println(memberId);
+		String memberNickname =  mDao.getMemberNickname(memberId);
+		System.out.println(memberNickname);
 		forward = new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/member/MemberInfo.me");

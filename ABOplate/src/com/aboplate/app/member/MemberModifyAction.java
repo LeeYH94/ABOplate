@@ -29,11 +29,15 @@ public class MemberModifyAction implements Action {
 		System.out.println("modify들어옴");
 		
 		String memberId = (String)session.getAttribute("sessionId");
-		String memberNickname = mDao.getMemberNickname(memberId);
+		String memberNickname =  mDao.getMemberNickname(memberId);
+		String Password = mDao.encryptPw((request.getParameter("memberPassword")));
 		
 		memberBean = mDao.getMemberInfo(memberId);
 		request.setAttribute("memberBean", memberBean);
-		request.setAttribute("nickName",memberNickname);
+		request.setAttribute("memberNickname",memberNickname);
+		System.out.println(memberNickname);
+		request.setAttribute("memberPassword",Password);
+	
 		forward.setRedirect(false);
 		forward.setPath("/member/Informationmodify.jsp");
 		
