@@ -32,6 +32,7 @@ public class MemberFindIdAction implements Action{
 			out.println("</script>");
 			out.close();
 			}else {
+			response.setContentType("text/html; charset=UTF-8");
 			out.println("<script>");
 			out.println("alert('등록된 아이디가 없습니다. 다시 시도해주세요.'); history.back(); ");
 			out.println("</script>");

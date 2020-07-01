@@ -26,14 +26,16 @@ public class MemberFindPwAction implements Action{
 
 		request.setAttribute("memberPassword", newPw);
 		PrintWriter out = response.getWriter(); 
-		if(mDao.updatePw(newPw, id)) {
+		if(mDao.updatePw(mDao.encryptPw(newPw), id)) {
 			mDao.sendEmail(email, "ABOplate 새로운 비밀번호 입니다.", newPw);
 			System.out.println(newPw);
+			response.setContentType("text/html; charset=UTF-8");
 			out.println("<script>");
 			out.println("alert('새로운 임시 비밀번호가 발급되었습니다. 다시 로그인해주세요'); location.href='login.jsp'; ");
 			out.println("</script>");
 			out.close();
 		}else {
+			response.setContentType("text/html; charset=UTF-8");
 			out.println("<script>");
 			out.println("alert('가입된 정보가 없습니다. 다시  시도해주세요'); history.back(); ");
 			out.println("</script>");
