@@ -124,7 +124,7 @@ public class MemberDAO {
 		
 	}
 	
-	public MemberBean getMemerInfo(String sessionId) {
+	public MemberBean getMemberInfo(String sessionId) {
 		return sqlsession.selectOne("Member.getMemerInfo", sessionId);
 		
 	}
