@@ -27,9 +27,11 @@ public class RestaurantReviewNotifyAction implements Action{
 		
 		if(reviewDao.checkReviewNotify(id, reviewNum)) {
 			reviewDao.popReviewNotify(id, reviewNum);
+			reviewDao.minusNotify(reviewNum);
 			out.println("pop");
 		} else {
 			reviewDao.addReviewNotify(id, reviewNum);
+			reviewDao.plusNotify(reviewNum);
 			out.println("add");
 		}
 		out.close();

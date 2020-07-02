@@ -29,7 +29,7 @@ public class RestaurantReviewRecommendAction implements Action {
 		
 		if(reviewDao.checkReviewRecommend(id, reviewNum)) {
 			reviewDao.popReviewRecommend(id, reviewNum);
-			reviewDao.minusRecommend(reviewNum); /*reviewBean에 recommend가 없는것 같던데요..*/
+			reviewDao.minusRecommend(reviewNum);
 			out.println("pop");
 		} else {
 			reviewDao.addReviewRecommend(id, reviewNum);
