@@ -39,7 +39,7 @@
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="main2.jsp">ABO PLATE</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -54,19 +54,21 @@
 			<c:set var="startPage" value="${requestScope.startPage}" />
 			<c:set var="endPage" value="${requestScope.endPage}" />
 			<c:set var="list" value="${requestScope.bookmarkList}" />
+			
 
 
 			<div class="collapse navbar-collapse dropmenu" id="ftco-nav">
 				<ul class="navbar-nav ml-auto" id="dm_ul">
-					<li class="nav-item"><p class="nav-p">${MemberBean.getMember_id()}***님</p></li>
-					<li class="nav-item"><p class="nav-p">${MemberBean.getMember_stamp()}포인트</p></li>
-					<li class="nav-item"><a href="/member/mypage.jsp"
+					<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
+					<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me"
 						class="nav-link">마이페이지</a></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me"
 						class="nav-link">로그아웃</a></li>
 					<li class="nav-item"><a href="/other/event.jsp" class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="/member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
+					<!-- <li class="nav-item"><a href="/member/favorites.jsp" class="nav-link">즐겨찾기</a></li> -->
 					<li class="nav-item"><a href="#" class="nav-link">최근본 맛집</a>
+					</li>
 				</ul>
 			</div>
 		</div>
