@@ -35,6 +35,9 @@
 <body>
 
 	<c:set var="restaurantBean" value="${requestScope.restaurantBean}" />
+	<c:if test="">
+	
+	</c:if>
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -187,8 +190,8 @@
 												<input style="display: none;" class="star_rating_cnt"
 													value="" name="starRating" />
 												<!-- a태그는 별점 jquery 적용해야함 -->
-												<a href="#" class="on">★</a> <a href="#" class="on">★</a> <a
-													href="#" class="on">★</a> <a href="#">★</a> <a href="#">★</a>
+												<a href="#" >★</a> <a href="#" >★</a> <a
+													href="#">★</a> <a href="#">★</a> <a href="#">★</a>
 											</p>
 										</div>
 									</div>
@@ -394,8 +397,7 @@
 	<script src="http://code.jquery.com/jquery-1.9.0.js"></script>
 	<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 	<script>
-		var rating = 3;
-		$('.star_rating_cnt').val(rating);
+		var rating;
 		$('.star_rating a').click(function() {
 			$(this).parent().children('a').removeClass('on');
 			$(this).addClass('on').prevAll('a').addClass('on');
@@ -404,6 +406,7 @@
 			console.log($('.star_rating_cnt').val());
 			return false;
 		})
+		
 
 		function modifyReview() {
 			reviewForm.submit();
