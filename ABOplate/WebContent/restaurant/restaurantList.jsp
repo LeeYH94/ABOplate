@@ -144,10 +144,11 @@
 									</button>
 							</div>
 						</div>
-						<!-- <div class=row style="height: 60px;">
+						<div class=row style="height: 60px;">
 							<div class="tag-widget post-tag-container">
 								<div class="tagcloud" style="display: flex;">
-									<a href="#">위치순</a> <a href="#">지역화폐</a> <a href="#"
+									<a href="#">위치순</a> <a href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?restaurantList=${restaurantBean.getRestaurant_local_currency()}">지역화폐</a> 
+									<a href="#"
 										class="tag-cloud-link">태그1</a> <a href="#"
 										class="tag-cloud-link">태그2</a> <a href="#"
 										class="tag-cloud-link">태그3</a> <a href="#"
@@ -155,7 +156,7 @@
 										class="tag-cloud-link">태그5</a>
 								</div>
 							</div>
-						</div> -->
+						</div>
 					</div>
 				</div>
 			</form>
