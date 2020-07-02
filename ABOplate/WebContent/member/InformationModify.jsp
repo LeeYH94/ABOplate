@@ -36,7 +36,7 @@
 <body>
 	<c:set var="memberBean" value="${requestScope.memberBean}" />
 	<c:set var="mpref" value="${requestScope.mpref}"/>
-	
+	<c:set var="mregion" value="${requestScope.mregion}"/>
 	<section class="ftco-section contact-section">
 		<div class="container">
 			<div class="row block-9 justify-content-center mb-5">
@@ -90,24 +90,27 @@
 						</div>
 			
 						<div class="form-group">
+				
 							<label for="age">지역(서울시)</label>
 							<div class="form-group">
-								<select style="width: 150px; font-size: 13px;" name="region" id="region"
+								<select style="width: 150px; font-size: 13px;" name="memberRegion" id="memberRegion"
 									class="form-control">
+									
 									<option value=''>선택하세요</option>
-									<option value='Gwangjin'>광진구</option>
-									<option value='Seocho'>서초구</option>
-									<option value='Seongdong'>성동구</option>
-									<option value='Yangcheon'>양천구</option>
-									<option value='Yongsan'>용산구</option>
-									<option value='Eunpyeong'>은평구</option>
-									<option value='Jongno'>종로구</option>
-									<option value='Jungnang'>중랑구</option>
-									<option value='Goyang'>고양시</option>
-									<option value='Suwon'>수원시</option>
-									<option value='Yongin'>용인시</option>
+									<option value='Gwangjin' ${mregion == 'Gwangjin' ? 'selected':"f"}>광진구</option>
+									<option value='Seocho' ${mregion == 'Seocho' ? 'selected':"f"}>서초구</option>
+									<option value='Seongdong'${mregion == 'Seongdong' ? 'selected':"f"} >성동구</option>
+									<option value='Yangcheon'${mregion == 'Yangcheon' ? 'selected':"f"}>양천구</option>
+									<option value='Yongsan'${mregion == 'Yongsan' ? 'selected':"f"}>용산구</option>
+									<option value='Eunpyeong'${mregion == 'Eunpyeong' ? 'selected':"f"}>은평구</option>
+									<option value='Jongno'${mregion == 'Jongno' ? 'selected':"f"}>종로구</option>
+									<option value='Jungnang'${mregion == 'Jungnang' ? 'selected':"f"}>중랑구</option>
+									<option value='Goyang'${mregion == 'Goyang' ? 'selected':"f"}>고양시</option>
+									<option value='Suwon'${mregion == 'Suwon' ? 'selected':"f"}>수원시</option>
+									<option value='Yongin' ${mregion == 'Yongin' ? 'selected':"f"}>용인시</option>
 								</select>
 							</div>
+							
 						</div>
 						<div class="form-group justify-content-center">
 							<input type="button" style="width: 100%;" value="수정"

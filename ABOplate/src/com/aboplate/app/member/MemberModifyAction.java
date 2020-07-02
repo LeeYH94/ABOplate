@@ -18,11 +18,17 @@ public class MemberModifyAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
 		MemberDAO mDao = new MemberDAO();
 		MemberBean memberBean =new MemberBean();
 		HttpSession session = request.getSession();
+		
+		String[] region_en = {"Gwangjin", "Seocho", "Seongdong", "Yangcheon", "Yongsan", "Eunpyeong"
+				, "Jongno", "Jungnang", "Goyang", "Suwon", "Yongin"};
+		String[] region_kor = {"광진구", "서초구", "성동구", "양천구", "용산구", "은평구"
+				, "종로구", "중랑구", "고양시", "수원시", "용인시"};
 		
 		String[] preference_en = {"korean", "chinese", "japanese", "american"};
 		String[] preference_kor = {"한식,", "중식,", "일식,", "양식,"};
@@ -31,10 +37,9 @@ public class MemberModifyAction implements Action {
 		String memberId = (String)session.getAttribute("sessionId");
 		memberBean = mDao.getMemberInfo(memberId);
 		request.setAttribute("memberBean", memberBean);
-		
-		String pref = "";
+		//음식 선호 부분
 		String mpref = memberBean.getMember_preference_food();
-		
+		String mregion= memberBean.getMember_region();
 		if(mpref!="") {		
 			for (int i = 0; i < preference_kor.length; i++) {
 				if (mpref.equals(preference_kor[i])) {
@@ -43,6 +48,14 @@ public class MemberModifyAction implements Action {
 			}
 		}
 		request.setAttribute("mpref", mpref);
+		
+		//지역 부분
+		for (int i = 0; i < region_kor.length; i++) {
+			if (mregion.equals(region_kor[i])) {
+				mregion= region_en[i];
+			}
+		}
+		request.setAttribute("mregion",mregion);
 		
 		forward.setRedirect(false);
 		forward.setPath("/member/InformationModify.jsp");
