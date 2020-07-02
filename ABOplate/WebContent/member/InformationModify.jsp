@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -34,26 +35,8 @@
 </head>
 <body>
 	<c:set var="memberBean" value="${requestScope.memberBean}" />
-	<c:set var="memberNickname" value="${requestScope.memberNickname}" />
-	<script>
-		var pw = prompt("패스워드를 입력하세요" + "");
-	</script>
-	<c:choose>
-		<c:when test="${memberBean.getMember_password() eq pw}">
-			<script>
-				alert("입력 완료되었습니다.");
-
-				//location.replace("${pageContext.request.contextPath}/member/MemberModify.me");
-			</script>
-		</c:when>
-		<c:otherwise>
-			<script>
-				alert("다시 비밀번호를 입력해주세요");
-				//전 페이지로 이동
-			</script>
-		</c:otherwise>
-	</c:choose>
-
+	<c:set var="mpref" value="${requestScope.mpref}"/>
+	
 	<section class="ftco-section contact-section">
 		<div class="container">
 			<div class="row block-9 justify-content-center mb-5">
@@ -86,39 +69,30 @@
 								class="form-control" id="newMemberRePassword"
 								name="newMemberRePassword">
 						</div>
-
+	
 						<div class="form-group">
-							<c:choose>
-								<c:when test="${memberBean.getMember_preference_food() eq null }">
-								<script>
-								$('input:checkbox[name="memberFavorite"]').attr("checked", true);
-									</script>
-								</c:when>
-								<c:otherwise>
-									<script>
-									$('input:checkbox[name="memberFavorite"]').attr("checked", false);
-									</script>
-								</c:otherwise>
-							</c:choose>
-							<label for="favorite">선호음식 : </label> <input type="checkbox"
-								id="memberFavorite" name="memberFavorite" value="korean">
+							
+							
+							<label for="favorite">선호음식 : </label>
+							 <input type="checkbox" class="checks"
+								id="memberFavorite" name="memberFavorite" value="korean" ${mpref == 'korean' ? "checked":" "}>
 							<label for="demo-human" style="position: static;"> 한식 </label>
 							 <input
-								type="checkbox" id="memberFavorite" name="memberFavorite"
-								value="chinese"> <label for="demo-human"
+								type="checkbox"  class="checks" id="memberFavorite" name="memberFavorite"
+								value="chinese" ${mpref == 'chinese' ? "checked":" "}> <label for="demo-human"
 								style="position: static;"> 중식 </label>
-								 <input type="checkbox"id="memberFavorite" name="memberFavorite" value="japanese">
+								 <input type="checkbox"  class="checks" id="memberFavorite" name="memberFavorite" value="japanese" ${mpref == 'japanese' ? "checked":" "}>
 							<label for="demo-human" style="position: static;"> 일식 </label>
 							 <input
-								type="checkbox" id="memberFavorite" name="memberFavorite"
-								value="american"> <label for="demo-human"
+								type="checkbox"  class="checks" id="memberFavorite" name="memberFavorite"
+								value="american" ${mpref == 'american' ? "checked":" "}> <label for="demo-human"
 								style="position: static;"> 양식 </label>
 						</div>
-
+			
 						<div class="form-group">
 							<label for="age">지역(서울시)</label>
 							<div class="form-group">
-								<select style="width: 150px; font-size: 13px;" name=""
+								<select style="width: 150px; font-size: 13px;" name="region" id="region"
 									class="form-control">
 									<option value=''>선택하세요</option>
 									<option value='Gwangjin'>광진구</option>
@@ -169,8 +143,5 @@
 <script>
 	var contextPath = "${pageContext.request.contextPath}"
 </script>
-<script
-	src="${pageContext.request.contextPath}/member/memberJs/modify.js"></script>
-	<script
-	src="${pageContext.request.contextPath}/member/MemberModify.me"></script>
+<script src="${pageContext.request.contextPath}/member/memberJs/modify.js"></script>
 </html>

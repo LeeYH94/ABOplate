@@ -18,28 +18,34 @@ public class MemberModifyAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		
 		ActionForward forward = new ActionForward();
 		MemberDAO mDao = new MemberDAO();
 		MemberBean memberBean =new MemberBean();
 		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter();
 		
+		String[] preference_en = {"korean", "chinese", "japanese", "american"};
+		String[] preference_kor = {"한식,", "중식,", "일식,", "양식,"};
 		System.out.println("modify들어옴");
 		
 		String memberId = (String)session.getAttribute("sessionId");
-		String memberNickname =  mDao.getMemberNickname(memberId);
-		String Password = mDao.encryptPw((request.getParameter("memberPassword")));
-		
 		memberBean = mDao.getMemberInfo(memberId);
 		request.setAttribute("memberBean", memberBean);
-		request.setAttribute("memberNickname",memberNickname);
-		System.out.println(memberNickname);
-		request.setAttribute("memberPassword",Password);
-	
+		
+		String pref = "";
+		String mpref = memberBean.getMember_preference_food();
+		
+		if(mpref!="") {		
+			for (int i = 0; i < preference_kor.length; i++) {
+				if (mpref.equals(preference_kor[i])) {
+					mpref = preference_en[i];	
+				}
+			}
+		}
+		request.setAttribute("mpref", mpref);
+		
 		forward.setRedirect(false);
-		forward.setPath("/member/Informationmodify.jsp");
+		forward.setPath("/member/InformationModify.jsp");
 		
 		return forward;
 	}

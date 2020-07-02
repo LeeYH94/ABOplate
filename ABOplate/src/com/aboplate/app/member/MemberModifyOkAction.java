@@ -22,13 +22,14 @@ public class MemberModifyOkAction implements Action {
 		MemberDAO mDao = new MemberDAO();
 		MemberBean memberBean =new MemberBean();
 		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter();
+		
 		
 		System.out.println("memberok들어옴");
 		String memberId = (String)session.getAttribute("sessionId");
 		System.out.println(memberId);
 		String memberNickname =  mDao.getMemberNickname(memberId);
-		System.out.println(memberNickname);
+		
+		
 		forward = new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/member/MemberInfo.me");
