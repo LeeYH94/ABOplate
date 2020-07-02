@@ -71,7 +71,7 @@ public class MemberLoginOkAction implements Action {
 			session.setAttribute("sessionId", id);
 			forward.setPath(request.getContextPath()+"/index.jsp");	
 		} else {
-			forward.setPath(request.getContextPath()+"/member/MemberLogin.me");
+			forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
 		}
 
 		forward.setRedirect(true);
