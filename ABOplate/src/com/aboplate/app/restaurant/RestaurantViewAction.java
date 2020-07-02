@@ -26,6 +26,10 @@ public class RestaurantViewAction implements Action{
 		HttpSession session = request.getSession();
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
+		/*추가부분*/ 
+		System.out.println(restaurantNum + "asdsadasdsad");
+		restaurantDao.updateReadCount(restaurantNum);
+		
 		if(session.getAttribute("sessionId") != null) {
 			String id = session.getAttribute("sessionId").toString();
 			request.setAttribute("bookmark", bookmarkDao.checkBookmark(id, restaurantNum));
@@ -34,7 +38,6 @@ public class RestaurantViewAction implements Action{
 		ReviewDAO reviewDao = new ReviewDAO();
 		
 		String temp = request.getParameter("page");
-		System.out.println(temp);
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		int pageSize = 5;
 		int totalCnt = reviewDao.getReviewCnt(restaurantNum);

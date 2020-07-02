@@ -130,19 +130,19 @@
     			<div id="map"></div>
 
 
-          <div class="col-md-6  heading-section heading-section-white ftco-animate">
-          	<h1>${restaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
-          	<c:choose>
-	   			<c:when test="${session_id eq !null}">
-	   				<div class="form-group text-right">
-						<a href="#" class="reply" style="background:none;"><img src="../images/favorite.png" width="25px" height="25px"></a>
-					</div>
-				</c:when>
-			</c:choose>
-			<!-- 로그인 시 북마크 표시 뜨게함 -->
-
-          	<strong><span>${restaurantBean.getRestaurant_ration_total()}점</span></strong> <!-- 평점 -->
-          </div>
+	          <div class="col-md-6  heading-section heading-section-white ftco-animate">
+	          	<h1>${restaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
+	          	<c:choose>
+		   			<c:when test="${session_id eq !null}">
+		   				<div class="form-group text-right">
+							<a href="#" class="reply" style="background:none;"><img src="../images/favorite.png" width="25px" height="25px"></a>
+						</div>
+					</c:when>
+				</c:choose>
+				<!-- 로그인 시 북마크 표시 뜨게함 -->
+				<strong><span>${restaurantBean.getRestaurant_hit()}조회수</span></strong>
+	          	<strong><span>${restaurantBean.getRestaurant_ration_total()}점</span></strong> <!-- 평점 -->
+	          </div>
           	</div>
 
 

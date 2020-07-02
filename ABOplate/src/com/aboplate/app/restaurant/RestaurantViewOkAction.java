@@ -29,7 +29,7 @@ public class RestaurantViewOkAction implements Action{
 		/*HttpSession session = request.getSession();*/
 
 		/*String id = session.getAttribute("sessionId").toString();*/
-
+		
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		restaurantBean = restaurantDao.getRestaurantInfo(restaurantNum);
 

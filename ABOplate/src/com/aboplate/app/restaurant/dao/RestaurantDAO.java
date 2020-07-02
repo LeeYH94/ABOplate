@@ -117,6 +117,10 @@ public class RestaurantDAO {
 		return sqlsession.selectOne("Restaurant.getLocalCurrencyCnt");
 	}
 	
+	public void updateReadCount(int board_num) {
+		sqlsession.update("Restaurant.updateReadCount", board_num);
+	}
+	
 }
 
 

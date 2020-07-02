@@ -59,5 +59,9 @@
 		SELECT REVIEW_SEQ.CURRVAL FROM DUAL
 	</select>
 	
+	<update id="updateReadCount" parameterType="_int">
+		UPDATE RESTAURANT
+		SET RESTAURANT_HIT = RESTAURANT_HIT + 1 WHERE RESTAURANT_NUM = ${num}
+	</update>
 	
 </mapper>
