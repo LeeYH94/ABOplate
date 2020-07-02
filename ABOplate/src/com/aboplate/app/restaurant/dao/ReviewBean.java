@@ -6,6 +6,7 @@ public class ReviewBean {
 	private String member_nickname;
 	private String review;
 	private int review_ration;
+	private int review_recommend;
 	private String review_report;
 	private String review_upload_date;
 	
@@ -67,6 +68,16 @@ public class ReviewBean {
 	public void setReview_upload_date(String review_upload_date) {
 		this.review_upload_date = review_upload_date;
 	}
+
+	public int getReview_recommend() {
+		return review_recommend;
+	}
+
+	public void setReview_recommend(int review_recommend) {
+		this.review_recommend = review_recommend;
+	}
+	
+	
 
 	
 	

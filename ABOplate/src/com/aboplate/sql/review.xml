@@ -66,6 +66,33 @@
 		SET MEMBER_STAMP = MEMBER_STAMP + 5
 		WHERE MEMBER_ID = #{id}
 	</update>
+	
+	<update id="minusRecommend" parameterType="_int">
+		UPDATE REVIEW
+		SET REVIEW_RECOMMEND = REVIEW_RECOMMEND - 1
+		WHERE REVIEW_NUM = ${reviewNum}
+	</update>
+	
+	<update id="plusRecommend" parameterType="_int">
+		UPDATE REVIEW
+		SET REVIEW_RECOMMEND = REVIEW_RECOMMEND + 1 
+		WHERE REVIEW_NUM = ${reviewNum}
+	</update>
+	
+	<select id="checkReviewNotify" parameterType="map" resultType="_int">
+		SELECT COUNT(*) FROM REVIEW_REPORT 
+			WHERE REVIEW_NUM = ${reviewNum} AND DECLARATION_ID = #{id}
+	</select>
+	
+	<delete id="popReviewNotify" parameterType="map">
+		DELETE FROM REVIEW_REPORT 
+			WHERE REVIEW_NUM = ${reviewNum} AND DECLARATION_ID = #{id}
+	</delete>
+	
+	<insert id="addReviewNotify" parameterType="map">
+		INSERT INTO REVIEW_REPORT
+		VALUES(${reviewNum}, #{id})
+	</insert>
 
 
 </mapper>

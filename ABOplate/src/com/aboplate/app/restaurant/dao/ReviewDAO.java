@@ -112,5 +112,45 @@ public class ReviewDAO {
 		sqlsession.update("Review.updateReviewStamp", id);
 	}
 	
+	public void minusRecommend(int reviewNum) {
+		sqlsession.update("Review.minusRecommend", reviewNum);
+	}
+	
+	public void plusRecommend(int reviewNum) {
+		sqlsession.update("Review.plusRecommend", reviewNum);
+	}
+	
+	public boolean checkReviewNotify(String id, int reviewNum) {
+		boolean check = false;
+		HashMap<String, Object> datas = new HashMap<>();
+		
+		datas.put("reviewNum", reviewNum);
+		datas.put("id", id);
+		
+		if((Integer)sqlsession.selectOne("Review.checkReviewNotify", datas) == 1) {
+			check = true;
+		}
+		
+		return check;
+	}
+	
+	public void popReviewNotify(String id, int reviewNum) {
+		HashMap<String, Object> datas = new HashMap<>();
+		
+		datas.put("reviewNum", reviewNum);
+		datas.put("id", id);
+		
+		sqlsession.delete("Review.popReviewNotify", datas);
+	}
+	
+	public void addReviewNotify(String id, int reviewNum) {
+		HashMap<String, Object> datas = new HashMap<>();
+		
+		datas.put("reviewNum", reviewNum);
+		datas.put("id", id);
+		
+		sqlsession.insert("Review.addReviewNotify", datas);
+	}
+	
 	
 }
