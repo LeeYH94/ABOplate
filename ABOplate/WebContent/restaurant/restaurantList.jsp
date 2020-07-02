@@ -121,7 +121,7 @@
 
 	<!-- 여기가 시작 -->
 	<section class="ftco-section">
-		<div class="col-md-11">
+		<div class="col-md-13">
 			<form action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re" class="search-location mt-md-5">
 				<div class="row justify-content-center">
 					<div class="form-group">
@@ -134,7 +134,7 @@
 							</select>
 						</div>
 					</div>
-					<div class="col-lg-8 align-items-end">
+					<div class="col-lg-5 align-items-end">
 						<div class="form-group">
 							<div class="form-field">
 								<input type="text" class="form-control" name="keyWord"
@@ -144,7 +144,7 @@
 									</button>
 							</div>
 						</div>
-						<div class=row style="height: 60px;">
+						<%-- <div class=row style="height: 60px;">
 							<div class="tag-widget post-tag-container">
 								<div class="tagcloud" style="display: flex;">
 									<a href="#">위치순</a> <a href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?restaurantList=${restaurantBean.getRestaurant_local_currency()}">지역화폐</a> 
@@ -156,7 +156,7 @@
 										class="tag-cloud-link">태그5</a>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 			</form>
