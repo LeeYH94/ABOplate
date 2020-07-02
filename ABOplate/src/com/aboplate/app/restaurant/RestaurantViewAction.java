@@ -26,8 +26,7 @@ public class RestaurantViewAction implements Action{
 		HttpSession session = request.getSession();
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
-		/*추가부분*/ 
-		System.out.println(restaurantNum + "asdsadasdsad");
+		/*추가부분*/
 		restaurantDao.updateReadCount(restaurantNum);
 		
 		if(session.getAttribute("sessionId") != null) {

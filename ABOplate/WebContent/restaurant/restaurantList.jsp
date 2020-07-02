@@ -229,28 +229,6 @@
 		</div>
 	</section>
 	
-	<%-- <!-- 검색영역 -->
-	<div style="display:none;" class="map_wrap">
-	    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-	
-	    <div id="menu_wrap" class="bg_white">
-	        <div class="option">
-	            <div>
-	                <form onsubmit="searchPlaces(); return false;">
-	                    키워드 : <input type="text" value="${restaurantBean.getRestaurant_tel()}" id="keyword" size="15"> 
-	                    <button type="submit">검색하기</button> 
-	                </form>
-	            </div>
-	        </div>
-	        <hr>
-	        <ul id="placesList"></ul>
-	        <div id="pagination"></div>
-	    </div>
-	</div> --%>
-	
-	
-	
-	
 	<!-- 여기가 끝 -->
 
 	<footer class="ftco-footer ftco-section">

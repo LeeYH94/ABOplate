@@ -131,7 +131,7 @@
 
 
 	          <div class="col-md-6  heading-section heading-section-white ftco-animate">
-	          	<h1>${restaurantBean.getRestaurant_name()} </h1><br> <!-- 이름 -->
+	          	<h1>${restaurantBean.getRestaurant_name()} </h1> <!-- 이름 -->
 	          	<c:choose>
 		   			<c:when test="${session_id eq !null}">
 		   				<div class="form-group text-right">
@@ -140,15 +140,11 @@
 					</c:when>
 				</c:choose>
 				<!-- 로그인 시 북마크 표시 뜨게함 -->
-				<strong><span>${restaurantBean.getRestaurant_hit()}조회수</span></strong>
-	          	<strong><span>${restaurantBean.getRestaurant_ration_total()}점</span></strong> <!-- 평점 -->
+	          	<strong>평점 : <span style="color:orange;"><c:forEach var="i" begin="1" end="${restaurantBean.getRestaurant_ration_total()}">★</c:forEach></span></strong>&nbsp; <!-- 평점 -->
+				<strong><span>조회수 : ${restaurantBean.getRestaurant_hit()}</span></strong>
 	          </div>
           	</div>
-
-
         </div>
-
-
          <div class="row text-right col-md-5 ftco-animate">
        	 </div>
     	<div class="row">
