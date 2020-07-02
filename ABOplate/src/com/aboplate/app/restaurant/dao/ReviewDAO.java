@@ -152,5 +152,15 @@ public class ReviewDAO {
 		sqlsession.insert("Review.addReviewNotify", datas);
 	}
 	
+	public void minusNotify(int reviewNum) {
+		sqlsession.update("Review.minusNotify", reviewNum);
+	}
+	
+	public void plusNotify(int reviewNum) {
+		sqlsession.update("Review.plusNotify", reviewNum);
+	}
+	
+	
+	
 	
 }

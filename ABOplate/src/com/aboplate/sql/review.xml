@@ -93,6 +93,20 @@
 		INSERT INTO REVIEW_REPORT
 		VALUES(${reviewNum}, #{id})
 	</insert>
+	
+	<update id="minusNotify" parameterType="_int">
+		UPDATE REVIEW
+		SET REVIEW_REPORT = REVIEW_REPORT - 1 
+		WHERE REVIEW_NUM = ${reviewNum}
+	</update>
+	
+	<update id="plusNotify" parameterType="_int">
+		UPDATE REVIEW
+		SET REVIEW_REPORT = REVIEW_REPORT + 1
+		WHERE REVIEW_NUM = ${reviewNum}
+	</update>
+	
+	
 
 
 </mapper>
