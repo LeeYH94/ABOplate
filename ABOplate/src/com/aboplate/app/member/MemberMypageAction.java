@@ -26,6 +26,7 @@ public class MemberMypageAction implements Action{
 		
 		String id = session.getAttribute("sessionId").toString();
 		String nickname = memberDao.getMemberNickname(id);
+		System.out.println(nickname);
 		
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
@@ -50,10 +51,11 @@ public class MemberMypageAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("memberReviewList", reviewDao.getMemberReviewList(startRow, endRow, nickname));
-		
-		forward.setRedirect(true);
+
+		forward.setRedirect(false);
 		forward.setPath("/member/mypage.jsp");
-		return null;
+		
+		return forward;
 	}
 
 }

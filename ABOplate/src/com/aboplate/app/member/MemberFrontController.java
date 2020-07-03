@@ -110,20 +110,12 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println(e);
 				System.out.println("memberCheckNickName 에러");
 			}
-		} else if (command.equals("/member/MemberInfo.me")) {
-			action = new MemberMypageAction();
-			try {
-				forward = action.execute(req, resp);
-			} catch (Exception e) {
-				System.out.println(e);
-				System.out.println("MemberInfo 에러");
-			}
 		} else if (command.equals("/member/MemberModify.me")) {
 			action = new MemberModifyAction();
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
-				System.out.println(e);
+				System.out.println("MemberModify 에러");
 				
 			}
 		}else if (command.equals("/member/MemberModifyOk.me")) {
@@ -131,15 +123,17 @@ public class MemberFrontController extends HttpServlet {
 			try {
 				forward = action.execute(req, resp);
 			} catch (Exception e) {
-				System.out.println(e);
+				System.out.println("MemberModifyOk 에러");
 				
 			}
-		}
-		
-		else if (command.equals("/member/mypage.me")) {
-			forward=new ActionForward();
-	         forward.setRedirect(false);
-	         forward.setPath("/member/mypage.jsp");
+		}else if (command.equals("/member/mypage.me")) {
+			action = new MemberMypageAction();
+			try {
+				forward = action.execute(req, resp);
+			} catch (Exception e) {
+				System.out.println("mypage 에러");
+				
+			}
 		}else if (command.equals("/member/favorites.me")) {
 			forward=new ActionForward();
 	         forward.setRedirect(false);

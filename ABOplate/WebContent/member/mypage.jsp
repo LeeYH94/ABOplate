@@ -41,6 +41,7 @@
 		<c:set var="endPage" value="${requestScope.endPage}"/>
 		<c:set var="totalCnt" value="${requestScope.totalCnt}"/>
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
+
 	
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
@@ -119,9 +120,8 @@
 								    				</div>
 								        	</div>
 								        			<input type="text" readonly maxlength="50" style="width:50%;" value="${r_bean.getReview()}" class="sort">
-								        			
-								        			<input type="button" onclick="${pageContext.request.contextPath}/restaurant/ReviewModify.re?seq=${r_bean.getreview_num()}"value="수정" style="margin-right:5px;"class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="button" onclick="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?review_num=${r_bean.getreview_num()}&seq=${restaurantBean.getrestaurant_num()}" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+								        			<input type="button" onclick="location.href ='${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${r_bean.getReview_num()}&restaurantNum=${r_bean.getRestaurant_num()}'" value="수정" style="margin-right:5px;" class="btn btn-primary py-3 p=x-5 sort">
+		              								<input type="button" onclick="location.href ='${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${r_bean.getReview_num()}&restaurantNum=${r_bean.getRestaurant_num()}'" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 								        	</div>
 								        	</c:forEach>
 										   	</c:when>
@@ -131,13 +131,16 @@
 										   		</div>
 											</c:otherwise>
 											</c:choose>
-								<div class="review d-flex">			
-								<div class="col text-center">
-									<div class="block-27">
-									<ul>
+								<br/>
+										<br/>
+
+									   	<div class="review d-flex">
+									   			<div class="col text-center">
+            										<div class="block-27">
+											              <ul>
 											              <c:choose>
 															<c:when test="${nowPage > 1}">
-											                	<li><a href="#">&lt;</a></li>
+											                	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage - 1}">&lt;</a></li>
 											                </c:when>
 														</c:choose>
 														<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -146,50 +149,50 @@
 																	<li>${i}</li>
 																</c:when>
 																<c:otherwise>
-																	<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${i}">${i}</a></li>
+																	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${i}">${i}</a></li>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>
 														<c:choose>
 															<c:when test="${nowPage < totalPage}">
-																<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${nowPage + 1}">&gt;</a></li>
+																<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage + 1}">&gt;</a></li>
 															</c:when>
 														</c:choose>
 											              </ul>
-									</div>
-								</div>
-								</div>
+											            </div>
+											          </div>
+									   		</div>
 
 							</div>
 
-							<!-- 회원 추천 -->
+							<!-- 회원 정보 -->
 							<div class="tab-pane fade" id="pills-manufacturer" role="tabpanel" aria-labelledby="pills-description-tab">
 						     <form class="bg-light p-5 contact-form">
 						     	<div class="row block-9 justify-content-center mb-5">
 						     	<div class="col-md-6 mb-md-5">
 						     	  <div class="form-group">
 				                    <label for="id">아이디</label>
-				                    <input type="text" class="form-control" id="id" readonly value="${memberBean.getmember_id()}">
+				                    <input type="text" class="form-control" id="id" value="${sessionId}" readonly>
 				                  </div>
 						     	  <div class="form-group">
 				                    <label for="name">이름</label>
-				                    <input type="text" class="form-control" id="name" readonly value="${memberBean.getmember_name()}">
+				                    <input type="text" class="form-control" id="name" readonly value="${memberBean.getMember_name()}">
 				                  </div>
 						     	  <div class="form-group">
 				                    <label for="email">이메일</label>
-				                    <input type="email" class="form-control" id="email" readonly value="${memberBean.getmember_email()}">
+				                    <input type="email" class="form-control" id="email" readonly value="${memberBean.getMember_email()}">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="nickname">닉네임</label>
-				                    <input type="text" class="form-control" id="nickname" readonly value="${memberBean.getmember_nickname()}">
+				                    <input type="text" class="form-control" id="nickname" readonly value="${memberBean.getMember_nickname()}">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="favorite">선호음식</label>
-				                    <input type="text" class="form-control" id="favorite" readonly value="${memberBean.getmember_preference_food()}">
+				                    <input type="text" class="form-control" id="favorite" readonly value="${memberBean.getMember_preference_food()}">
 				                  </div>
 				                  <div class="form-group">
 				                    <label for="">지역</label>
-				                    <input type="text" class="form-control" id="" readonly value="${memberBean.getmember_region()}">
+				                    <input type="text" class="form-control" id="" readonly value="${memberBean.getMember_region()}">
 				                  </div>
 							<div class="form-group">
 								<div class="d-flex justify-content-center">
