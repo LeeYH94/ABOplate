@@ -47,7 +47,6 @@
 			</button>
 			
 			<c:set var="bookmarkBean" value="${requestScope.bookmarkBean}"/>
-			<c:set var="memberBean" value="${requestScope.memberBean}" />
 			<c:set var="totalPage" value="${requestScope.totalPage}" />
 			<c:set var="totalCnt" value="${requestScope.totalCnt}" />
 			<c:set var="currentPage" value="${requestScope.currentPage}" />
@@ -59,6 +58,8 @@
 
 			<div class="collapse navbar-collapse dropmenu" id="ftco-nav">
 				<ul class="navbar-nav ml-auto" id="dm_ul">
+				<c:choose>
+					<c:when test="${sessionId ne null}">
 					<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
 					<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
 					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me"
@@ -69,6 +70,8 @@
 					<!-- <li class="nav-item"><a href="/member/favorites.jsp" class="nav-link">즐겨찾기</a></li> -->
 					<li class="nav-item"><a href="#" class="nav-link">최근본 맛집</a>
 					</li>
+					</c:when>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
@@ -261,7 +264,7 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-
+	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>

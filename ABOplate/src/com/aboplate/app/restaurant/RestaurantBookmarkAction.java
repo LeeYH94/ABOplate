@@ -20,8 +20,7 @@ public class RestaurantBookmarkAction implements Action{
 		RestaurantDAO rDao = new RestaurantDAO();
 		BookmarkDAO bookmarkDao = new BookmarkDAO();
 		BookmarkBean bookmarkBean = new BookmarkBean();
-		int bookmark_num = Integer.parseInt(request.getParameter("bookmarkNum"));
-		String email = request.getParameter("member_email");
+		String email = request.getParameter("memberEmail");
 		HttpSession session = request.getSession();
 		
 		String id = (String)session.getAttribute("sessionId");

@@ -3,16 +3,19 @@
  * enroll() 등록,
  */
 
-function enroll(){
+function enroll(restaurantNum){
+		var icon = document.getElementById("bookmarkIcon");
 	$.ajax({
-		url : contextPath +"/restaurant/restaurantBookmarkOk.re",
-		type : 'get',
+		url : contextPath +"/restaurant/restaurantBookmarkOk.re?restaurantNum=" + restaurantNum,
+		type : 'GET',
 		dataType : 'text',
 		success : function(data){
 			if(data.trim() == 'add'){
-				$("#bookmarkIcon").style.backgroundColor = "#f6ff00";
+				/*icon.src =" ../images/favoritecolor.png";*/
+				icon.src = "../images/favorite.png";
 			}else{
-				$("#bookmarkIcon").style.backgroundColor = "none";
+				/*icon.src = "../images/favorite.png";*/
+				icon.src =" ../images/favoritecolor.png";
 			}
 		},
 		error : function(){
