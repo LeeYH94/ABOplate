@@ -60,7 +60,7 @@ public class RestaurantViewAction implements Action{
 		
 		int endRow = page * 5;
 		int startRow = endRow - 4;
-		
+
 		int startPage = ((page-1) / pageSize) * pageSize + 1;
 		int endPage = startPage + 4;
 		int totalPage = (totalCnt-1) / pageSize + 1;

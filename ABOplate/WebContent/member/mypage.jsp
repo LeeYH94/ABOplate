@@ -140,22 +140,22 @@
 											              <ul>
 											              <c:choose>
 															<c:when test="${nowPage > 1}">
-											                	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage - 1}">&lt;</a></li>
+											                	<li><a href="${pageContext.request.contextPath}/member/mypage.me?page=${nowPage - 1}">&lt;</a></li>
 											                </c:when>
 														</c:choose>
 														<c:forEach var="i" begin="${startPage}" end="${endPage}">
 															<c:choose>
 																<c:when test="${i eq nowPage}">
-																	<li>${i}</li>
+																	<li><a>${i}</a></li>
 																</c:when>
 																<c:otherwise>
-																	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${i}">${i}</a></li>
+																	<li><a href="${pageContext.request.contextPath}/member/mypage.me?page=${i}">${i}</a></li>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>
 														<c:choose>
 															<c:when test="${nowPage < totalPage}">
-																<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage + 1}">&gt;</a></li>
+																<li><a href="${pageContext.request.contextPath}/member/mypage.mepage=${nowPage + 1}">&gt;</a></li>
 															</c:when>
 														</c:choose>
 											              </ul>

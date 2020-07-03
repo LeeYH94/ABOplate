@@ -26,7 +26,6 @@ public class MemberMypageAction implements Action{
 		
 		String id = session.getAttribute("sessionId").toString();
 		String nickname = memberDao.getMemberNickname(id);
-		System.out.println(nickname);
 		
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
@@ -34,14 +33,13 @@ public class MemberMypageAction implements Action{
 		int totalCnt = reviewDao.getMemberReviewCnt(nickname);
 		
 		int endRow = page * 5;
-		int startRow = page - 4;
+		int startRow = endRow - 4;
 		
 		int startPage = ((page-1) / pageSize) * pageSize + 1;
 		int endPage = startPage + 4;
 		int totalPage = (totalCnt-1) / pageSize + 1;
 		
 		endPage = endPage > totalPage ? totalPage : endPage;
-		
 		memberBean = memberDao.getMemberInfo(id);
 		
 		request.setAttribute("memberBean", memberBean);
