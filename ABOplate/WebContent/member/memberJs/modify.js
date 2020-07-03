@@ -3,7 +3,6 @@ var nicknameCheck = false;
 
 function modifySubmit() {
   	var form = document.modifyForm;
-  			
  	 if ('' == form.newMemberPassword.value) {
 		alert("새로운 비밀번호 확인을 입력해주세요");
 		form.newMemberPassword.focus();
