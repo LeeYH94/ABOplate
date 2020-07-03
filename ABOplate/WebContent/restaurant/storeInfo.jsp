@@ -254,14 +254,13 @@
 													</span>
 									   			</p>
 									   			<p>${reviewMap.key.getReview()}
-									   			<c:forEach var="pictureBean" items="${reviewMap.value}">
-									   			<div class="img img-fluid">	   			
-									   				<img src="../images/${pictureBean.getPicture_name()}" width="300">
-									   			</div>
-									   			</c:forEach>
-									   		
-									   											   			
-									   			
+									   			<c:if test="${reviewMap.value ne null}">
+									   				<c:forEach var="pictureBean" items="${reviewMap.value}">
+											   			<div class="img img-fluid">	   			
+											   				<img src="../images/${pictureBean.getPicture_name()}" width="150">
+											   			</div>
+										   			</c:forEach>
+									   			</c:if>
 									   			</p>
 									   		</div>
 
