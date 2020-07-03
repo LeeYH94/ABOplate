@@ -249,16 +249,17 @@
 													</span>
 									   			</p>
 									   			<p>${reviewBean.getReview()}
-									   			<div class="img img-fluid">
-									   			<c:if test="${reviewBean.getReview_num() eq pictureBean.getReview_num()}">
-									   			<script>
-									   				alert("들어옴");
-									   			</script>
-									   			<c:forEach var="pictureBean" items="${pictureList}">
-		    										<img src="../images/${pictureBean.getPicture_name()}" id="img_size" alt="Colorlib Template">
-		    									</c:forEach>
-		    									</c:if>	
-	    										</div>
+									   			<c:out value="${fn:length(pictureList)}"/>
+									   			<c:if test="${pictureList.get(0).getReview_num() eq reviewBean.getReview_num()}">
+									   			<c:forEach var="i" begin="0" end="${fn:length(pictureList) - 1}">
+									   			<div class="img img-fluid">	   			
+									   				<img src="../images/${pictureList.get(i).getPicture_name()}" width="300">
+									   			</div>				
+									   			</c:forEach>
+									   			</c:if>
+									   		
+									   											   			
+									   			
 									   			</p>
 									   		</div>
 

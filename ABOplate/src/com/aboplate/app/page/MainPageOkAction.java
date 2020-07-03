@@ -23,7 +23,7 @@ public class MainPageOkAction implements Action{
 		ActionForward forward = new ActionForward();
 		RestaurantDAO restaurantDao = new RestaurantDAO();
 		HttpSession session = request.getSession();
-		RestaurantBean restaurantBean;
+		RestaurantBean restaurantBean = null;
 		String id = null;
 		
 		if(session.getAttribute("sessionId") != null) {
@@ -32,8 +32,10 @@ public class MainPageOkAction implements Action{
 		
 		List<RestaurantBean> tempPopularList = restaurantDao.getPopularList();
 		List<RestaurantBean> popularList = new ArrayList<>();
+		List<RestaurantBean> list = new ArrayList<>();
 		int tempPopularListLength = tempPopularList.size();
-
+		
+		
 		while(popularList.size() < 8) {
 			restaurantBean = tempPopularList.get((int)(Math.random()*tempPopularListLength));
 			if(popularList.contains(restaurantBean)) {
@@ -42,7 +44,7 @@ public class MainPageOkAction implements Action{
 				popularList.add(restaurantBean);
 			}
 		}
-
+		
 		if(id != null) {
 			List<RestaurantBean> tempRecommendList = restaurantDao.getRecommendList(id);
 			List<RestaurantBean> recommendList = new ArrayList<>();
@@ -59,11 +61,17 @@ public class MainPageOkAction implements Action{
 			
 			session.setAttribute("recommendList", recommendList);
 		}
-
+		
+		for (int i = 0; i < tempPopularList.size(); i++) {
+			System.out.println(tempPopularList.get(i));
+			list.add(tempPopularList.get(i));
+		}
+		
+		session.setAttribute("list", list);
 		session.setAttribute("popularList", popularList);
 		
 		forward.setPath(request.getContextPath() + "/main.jsp");
-		forward.setRedirect(true); 
+		forward.setRedirect(true);
 		
 		return forward;
 	}

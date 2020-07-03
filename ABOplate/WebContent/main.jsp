@@ -37,7 +37,7 @@
 </head>
 <!-- 페이지 시작 때 popular list 불러옴 -->
 <body onload="javascript:goDetail();">
-
+	
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
@@ -146,20 +146,23 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-10 align-items-end">
-									<div class="form-group">
-										<div class="form-field">
-											<span style="color:#FFFFFF; text-shadow: 0px 3px 4px rgba(0,0,0,0.4);">실시간 차트</span>
-											<table style="margin: 0 auto; background-color: white;"
-												class="form-control-tablel">
-												<tbody>
-													<tr>
-														<td><div id="ranking" style="padding: 10px;">키워드</div></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
+								
+								<p>${requestScope.restaurantBean}</p>
+								<div class="col-lg-5 align-items-end">
+									<!-- 실검 -->
+									<div style="color:white;">실시간 차트</div>
+									<ul id="scroll" style="background-color:white; margin-bottom:5px; padding:0; height:30px;" >
+										<c:choose>
+											<c:when test="${list ne null and fn:length(list) > 0}">
+												<c:forEach var="restaurantBean" items="${list}">
+														<li>
+															<a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}">${restaurantBean.getRestaurant_name()}</a>
+														</li>
+												</c:forEach>
+											</c:when>
+										</c:choose>
+									</ul>
+									
 									<div class="form-group">
 										<div class="form-field">
 											<input type="button" value="지역화폐"
