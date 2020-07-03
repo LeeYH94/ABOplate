@@ -56,7 +56,7 @@ function bookmark(restaurantNum){
 		type : 'GET',
 		dataType : 'text',
 		success : function(data){
-			if(data.trim() == 'add'){
+			if(data.trim() == 'pop'){
 				icon.src = "../images/favorite.png";
 			}else{
 				icon.src =" ../images/favoritecolor.png";

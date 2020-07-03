@@ -134,10 +134,6 @@ public class MemberFrontController extends HttpServlet {
 				System.out.println("mypage 에러");
 				
 			}
-		}else if (command.equals("/member/favorites.me")) {
-			forward=new ActionForward();
-	         forward.setRedirect(false);
-	         forward.setPath("/member/favorites.jsp");
 		}
 		
 		else {
