@@ -255,11 +255,11 @@
 									   			</p>
 									   			<p>${reviewMap.key.getReview()}
 									   			<c:if test="${reviewMap.value ne null}">
-									   				<c:forEach var="pictureBean" items="${reviewMap.value}">
-											   			<div class="img img-fluid">	   			
+										   			<div class="img img-fluid">	   			
+										   				<c:forEach var="pictureBean" items="${reviewMap.value}">
 											   				<img src="../images/${pictureBean.getPicture_name()}" width="150">
-											   			</div>
-										   			</c:forEach>
+											   			</c:forEach>
+										   			</div>
 									   			</c:if>
 									   			</p>
 									   		</div>
