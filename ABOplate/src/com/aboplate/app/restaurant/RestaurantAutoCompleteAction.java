@@ -32,7 +32,8 @@ public class RestaurantAutoCompleteAction implements Action{
 		} else {
 			out.println(restaurantDao.getNameList(search).toString());
 		}
-		
+		out.close();
 		return null;
 	}
+	
 }

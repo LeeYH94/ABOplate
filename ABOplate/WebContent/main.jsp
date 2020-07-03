@@ -454,7 +454,7 @@
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <!-- 	<script src="//code.jquery.com/jquery-3.5.1.min.js"></script> -->
 	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-	<script src="./js/search.autocomplete.js"></script>
+	<script src="./js/search.autocomplete.js?ver=123"></script>
 	<script src="./js/popup.js"></script>
 	<script>var contextPath = "${pageContext.request.contextPath}";</script>
 </html>
