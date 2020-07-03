@@ -3,13 +3,12 @@
  */
 
 $("document").ready(() => {
-	
-	$("#filter").change(() => {
+	$("#search").keyup(() => {
 		var filter = $("#filter option:selected").val();
-		var search = $("#mainSearch").val();
+		var search = $("#search").val();
 		var keywords;
 		$.ajax({
-			type: 'get',
+			type: 'GET',
 			url: contextPath + "/restaurant/restaurantAutoComplete.re?filter=" + filter + "&search=" + search,
 			dataType: "text",
 			success: function(data) {
@@ -21,13 +20,14 @@ $("document").ready(() => {
 		       	console.log(typeof(keywords));
 		       	console.log(keywords);
 		       	
-				$("#mainSearch").autocomplete({
+				$("#search").autocomplete({
 			        source : keywords
 //			        select : function( event, ui ) {
 //			        	console.log(ui.item);
 //			        	goTo(ui.item.value);
 ////			        	${"#mainSearch"}.text(ui.item);//검색창 값을 ui.item
 //			        },
+
 //			        focus : function(event, ui){
 //			        	return false;
 //			        },
@@ -35,7 +35,6 @@ $("document").ready(() => {
 //			        autoFocus : true
 				});
 			}
-	  	});
+ 	});
 	});
-	$("#filter").change();
-})
+});
