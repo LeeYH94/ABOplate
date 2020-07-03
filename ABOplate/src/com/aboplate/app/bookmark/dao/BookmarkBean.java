@@ -2,7 +2,7 @@ package com.aboplate.app.bookmark.dao;
 
 public class BookmarkBean {
 	private int bookmark_num;
-	private String member_email;
+	private String member_id;
 	private int restaurant_num;
 	
 	public BookmarkBean() {;}
@@ -15,12 +15,12 @@ public class BookmarkBean {
 		this.bookmark_num = bookmark_num;
 	}
 
-	public String getMember_email() {
-		return member_email;
+	public String getMember_id() {
+		return member_id;
 	}
 
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
 	public int getRestaurant_num() {

@@ -121,6 +121,12 @@ public class RestaurantDAO {
 		sqlsession.update("Restaurant.updateReadCount", board_num);
 	}
 	
+	public List<RestaurantBean> getLocalCurrencyRestaurantList(){
+		List<RestaurantBean> localCurrencyList = sqlsession.selectList("Restaurant.getLocalCurrencyRestaurantList");
+		
+		return localCurrencyList;
+	}
+	
 }
 
 

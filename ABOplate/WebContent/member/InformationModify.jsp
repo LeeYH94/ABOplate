@@ -45,8 +45,8 @@
 						style="font-size: 56px;"><img src="../images/ABO.png" /></a>
 
 					<form name="modifyForm"
-						action=""
-						class="p-5 bg-light" method="POST">
+						action="${pageContext.request.contextPath}/member/MemberModifyOk.me"
+						class="p-5 bg-light" method="post">
 						<div class="form-group">
 							<label for="id">아이디</label> <input type="text"
 								class="form-control" id="memberId" name="memberId"
@@ -114,7 +114,7 @@
 						</div>
 						<div class="form-group justify-content-center">
 							<input type="button" style="width: 100%;" value="수정"
-								onclick="javascript:formSubmit()" class="btn py-3 btn-primary">
+								 class="btn py-3 btn-primary" onclick="javascript:modifySubmit()">
 						</div>
 					</form>
 				</div>
