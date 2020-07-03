@@ -86,5 +86,13 @@
 	<select id="getMemberNickname" parameterType="string" resultType="string">
 		SELECT MEMBER_NICKNAME FROM MEMBER WHERE MEMBER_ID = #{id}
 	</select>
+	
+	<update id="updateMemberinfo" parameterType="memberBean">
+		UPDATE MEMBER
+		SET MEMBER_PASSWORD = #{member_password},
+			MEMBER_PREFERENCE_FOOD = #{member_preference_food},
+			MEMBER_REGION = #{member_region}
+		WHERE MEMBER_ID = #{member_id}	
+	</update>
 
 </mapper>

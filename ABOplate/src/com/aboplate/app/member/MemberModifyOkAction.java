@@ -38,7 +38,7 @@ public class MemberModifyOkAction implements Action {
 		//password 수정 
 		String userPassword = memberBean.getMember_password();
 		
-		memberBean.setMember_password(request.getParameter("newMemberPassword"));
+		memberBean.setMember_password(mDao.encryptPw(request.getParameter("newMemberPassword")));
 		//선호음식 수정 
 		String pref="";
 		for (String favorite : request.getParameterValues("memberFavorite")) {				
@@ -56,6 +56,7 @@ public class MemberModifyOkAction implements Action {
 				break;
 			}
 		}
+		check=mDao.updateMemberinfo(memberBean);
 		if(!check) {
 	         PrintWriter out=response.getWriter();
 	         response.setContentType("text/html;charset=UTF-8");
@@ -64,7 +65,6 @@ public class MemberModifyOkAction implements Action {
 	         out.println("</script>");
 	         out.close();
 	      }
-		check=mDao.updateMemberinfo(memberBean);
 		forward = new ActionForward();
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/member/MemberInfo.me");

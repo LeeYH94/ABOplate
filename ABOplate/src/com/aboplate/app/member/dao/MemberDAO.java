@@ -40,6 +40,15 @@ public class MemberDAO {
 		return check;
 	}
 	
+	public boolean updateMemberinfo(MemberBean memberBean) {
+		boolean check = false;
+	
+		if(sqlsession.update("Member.updateMemberinfo", memberBean) == 1) {
+			check = true;
+		}
+		return check;
+	}
+	
 	public MemberBean login(String id, String pw) {
 
 		HashMap<String, String> datas = new HashMap<>();

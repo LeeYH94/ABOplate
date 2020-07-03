@@ -4,9 +4,12 @@
 <mapper namespace="Bookmark">
 
 	<select id="getBookmarkList" parameterType="map" resultType="restaurantBean">
-		SELECT ROWNUM, RESTAURANT.* FROM RESTAURANT
-			WHERE RESTAURANT_NUM = ${restaurantNum} 
-			AND ROWNUM BETWEEN ${startRow} AND ${endRow}			
+	
+		SELECT * FROM
+			(SELECT ROWNUM R, V.* FROM
+				(SELECT * FROM RESTAURANT s, BOOKMARK b WHERE s.RESTAURANT_NUM = ${restaurantNum}
+					ORDER BY b.BOOKMARK_NUM DESC) V ) L
+			WHERE L.R BETWEEN ${startRow} AND ${endRow}			
 	</select>
 	
 	<select id="getRestaurantNumList" parameterType="string" resultType="_int">
