@@ -276,7 +276,7 @@
 
 										<br/>
 										<br/>
-
+										
 									   	<div class="review d-flex">
 									   			<div class="col text-center">
             										<div class="block-27">
@@ -286,7 +286,7 @@
 											                	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${nowPage - 1}">&lt;</a></li>
 											                </c:when>
 														</c:choose>
-														<c:forEach var="i" begin="${start}" end="${endPage}">
+														<c:forEach var="i" begin="${startPage}" end="${endPage}">
 															<c:choose>
 																<c:when test="${i eq nowPage}">
 																	<li>${i}</li>
