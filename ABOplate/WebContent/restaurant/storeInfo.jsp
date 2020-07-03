@@ -31,6 +31,12 @@
     <link rel="stylesheet" href="../css/style.css">
   </head>
   <body>
+  
+    	<c:if test="${not empty param.login}">
+			<c:if test="${not param.login}">
+				<script>alert("로그인 후 이용해주세요.");</script>
+			</c:if>
+		</c:if>
 		<c:set var="nowPage" value="${requestScope.currentPage}"/>
 		<c:set var="startPage" value="${requestScope.startPage}"/>
 		<c:set var="endPage" value="${requestScope.endPage}"/>
@@ -249,16 +255,16 @@
 													</span>
 									   			</p>
 									   			<p>${reviewBean.getReview()}
-									   			<div class="img img-fluid">
-									   			<c:if test="${reviewBean.getReview_num() eq pictureBean.getReview_num()}">
-									   			<script>
-									   				alert("들어옴");
-									   			</script>
-									   			<c:forEach var="pictureBean" items="${pictureList}">
-		    										<img src="../images/${pictureBean.getPicture_name()}" id="img_size" alt="Colorlib Template">
-		    									</c:forEach>
-		    									</c:if>	
-	    										</div>
+									   			<c:if test="${pictureList.get(0).getReview_num() eq reviewBean.getReview_num()}">
+									   			<c:forEach var="i" begin="0" end="${fn:length(pictureList) - 1}">
+									   			<div class="img img-fluid">	   			
+									   				<img src="../images/${pictureList.get(i).getPicture_name()}" width="300">
+									   			</div>				
+									   			</c:forEach>
+									   			</c:if>
+									   		
+									   											   			
+									   			
 									   			</p>
 									   		</div>
 
@@ -287,10 +293,10 @@
 														<c:forEach var="i" begin="${startPage}" end="${endPage}">
 															<c:choose>
 																<c:when test="${i eq nowPage}">
-																	<li>[${i}]</li>
+																	<li>${i}</li>
 																</c:when>
 																<c:otherwise>
-																	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${i}">[${i}]</a></li>
+																	<li><a href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBean.getRestaurant_num()}&page=${i}">${i}</a></li>
 																</c:otherwise>
 															</c:choose>
 														</c:forEach>

@@ -29,12 +29,15 @@ public class RestaurantViewAction implements Action{
 		
 		RestaurantBean restaurantBean = new RestaurantBean();
 		HttpSession session = request.getSession();
-		System.out.println(request.getParameter("reviewNum") + "sdfsdfsd");
+		System.out.println(request.getParameter("reviewNum") + "view받음");
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
 		try {
-			int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));			
+			int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
+			System.out.println(reviewNum + "try");
 			List<PictureBean> pictureList = pictureDao.getPictureDetail(reviewNum);
+			System.out.println(pictureList.get(0).getPicture_name() + "사진");
+			System.out.println(pictureList.get(0).getReview_num());
 			request.setAttribute("pictureList", pictureList);
 			
 		}catch(Exception e) {;}

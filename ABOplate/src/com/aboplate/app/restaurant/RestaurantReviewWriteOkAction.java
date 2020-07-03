@@ -81,7 +81,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 			}
 			forward.setRedirect(true);
 			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum + "&reviewNum=" + reviewNum);
-			System.out.println("들어왔다요");
+			System.out.println(reviewNum + "받음");
 			return forward;
 			
 		} catch (Exception e) {
