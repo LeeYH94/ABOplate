@@ -1,5 +1,7 @@
 package com.aboplate.app.restaurant;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,22 +31,10 @@ public class RestaurantViewAction implements Action{
 		
 		RestaurantBean restaurantBean = new RestaurantBean();
 		HttpSession session = request.getSession();
-		System.out.println(request.getParameter("reviewNum") + "view받음");
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
-		
-		try {
-			int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
-			System.out.println(reviewNum + "try");
-			List<PictureBean> pictureList = pictureDao.getPictureDetail(reviewNum);
-			System.out.println(pictureList.get(0).getPicture_name() + "사진");
-			System.out.println(pictureList.get(0).getReview_num());
-			request.setAttribute("pictureList", pictureList);
-			
-		}catch(Exception e) {;}
 		
 		/*추가부분*/
 		restaurantDao.updateReadCount(restaurantNum);
-		System.out.println("들어왔다요");
 		
 		if(session.getAttribute("sessionId") != null) {
 			String id = session.getAttribute("sessionId").toString();
@@ -74,7 +64,13 @@ public class RestaurantViewAction implements Action{
 		request.setAttribute("currentPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("reviewList", reviewDao.getReviewList(startRow, endRow, restaurantNum));
+
+		LinkedHashMap<ReviewBean, List<PictureBean>> reviewMap = new LinkedHashMap<>();
+		for (ReviewBean reviewBean : reviewDao.getReviewList(startRow, endRow, restaurantNum)) {
+			reviewMap.put(reviewBean, pictureDao.getPictureDetail(reviewBean.getReview_num()));
+		}
+		request.setAttribute("reviewMap", reviewMap);
+		
 		forward.setRedirect(false);
 		forward.setPath("/restaurant/storeInfo.jsp");
 		return forward;

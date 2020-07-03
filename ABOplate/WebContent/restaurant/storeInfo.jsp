@@ -43,8 +43,7 @@
 		<c:set var="totalCnt" value="${requestScope.totalCnt}"/>
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
-		<c:set var="reviewList" value="${requestScope.reviewList}"/>
-		<c:set var="pictureList" value="${requestScope.pictureList}"/>
+		<c:set var="reviewMap" value="${requestScope.reviewMap}"/>
 		
 		
 
@@ -225,46 +224,43 @@
 						              			</div>
 											</div>
 										<c:choose>
-										<c:when test="${reviewList != null and fn:length(reviewList) > 0}">
-										<c:forEach var="reviewBean" items="${reviewList}">
+										<c:when test="${reviewMap != null and fn:length(reviewMap) > 0}">
+										<c:forEach var="reviewMap" items="${reviewMap}">
 							   			<div class="review d-flex">
 
 									   		<div class="user-img" style="background-image: url(../images/apeach_01.jpeg)"></div>
 									   		<div class="desc">
 									   			<h4>
-									   				<span class="text-left">${reviewBean.getMember_nickname()}</span>
-									   				<span class="text-right">${reviewBean.getReview_upload_date()}</span>
+									   				<span class="text-left">${reviewMap.key.getMember_nickname()}</span>
+									   				<span class="text-right">${reviewMap.key.getReview_upload_date()}</span>
 									   			</h4>
 
 									   			<p class="star">
 									   				<span>
 									   					<%-- <i class="ion-ios-star"></i> ${reviewBean.getReview_ration()} --%>
-									   					<c:forEach var="i" begin="1" end="${reviewBean.getReview_ration()}">
+									   					<c:forEach var="i" begin="1" end="${reviewMap.key.getReview_ration()}">
 															<i class="ion-ios-star"></i>
 														</c:forEach>
 								   					</span>
 								   					<span class="text-right">
-								   					<c:if test="${reviewBean.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
-														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewBean.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
+								   					<c:if test="${reviewMap.key.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewMap.key.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
+														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewMap.key.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
 														
-														<a href="javascript:recommend(${reviewBean.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px">${reviewBean.getReview_recommend()}</a>
+														<a href="javascript:recommend(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px">${reviewMap.key.getReview_recommend()}</a>
 														
-														<a href="javascript:notify(${reviewBean.getReview_num()})" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
+														<a href="javascript:notify(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
-									   			<p>${reviewBean.getReview()}
-									   			<c:if test="${pictureList.get(0).getReview_num() eq reviewBean.getReview_num()}">
-									   			<c:forEach var="i" begin="0" end="${fn:length(pictureList) - 1}">
-									   			<div class="img img-fluid">	   			
-									   				<img src="../images/${pictureList.get(i).getPicture_name()}" width="300">
-									   			</div>				
-									   			</c:forEach>
+									   			<p>${reviewMap.key.getReview()}
+									   			<c:if test="${reviewMap.value ne null}">
+										   			<div class="img img-fluid">	   			
+										   				<c:forEach var="pictureBean" items="${reviewMap.value}">
+											   				<img src="../images/${pictureBean.getPicture_name()}" width="150">
+											   			</c:forEach>
+										   			</div>
 									   			</c:if>
-									   		
-									   											   			
-									   			
 									   			</p>
 									   		</div>
 
