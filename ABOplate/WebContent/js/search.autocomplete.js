@@ -21,17 +21,16 @@ $("document").ready(() => {
 		       	console.log(keywords);
 		       	
 				$("#search").autocomplete({
-			        source : keywords
-//			        select : function( event, ui ) {
-//			        	console.log(ui.item);
-//			        	goTo(ui.item.value);
-////			        	${"#mainSearch"}.text(ui.item);//검색창 값을 ui.item
-//			        },
+			        source : keywords,
+			        select : function( event, ui ) {
+			        	goTo(ui.item.value);
+//			        	s${"#search"}.text(ui.item);//검색창 값을 ui.item
+			        },
 
 //			        focus : function(event, ui){
 //			        	return false;
 //			        },
-//			        minLength : 1,
+			        minLength : 1
 //			        autoFocus : true
 				});
 			}

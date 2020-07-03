@@ -36,7 +36,7 @@ public class RestaurantLocalCurrency implements Action {
 		request.setAttribute("currentPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("restaurantList", restaurantDao.getLocalCurrencyList());
+		request.setAttribute("restaurantList", restaurantDao.getLocalCurrencyRestaurantList());
 		
 		forward.setRedirect(false);
 		//forward.setPath(""); 지역화폐 리스트 나오는 페이지 경로
