@@ -30,9 +30,10 @@
 	
 	<insert id="addBookmark" parameterType="map">
 		INSERT INTO BOOKMARK VALUES(
-		bookmark_seq.NEXTVAL, #{id}, ${restaurantNum}
+		bookmark_seq.NEXTVAL, #{id}, ${restaurantNum})
 	</insert>
-
+	
+	
 </mapper>
 
 

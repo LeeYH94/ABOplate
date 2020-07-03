@@ -25,9 +25,9 @@ public class RestaurantBookmarkOkAction implements Action {
 		String id = (String) session.getAttribute("sessionId");
 
 		//레스토랑 번호 가져옴
-		RestaurantBean restaurantBean = (RestaurantBean) request.getAttribute("restaurantBean");
-		int restaurantNum = restaurantBean.getRestaurant_num();
-
+		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
+		
+		
 		//boolean값으로, DB에 있으면 빼기, DB에 없으면 추가
 		PrintWriter out = response.getWriter();
 		if(bookmarkDao.checkBookmark(id, restaurantNum) == 1) {
@@ -36,8 +36,9 @@ public class RestaurantBookmarkOkAction implements Action {
 		} else {
 			bookmarkDao.addBookmark(id, restaurantNum);
 			out.print("add");
+			
 		}
-
+		out.close();
 		return null;
 	}
 

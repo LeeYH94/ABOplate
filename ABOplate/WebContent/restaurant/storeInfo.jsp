@@ -136,9 +136,9 @@
 	          <div class="col-md-6  heading-section heading-section-white ftco-animate">
 	          	<h1>${restaurantBean.getRestaurant_name()} </h1> <!-- 이름 -->
 	          	<c:choose>
-		   			<c:when test="${session_id eq !null}">
+		   			<c:when test="${sessionId ne null}">
 		   				<div class="form-group text-right">
-							<a href="#" class="reply" style="background:none;"><img src="../images/favorite.png" width="25px" height="25px"></a>
+							<a href="javascript:bookmark(${restaurantBean.getRestaurant_num()})" class="reply" style="background:none;"><img id="bookmarkIcon" src="../images/favorite.png" width="25px" height="25px"></a>
 						</div>
 					</c:when>
 				</c:choose>
@@ -433,7 +433,7 @@
   <script src="../js/jquery.timepicker.min.js"></script>
   <script src="../js/scrollax.min.js"></script>
   <script src="../js/main.js"></script>
-  <script src="${pageContext.request.contextPath}/restaurant/restaurantJs/restaurant.js"></script>
+  <script src="${pageContext.request.contextPath}/restaurant/restaurantJs/restaurant.js?ver=123"></script>
 
   </body>
 </html>
