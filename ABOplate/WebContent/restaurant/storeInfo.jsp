@@ -38,6 +38,9 @@
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
 		<c:set var="reviewList" value="${requestScope.reviewList}"/>
+		<c:set var="pictureList" value="${requestScope.pictureList}"/>
+		
+		
 
 
 	  	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -245,7 +248,18 @@
 														<a href="javascript:notify(${reviewBean.getReview_num()})" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
 													</span>
 									   			</p>
-									   			<p>${reviewBean.getReview()}</p>
+									   			<p>${reviewBean.getReview()}
+									   			<div class="img img-fluid">
+									   			<c:if test="${reviewBean.getReview_num() eq pictureBean.getReview_num()}">
+									   			<script>
+									   				alert("들어옴");
+									   			</script>
+									   			<c:forEach var="pictureBean" items="${pictureList}">
+		    										<img src="../images/${pictureBean.getPicture_name()}" id="img_size" alt="Colorlib Template">
+		    									</c:forEach>
+		    									</c:if>	
+	    										</div>
+									   			</p>
 									   		</div>
 
 									   	</div>

@@ -22,16 +22,16 @@ public class RestaurantDAO {
 	}
 	
 	// 연관검색어 전용 리스트
-	public List<String> getName() {
+	public List<String> getNameList(String search) {
 		
-		List<String> nameList = sqlsession.selectList("Restaurant.getNameList");
+		List<String> nameList = sqlsession.selectList("Restaurant.getNameList", search);
 		
 		return nameList;
 	}
 	
-	public List<String> getLocalCurrencyList(){
+	public List<String> getLocalCurrencyList(String search){
 		
-		List<String> localCurrencyList = sqlsession.selectList("Restaurant.getLocalCurrencyList");
+		List<String> localCurrencyList = sqlsession.selectList("Restaurant.getLocalCurrencyList", search);
 		
 		return localCurrencyList;
 	}
@@ -43,16 +43,16 @@ public class RestaurantDAO {
 		return foodCategoryList;
 	}
 	
-	public List<String> getAddressList(){
+	public List<String> getAddressList(String search){
 		
-		List<String> addressList = sqlsession.selectList("Restaurant.getAddressList");
+		List<String> addressList = sqlsession.selectList("Restaurant.getAddressList", search);
 		
 		return addressList;
 	}
 	
-	public List<String> getBestRestaurantList(){
+	public List<String> getBestRestaurantList(String search){
 		
-		List<String> bestRestaurantList = sqlsession.selectList("Restaurant.getBestRestaurantList");
+		List<String> bestRestaurantList = sqlsession.selectList("Restaurant.getBestRestaurantList", search);
 		
 		return bestRestaurantList; 
 	}

@@ -48,6 +48,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			int restaurantNum = Integer.parseInt(multi.getParameter("restaurantNum"));
 			
+			
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
 			if(multi.getParameter("starRating").equals("")) {
@@ -64,6 +65,8 @@ public class RestaurantReviewWriteOkAction implements Action{
 				reviewResult = reviewDao.insertReview(reviewBean);
 				pictureResult = pictureDao.insertPicture(multi, reviewDao.getReviewSeq());
 			}
+			
+			int reviewNum = reviewDao.getReviewSeq();
 						
 			if(multi.getParameter("review").equals("") || !pictureResult) {
 				response.setContentType("text/html;charset=UTF-8");
@@ -77,7 +80,8 @@ public class RestaurantReviewWriteOkAction implements Action{
 				reviewDao.updateReviewStamp(memberId);
 			}
 			forward.setRedirect(true);
-			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum);
+			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum + "&reviewNum=" + reviewNum);
+			System.out.println("들어왔다요");
 			return forward;
 			
 		} catch (Exception e) {

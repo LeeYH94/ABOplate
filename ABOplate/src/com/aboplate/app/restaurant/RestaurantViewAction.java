@@ -1,5 +1,7 @@
 package com.aboplate.app.restaurant;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,6 +9,8 @@ import javax.servlet.http.HttpSession;
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
 import com.aboplate.app.bookmark.dao.BookmarkDAO;
+import com.aboplate.app.picture.dao.PictureBean;
+import com.aboplate.app.picture.dao.PictureDAO;
 import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
 import com.aboplate.app.restaurant.dao.ReviewBean;
@@ -21,13 +25,23 @@ public class RestaurantViewAction implements Action{
 		
 		BookmarkDAO bookmarkDao = new BookmarkDAO();
 		RestaurantDAO restaurantDao = new RestaurantDAO();
+		PictureDAO pictureDao = new PictureDAO();
 		
 		RestaurantBean restaurantBean = new RestaurantBean();
 		HttpSession session = request.getSession();
+		System.out.println(request.getParameter("reviewNum") + "sdfsdfsd");
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
+		
+		try {
+			int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));			
+			List<PictureBean> pictureList = pictureDao.getPictureDetail(reviewNum);
+			request.setAttribute("pictureList", pictureList);
+			
+		}catch(Exception e) {;}
 		
 		/*추가부분*/
 		restaurantDao.updateReadCount(restaurantNum);
+		System.out.println("들어왔다요");
 		
 		if(session.getAttribute("sessionId") != null) {
 			String id = session.getAttribute("sessionId").toString();
@@ -58,10 +72,10 @@ public class RestaurantViewAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("reviewList", reviewDao.getReviewList(startRow, endRow, restaurantNum));
-		
 		forward.setRedirect(false);
 		forward.setPath("/restaurant/storeInfo.jsp");
 		return forward;
+		
 	}
 	
 }

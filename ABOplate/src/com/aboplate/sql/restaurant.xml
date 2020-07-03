@@ -3,27 +3,30 @@
 
 <mapper namespace="Restaurant">
 	
-	<select id="getNameList" resultType="string">
+	<select id="getNameList" resultType="string" parameterType="string">
 		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
+			WHERE RESTAURANT_NAME LIKE '%'||#{search}||'%'
 	</select>
 	
 	<select id="getFoodCategoryList" parameterType="string" resultType="string">
-		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM 
-			(SELECT * FROM RESTAURANT WHERE RESTAURANT_FOOD_CATEGORY LIKE '%'||#{search}||'%')
+		SELECT DISTINCT RESTAURANT_FOOD_CATEGORY FROM RESTAURANT
+			WHERE RESTAURANT_FOOD_CATEGORY LIKE '%'||#{search}||'%' 
 	</select>
 	
-	<select id="getLocalCurrencyList" resultType="string">
+	<select id="getLocalCurrencyList" parameterType="string" resultType="string">
 		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT 
-		WHERE RESTAURANT_LOCAL_CURRENCY = 'O' 
+		WHERE RESTAURANT_LOCAL_CURRENCY = 'O' AND RESTAURANT_NAME LIKE '%'||#{search}||'%'
 	</select>
 
-	<select id="getBestRestaurantList" resultType="string">
+	<select id="getBestRestaurantList" resultType="string" parameterType="string">
 		SELECT DISTINCT RESTAURANT_NAME FROM RESTAURANT WHERE RESTAURANT_BEST = 'O'
+			AND AND RESTAURANT_NAME LIKE '%'||#{search}||'%'
 	</select>
 	
 
-	<select id="getAddressList" resultType="string">
+	<select id="getAddressList" resultType="string" parameterType="string">
 		SELECT DISTINCT SUBSTR(RESTAURANT_ADDRESS, 1, INSTR(RESTAURANT_ADDRESS, ' ', 1, 1)) FROM RESTAURANT
+			WHERE RESTAURANT_ADDRESS LIKE '%'||#{search}||'%'
 	</select>
 	
 	<select id="getMemberChoiceRestaurantList" parameterType="map" resultType="restaurantBean">

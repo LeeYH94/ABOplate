@@ -30,7 +30,7 @@ public class RestaurantAutoCompleteAction implements Action{
 		} else if (filter.equals("restaurant_best")) {
 			out.println(restaurantDao.getBestRestaurantList(search).toString());	
 		} else {
-			out.println(restaurantDao.getName(search).toString());
+			out.println(restaurantDao.getNameList(search).toString());
 		}
 		
 		return null;
