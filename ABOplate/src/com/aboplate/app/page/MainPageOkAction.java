@@ -63,7 +63,6 @@ public class MainPageOkAction implements Action{
 		}
 		
 		for (int i = 0; i < tempPopularList.size(); i++) {
-			System.out.println(tempPopularList.get(i));
 			list.add(tempPopularList.get(i));
 		}
 		
