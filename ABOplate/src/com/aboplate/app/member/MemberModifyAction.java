@@ -37,9 +37,11 @@ public class MemberModifyAction implements Action {
 		String memberId = (String)session.getAttribute("sessionId");
 		memberBean = mDao.getMemberInfo(memberId);
 		request.setAttribute("memberBean", memberBean);
+		
 		//음식 선호 부분
 		String mpref = memberBean.getMember_preference_food();
 		String mregion= memberBean.getMember_region();
+		String mpassword = mDao.decryptPw(memberBean.getMember_password());
 		if(mpref!="") {		
 			for (int i = 0; i < preference_kor.length; i++) {
 				if (mpref.equals(preference_kor[i])) {
@@ -56,7 +58,7 @@ public class MemberModifyAction implements Action {
 			}
 		}
 		request.setAttribute("mregion",mregion);
-		
+		request.setAttribute("mpassword",mpassword);
 		forward.setRedirect(false);
 		forward.setPath("/member/InformationModify.jsp");
 		

@@ -37,13 +37,25 @@
 	<c:set var="memberBean" value="${requestScope.memberBean}" />
 	<c:set var="mpref" value="${requestScope.mpref}"/>
 	<c:set var="mregion" value="${requestScope.mregion}"/>
+	<c:set var="mpassword" value="${requestScope.mpassword}"/>
+	
 	<section class="ftco-section contact-section">
 		<div class="container">
 			<div class="row block-9 justify-content-center mb-5">
 				<div class="col-md-6 mb-md-5">
 					<a class="navbar-brand" href="../index.jsp"
 						style="font-size: 56px;"><img src="../images/ABO.png" /></a>
-
+				<script>
+				var inputPw = prompt( '현재 비밀번호를 입력해주세요', '');
+					
+				if(inputPw==${'mpassword'}){
+				  alert("입력완료");
+					}
+					else{
+						console.log("들어옴else");
+				  location.href = "${pageContext.request.contextPath}/member/mypage.me";
+					}
+				</script>
 					<form name="modifyForm"
 						action="${pageContext.request.contextPath}/member/MemberModifyOk.me"
 						class="p-5 bg-light" method="post">
@@ -147,4 +159,5 @@
 	var contextPath = "${pageContext.request.contextPath}"
 </script>
 <script src="${pageContext.request.contextPath}/member/memberJs/modify.js"></script>
+
 </html>
