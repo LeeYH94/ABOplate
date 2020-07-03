@@ -80,6 +80,15 @@ public class RestaurantFrontController extends HttpServlet{
 				System.out.println("RestaurantLocalCurrency 에러");
 				System.out.println(e);
 			}
+		} else if(command.equals("/restaurant/restaurantBookmark.re")) {
+			action = new RestaurantBookmarkAction();
+			System.out.println("들어옴3");
+			try {
+				forward = action.execute(req, resp);
+			}catch(Exception e) {
+				System.out.println("RestaurantBookmarkAction 에러");
+				System.out.println(e);
+			}
 		} else if(command.equals("/restaurant/restaurantBookmarkOk.re")) {
 			action = new RestaurantBookmarkOkAction();
 			try {

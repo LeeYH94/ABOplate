@@ -39,38 +39,42 @@
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">ABO PLATE</a>
+			<a class="navbar-brand"
+				href="${pageContext.request.contextPath}/index.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
-			
-			<c:set var="bookmarkBean" value="${requestScope.bookmarkBean}"/>
+
+			<c:set var="bookmarkBean" value="${requestScope.bookmarkBean}" />
 			<c:set var="totalPage" value="${requestScope.totalPage}" />
 			<c:set var="totalCnt" value="${requestScope.totalCnt}" />
 			<c:set var="currentPage" value="${requestScope.currentPage}" />
 			<c:set var="startPage" value="${requestScope.startPage}" />
 			<c:set var="endPage" value="${requestScope.endPage}" />
-			<c:set var="list" value="${requestScope.bookmarkList}" />
-			
+			<c:set var="List" value="${requestScope.bookmarkList}" />
+
 
 
 			<div class="collapse navbar-collapse dropmenu" id="ftco-nav">
 				<ul class="navbar-nav ml-auto" id="dm_ul">
-				<c:choose>
-					<c:when test="${sessionId ne null}">
-					<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
-					<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/mypage.me"
-						class="nav-link">마이페이지</a></li>
-					<li class="nav-item"><a href="${pageContext.request.contextPath}/member/MemberLogOut.me"
-						class="nav-link">로그아웃</a></li>
-					<li class="nav-item"><a href="/other/event.jsp" class="nav-link">이벤트</a></li>
-					<!-- <li class="nav-item"><a href="/member/favorites.jsp" class="nav-link">즐겨찾기</a></li> -->
-					<li class="nav-item"><a href="#" class="nav-link">최근본 맛집</a>
-					</li>
-					</c:when>
+					<c:choose>
+						<c:when test="${sessionId ne null}">
+							<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
+							<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+							<li class="nav-item"><a
+								href="${pageContext.request.contextPath}/member/mypage.me"
+								class="nav-link">마이페이지</a></li>
+							<li class="nav-item"><a
+								href="${pageContext.request.contextPath}/member/MemberLogOut.me"
+								class="nav-link">로그아웃</a></li>
+							<li class="nav-item"><a href="/other/event.jsp"
+								class="nav-link">이벤트</a></li>
+							<!-- <li class="nav-item"><a href="/member/favorites.jsp" class="nav-link">즐겨찾기</a></li> -->
+							<li class="nav-item"><a href="#" class="nav-link">최근본 맛집</a>
+							</li>
+						</c:when>
 					</c:choose>
 				</ul>
 			</div>
@@ -94,37 +98,40 @@
 	</section>
 
 	<section class="ftco-section">
-		<div class="container">
-			<div class="row d-flex">
-				<c:choose>
-					<c:when test="${list != null and fn:length(list) > 0}">
-						<c:forEach var="bookmarkBean" items="${list}">
-							<div class="col-md-4 d-flex ftco-animate">
-								<div class="blog-entry justify-content-end">
-									<div class="text">
-										<h3 class="heading"></h3>
-										<div class="meta mb-3">
-											<!-- <div><a href="#">Admin</a></div> -->
-										</div>
-										<a href="blog-single.html" class="block-20 img"
-											style="background-image: url('../images/image_2.jpg');">
-										</a>
-										<p>${restaurantBean.getrestaurant_name()}<!-- 음식점 이름 --></p>
-										<div>
-											<a href="" class="meta-chat"><span class="icon-chat"></span>${totalCnt}</a><!-- 리뷰개수 -->
-										</div>
+		<div class="tab-pane fade show active" id="pills-description"
+			role="tabpanel" aria-labelledby="pills-description-tab">
+			<c:choose>
+				<c:when test="${list != null and fn:length(list) > 0}">
+					<c:forEach var="r_bean" items="${List}">
+						<div class="row" style="margin-top: 5px !important;">
+							<div class="col-md-3"
+								style="background-color: #ffcd3c !important;">
+								<div class="agent">
+									<div class="img">
+										<img style="height: 200px; width: 100%;" src="../images/3.jpg"
+											class="img-fluid" alt="Colorlib Template">
+									</div>
+									<div class="desc">
+										<h3>
+											<a href="">${r_bean.getRestaurant_name()}</a>
+										</h3>
+										<p class="h-info">
+											<a href="" class="meta-chat"><span class="icon-chat"></span>${totalCnt}</a>
+											<!-- 리뷰개수 -->
+										</p>
 									</div>
 								</div>
 							</div>
-						</c:forEach>
-					</c:when>
-					<c:otherwise>
-						<div class="review d-flex">
-							<p>즐겨찾기 목록이 없습니다.</p>
 						</div>
-					</c:otherwise>
-				</c:choose>
-			</div>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<div class="review d-flex">
+						<p>즐겨찾기 목록이 없습니다.</p>
+					</div>
+				</c:otherwise>
+			</c:choose>
+		</div>
 		</div>
 	</section>
 	<div class="review d-flex">
@@ -133,7 +140,8 @@
 				<ul>
 					<c:choose>
 						<c:when test="${nowPage > 1}">
-							<li><a href ="${pageContext.request.contextPath}/restaurant/restaurantBookmarkOk.re?page=${nowPage - 1}">&lt;</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?page=${nowPage - 1}">&lt;</a></li>
 						</c:when>
 					</c:choose>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -142,26 +150,28 @@
 								[${i}]
 							</c:when>
 							<c:otherwise>
-								<li><a href="${pageContext.request.contextPath}/restaurant/restaurantBookmarkOk.re?page=${i}">[${i}]</a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?page=${i}">[${i}]</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					<c:choose>
 						<c:when test="${nowPage < totalPage}">
-							<li><a href="${pageContext.request.contextPath}/restaurant/restaurantBookmarkOk.re?page=${nowPage + 1}">&gt;</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?page=${nowPage + 1}">&gt;</a></li>
 						</c:when>
 					</c:choose>
 				</ul>
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<footer class="ftco-footer ftco-section">
 		<div class="container">
 			<div class="row mb-5">
@@ -264,7 +274,9 @@
 				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 	</div>
 
-	<script>var contextPath = "${pageContext.request.contextPath}";</script>
+	<script>
+		var contextPath = "${pageContext.request.contextPath}";
+	</script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>

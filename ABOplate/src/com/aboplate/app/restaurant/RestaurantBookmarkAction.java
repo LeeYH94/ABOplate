@@ -17,14 +17,11 @@ public class RestaurantBookmarkAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		ActionForward forward = new ActionForward();
 		
-		RestaurantDAO rDao = new RestaurantDAO();
+		
 		BookmarkDAO bookmarkDao = new BookmarkDAO();
-		BookmarkBean bookmarkBean = new BookmarkBean();
-		String email = request.getParameter("memberEmail");
 		HttpSession session = request.getSession();
 		
 		String id = (String)session.getAttribute("sessionId");
-		
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
 		int pageSize = 8;
@@ -46,6 +43,8 @@ public class RestaurantBookmarkAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow,id));
+		System.out.println("들어옴2");
+		
 		
 		forward.setRedirect(false);
 		forward.setPath("/member/favorites.jsp");
