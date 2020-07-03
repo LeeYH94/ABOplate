@@ -255,7 +255,6 @@
 													</span>
 									   			</p>
 									   			<p>${reviewBean.getReview()}
-									   			<c:out value="${fn:length(pictureList)}"/>
 									   			<c:if test="${pictureList.get(0).getReview_num() eq reviewBean.getReview_num()}">
 									   			<c:forEach var="i" begin="0" end="${fn:length(pictureList) - 1}">
 									   			<div class="img img-fluid">	   			
