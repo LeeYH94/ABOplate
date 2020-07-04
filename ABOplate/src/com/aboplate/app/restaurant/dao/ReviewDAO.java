@@ -160,6 +160,10 @@ public class ReviewDAO {
 		sqlsession.update("Review.plusNotify", reviewNum);
 	}
 	
+	public void minusReviewStamp(String id) {
+		sqlsession.update("Review.minusReviewStamp", id);
+	}
+	
 	
 	
 	

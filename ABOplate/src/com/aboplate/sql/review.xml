@@ -67,6 +67,12 @@
 		WHERE MEMBER_ID = #{id}
 	</update>
 	
+	<update id="minusReviewStamp" parameterType="string">
+		UPDATE MEMBER
+		SET MEMBER_STAMP = MEMBER_STAMP - 5 
+		WHERE MEMBER_ID = #{id}
+	</update>
+	
 	<update id="minusRecommend" parameterType="_int">
 		UPDATE REVIEW
 		SET REVIEW_RECOMMEND = REVIEW_RECOMMEND - 1

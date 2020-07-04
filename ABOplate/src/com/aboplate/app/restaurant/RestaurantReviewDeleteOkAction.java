@@ -4,6 +4,7 @@ import java.io.File;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
@@ -19,10 +20,12 @@ public class RestaurantReviewDeleteOkAction implements Action{
 		ReviewDAO reviewDao = new ReviewDAO();
 		PictureDAO pictureDao = new PictureDAO();
 		PictureBean pictureBean = new PictureBean();
+		HttpSession session = request.getSession();
 		
 		ActionForward forward = new ActionForward();
 		int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
+		String id = (String)session.getAttribute("sessionId");
 		
 		
 		String saveFolder = request.getServletContext().getRealPath("images");
@@ -33,6 +36,7 @@ public class RestaurantReviewDeleteOkAction implements Action{
 		
 		pictureDao.deletePicture(reviewNum);
 		reviewDao.deleteOneReview(reviewNum);
+		reviewDao.minusReviewStamp(id);
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/restaurant/RestaurantView.re?restaurantNum="+ restaurantNum);
 		
