@@ -43,7 +43,7 @@
       <div class="container">
         <div class="row block-9 justify-content-center mb-5">
           <div class="col-md-8 mb-md-5">
-          	<a class="navbar-brand" href="../index.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
+          	<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp" style="font-size:56px;"><img src="../images/ABO.png"/></a>
             <form name="loginForm" action="${pageContext.request.contextPath}/member/MemberLoginOk.me" method="post" class="bg-light p-5 contact-form">
               <div class="form-group">
                 <input type="text" name="memberId" class="form-control" placeholder="ID">

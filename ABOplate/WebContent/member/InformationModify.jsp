@@ -43,7 +43,7 @@
 		<div class="container">
 			<div class="row block-9 justify-content-center mb-5">
 				<div class="col-md-6 mb-md-5">
-					<a class="navbar-brand" href="../index.jsp"
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp"
 						style="font-size: 56px;"><img src="../images/ABO.png" /></a>
 				<script>
 				var inputPw = prompt( '현재 비밀번호를 입력해주세요', '');
