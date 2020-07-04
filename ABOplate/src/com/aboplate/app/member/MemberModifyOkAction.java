@@ -67,7 +67,7 @@ public class MemberModifyOkAction implements Action {
 	      }
 		forward = new ActionForward();
 		forward.setRedirect(true);
-		forward.setPath(request.getContextPath()+"/member/MemberInfo.me");
+		forward.setPath(request.getContextPath()+"/member/mypage.me");
 		
 		return forward;
 	}
