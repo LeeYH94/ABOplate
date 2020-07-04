@@ -46,15 +46,14 @@
 					<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp"
 						style="font-size: 56px;"><img src="../images/ABO.png" /></a>
 				<script>
-				var inputPw = prompt( '현재 비밀번호를 입력해주세요', '');
+				 var inputPw = prompt('현재 비밀번호를 입력하세요','');
+				 if(inputPw=="${mpassword}"){
+					 alert("입력완료");
 					
-				if(inputPw=="${mpassword}"){
-				  alert("입력완료");
-					}
-					else{
-						console.log("들어옴else");
-				  location.href = "${pageContext.request.contextPath}/member/mypage.me";
-					}
+				 }else{
+					 alert("비밀번호를 다시 입력해주세요");
+					 location.href = "${pageContext.request.contextPath}/member/MemberModify.me";
+				 }
 				</script>
 					<form name="modifyForm"
 						action="${pageContext.request.contextPath}/member/MemberModifyOk.me"
@@ -64,7 +63,7 @@
 								class="form-control" id="memberId" name="memberId"
 								value="${sessionId}" readonly>
 						</div>
-						
+					
 						<div class="form-group">
 							<label for="nickname">닉네임</label> <input type="text"
 								class="form-control" id="memberNickname" name="memberNickname"
