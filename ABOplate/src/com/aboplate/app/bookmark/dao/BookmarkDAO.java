@@ -24,14 +24,15 @@ public class BookmarkDAO {
 		
 		List<Integer> restaurantNumList = sqlsession.selectList("Bookmark.getRestaurantNumList", sessionId);
 		datas.put("startRow", startRow);
-		datas.put("startRow", endRow);
+		datas.put("endRow", endRow);
+		datas.put("restaurantNum", restaurantNumList);
 		
-		List<RestaurantBean> bookmarkList = null;
-		for(int restaurantNum : restaurantNumList) {
+		List<RestaurantBean> bookmarkList = sqlsession.selectList("Bookmark.getBookmarkList", datas);
+		/*for(int restaurantNum : restaurantNumList) {
 			bookmarkList.add(sqlsession.selectOne("Bookmark.getBookmarkList", startRow, endRow, restaurantNum));
 			
 		}
-			
+			*/
 		
 		return bookmarkList;
 		

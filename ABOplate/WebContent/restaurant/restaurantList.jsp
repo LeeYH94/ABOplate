@@ -34,18 +34,25 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body onload="javascript:goDetail();">
-	<c:set var="List" value="${requestScope.reviewList}"/>
-	<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}"/>
-	<c:set var="search" value="${requestScope.searchRestaurant}"/>
-	<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
-	<c:set var="restaurantList" value="${requestScope.restaurant }"/>
+	<c:set var="List" value="${requestScope.reviewList}" />
+	<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}" />
+	<c:set var="search" value="${requestScope.searchRestaurant}" />
+	<c:set var="restaurantBean" value="${requestScope.restaurantBean}" />
+	<c:set var="restaurantList" value="${requestScope.restaurant}" />
+	
+	<c:set var="startPage" value="${requestScope.startPage}" />
+	<c:set var="nowPage" value="${requestScope.currentPage}"/>
+	<c:set var="endPage" value="${requestScope.endPage}" />
+	<c:set var="totalCnt" value="${requestScope.totalCnt}" />
+	<c:set var="totalPage" value="${requestScope.totalPage}" />
 
 
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">ABO plate</a>
+			<a class="navbar-brand"
+				href="${pageContext.request.contextPath}/main.jsp">ABO plate</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +90,8 @@
 							<li>
 								<div class="flavor">
 									<div class="d-flex">
-										<a href=""> <img src="../images/image_1.jpg" style="width: 100px;"></img>aaaa
+										<a href=""> <img src="../images/image_1.jpg"
+											style="width: 100px;"></img>aaaa
 										</a>
 									</div>
 								</div>
@@ -91,7 +99,8 @@
 							<li>
 								<div class="flavor">
 									<div class="d-flex">
-										<a href=""> <img src="..images/image_3.jpg" style="width: 100px;"></img>bbbb
+										<a href=""> <img src="..images/image_3.jpg"
+											style="width: 100px;"></img>bbbb
 										</a>
 									</div>
 								</div>
@@ -99,7 +108,8 @@
 							<li>
 								<div class="flavor">
 									<div class="d-flex">
-										<a href=""> <img src="../images/image_3.jpg" style="width: 100px;"></img>cccc
+										<a href=""> <img src="../images/image_3.jpg"
+											style="width: 100px;"></img>cccc
 										</a>
 									</div>
 								</div>
@@ -107,7 +117,8 @@
 							<li>
 								<div class="flavor">
 									<div class="d-flex">
-										<a href=""> <img src="../images/image_4.jpg" style="width: 100px;"></img>dddd
+										<a href=""> <img src="../images/image_4.jpg"
+											style="width: 100px;"></img>dddd
 										</a>
 									</div>
 								</div>
@@ -122,11 +133,14 @@
 	<!-- 여기가 시작 -->
 	<section class="ftco-section">
 		<div class="col-md-13">
-			<form action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re" class="search-location mt-md-5">
+			<form
+				action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re"
+				class="search-location mt-md-5">
 				<div class="row justify-content-center">
 					<div class="form-group">
 						<div class="form-field">
-							<select style="border:solid 1px;"class="form-control" id="filter" name="keyField">
+							<select style="border: solid 1px;" class="form-control"
+								id="filter" name="keyField">
 								<option value='restaurant_name' selected>전체</option>
 								<option value='restaurant_food_category'>음식 종류</option>
 								<option value='restaurant_address'>주소</option>
@@ -139,9 +153,10 @@
 							<div class="form-field">
 								<input type="text" class="form-control" name="keyWord"
 									placeholder="Search location" style="border: 1px solid;"></input>
-									<button type="button" onclick="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re">
-										<span class="ion-ios-search"></span>
-									</button>
+								<button type="button"
+									onclick="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re">
+									<span class="ion-ios-search"></span>
+								</button>
 							</div>
 						</div>
 						<%-- <div class=row style="height: 60px;">
@@ -192,6 +207,34 @@
 							</div>
 						</c:forEach>
 					</c:when>
+					<c:when test="${restaurantBeanList ne null and fn:length(restaurantBeanList) > 0}">
+						<c:forEach var="restaurantBeanList" items="${restaurantBeanList}">
+							<div class="col-md-5">
+								<div class="img">
+									<a
+										href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+										<img style="width: 100%; height: 300px;"
+										src="${pageContext.request.contextPath}/restaurantImages/${restaurantBeanList.getRestaurant_num()}.jpg"
+										class="img-fluid" alt="Colorlib Template">
+									</a>
+								</div>
+								<div class="desc">
+									<h3>
+										<a
+											href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+											${restaurantBeanList.getRestaurant_name()} </a>
+									</h3>
+									<p class="h-info">
+										<a
+											href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+											<span class="location">${restaurantBeanList.getRestaurant_address()}</span>
+											<span class="details">${restaurantBeanList.getRestaurant_food_category()}</span>
+										</a>
+									</p>
+								</div>
+							</div>
+						</c:forEach>
+					</c:when>
 					<c:otherwise>
 						<h3>등록된 게시글이 없습니다.</h3>
 					</c:otherwise>
@@ -220,6 +263,37 @@
 								<c:when test="${nowPage < totalPage}">
 									<li><a
 										href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${nowPage + 1}">&gt;</a></li>
+										
+								</c:when>
+							</c:choose>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="review d-flex">
+				<div class="col text-center">
+					<div class="block-27">
+						<ul>
+							<c:choose>
+								<c:when test="${nowPage > 1}">
+									<li><a href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?page=${nowPage - 1}">&lt;</a></li> <!-- 이전 -->
+								</c:when>
+							</c:choose>
+							<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${i eq nowPage}">
+										<li>[${i}]</li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?page=${i}">[${i}]</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:choose>
+								<c:when test="${nowPage < totalPage}">
+									<li><a
+										href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?page=${nowPage + 1}">&gt;</a></li><!-- 다음 -->
+										
 								</c:when>
 							</c:choose>
 						</ul>
@@ -228,7 +302,7 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- 여기가 끝 -->
 
 	<footer class="ftco-footer ftco-section">
@@ -337,8 +411,10 @@
 		var contextPath = "${pageContext.request.contextPath}";
 	</script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=056b94bb5df03a78a04b2c7f67882c60&libraries=services"></script>
-	<script src="${pageContext.request.contextPath}/restaurant/restaurantJs/kakaoMap.js"></script>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=056b94bb5df03a78a04b2c7f67882c60&libraries=services"></script>
+	<script
+		src="${pageContext.request.contextPath}/restaurant/restaurantJs/kakaoMap.js"></script>
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="../js/popper.min.js"></script>

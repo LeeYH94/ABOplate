@@ -1,42 +1,88 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+package com.aboplate.app.bookmark.dao;
 
-<mapper namespace="Bookmark">
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-	<select id="getBookmarkList" parameterType="map" resultType="restaurantBean">
-	
-		SELECT * FROM
-			(SELECT ROWNUM R, V.* FROM
-				(SELECT * FROM RESTAURANT s, BOOKMARK b WHERE s.RESTAURANT_NUM = ${restaurantNum}
-					ORDER BY b.BOOKMARK_NUM DESC) V ) L
-			WHERE L.R BETWEEN ${startRow} AND ${endRow}			
-	</select>
-	
-	<select id="getRestaurantNumList" parameterType="string" resultType="_int">
-		SELECT RESTAURANT_NUM FROM BOOKMARK 
-			WHERE MEMBER_ID = #{sessionId}
-				ORDER BY BOOKMARK_NUM DESC
-	</select>
-	
-	<select id="getBookmarkCnt" parameterType="string" resultType="_int">
-		SELECT COUNT(*) FROM BOOKMARK WHERE MEMBER_ID = #{memberId}
-	</select>
-	
-	<select id="checkBookmark" parameterType="map" resultType="_int">
-		SELECT COUNT(*) FROM BOOKMARK
-			WHERE MEMBER_ID = #{id} AND RESTAURANT_NUM = ${restaurantNum}		
-	</select>
-	
-	<delete id="popBookmark" parameterType="map">
-		DELETE FROM BOOKMARK WHERE MEMBER_ID = #{id} AND RESTAURANT_NUM = ${restaurantNum}
-	</delete>
-	
-	<insert id="addBookmark" parameterType="map">
-		INSERT INTO BOOKMARK VALUES(
-		bookmark_seq.NEXTVAL, #{id}, ${restaurantNum})
-	</insert>
-	
-	
-</mapper>
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.aboplate.app.restaurant.dao.RestaurantBean;
+import com.aboplate.mybatis.config.SqlMapConfig;
+
+public class BookmarkDAO {
+   SqlSessionFactory sessionf = SqlMapConfig.getSqlMapInstance();
+   SqlSession sqlsession;
+   
+   public BookmarkDAO() {
+      sqlsession = sessionf.openSession(true);
+   }
+   
+   public List<RestaurantBean> getBookmarkList(int startRow, int endRow, String sessionId) {
+      
+      HashMap<String , Object> datas = new HashMap<>();
+      
+      List<Integer> restaurantNumList = sqlsession.selectList("Bookmark.getRestaurantNumList", sessionId);
+      datas.put("startRow", startRow);
+      datas.put("endRow", endRow);
+      
+      List<RestaurantBean> bookmarkList = null;
+      for(int restaurantNum : restaurantNumList) {
+         bookmarkList.add(sqlsession.select("Bookmark.getBookmarkList", startRow, endRow, restaurantNum));
+         
+      }
+         
+      
+      return bookmarkList;
+      
+   }
+   
+   public int checkBookmark(String id, int restaurantNum) {
+      
+      HashMap<String, Object> datas = new HashMap<>();
+      datas.put("id", id);
+      datas.put("restaurantNum", restaurantNum);
+      
+      return sqlsession.selectOne("Bookmark.checkBookmark", datas);
+   }
+   
+   public void popBookmark(String id, int restaurantNum) {
+      
+      HashMap<String, Object> datas = new HashMap<>();
+      datas.put("id", id);
+      datas.put("restaurantNum", restaurantNum);
+      
+      sqlsession.delete("Bookmark.popBookmark", datas);
+   }
+   
+   public void addBookmark(String id, int restaurantNum) {
+      
+      HashMap<String, Object> datas = new HashMap<>();
+      datas.put("id", id);
+      datas.put("restaurantNum", restaurantNum);
+      
+      sqlsession.insert("Bookmark.addBookmark", datas);
+   }
+   
+   public int getBookmarkCnt(String memberId) {
+      
+      return sqlsession.selectOne("Bookmark.getBookmarkCnt", memberId);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

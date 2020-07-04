@@ -36,10 +36,10 @@ public class RestaurantLocalCurrency implements Action {
 		request.setAttribute("currentPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("restaurantList", restaurantDao.getLocalCurrencyRestaurantList());
+		request.setAttribute("restaurantBeanList", restaurantDao.getLocalCurrencyRestaurantList(startRow,endRow));
 		
 		forward.setRedirect(false);
-		//forward.setPath(""); 지역화폐 리스트 나오는 페이지 경로
+
 		forward.setPath("/restaurant/restaurantList.jsp");
 		return forward;
 	}
