@@ -257,7 +257,7 @@
 									<br> <br>
 
 									<div class="form-group text-right">
-										<input type="button" onclick="location.href='history.back()'"
+										<input type="button" onclick="location.href='javascript:history.back()'"
 											value="취소" class="btn btn-primary py-2 px-3"> <input
 											type="button" value="작성" onclick="javascript:submitReview()" class="btn btn-primary py-2 px-3">
 									</div>
