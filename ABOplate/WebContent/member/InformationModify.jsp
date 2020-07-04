@@ -48,7 +48,7 @@
 				<script>
 				var inputPw = prompt( '현재 비밀번호를 입력해주세요', '');
 					
-				if(inputPw==${'mpassword'}){
+				if(inputPw=="${mpassword}"){
 				  alert("입력완료");
 					}
 					else{
