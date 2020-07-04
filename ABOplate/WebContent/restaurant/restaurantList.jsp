@@ -240,13 +240,13 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div class="review d-flex">
+			<%-- <div class="review d-flex">
 				<div class="col text-center">
 					<div class="block-27">
 						<ul>
 							<c:choose>
 								<c:when test="${nowPage > 1}">
-									<li><a href="#">&lt;</a></li>
+									<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${nowPage - 1}">&lt;</a></li>
 								</c:when>
 							</c:choose>
 							<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -255,7 +255,7 @@
 										<li>[${i}]</li>
 									</c:when>
 									<c:otherwise>
-										<%-- <li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${i}">[${i}]</a></li> --%>
+										<li><a href="${pageContext.request.contextPath}/restaurant/ReviewList.re?page=${i}">[${i}]</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -269,13 +269,15 @@
 						</ul>
 					</div>
 				</div>
-			</div>
-			<div class="review d-flex">
+			</div> --%>
+			<!-- 지역화폐 -->
+			<div class="d-flex">
 				<div class="col text-center">
 					<div class="block-27">
 						<ul>
-							<c:choose>
-								<c:when test="${nowPage > 1}">
+						<c:choose>
+						
+								<c:when test="${nowPage > 1 and restaurantBeanList ne null and fn:length(restaurantBeanList) > 0}">
 									<li><a href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?page=${nowPage - 1}">&lt;</a></li> <!-- 이전 -->
 								</c:when>
 							</c:choose>
@@ -295,6 +297,7 @@
 										href="${pageContext.request.contextPath}/restaurant/restaurantLocalCurrency.re?page=${nowPage + 1}">&gt;</a></li><!-- 다음 -->
 										
 								</c:when>
+							
 							</c:choose>
 						</ul>
 					</div>

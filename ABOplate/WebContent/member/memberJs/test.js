@@ -6,8 +6,7 @@ var idCheck = false;
 var nicknameCheck = false;
 var emailCheck = false;
 var favoriteOk = false;
-var favoriteCheck = false;
-var regionCheck = false;
+
 function formSubmit() {
   	var form = document.joinForm;
 
@@ -22,6 +21,7 @@ function formSubmit() {
 		return false;
 	} else if ('' == form.memberEmail.value || !emailCheck) {
 		alert("이메일을 입력해주세요");
+		
 		form.memberEmail.focus();
 		return false;
 
@@ -41,25 +41,19 @@ function formSubmit() {
 		alert("닉네임을 확인해주세요");
 		form.memberNickname.focus();
 		return false;
-	}else if(!favoriteCheck){
-			if($("input:checkbox[name=memberFavorite]").is(":checked") == true) {
-				favoriteCheck=true;
-		}
-			else{
+	}else if(!$("input:checkbox[name=memberFavorite]").is(":checked")){
+			
+			
 				alert("선호음식을 입력하세요");
-			}
+			
 		return false;
 	} 
-	else if(!regionCheck){
+	else if(!$("select[name=memberRegion] option:selected").val()){
 		console.log("regioncheck1");
-
-		if($("select[name=memberRegion] option:selected").val()) {
-			console.log("regioncheck2");
-			regionCheck=true;
-		}
-		else{
+		
+		
 			alert("지역을 선택하세요");
-		}
+		
 		return false;
 	}
 		
@@ -102,6 +96,7 @@ $("input[name='memberId']").focusout(function(event) {
 	checkid(id);
 
 })
+
 
 function checknickname(nickname) {
 
@@ -149,8 +144,17 @@ $("input[name='memberNickname']").focusout(function(event) {
 // 클릭 할 때 마다 비밀번호 받아오기 function sendEmail
 var verifyKey;
 function sendEmail() {
-
-	$.ajax({
+	
+	var regEmail= /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		
+		if(!regEmail.test($("input[name='memberEmail']").val())){
+					alert("이메일 주소가 유효하지 않습니다.");
+					form.memberEmail.focus();
+					
+			}
+		
+		else{
+			$.ajax({
 		url : contextPath + "/member/MemberVerifyEmail.me?memberEmail="
 				+ $("input[name='memberEmail']").val(),
 		type : 'get',
@@ -167,7 +171,7 @@ function sendEmail() {
 			console.log("오류");
 		}
 	})
-
+				}
 }
 
 function clickEmail() {
