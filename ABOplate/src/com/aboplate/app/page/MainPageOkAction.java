@@ -69,8 +69,8 @@ public class MainPageOkAction implements Action{
 		session.setAttribute("list", list);
 		session.setAttribute("popularList", popularList);
 		
-		forward.setPath(request.getContextPath() + "/main.jsp");
 		forward.setRedirect(true);
+		forward.setPath(request.getContextPath() + "/main.jsp");
 		
 		return forward;
 	}

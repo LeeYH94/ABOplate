@@ -69,7 +69,7 @@ public class MemberLoginOkAction implements Action {
 		if(mBean != null) {
 			session.setAttribute("memberBean", mBean);
 			session.setAttribute("sessionId", id);
-			forward.setPath(request.getContextPath()+"/index.jsp");	
+			forward.setPath(request.getContextPath()+"/main.jsp");	
 		} else {
 			forward.setPath(request.getContextPath()+"/member/MemberLogin.me?login=false");
 		}

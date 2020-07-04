@@ -53,7 +53,7 @@
               </div>
               <div class="form-group">
               	<div class="d-flex justify-content-center">
-              	  <input type="submit" value="로그인" class="btn btn-primary py-3 p=x-5">
+              	  <input type="submit" value="로그인" class="btn btn-primary py-3 p=x-5" onclick="location.href='javascript:loginForm.submit()'">
               	</div>
               </div>
               <div class="form-group">

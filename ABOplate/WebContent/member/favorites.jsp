@@ -40,7 +40,7 @@
 		id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand"
-				href="${pageContext.request.contextPath}/index.jsp">ABO PLATE</a>
+				href="../index.jsp">ABO PLATE</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
