@@ -55,7 +55,7 @@
 					<c:choose>
 						<c:when test="${memberBean ne null}">
 						  <li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
-				          <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+				      <li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
 				    </c:when>
 				  </c:choose>
 					<c:choose>

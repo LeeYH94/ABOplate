@@ -67,7 +67,7 @@ public class RestaurantReviewWriteOkAction implements Action{
 			}
 			
 			int reviewNum = reviewDao.getReviewSeq();
-						
+			
 			if(multi.getParameter("review").equals("") || !pictureResult) {
 				response.setContentType("text/html;charset=UTF-8");
 				out.println("<script>");
@@ -76,9 +76,8 @@ public class RestaurantReviewWriteOkAction implements Action{
 				out.println("</script>");
 				out.close();
 				return null;
-			}else {
-				reviewDao.updateReviewStamp(memberId);
 			}
+			reviewDao.updateReviewStamp(memberId);
 			forward.setRedirect(true);
 			forward.setPath(request.getContextPath() + "/restaurant/RestaurantView.re?restaurantNum=" + restaurantNum + "&reviewNum=" + reviewNum);
 			System.out.println(reviewNum + "받음");

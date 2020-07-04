@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
 import com.aboplate.app.member.dao.MemberBean;
+import com.aboplate.app.member.dao.MemberDAO;
 import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.app.restaurant.dao.RestaurantDAO;
 
@@ -28,6 +29,7 @@ public class MainPageOkAction implements Action{
 		
 		if(session.getAttribute("sessionId") != null) {
 			id = session.getAttribute("sessionId").toString();
+			session.setAttribute("memberBean", new MemberDAO().getMemberInfo(id));
 		}
 		
 		List<RestaurantBean> tempPopularList = restaurantDao.getPopularList();
