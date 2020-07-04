@@ -197,7 +197,7 @@
 									</div>
 
 									<div class="form-group">
-										<textarea name="review" cols="100" rows="10"
+										<textarea name="review" cols="100" rows="10" id="review"
 											class="form-control" placeholder="리뷰를 작성해주세요"></textarea>
 									</div>
 
@@ -257,9 +257,9 @@
 									<br> <br>
 
 									<div class="form-group text-right">
-										<input type="button" onclick="location.href='history.back()'"
+										<input type="button" onclick="location.href='javascript:history.back()'"
 											value="취소" class="btn btn-primary py-2 px-3"> <input
-											type="submit" value="작성" class="btn btn-primary py-2 px-3">
+											type="button" value="작성" onclick="javascript:submitReview()" class="btn btn-primary py-2 px-3">
 									</div>
 									<!-- form 태그 끝  -->
 								</form>
@@ -421,6 +421,17 @@
 				console.log($("input[name='" + fileTagName + "']").val());
 				$("input[name='" + fileTagName + "']").val("");
 			}
+		}
+		
+		function submitReview(){
+			if ($('.star_rating_cnt').val() == 0){
+				alert("별점을 입력해 주세요");
+				return false;
+			}else if($("#review").val() == ""){
+				alert("내용을 입력해 주세요");
+				return false;
+			}
+			reviewForm.submit();
 		}
 	</script>
 </body>

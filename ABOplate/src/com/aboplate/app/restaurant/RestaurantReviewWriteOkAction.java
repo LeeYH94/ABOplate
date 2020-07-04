@@ -51,24 +51,17 @@ public class RestaurantReviewWriteOkAction implements Action{
 			
 			PrintWriter out = response.getWriter();
 			response.setContentType("text/html;charset=UTF-8");
-			if(multi.getParameter("starRating").equals("")) {
-				out.println("<script>");
-				out.println("alert('별점을 입력해주세요.');");
-				out.println("history.back();");
-				out.println("</script>");
-				out.close();
-			}else {
-				reviewBean.setRestaurant_num(restaurantNum);
-				reviewBean.setMember_nickname(nickName);
-				reviewBean.setReview(multi.getParameter("review"));
-				reviewBean.setReview_ration(Integer.parseInt(multi.getParameter("starRating")));
-				reviewResult = reviewDao.insertReview(reviewBean);
-				pictureResult = pictureDao.insertPicture(multi, reviewDao.getReviewSeq());
-			}
 			
+			reviewBean.setRestaurant_num(restaurantNum);
+			reviewBean.setMember_nickname(nickName);
+			reviewBean.setReview(multi.getParameter("review"));
+			reviewBean.setReview_ration(Integer.parseInt(multi.getParameter("starRating")));
+			reviewResult = reviewDao.insertReview(reviewBean);
+			pictureResult = pictureDao.insertPicture(multi, reviewDao.getReviewSeq());
+						
 			int reviewNum = reviewDao.getReviewSeq();
 			
-			if(multi.getParameter("review").equals("") || !pictureResult) {
+			if(!pictureResult) {
 				response.setContentType("text/html;charset=UTF-8");
 				out.println("<script>");
 				out.println("alert('리뷰 등록 실패. 다시 시도해주세요.');");

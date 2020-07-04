@@ -43,7 +43,7 @@ public class RestaurantBookmarkAction implements Action{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow,id));
-		System.out.println("들어옴2");
+		
 		
 		
 		forward.setRedirect(false);
