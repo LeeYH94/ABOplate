@@ -42,7 +42,7 @@
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
 		<div class="container">
-			<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">Uptown</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">ABOplate</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -51,14 +51,28 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="../member/login.jsp"
-						class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="../member/signup.jsp"
-						class="nav-link">회원가입</a></li>
+					<c:choose>
+						<c:when test="${sessionId eq null}">
+							<li class="nav-item"><a href="../member/login.jsp"
+								class="nav-link">로그인</a></li>
+							<li class="nav-item"><a href="../member/signup.jsp"
+								class="nav-link">회원가입</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
+							<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
+							<li class="nav-item"><a href="../member/mypage.jsp"
+								class="nav-link">마이페이지</a></li>
+							<li class="nav-item"><a
+								href="${pageContext.request.contextPath}/member/MemberLogOut.me"
+								class="nav-link">로그아웃</a></li>
+							<li class="nav-item"><a href="../member/favorites.jsp"
+								class="nav-link">즐겨찾기</a></li>
+						</c:otherwise>
+					</c:choose>
 					<li class="nav-item"><a href="../other/event.jsp"
 						class="nav-link">이벤트</a></li>
-					<li class="nav-item"><a href="javascript:goDetail('테스트');"
-						class="nav-link">최근 본 맛집</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">최근 본 맛집</a></li>
 				</ul>
 			</div>
 		</div>

@@ -28,7 +28,7 @@ public class RestaurantBookmarkAction implements Action{
 		int totalCnt = bookmarkDao.getBookmarkCnt(id);
 		
 		int endRow = page * 8;
-		int startRow = page -7;
+		int startRow = endRow - 7;
 		
 		int startPage = ((page-1)/pageSize) * pageSize + 1;
 		int endPage = startPage + 7;
