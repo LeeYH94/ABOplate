@@ -44,6 +44,7 @@
 		<c:set var="totalPage" value="${requestScope.totalPage}"/>
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
 		<c:set var="reviewMap" value="${requestScope.reviewMap}"/>
+		<c:set var="bookmarkCheck" value="${requestScope.bookmarkCheck}"/>
 		
 		
 
@@ -140,13 +141,20 @@
 
 	          <div class="col-md-6  heading-section heading-section-white ftco-animate">
 	          	<h1>${restaurantBean.getRestaurant_name()} </h1> <!-- 이름 -->
-	          	<c:choose>
+	          <c:choose>
 		   			<c:when test="${sessionId ne null}">
 		   				<div class="form-group text-right">
-							<a href="javascript:bookmark(${restaurantBean.getRestaurant_num()})" class="reply" style="background:none;"><img id="bookmarkIcon" src="../images/favorite.png" width="25px" height="25px"></a>
-						</div>
-					</c:when>
-				</c:choose>
+		   					<c:choose>
+		   					<c:when test="${bookmarkCheck eq 0}">
+									<a href="javascript:bookmark(${restaurantBean.getRestaurant_num()})" class="reply" style="background:none;"><img id="bookmarkIcon" src="../images/favorite.png" width="25px" height="25px"></a>
+								</c:when>
+								<c:otherwise>
+									<a href="javascript:bookmark(${restaurantBean.getRestaurant_num()})" class="reply" style="background:none;"><img id="bookmarkIcon" src="../images/favoritecolor.png" width="25px" height="25px"></a>
+								</c:otherwise>
+								</c:choose>
+							</div>
+						</c:when>
+						</c:choose>
 				<!-- 로그인 시 북마크 표시 뜨게함 -->
 	          	<strong>평점 : <span style="color:orange;"><c:forEach var="i" begin="1" end="${restaurantBean.getRestaurant_ration_total()}">★</c:forEach></span></strong>&nbsp; <!-- 평점 -->
 				<strong><span>조회수 : ${restaurantBean.getRestaurant_hit()}</span></strong>
@@ -247,26 +255,46 @@
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewMap.key.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewMap.key.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
-														
-														<a href="javascript:recommend(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px">${reviewMap.key.getReview_recommend()}</a>
-														
-														<a href="javascript:notify(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
+														<c:if test="${sessionId ne null}">
+															<c:choose>
+															<c:when test="${reviewMap.value.get(1) eq true}">
+																<a href="javascript:recommend(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/recommend.jpg" width="25px" height="25px">${reviewMap.key.getReview_recommend()}</a>
+															</c:when>
+															<c:otherwise>
+																<a href="javascript:recommend(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="likeIcon" src="../images/좋아요.jpg" width="25px" height="25px">${reviewMap.key.getReview_recommend()}</a>
+															</c:otherwise>
+															</c:choose>
+															<a href="javascript:notify(${reviewMap.key.getReview_num()})" class="reply" style="background:none;"><img id="notifyIcon" src="../images/신고.jpg" width="25px" height="25px"></a>
+														</c:if>
 													</span>
 									   			</p>
 									   			<p>${reviewMap.key.getReview()}
-									   			<c:if test="${reviewMap.value ne null}">
-										   			<div class="img img-fluid">	   			
-										   				<c:forEach var="pictureBean" items="${reviewMap.value}">
-											   				<img src="../images/${pictureBean.getPicture_name()}" width="150">
-											   			</c:forEach>
-										   			</div>
-									   			</c:if>
+									   			<c:choose>
+									   			<c:when test="${sessionId ne null}">
+										   			<c:if test="${reviewMap.value.get(0) ne null}">
+											   			<div class="img img-fluid">	   			
+											   				<c:forEach var="pictureBean" items="${reviewMap.value.get(0)}">
+												   				<img src="../images/${pictureBean.getPicture_name()}" width="150">
+												   			</c:forEach>
+											   			</div>
+										   			</c:if>
+									   			</c:when>
+									   			<c:otherwise>
+									   				<c:if test="${reviewMap.value ne null}">
+											   			<div class="img img-fluid">	   			
+											   				<c:forEach var="pictureBean" items="${reviewMap.value}">
+												   				<img src="../images/${pictureBean.getPicture_name()}" width="150">
+												   			</c:forEach>
+											   			</div>
+										   			</c:if>
+									   			</c:otherwise>
+									   			</c:choose>
 									   			</p>
 									   		</div>
 
 									   	</div>
 									   	</c:forEach>
-									   	</c:when>
+										</c:when>
 										<c:otherwise>
 											<div class="review d-flex">
 									   			<p>등록된 리뷰가 없습니다.</p>
