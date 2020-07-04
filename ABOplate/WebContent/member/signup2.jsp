@@ -71,7 +71,8 @@
                     <input type="text" class="form-control" id="nickname" name="memberNickname" >
                     <p id="nicknameCheckText"></p>
                   </div>
-                  <div class="form-group">
+               
+                  <div class="form-group" >
                     <label for="favorite"> 선호음식 : </label>
                     <input type="checkbox" class="check" id="favorite" name="memberFavorite" value="korean">
                     <label for="demo-human" style="position: static;"> 
@@ -90,7 +91,7 @@
 					양식
 					</label>
                   </div>
-                  
+ 
                   <div class="form-group">
                     <label for="memberRegion">지역</label>
                    	<div class="form-group"><select style="width: 150px; font-size: 13px;" class="form-control check" name="memberRegion" required>
@@ -141,4 +142,5 @@
 <script src="../js/main.js"></script>
 <script>var contextPath = "${pageContext.request.contextPath}";</script>
 <script src="${pageContext.request.contextPath}/member/memberJs/test.js"></script>
+
 </html>

@@ -6,7 +6,8 @@ var idCheck = false;
 var nicknameCheck = false;
 var emailCheck = false;
 var favoriteOk = false;
-
+var favoriteCheck = false;
+var regionCheck = false;
 function formSubmit() {
   	var form = document.joinForm;
 
@@ -37,10 +38,32 @@ function formSubmit() {
 		alert("비밀번호 확인이 일치하지 않습니다");
 		return false;
 	} else if ('' == form.memberNickname.value || !nicknameCheck) {
-		alert("닉네임을 확인해주세요")
+		alert("닉네임을 확인해주세요");
 		form.memberNickname.focus();
 		return false;
+	}else if(!favoriteCheck){
+			if($("input:checkbox[name=memberFavorite]").is(":checked") == true) {
+				favoriteCheck=true;
+		}
+			else{
+				alert("선호음식을 입력하세요");
+			}
+		return false;
+	} 
+	else if(!regionCheck){
+		console.log("regioncheck1");
+
+		if($("select[name=memberRegion] option:selected").val()) {
+			console.log("regioncheck2");
+			regionCheck=true;
+		}
+		else{
+			alert("지역을 선택하세요");
+		}
+		return false;
 	}
+		
+	
 
 	form.submit();
 }
@@ -112,6 +135,7 @@ $("input[name='memberNickname']").focusout(function(event) {
 	var nickname = $("input[name='memberNickname']").val();
 	checknickname(nickname);
 })
+
 
 /*
  * 인증번호 받기 버튼을 누르면 ajax를 써서 sendEmailOkAction으로 보내줌(.me를 통해) 그러면 action통해서 위에
