@@ -24,15 +24,15 @@ public class RestaurantReviewDeleteOkAction implements Action{
 		int reviewNum = Integer.parseInt(request.getParameter("reviewNum"));
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
+		
 		String saveFolder = request.getServletContext().getRealPath("images");
 		for(PictureBean picture : pictureDao.getPictureDetail(reviewNum)) {
 			File f = new File(saveFolder + "\\" + picture.getPicture_name());
 			if(f.exists()) {f.delete();}
 		}
 		
-		reviewDao.deleteOneReview(reviewNum);
 		pictureDao.deletePicture(reviewNum);
-		
+		reviewDao.deleteOneReview(reviewNum);
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath()+"/restaurant/RestaurantView.re?restaurantNum="+ restaurantNum);
 		
