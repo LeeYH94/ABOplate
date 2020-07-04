@@ -18,7 +18,7 @@
 
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
+<link "WebContent/main.jsp"rel="stylesheet" href="css/magnific-popup.css">
 
 <link rel="stylesheet" href="css/aos.css">
 
