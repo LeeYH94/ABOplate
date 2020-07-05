@@ -223,7 +223,7 @@
 										<c:forEach var="reviewMap" items="${reviewMap}">
 							   			<div class="review d-flex">
 
-									   		<div class="user-img" style="background-image: url(../images/apeach_01.jpeg)"></div>
+									   		<div class="user-img" style="background-image: url(../images/team-1.jpg)"></div>
 									   		<div class="desc">
 									   			<h4>
 									   				<span class="text-left">${reviewMap.key.getMember_nickname()}</span>
@@ -232,13 +232,12 @@
 
 									   			<p class="star">
 									   				<span>
-									   					<%-- <i class="ion-ios-star"></i> ${reviewBean.getReview_ration()} --%>
 									   					<c:forEach var="i" begin="1" end="${reviewMap.key.getReview_ration()}">
 															<i class="ion-ios-star"></i>
 														</c:forEach>
 								   					</span>
 								   					<span class="text-right">
-								   					<c:if test="${reviewMap.key.getMember_nickname() eq memberBean.getMember_nickname()}"> <!-- 백과 이야기 필요 -->
+								   					<c:if test="${reviewMap.key.getMember_nickname() eq memberBean.getMember_nickname()}">
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewMap.key.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[수정]</a>&nbsp;&nbsp;
 														<a href="${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewMap.key.getReview_num()}&restaurantNum=${restaurantBean.getRestaurant_num()}">[삭제]</a>&nbsp;&nbsp;
 													</c:if>
