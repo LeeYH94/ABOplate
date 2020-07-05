@@ -98,6 +98,13 @@
 		(SELECT * FROM RESTAURANT ORDER BY RESTAURANT_RATION_TOTAL DESC) D) B
 		WHERE B.R BETWEEN ${startRow} AND ${endRow} AND RESTAURANT_LOCAL_CURRENCY = 'O'
 	</select>
+	
+	<select id="list" parameterType="map" resultType="restaurantBean">
+	SELECT * FROM
+			(SELECT ROWNUM R, D.* FROM 
+				(SELECT * FROM RESTAURANT ORDER BY RESTAURANT_HIT DESC) D) B
+				WHERE B.R BETWEEN 0 AND 1000
+	</select>
 
 
 </mapper>

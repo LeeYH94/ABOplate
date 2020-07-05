@@ -31,10 +31,8 @@ public class MainPageOkAction implements Action{
 			id = session.getAttribute("sessionId").toString();
 			session.setAttribute("memberBean", new MemberDAO().getMemberInfo(id));
 		}
-		
 		List<RestaurantBean> tempPopularList = restaurantDao.getPopularList();
 		List<RestaurantBean> popularList = new ArrayList<>();
-		List<RestaurantBean> list = new ArrayList<>();
 		int tempPopularListLength = tempPopularList.size();
 		
 		
@@ -64,12 +62,8 @@ public class MainPageOkAction implements Action{
 			session.setAttribute("recommendList", recommendList);
 		}
 		
-		for (int i = 0; i < tempPopularList.size(); i++) {
-			list.add(tempPopularList.get(i));
-		}
-		
-		session.setAttribute("list", list);
 		session.setAttribute("popularList", popularList);
+		session.setAttribute("list", restaurantDao.list(0, 1000));
 		
 		forward.setRedirect(true);
 		forward.setPath(request.getContextPath() + "/main.jsp");

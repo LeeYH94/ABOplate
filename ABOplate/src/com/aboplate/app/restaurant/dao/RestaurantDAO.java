@@ -130,6 +130,14 @@ public class RestaurantDAO {
 		return localCurrencyList;
 	}
 	
+	public List<RestaurantBean> list(int startRow, int endRow){
+		HashMap<String, Integer> pageMap = new HashMap<>();
+		pageMap.put("startRow", startRow);
+		pageMap.put("endRow", endRow);
+		List<RestaurantBean> list = sqlsession.selectList("Restaurant.list", pageMap);
+		return list;
+	}
+	
 }
 
 
