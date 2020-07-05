@@ -55,7 +55,7 @@
 			<c:set var="bookmarkBean" value="${requestScope.bookmarkBean}" />
 			<c:set var="totalPage" value="${requestScope.totalPage}" />
 			<c:set var="totalCnt" value="${requestScope.totalCnt}" />
-			<c:set var="currentPage" value="${requestScope.currentPage}" />
+			<c:set var="nowPage" value="${requestScope.currentPage}" />
 			<c:set var="startPage" value="${requestScope.startPage}" />
 			<c:set var="endPage" value="${requestScope.endPage}" />
 			<c:set var="List" value="${requestScope.bookmarkList}" />
