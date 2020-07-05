@@ -35,6 +35,12 @@ public class RestaurantViewAction implements Action{
 		HttpSession session = request.getSession();
 		int restaurantNum = Integer.parseInt(request.getParameter("restaurantNum"));
 		
+		List<PictureBean> pictureList;
+		try {
+			pictureList = pictureDao.getPictureList(restaurantNum);
+			request.setAttribute("pictureList", pictureList);
+		} catch (Exception e) {;}
+		
 		/*추가부분*/
 		restaurantDao.updateReadCount(restaurantNum);
 		

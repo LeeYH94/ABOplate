@@ -45,6 +45,7 @@
 		<c:set var="restaurantBean" value="${requestScope.restaurantBean}"/>
 		<c:set var="reviewMap" value="${requestScope.reviewMap}"/>
 		<c:set var="bookmarkCheck" value="${requestScope.bookmarkCheck}"/>
+		<c:set var="pictureList" value="${requestScope.pictureList}"/>
 		
 		
 
@@ -94,40 +95,26 @@
     <section class="ftco-section ftco-agent">
     	<div class="container">
         <div class="row">
+       <c:choose>
+        <c:when test="${fn:length(pictureList) ne 0}">
+        <c:forEach var="i" begin="0" step="1" end="${fn:length(pictureList) - 1}">
         	<div class="col-md-3">
         		<div class="agent">
     					<div class="img img-fluid">
-		    				<img src="../images/img_01.jpg" id="img_size"  alt="Colorlib Template">
+		    				<img src="../images/${pictureList.get(i).getPicture_name()}" id="img_size"  alt="Colorlib Template">
 	    				</div>
 
     				</div>
         	</div>
-        	<div class="col-md-3">
-        		<div class="agent">
-    					<div class="img img-fluid">
-		    				<img src="../images/img_02.jpg" id="img_size"  alt="Colorlib Template">
-	    				</div>
-
-    				</div>
-        	</div>
-        	<div class="col-md-3">
-        		<div class="agent">
-    					<div class="img img-fluid">
-		    				<img src="../images/img_03.jpg" id="img_size"  alt="Colorlib Template">
-	    				</div>
-
-    				</div>
-        	</div>
-        	<div class="col-md-3">
-        		<div class="agent">
-    					<div class="img img-fluid">
-		    				<img src="../images/img_04.jpg" id="img_size" alt="Colorlib Template">
-	    				</div>
-
-    				</div>
-        	</div>
+        	
+        	</c:forEach>
+        	</c:when>
+    	<c:otherwise>
+    	</c:otherwise>
+    	</c:choose>
         </div>
     	</div>
+    	
     </section>
 		<!-- 음식점 정보 영역 -->
 		<section class="ftco-section01  services-section img mx-md-5" id="#line02" >

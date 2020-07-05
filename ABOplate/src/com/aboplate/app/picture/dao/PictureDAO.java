@@ -1,5 +1,6 @@
 package com.aboplate.app.picture.dao;
 
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
+import com.aboplate.app.restaurant.dao.RestaurantBean;
 import com.aboplate.mybatis.config.SqlMapConfig;
 import com.oreilly.servlet.MultipartRequest;
 
@@ -46,5 +48,27 @@ public class PictureDAO {
 	public void deletePicture(int reviewNum) {
 		sqlsession.delete("Picture.deletePicture", reviewNum);
 	}
+	
+	public List<PictureBean> getPictureList(int restaurantNum) {
+			
+			HashMap<String , Object> datas = new HashMap<>();
+			
+			List<Integer> reviewNumList = sqlsession.selectList("Picture.getReviewNumList", restaurantNum);
+			System.out.println("1212121212");
+		
+			
+			datas.put("reviewNum", reviewNumList);
+			
+			List<PictureBean> pictureList = new ArrayList<>();
+			
+			pictureList = sqlsession.selectList("Picture.getPictureList", datas);
+			
+	
+			return pictureList;
+			
+		}
+	
+
+
 
 }

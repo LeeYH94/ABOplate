@@ -13,8 +13,6 @@
            )) V) L
       WHERE L.R BETWEEN ${startRow} AND ${endRow}
    </select>
-
-  
    
    <select id="getRestaurantNumList" parameterType="string" resultType="_int">
       SELECT RESTAURANT_NUM FROM BOOKMARK
