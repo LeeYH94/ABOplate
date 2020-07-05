@@ -42,13 +42,13 @@ public class RestaurantBookmarkAction implements Action{
 		request.setAttribute("currentPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow,id));
+		request.setAttribute("restaurantBeanList", bookmarkDao.getBookmarkList(startRow,endRow,id));
 	
 		
 		
 		
 		forward.setRedirect(false);
-		forward.setPath("/member/favorites.jsp");
+		forward.setPath("/member/favorites2.jsp");
  		return forward;
 	}
 }
