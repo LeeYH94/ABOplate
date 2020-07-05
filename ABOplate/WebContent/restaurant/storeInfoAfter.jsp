@@ -53,7 +53,7 @@
 			</c:otherwise>
 			</c:choose>
 	          <li class="nav-item"><a href="../other/event.jsp" class="nav-link">이벤트</a></li>
-	          <li class="nav-item"><a href="../member/favorites.jsp" class="nav-link">즐겨찾기</a></li>
+	          <li class="nav-item"><a href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re" class="nav-link">즐겨찾기</a></li>
 	          <li class="nav-item"><a href="#" class="nav-link">최근 본 맛집</a></li>
 	        </ul>
 	      </div>
