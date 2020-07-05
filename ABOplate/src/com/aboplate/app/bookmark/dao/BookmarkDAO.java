@@ -23,25 +23,16 @@ public class BookmarkDAO {
 		HashMap<String , Object> datas = new HashMap<>();
 		
 		List<Integer> restaurantNumList = sqlsession.selectList("Bookmark.getRestaurantNumList", sessionId);
-		System.out.println(restaurantNumList.get(0));
+	
 		datas.put("startRow", startRow);
 		datas.put("endRow", endRow);
-		
+		datas.put("restaurantNum", restaurantNumList);
 		
 		List<RestaurantBean> bookmarkList = new ArrayList<>();
 		
-		for (int i = 0; i < restaurantNumList.size(); i++) {
-			datas.put("restaurantNum", restaurantNumList.get(i));
-			bookmarkList.add((RestaurantBean) sqlsession.selectOne("Bookmark.getBookmarkList", datas));
-			
-		}
+		bookmarkList = sqlsession.selectList("Bookmark.getBookmarkList", datas);
 		
-		/*for(int restaurantNum : restaurantNumList) {
-			bookmarkList.add(sqlsession.selectOne("Bookmark.getBookmarkList", startRow, endRow, restaurantNum));
-			
-		}
-			*/
-		
+
 		return bookmarkList;
 		
 	}

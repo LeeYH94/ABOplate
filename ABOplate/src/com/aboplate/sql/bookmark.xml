@@ -3,13 +3,19 @@
 
 <mapper namespace="Bookmark">
 
-   <select id="getBookmarkList" parameterType="map" resultType="restaurantBean">
+<select id="getBookmarkList" parameterType="map" resultType="restaurantBean">
       SELECT * FROM
-      (SELECT ROWNUM R, V.* FROM
-      (SELECT * FROM RESTAURANT WHERE RESTAURANT_NUM = ${restaurantNum}) V) L
+      	(SELECT ROWNUM R, V.* FROM
+           (SELECT * FROM RESTAURANT WHERE RESTAURANT_NUM IN (
+       <foreach collection="restaurantNum" item="num" separator=",">
+           ${num}
+       </foreach>    
+           )) V) L
       WHERE L.R BETWEEN ${startRow} AND ${endRow}
    </select>
 
+  
+   
    <select id="getRestaurantNumList" parameterType="string" resultType="_int">
       SELECT RESTAURANT_NUM FROM BOOKMARK
       WHERE MEMBER_ID = #{sessionId}
