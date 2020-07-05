@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>즐겨찾기 페이지</title>
 </head>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="../css/icomoon.css">
 <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body onload="javascript:goDetail();">
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
@@ -47,18 +47,19 @@
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
-			<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}" />
+			<c:set var="List" value="${requestScope.bookmarkList}" />
 			<c:set var="search" value="${requestScope.searchRestaurant}" />
 			<c:set var="restaurantBean" value="${requestScope.restaurantBean}" />
 			<c:set var="restaurantList" value="${requestScope.restaurant}" />
-
-			<c:set var="bookmarkBean" value="${requestScope.bookmarkBean}" />
+			<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}" />
+		
+			
 			<c:set var="totalPage" value="${requestScope.totalPage}" />
 			<c:set var="totalCnt" value="${requestScope.totalCnt}" />
 			<c:set var="nowPage" value="${requestScope.currentPage}" />
 			<c:set var="startPage" value="${requestScope.startPage}" />
 			<c:set var="endPage" value="${requestScope.endPage}" />
-			<c:set var="List" value="${requestScope.bookmarkList}" />
+		
 
 
 
@@ -121,56 +122,55 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<c:choose>
-					<c:when test="${restaurantBeanList ne null and fn:length(restaurantBeanList) > 0}">
-						<c:forEach var="restaurantBeanList" items="${restaurantBeanList}">
+				<c:when test="${List ne null}">
+						<c:forEach var="List" items="${List}">
 							<div class="col-md-5">
 								<div class="img">
 									<a
-										href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+										href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${List.getRestaurant_num()}">
 										<img style="width: 100%; height: 300px;"
-										src="${pageContext.request.contextPath}/restaurantImages/${restaurantBeanList.getRestaurant_num()}.jpg"
-										class="img-fluid" alt="Colorlib Template">
+										src="${pageContext.request.contextPath}/restaurantImages/${List.getRestaurant_num()}.jpg"
+										class="img-fluid">
 									</a>
 								</div>
 								<div class="desc">
 									<h3>
 										<a
-											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
-											${restaurantBeanList.getRestaurant_name()} </a>
+											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${List.getRestaurant_num()}">
+											${List.getRestaurant_name()} </a>
 									</h3>
 									<p class="h-info">
 										<a
-											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
-											<span class="location">${restaurantBeanList.getRestaurant_address()}</span>
-											<span class="details">${restaurantBeanList.getRestaurant_food_category()}</span>
+											href="${pageContext.request.contextPath}/restaurant/RestaurantView.re?restaurantNum=${List.getRestaurant_num()}">
+											<span class="location">${List.getRestaurant_address()}</span>
+											<span class="details">${List.getRestaurant_food_category()}</span>
 										</a>
 									</p>
 								</div>
 							</div>
 						</c:forEach>
 					</c:when>
-					<c:when test="${restaurantBeanList ne null and fn:length(restaurantBeanList) > 0}">
-						<c:forEach var="restaurantBeanList" items="${restaurantBeanList}">
+					<c:when test="${List ne null and fn:length(List) > 0}">
+						<c:forEach var="List" items="${List}">
 							<div class="col-md-5">
 								<div class="img">
-									<a
-										href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
+									<a href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${List.getRestaurant_num()}">
 										<img style="width: 100%; height: 300px;"
-										src="${pageContext.request.contextPath}/restaurantImages/${restaurantBeanList.getRestaurant_num()}.jpg"
+										src="${pageContext.request.contextPath}/restaurantImages/${List.getRestaurant_num()}.jpg"
 										class="img-fluid" alt="Colorlib Template">
 									</a>
 								</div>
 								<div class="desc">
 									<h3>
 										<a
-											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
-											${restaurantBeanList.getRestaurant_name()} </a>
+											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${List.getRestaurant_num()}">
+											${List.getRestaurant_name()} </a>
 									</h3>
 									<p class="h-info">
 										<a
-											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${restaurantBeanList.getRestaurant_num()}">
-											<span class="location">${restaurantBeanList.getRestaurant_address()}</span>
-											<span class="details">${restaurantBeanList.getRestaurant_food_category()}</span>
+											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${List.getRestaurant_num()}">
+											<span class="location">${List.getRestaurant_address()}</span>
+											<span class="details">${List.getRestaurant_food_category()}</span>
 										</a>
 									</p>
 								</div>
@@ -189,9 +189,8 @@
 					<div class="block-27">
 						<ul>
 							<c:choose>
-
-								<c:when
-									test="${nowPage > 1 and restaurantBeanList ne null and fn:length(restaurantBeanList) > 0}">
+							<c:when
+									test="${nowPage > 1}">
 									<li><a
 										href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?page=${nowPage - 1}">&lt;</a></li>
 									<!-- 이전 -->
@@ -203,8 +202,7 @@
 										<li>[${i}]</li>
 									</c:when>
 									<c:otherwise>
-										<li><a
-											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?page=${i}">[${i}]</a></li>
+										<li><a href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?page=${i}">[${i}]</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>

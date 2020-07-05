@@ -102,26 +102,32 @@
 			role="tabpanel" aria-labelledby="pills-description-tab">
 			<c:choose>
 				<c:when test="${list != null and fn:length(list) > 0}">
-					<c:forEach var="r_bean" items="${List}">
+					<c:forEach var="List" items="${List}">
 						<div class="row" style="margin-top: 5px !important;">
 							<div class="col-md-3"
 								style="background-color: #ffcd3c !important;">
-								<div class="agent">
-									<div class="img">
-										<img style="height: 200px; width: 100%;" src="../images/3.jpg"
-											class="img-fluid" alt="Colorlib Template">
-									</div>
-									<div class="desc">
-										<h3>
-											<a href="">${r_bean.getRestaurant_name()}</a>
-										</h3>
-										<p class="h-info">
-											<a href="" class="meta-chat"><span class="icon-chat"></span>${totalCnt}</a>
-											<!-- 리뷰개수 -->
-										</p>
-									</div>
+								<div class="img">
+									<a href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${List.getRestaurant_num()}">
+										<img style="width: 100%; height: 300px;"
+										src="${pageContext.request.contextPath}/restaurantImages/${List.getRestaurant_num()}.jpg"
+										class="img-fluid" alt="Colorlib Template">
+									</a>
 								</div>
-							</div>
+								<div class="desc">
+									<h3>
+										<a
+											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${List.getRestaurant_num()}">
+											${List.getRestaurant_name()} </a>
+									</h3>
+									<p class="h-info">
+										<a
+											href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re?restaurantNum=${List.getRestaurant_num()}">
+											<span class="location">${List.getRestaurant_address()}</span>
+											<span class="details">${List.getRestaurant_food_category()}</span>
+										</a>
+									</p>
+								</div>
+						</div>
 						</div>
 					</c:forEach>
 				</c:when>

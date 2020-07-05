@@ -42,7 +42,7 @@ public class RestaurantBookmarkAction implements Action{
 		request.setAttribute("currentPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("restaurantBeanList", bookmarkDao.getBookmarkList(startRow,endRow,id));
+		request.setAttribute("bookmarkList", bookmarkDao.getBookmarkList(startRow,endRow,id));
 	
 		
 		

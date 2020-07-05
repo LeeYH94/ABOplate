@@ -34,7 +34,6 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body onload="javascript:goDetail();">
-	<c:set var="List" value="${requestScope.reviewList}" />
 	<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}" />
 	<c:set var="search" value="${requestScope.searchRestaurant}" />
 	<c:set var="restaurantBean" value="${requestScope.restaurantBean}" />
