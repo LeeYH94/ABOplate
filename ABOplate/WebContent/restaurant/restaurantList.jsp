@@ -34,7 +34,6 @@
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body onload="javascript:goDetail();">
-	<c:set var="List" value="${requestScope.reviewList}" />
 	<c:set var="restaurantBeanList" value="${requestScope.restaurantBeanList}" />
 	<c:set var="search" value="${requestScope.searchRestaurant}" />
 	<c:set var="restaurantBean" value="${requestScope.restaurantBean}" />
@@ -73,7 +72,7 @@
 							<li class="nav-item"><p class="nav-p">${memberBean.getMember_nickname()}님</p></li>
 							<li class="nav-item"><p class="nav-p">${memberBean.getMember_stamp()}점</p></li>
 							<li class="nav-item"><a
-								href="${pageContext.request.contextPath}../member/favorites.me"
+								href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re"
 								class="nav-link">즐겨찾기</a></li>
 							<li class="nav-item"><a
 								href="${pageContext.request.contextPath}../member/mypage.me"

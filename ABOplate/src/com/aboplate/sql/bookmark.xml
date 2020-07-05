@@ -10,15 +10,13 @@
       WHERE L.R BETWEEN ${startRow} AND ${endRow}
    </select>
 
-   <select id="getRestaurantNumList" parameterType="string"
-      resultType="_int">
+   <select id="getRestaurantNumList" parameterType="string" resultType="_int">
       SELECT RESTAURANT_NUM FROM BOOKMARK
       WHERE MEMBER_ID = #{sessionId}
       ORDER BY BOOKMARK_NUM DESC
    </select>
 
-   <select id="getBookmarkCnt" parameterType="string"
-      resultType="_int">
+   <select id="getBookmarkCnt" parameterType="string" resultType="_int">
       SELECT COUNT(*) FROM BOOKMARK WHERE MEMBER_ID = #{memberId}
    </select>
 

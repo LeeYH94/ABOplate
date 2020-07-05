@@ -48,7 +48,7 @@ public class RestaurantBookmarkAction implements Action{
 		
 		
 		forward.setRedirect(false);
-		forward.setPath("/member/favorites.jsp");
+		forward.setPath("/member/favorites2.jsp");
  		return forward;
 	}
 }
