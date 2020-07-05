@@ -95,6 +95,20 @@
       </div>
     </section>
     
+    <div id="mask"></div>
+    <div class="container">
+		<div id="layerbox" class="layerpop"
+			style="height: 800px; border-radius: 5% !important;">
+			<article class="layerpop_area" style="width:625px;">
+				<a href="javascript:popupClose();" class="layerpop_close" id="layerbox_close">X</a><br>
+				<div class="content">
+					<p>이벤트!</p>
+					<img style="width:600px;" src="../images/event1.jpg">
+				</div>
+			</article>
+		</div>
+	</div>
+    
 	<section class="ftco-section">
       <div class="container">
         <div class="row d-flex">
@@ -103,12 +117,11 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_1.jpg');">
+                <a href="javascript:goDetail();" id="getImg" class="block-20 img" style="background-image: url('../images/event1.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <h5>냉모밀 맛집 탐방!</h5>
+	              <p>2020-xx-xx</p>
               </div>
             </div>
           </div>
@@ -117,12 +130,11 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_2.jpg');">
+                <a href="javascript:goDetail();" id="getImg" class="block-20 img" style="background-image: url('../images/event2.jpg');">
 	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+	              <h5>여름음식 맛집 투어!</h5>
+	              <p>2020-xx-xx</p>
               </div>
             </div>
           </div>
@@ -131,21 +143,19 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
                 </div>
-                <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_3.jpg');">
-	              </a>
-	              <h5>이벤트 제목</h5>
-	              <p>이벤트 일시</p>
+                <a href="javascript:goDetail();" id="getImg" class="block-20 img" style="background-image: url('../images/event3.jpg');"></a>
+	              <h5>국내 먹는 여행</h5>
+	              <p>2020-xx-xx</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4 d-flex ftco-animate">
+          <!-- <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
+                  <div><a href="#">Admin</a></div>
                 </div>
                 <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_4.jpg');">
 	              </a>
@@ -160,7 +170,7 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
+                  <div><a href="#">Admin</a></div>
                 </div>
                 <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_5.jpg');">
 	              </a>
@@ -174,7 +184,7 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
+                  <div><a href="#">Admin</a></div>
                 </div>
                 <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_6.jpg');">
 	              </a>
@@ -188,7 +198,7 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
+                  <div><a href="#">Admin</a></div>
                 </div>
                 <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_7.jpg');">
 	              </a>
@@ -202,7 +212,7 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
+                  <div><a href="#">Admin</a></div>
                 </div>
                 <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_8.jpg');">
 	              </a>
@@ -216,7 +226,7 @@
               <div class="text">
                 <h3 class="heading"></h3>
                 <div class="meta mb-3">
-                  <!-- <div><a href="#">Admin</a></div> -->
+                  <div><a href="#">Admin</a></div>
                 </div>
                 <a href="blog-single.html" class="block-20 img" style="background-image: url('../images/image_1.jpg');">
 	              </a>
@@ -225,8 +235,8 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="row mt-5">
+        </div> -->
+        <!-- <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
@@ -239,7 +249,7 @@
                 <li><a href="#">&gt;</a></li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -336,6 +346,7 @@
   <script src="../js/scrollax.min.js"></script>
   <script src="../https://maps.googleapis.com/maps/api/js?key=&sensor=false"></script>
   <script src="../js/google-map.js"></script>
+  <script src="../js/popup.js"></script>
   <script src="../js/main.js"></script>
     
   </body>

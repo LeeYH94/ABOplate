@@ -326,7 +326,7 @@ $(".dropmenu ul li").hover(function(){
 
 
 
-//윈도우 창을 닫을 때 로그아웃 처리
+/*//윈도우 창을 닫을 때 로그아웃 처리
 function closePage( event ){
    if( event.clientY < 0 ){
       // 로그아웃 처리
@@ -339,7 +339,7 @@ document.onkeydown = function() {
     if (event.keyCode == 505) { 
         alert(document.body.onBeforeUnload);
    }
-}
+}*/
 
 //실검
 function textScroll(scroll_el_id) {

@@ -24,7 +24,7 @@ function wrapWindowByMask() {
         //영역 가운에데 레이어를 뛰우기 위해 위치 계산 
         $('.layerpop').css("top",(($(window).height() - $('.layerpop').outerHeight()) / 2) + $(window).scrollTop());
         $('.layerpop').css("left",(($(window).width() - $('.layerpop').outerWidth()) / 2) + $(window).scrollLeft());
-        $('.layerpop').draggable();
+        /*$('.layerpop').draggable();*/
         $('#layerbox').show();
     }
 
