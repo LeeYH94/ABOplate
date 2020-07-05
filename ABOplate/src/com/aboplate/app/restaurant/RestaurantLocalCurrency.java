@@ -19,11 +19,12 @@ public class RestaurantLocalCurrency implements Action {
 		
 		String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
+		System.out.println(page + "여기다");
 		int pageSize = 10;
 		int totalCnt = restaurantDao.getLocalCurrencyCnt();
 		
-		int endRow = page * 10;
-		int startRow = endRow - 9;
+		int endRow = page * 8 ; // 	8 	16 	24
+		int startRow = endRow - 7 ; // 	1 	9 	17
 		
 		int startPage = ((page - 1) / pageSize) * pageSize + 1;
 		int endPage = startPage + 9;
