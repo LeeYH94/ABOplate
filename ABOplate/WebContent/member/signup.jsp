@@ -82,7 +82,7 @@
 							</div>
 						</div>
 						<div class="d-flex">
-							<textarea id="message" cols="30" rows="5" class="form-control" style="width: 600px; height: 200px; resize: none; margin-top: 5px;" readonly>위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 네이버 위치기반 서비스를 이용할 수 있습니다.
+							<textarea id="message" cols="30" rows="5" class="form-control" style="width: 600px; height: 200px; resize: none; margin-top: 5px;" readonly>위치정보 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 ABOplate 위치기반 서비스를 이용할 수 있습니다.
 제 1 조 (목적)
 이 약관은 ABOplate (이하 “회사”)가 제공하는 위치정보사업 또는 위치기반서비스사업과 관련하여 회사와 개인위치정보주체와의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
 
