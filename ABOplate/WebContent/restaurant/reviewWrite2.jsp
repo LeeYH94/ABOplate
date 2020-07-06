@@ -40,7 +40,7 @@
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
       id="ftco-navbar">
       <div class="container">
-         <a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">Uptown</a>
+         <a class="navbar-brand" href="${pageContext.request.contextPath}/main.jsp">ABOplate</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#ftco-nav" aria-controls="ftco-nav"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -227,7 +227,7 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Uptown</h2>
+              <h2 class="ftco-heading-2">ABOplate</h2>
               <p>Far far away, behind the word mountains, far from the countries.</p>
               <ul class="ftco-footer-social list-unstyled mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
