@@ -112,19 +112,19 @@
 							<div class="tab-pane fade show active" id="pills-description"
 								role="tabpanel" aria-labelledby="pills-description-tab">
 											<c:choose>
-											<c:when test="${list != null and fn:length(list) > 0}">	
-											<c:forEach var="r_bean" items="${List}">
+											<c:when test="${List != null and fn:length(List) > 0}">	
+											<c:forEach var="reviewList" items="${List}">
 											<div class="row" style="margin-top:5px !important;">
 								        	<div class="col-md-3" style="background-color:#ffcd3c !important;">
 								        		<div class="agent">
 								    					<div class="img">
-										    				<img style="height:200px; width:100%;" src="../images/3.jpg" class="img-fluid" alt="Colorlib Template">
+										    				<img style="height:200px; width:100%;" src="${pageContext.request.contextPath}/restaurantImages/${reviewList.get(0).getRestaurant_num()}.jpg" class="img-fluid" alt="Colorlib Template">
 									    				</div>
 									    				<div class="desc">
-									    					<h3><a href="storeInfoBefore.jsp">${r_bean.getRestaurant_num()}</a></h3>
+									    					<h3><a href="storeInfoBefore.jsp">${reviewList.get(1).getRestaurant_name()}</a></h3>
 																<p class="h-info">
 																<span>
-											   					<c:forEach var="i" begin="1" end="${r_bean.getReview_ration()}">
+											   					<c:forEach var="i" begin="1" end="${reviewList.get(0).getReview_ration()}">
 																	<i class="ion-ios-star"></i>
 																</c:forEach>
 										   					</span>
@@ -132,9 +132,9 @@
 									    				</div>
 								    				</div>
 								        	</div>
-								        			<input type="text" readonly maxlength="50" style="width:50%;" value="${r_bean.getReview()}" class="sort">
-								        			<input type="button" onclick="location.href ='${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${r_bean.getReview_num()}&restaurantNum=${r_bean.getRestaurant_num()}'" value="수정" style="margin-right:5px;" class="btn btn-primary py-3 p=x-5 sort">
-		              								<input type="button" onclick="location.href ='${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${r_bean.getReview_num()}&restaurantNum=${r_bean.getRestaurant_num()}'" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
+								        			<input type="text" readonly maxlength="50" style="width:50%;" value="${reviewList.get(0).getReview()}" class="sort">
+								        			<input type="button" onclick="location.href ='${pageContext.request.contextPath}/restaurant/ReviewModify.re?reviewNum=${reviewList.get(0).getReview_num()}&restaurantNum=${reviewList.get(0).getRestaurant_num()}'" value="수정" style="margin-right:5px;" class="btn btn-primary py-3 p=x-5 sort">
+		              								<input type="button" onclick="location.href ='${pageContext.request.contextPath}/restaurant/ReviewDeleteOk.re?reviewNum=${reviewList.get(0).getReview_num()}&restaurantNum=${reviewList.get(0).getRestaurant_num()}'" value="삭제" class="btn btn-primary py-3 p=x-5 sort">
 								        	</div>
 								        	</c:forEach>
 										   	</c:when>
