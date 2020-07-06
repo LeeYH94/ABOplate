@@ -89,35 +89,7 @@
 	<!-- END nav -->
 	<section class="ftco-section">
 		<div class="col-md-13">
-			<form
-				action="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re"
-				class="search-location mt-md-5">
-				<div class="row justify-content-center">
-					<div class="form-group">
-						<div class="form-field">
-							<select style="border: solid 1px;" class="form-control"
-								id="filter" name="keyField">
-								<option value='restaurant_name' selected>전체</option>
-								<option value='restaurant_food_category'>음식 종류</option>
-								<option value='restaurant_address'>주소</option>
-								<option value='restaurant_best'>모범 음식점</option>
-							</select>
-						</div>
-					</div>
-					<div class="col-lg-5 align-items-end">
-						<div class="form-group">
-							<div class="form-field">
-								<input type="text" class="form-control" name="keyWord"
-									placeholder="Search location" style="border: 1px solid;"></input>
-								<button type="button"
-									onclick="${pageContext.request.contextPath}/restaurant/RestaurantSearch.re">
-									<span class="ion-ios-search"></span>
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</form>
+			
 		</div>
 		<div class="container">
 			<div class="row justify-content-center">
