@@ -75,10 +75,10 @@
 								href="${pageContext.request.contextPath}/restaurant/restaurantBookmark.re"
 								class="nav-link">즐겨찾기</a></li>
 							<li class="nav-item"><a
-								href="${pageContext.request.contextPath}../member/mypage.me"
+								href="${pageContext.request.contextPath}/member/mypage.me"
 								class="nav-link">마이페이지</a></li>
 							<li class="nav-item"><a
-								href="${pageContext.request.contextPath}../member/MemberLogOut.me"
+								href="${pageContext.request.contextPath}/member/MemberLogOut.me"
 								class="nav-link">로그아웃</a></li>
 						</c:when>
 					</c:choose>
