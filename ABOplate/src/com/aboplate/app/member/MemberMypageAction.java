@@ -65,6 +65,7 @@ public class MemberMypageAction implements Action{
 		request.setAttribute("memberReviewList", reviewList);
 
 		forward.setRedirect(false);
+		System.out.println("1211212121212");
 		forward.setPath("/member/mypage.jsp");
 		
 		return forward;

@@ -19,11 +19,14 @@ public class MemberDeleteAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String id = (String)session.getAttribute("sessionId");
+		System.out.println(id);
 		memberDao.deleteMember(id);
 		
+		
+		session.invalidate();
 		forward.setRedirect(true);
-		forward.setPath(request.getContextPath() + "index.jsp");
+		forward.setPath(request.getContextPath() + "/index.jsp");
 		return forward;
+	
 	}
-
 }
