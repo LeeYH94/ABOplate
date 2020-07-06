@@ -1,5 +1,9 @@
 package com.aboplate.app.member;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -8,6 +12,8 @@ import com.aboplate.action.Action;
 import com.aboplate.action.ActionForward;
 import com.aboplate.app.member.dao.MemberBean;
 import com.aboplate.app.member.dao.MemberDAO;
+import com.aboplate.app.restaurant.dao.RestaurantDAO;
+import com.aboplate.app.restaurant.dao.ReviewBean;
 import com.aboplate.app.restaurant.dao.ReviewDAO;
 
 public class MemberMypageAction implements Action{
@@ -25,6 +31,7 @@ public class MemberMypageAction implements Action{
 		HttpSession session = request.getSession();
 		
 		String id = session.getAttribute("sessionId").toString();
+		session.setAttribute("memberBean", memberDao.getMemberInfo(id));
 		String nickname = memberDao.getMemberNickname(id);
 		
 		String temp = request.getParameter("page");
@@ -48,7 +55,14 @@ public class MemberMypageAction implements Action{
 		request.setAttribute("nowPage", page);
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
-		request.setAttribute("memberReviewList", reviewDao.getMemberReviewList(startRow, endRow, nickname));
+		List<Object> reviewList = new ArrayList<Object>();
+		for (ReviewBean reviewBean : reviewDao.getMemberReviewList(startRow, endRow, nickname)) {
+			List<Object> tempList = new ArrayList<>();
+			tempList.add(reviewBean);
+			tempList.add(new RestaurantDAO().getRestaurantInfo(reviewBean.getRestaurant_num()));
+			reviewList.add(tempList);
+		}
+		request.setAttribute("memberReviewList", reviewList);
 
 		forward.setRedirect(false);
 		forward.setPath("/member/mypage.jsp");
