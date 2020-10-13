@@ -1,6 +1,6 @@
 # ABOplate
 
-# http://www.aboplate.ga
+# http://aboplate.ga
 
 ##0525
 -------------
