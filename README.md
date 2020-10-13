@@ -1,6 +1,6 @@
 # ABOplate
 
-# 작업 전 pull 작업 후 commit push
+# http://www.aboplate.ga
 
 ##0525
 -------------
